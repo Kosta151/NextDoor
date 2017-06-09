@@ -12,8 +12,7 @@
 		
 		                </span>
 		            </label>
-		            <button class="btn btn-theme btn-block" href="join.htm" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-		            <input type="submit">
+		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
 		            <hr>
 		            
 		            <div class="login-social-link centered">

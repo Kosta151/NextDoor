@@ -11,7 +11,7 @@
 		            <br>
 		            <input type="text" class="form-control" name="name" placeholder="User Name">
 		            <br>					
-		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> JOIN</button>
 		            <hr>
 		            
 		            <div class="login-social-link centered">

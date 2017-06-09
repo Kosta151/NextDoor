@@ -12,16 +12,16 @@
     <title>Next Door</title>
 	
     <!-- css -->
-    <link href="resources/home/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="resources/home/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link href="resources/home/css/nivo-lightbox.css" rel="stylesheet" />
-	<link href="resources/home/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-	<link href="resources/home/css/owl.carousel.css" rel="stylesheet" media="screen" />
-    <link href="resources/home/css/owl.theme.css" rel="stylesheet" media="screen" />
-	<link href="resources/home/css/flexslider.css" rel="stylesheet" />
-	<link href="resources/home/css/animate.css" rel="stylesheet" />
-    <link href="resources/home/css/style.css" rel="stylesheet">
-	<link href="resources/home/color/default.css" rel="stylesheet">
+    <link href="resources/index/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="resources/index/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="resources/index/css/nivo-lightbox.css" rel="stylesheet" />
+	<link href="resources/index/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="resources/index/css/owl.carousel.css" rel="stylesheet" media="screen" />
+    <link href="resources/index/css/owl.theme.css" rel="stylesheet" media="screen" />
+	<link href="resources/index/css/flexslider.css" rel="stylesheet" />
+	<link href="resources/index/css/animate.css" rel="stylesheet" />
+    <link href="resources/index/css/style.css" rel="stylesheet">
+	<link href="resources/index/color/default.css" rel="stylesheet">
     
 </head>
 
@@ -86,7 +86,7 @@
                                           <div class="col-md-2 mob-logo">
                                                 <div class="row">
                                                       <div class="site-logo">
-                                                            <a href="index.htm"><img src="resources/home/img/logo-dark.png" alt="" /></a>
+                                                            <a href="index.htm"><img src="resources/index/img/logo-dark.png" alt="" /></a>
                                                       </div>
                                                 </div>
                                           </div>
@@ -163,7 +163,7 @@
 								</ul>
                           </div>
                         </div>
-                        <img src="resources/home/img/team/1.jpg" alt="" />
+                        <img src="resources/index/img/team/1.jpg" alt="" />
                 </div>
             </div>
 			
@@ -180,7 +180,7 @@
 								</ul>
                           </div>
                         </div>
-                        <img src="resources/home/img/team/2.jpg" alt="" />
+                        <img src="resources/index/img/team/2.jpg" alt="" />
                 </div>
             </div>
 			<div class="col-xs-6 col-sm-3 col-md-3">
@@ -196,7 +196,7 @@
 								</ul>
                           </div>
                         </div>
-                        <img src="resources/home/img/team/3.jpg" alt="" />
+                        <img src="resources/index/img/team/3.jpg" alt="" />
                 </div>
             </div>
 			<div class="col-xs-6 col-sm-3 col-md-3">
@@ -212,7 +212,7 @@
 								</ul>
                           </div>
                         </div>
-                        <img src="resources/home/img/team/4.jpg" alt="" />
+                        <img src="resources/index/img/team/4.jpg" alt="" />
                 </div>
             </div>
         </div>		
@@ -392,14 +392,14 @@
                 <div class="col-sm-12 col-md-12 col-lg-12" >
 					<div class="wow bounceInUp" data-wow-delay="0.4s">
                     <div id="owl-works" class="owl-carousel">
-                        <div class="item"><a href="resources/home/img/works/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"><img src="resources/home/img/works/1.jpg" class="img-responsive" alt="img"></a></div>
-                        <div class="item"><a href="resources/home/img/works/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/2@2x.jpg"><img src="resources/home/img/works/2.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/home/img/works/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/3@2x.jpg"><img src="resources/home/img/works/3.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/home/img/works/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/4@2x.jpg"><img src="resources/home/img/works/4.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/home/img/works/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/5@2x.jpg"><img src="resources/home/img/works/5.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/home/img/works/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/6@2x.jpg"><img src="resources/home/img/works/6.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/home/img/works/7.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/7@2x.jpg"><img src="resources/home/img/works/7.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/home/img/works/8.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/8@2x.jpg"><img src="resources/home/img/works/8.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"><img src="resources/index/img/works/1.jpg" class="img-responsive" alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/2@2x.jpg"><img src="resources/index/img/works/2.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/3@2x.jpg"><img src="resources/index/img/works/3.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/4@2x.jpg"><img src="resources/index/img/works/4.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/5@2x.jpg"><img src="resources/index/img/works/5.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/6@2x.jpg"><img src="resources/index/img/works/6.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/7.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/7@2x.jpg"><img src="resources/index/img/works/7.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="resources/index/img/works/8.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/8@2x.jpg"><img src="resources/index/img/works/8.jpg" class="img-responsive " alt="img"></a></div>
                     </div>
 					</div>
                 </div>
@@ -538,25 +538,25 @@
 	</footer>
 
     <!-- Core JavaScript Files -->
-    <script src="resources/home/js/jquery.min.js"></script>	 
-    <script src="resources/home/js/bootstrap.min.js"></script>
+    <script src="resources/index/js/jquery.min.js"></script>	 
+    <script src="resources/index/js/bootstrap.min.js"></script>
 	<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
-	<script src="resources/home/js/jquery.sticky.js"></script>
-	<script src="resources/home/js/slippry.min.js"></script> 
-	<script src="resources/home/js/jquery.flexslider-min.js"></script>
-	<script src="resources/home/js/morphext.min.js"></script>
-	<script src="resources/home/js/gmap.js"></script>
-	<script src="resources/home/js/jquery.mb.YTPlayer.js"></script>
-    <script src="resources/home/js/jquery.easing.min.js"></script>	
-	<script src="resources/home/js/jquery.scrollTo.js"></script>
-	<script src="resources/home/js/jquery.appear.js"></script>
-	<script src="resources/home/js/stellar.js"></script>
-	<script src="resources/home/js/wow.min.js"></script>
-	<script src="resources/home/js/owl.carousel.min.js"></script>
-	<script src="resources/home/js/nivo-lightbox.min.js"></script>
-	<script src="resources/home/js/jquery.nicescroll.min.js"></script>
-    <script src="resources/home/js/custom.js"></script>
-    <script src="resources/home/contactform/contactform.js"></script>
+	<script src="resources/index/js/jquery.sticky.js"></script>
+	<script src="resources/index/js/slippry.min.js"></script> 
+	<script src="resources/index/js/jquery.flexslider-min.js"></script>
+	<script src="resources/index/js/morphext.min.js"></script>
+	<script src="resources/index/js/gmap.js"></script>
+	<script src="resources/index/js/jquery.mb.YTPlayer.js"></script>
+    <script src="resources/index/js/jquery.easing.min.js"></script>	
+	<script src="resources/index/js/jquery.scrollTo.js"></script>
+	<script src="resources/index/js/jquery.appear.js"></script>
+	<script src="resources/index/js/stellar.js"></script>
+	<script src="resources/index/js/wow.min.js"></script>
+	<script src="resources/index/js/owl.carousel.min.js"></script>
+	<script src="resources/index/js/nivo-lightbox.min.js"></script>
+	<script src="resources/index/js/jquery.nicescroll.min.js"></script>
+    <script src="resources/index/js/custom.js"></script>
+    <script src="resources/index/contactform/contactform.js"></script>
     
 </body>
 

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -64,7 +64,7 @@
 		<div class="overlay">
 			<div class="text-center video-caption">
 				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.8s">
-					<h1 class="big-heading font-light"><span id="js-rotating">We are Next Door, ³×ÀÌ¹ö¿¡ Next Door °Ë»ö, ´ç½ÅÀÇ ÇÁ·ÎÁ§Æ® ÆÄÆ®³Ê </span></h1>
+					<h1 class="big-heading font-light"><span id="js-rotating">We are Next Door, ë„¤ì´ë²„ì— Next Door ê²€ìƒ‰, ë‹¹ì‹ ì˜ í”„ë¡œì íŠ¸ íŒŒíŠ¸ë„ˆ </span></h1>
 				</div>
 				<div class="wow bounceInUp" data-wow-offset="0" data-wow-delay="1s">
 					<div class="margintop-30">

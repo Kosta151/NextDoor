@@ -21,8 +21,8 @@
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="driverManagerDataSource"
-										users-by-username-query="SELECT member_id, PASSWORD, name, MEMBER_CONFI FROM member WHERE member_id=?"
-										authorities-by-username-query="select member_id, ROLE_NAME from MEMBERAUTH where member_id=?" />
+										users-by-username-query="SELECT member_id, PASSWORD, MEMBER_CONFI FROM member WHERE member_id=?"
+										authorities-by-username-query="select member_id, ROLE_NAME from AUTH where member_id=?" />
 			<security:password-encoder ref="bCryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>

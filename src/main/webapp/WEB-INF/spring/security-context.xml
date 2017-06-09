@@ -11,7 +11,7 @@
 						     always-use-default-target="true"
 							 default-target-url="/main.htm"
 							 authentication-failure-url="/login.htm?error"
-							 username-parameter="email" 
+							 username-parameter="member_id" 
 							 password-parameter="password"
 							 />
 							 
@@ -21,11 +21,8 @@
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="driverManagerDataSource"
-										users-by-username-query="SELECT email, PASSWORD, 1 enabled FROM member WHERE email=?"
-										authorities-by-username-query="select m.email, r.ROLE_NAME 
-																		from member m join role r
-																		on m.email = r.email
-																		where m.email=?" />
+										users-by-username-query="SELECT member_id, PASSWORD, name, MEMBER_CONFI FROM member WHERE member_id=?"
+										authorities-by-username-query="select member_id, ROLE_NAME from MEMBERAUTH where member_id=?" />
 			<security:password-encoder ref="bCryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>

@@ -5,10 +5,10 @@
   
   <mapper namespace="kr.co.nextdoor.member.dao.MemberDao">
   	<insert id="insertMember" parameterType="kr.co.nextdoor.member.dto.MemberDTO">
-  		insert into member(email, password, name) values(#{email}, #{password}, #{name})
+  		insert into member(member_id, password, name) values(#{member_id}, #{password}, #{name})
   	</insert>
   	<insert id="insertRole">
-  		insert into role(email, ROLE_NAME) values(#{eamil}, 'ROLE_ADMIN')			
+  		insert into auth(ROLE_NAME) values('ROLE_ADMIN')			
   	</insert>	
   		
   </mapper>

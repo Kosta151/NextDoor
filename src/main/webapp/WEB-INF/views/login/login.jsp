@@ -3,7 +3,7 @@
 		      <form class="form-login" action="./login" method="post">
 		        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" name="email" placeholder="User Email" autofocus>
+		            <input type="text" class="form-control" name="member_id" placeholder="User Email" autofocus>
 		            <br>
 		            <input type="password" class="form-control" name="password" placeholder="Password">
 		            <label class="checkbox">
@@ -13,6 +13,7 @@
 		                </span>
 		            </label>
 		            <button class="btn btn-theme btn-block" href="join.htm" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+		            <input type="submit">
 		            <hr>
 		            
 		            <div class="login-social-link centered">

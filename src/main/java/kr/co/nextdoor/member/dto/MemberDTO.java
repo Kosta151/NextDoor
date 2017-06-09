@@ -1,17 +1,17 @@
 package kr.co.nextdoor.member.dto;
 
 public class MemberDTO {
-	private String email;
+	private String member_id;
 	private String password;
 	private String name;
 	
 	public MemberDTO(){}
 	
-	public String getEmail() {
-		return email;
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 	public String getPassword() {
 		return password;
@@ -28,7 +28,7 @@ public class MemberDTO {
 
 	@Override
 	public String toString() {
-		return "MemberDTO [email=" + email + ", password=" + password + ", name=" + name + "]";
+		return "MemberDTO [member_id=" + member_id + ", password=" + password + ", name=" + name + "]";
 	}
 	
 	

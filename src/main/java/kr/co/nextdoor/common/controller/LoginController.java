@@ -35,7 +35,7 @@ public class LoginController {
 		
 		int result =memberdao.insertMember(memberdto);
 		if(result>0){
-			memberdao.insertRole(memberdto.getEmail());
+			memberdao.insertRole(memberdto.getMember_id());
 		}else{
 			return "login.join";
 		}

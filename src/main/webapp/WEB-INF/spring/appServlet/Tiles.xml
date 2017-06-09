@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<!-- index.index -->
+	<definition name="index.index" template="/WEB-INF/views/index/index.jsp" />
+
+	<!-- login.join -->
+	<definition name="login.*" template="/WEB-INF/views/login/inc/layout.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/login/{1}.jsp" />
+	</definition>
+
+	<definition name="main.main" template="/WEB-INF/views/main/main.jsp" />
+	
+	
+	
+	<!-- 이거 참고해서 tiles 만들면 됨 -->
+<!-- 	<definition name="main.index" template="/WEB-INF/views/main/inc/layout.jsp">
+		<put-attribute name="title" value="NextDoor" />
+		<put-attribute name="header" value="/WEB-INF/views/main/inc/header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/main/index.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/main/inc/footer.jsp" />
+		<put-attribute name="aside" value="/WEB-INF/views/main/inc/aside.jsp" />
+	</definition>
+	join.login
+	<definition name="*.*" template="/WEB-INF/views/{1}/inc/layout.jsp">
+		<put-attribute name="title" value="NextDoor" />
+		<put-attribute name="header" value="/WEB-INF/views/{1}/inc/header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/{1}/inc/footer.jsp" />
+	</definition> -->
+</tiles-definitions>

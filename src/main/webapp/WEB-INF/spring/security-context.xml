@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:security="http://www.springframework.org/schema/security"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	<!-- 로그인 및 권한 설정 -->
+	<security:http>
+		<security:csrf disabled="true" />
+		<security:form-login login-page="/login.htm"
+						     always-use-default-target="true"
+							 default-target-url="/main.htm"
+							 authentication-failure-url="/login.htm?error"
+							 username-parameter="email" 
+							 password-parameter="password"
+							 />
+							 
+		<security:logout logout-success-url="/index.htm" />
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="driverManagerDataSource"
+										users-by-username-query="SELECT email, PASSWORD, 1 enabled FROM member WHERE email=?"
+										authorities-by-username-query="select m.email, r.ROLE_NAME 
+																		from member m join role r
+																		on m.email = r.email
+																		where m.email=?" />
+			<security:password-encoder ref="bCryptPasswordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

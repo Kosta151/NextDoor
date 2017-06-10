@@ -12,14 +12,12 @@
 		<put-attribute name="content" value="/WEB-INF/views/login/{1}.jsp" />
 	</definition>
 
-	<!-- <definition name="main.main" template="/WEB-INF/views/main/main.jsp" /> -->
-	
-	<!-- mail연습용 -->
-	<definition name="*.*" template="/WEB-INF/views/main/inc/layout.jsp">
+	<!-- main -->
+	<definition name="*.*" template="/WEB-INF/views/{1}/inc/layout.jsp">
 		<put-attribute name="title" value="NextDoor"/>
-		<put-attribute name="header" value="/WEB-INF/views/main/inc/header.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/main/inc/footer.jsp"/>
-		<put-attribute name="aside" value="/WEB-INF/views/main/inc/aside.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/{1}/inc/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/{1}/inc/footer.jsp"/>
+		<put-attribute name="aside" value="/WEB-INF/views/{1}/inc/aside.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	

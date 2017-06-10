@@ -16,17 +16,4 @@ public class IndexController {
 		
 		return "index.index";
 	}
-	
-	@RequestMapping(value="login.htm", method=RequestMethod.GET)
-	public String login() {
-		
-		return "login.login";
-	}
-	
-	@RequestMapping(value="main.htm", method=RequestMethod.GET)
-	public String lobby() {
-		
-		return "main.main";
-	}
-	
 }

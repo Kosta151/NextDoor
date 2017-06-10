@@ -93,7 +93,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
@@ -105,7 +105,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
@@ -117,7 +117,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
@@ -129,7 +129,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>

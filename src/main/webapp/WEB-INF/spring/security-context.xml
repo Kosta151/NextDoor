@@ -9,9 +9,9 @@
 		<security:csrf disabled="true" />
 		<security:form-login login-page="/login.htm"
 						     always-use-default-target="true"
-							 default-target-url="/main.htm"
+							 default-target-url="/workspace.htm"
 							 authentication-failure-url="/login.htm?error"
-							 username-parameter="member_id" 
+							 username-parameter="member_id"
 							 password-parameter="password"
 							 />
 							 

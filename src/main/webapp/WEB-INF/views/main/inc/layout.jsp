@@ -2,15 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>    
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-     <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - FREE Bootstrap Admin Template</title>
+    <title><tiles:insertAttribute name="title" /></title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/main/assets/css/bootstrap.css" rel="stylesheet">
@@ -34,15 +34,7 @@
 	<!-- aside 영역 -->
 	<tiles:insertAttribute name="aside" />
 	<!-- Main 영역 -->
-    <section id="main-content">
-    	<section class="wrapper site-min-height">
-        	<div class="row mt">
-          		<div class="col-lg-12">
-          			<tiles:insertAttribute name="content" />
-          		</div>
-          	</div>
-		</section>
-      </section>
+    <tiles:insertAttribute name="content" />
 	<!-- Footer  영역  -->
 	<tiles:insertAttribute name="footer" />
 

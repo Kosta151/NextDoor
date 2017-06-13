@@ -6,13 +6,14 @@
 		      <form class="form-login">
 		        <h2 class="form-login-heading">Work Space</h2>
 		        <div class="login-wrap">
-		        
-		        	<c:forEach items="${workspacelist }" var="list">
-		        		 <a href="main.htm?workspace=${list.workspace_name}" class="btn btn-default btn-lg btn-block">
+
+ 		        	<c:forEach items="${workspacelist}" var="list">
+		        		<a href="main.htm" class="btn btn-default btn-lg btn-block">
 		        			${list.workspace_name}
 		        			<i class="fa fa-chevron-right"></i>
 		        		</a>
 		        	</c:forEach>
+
 		         
 	        		<a href="main.htm" class="btn btn-default btn-lg btn-block">
 	        			<i class="fa fa-file"></i>

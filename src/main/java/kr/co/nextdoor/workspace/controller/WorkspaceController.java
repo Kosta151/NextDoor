@@ -21,34 +21,30 @@ public class WorkspaceController {
 
 	//로그인 후 워크스페이스 선택 화면
 	@RequestMapping(value = "workspace.htm")
-	public String workspaceList(Model model) {
-		List<WorkspaceDTO> workspacelist = service.WorkspaceList();
-		
-		/*mav.addObject("workspacelist",workspacelist);
-		mav.setViewName("login.workspace");*/
-		
-		model.addAttribute("workspacelist",workspacelist);
-		System.out.println("workspace(controller) : " +workspacelist);
-		System.out.println("workspace(controller) : " +workspacelist.toString());
-		return "login.workspace";
+	public ModelAndView workspaceList(ModelAndView mav) {
+		mav.addObject("workspacelist",service.WorkspaceList());
+		mav.setViewName("login.workspace");
+		return mav;
+
 	}
 
 	//워크스페이스 만들기 화면으로 이동
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.GET)
 	public String workspaceInsert() {
-		
 		return "login.workspaceInsert";
 	}
 	
-/*	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.POST)
-	public String workspaceInsert(Model model) {
-		model.addAllAttributes("result","워크스페이스 등록 성공");
-		return "redirect:login.workspace.htm";
+	//워크스페이스 만든후 워크스페이스 선택화면으로 이동
+	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.POST)
+	public String workspaceInsert(WorkspaceDTO workspacedto) {
+		System.out.println(workspacedto.toString());
+		service.WorkspaceInsert(workspacedto);
+		return "redirect:workspace.htm";
 	}
-*/
+	
+	//워크스페이스 선택후 메인화면으로 이동
 	@RequestMapping(value = "main.htm", method = RequestMethod.GET)
 	public String main() {
-
 		return "main.main";
 	}
 }

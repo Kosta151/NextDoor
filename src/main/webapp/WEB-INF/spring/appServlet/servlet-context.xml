@@ -12,9 +12,9 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
 	<context:component-scan base-package="kr.co.nextdoor.*.controller" />
 	<context:component-scan base-package="kr.co.nextdoor.*.service" />
+
 
 	<context:annotation-config />
 	

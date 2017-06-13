@@ -8,6 +8,6 @@
 			SELECT WORKSPACE_NAME FROM WORKSPACE WHERE MEMBER_ID=#{MEMBER_ID}
 		</select>
 		<insert id="workspaceinsert">
-			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{WORKSPACE_NAME}, #{MEMBER_ID})
+			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{workspace_name}, #{member_id})
 		</insert>
   </mapper>

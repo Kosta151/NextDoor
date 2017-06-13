@@ -34,7 +34,7 @@ public class WorkspaceController {
 	public String workspaceInsert(WorkspaceDTO workspacedto) {
 		System.out.println(workspacedto.toString());
 		service.WorkspaceInsert(workspacedto);
-		return "redirect:login.workspace.htm";
+		return "redirect:workspace.htm";
 	}
 	
 	//워크스페이스 선택후 메인화면으로 이동

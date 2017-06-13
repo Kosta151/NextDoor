@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
-		<select id="workspacelist">
-			SELECT WORKSPACE_NAME FROM WORKSPACE WHERE MEMBER_ID=${MEMBER_ID}
+		<select id="workspacelist" resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
+			SELECT WORKSPACE_NAME FROM WORKSPACE WHERE MEMBER_ID=#{MEMBER_ID}
 		</select>
 		<insert id="workspaceinsert">
-			INSERT INTO 1, ${WORKSPACE_NAME}, ${MEMBER_ID} FROM WORKSPACE
+			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{WORKSPACE_NAME}, #{MEMBER_ID})
 		</insert>
   </mapper>

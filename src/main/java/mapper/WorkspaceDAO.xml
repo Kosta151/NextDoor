@@ -13,8 +13,6 @@
 			ON WORK.WORKSPACE_NO=PRO.WORKSPACE_NO
 			WHERE WORK.MEMBER_ID=#{MEMBER_ID} OR PRO.MEMBER_ID=#{MEMBER_ID};
 		</select>
-		
-
 		<insert id="workspaceinsert">
 			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{workspace_name}, #{member_id})
 

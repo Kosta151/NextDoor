@@ -2,7 +2,7 @@ package kr.co.nextdoor.member.dao;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
 
-public interface MemberDao {
+public interface MemberDAO {
 	/*회원가입*/
 	public int insertMember(MemberDTO memberdto);
 	

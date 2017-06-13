@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.nextdoor.member.dao.MemberDao;
+import kr.co.nextdoor.member.dao.MemberDAO;
 import kr.co.nextdoor.member.dto.MemberDTO;
 
 @Controller
@@ -33,7 +33,7 @@ public class LoginController {
 
 	@RequestMapping(value = "join.htm", method = RequestMethod.POST)
 	public String join(MemberDTO memberdto) {
-		MemberDao memberdao = sqlSession.getMapper(MemberDao.class);
+		MemberDAO memberdao = sqlSession.getMapper(MemberDAO.class);
 		memberdto.setPassword(this.bCryptPasswordEncoder.encode(memberdto.getPassword()));
 
 		int result = memberdao.insertMember(memberdto);
@@ -46,15 +46,4 @@ public class LoginController {
 		return "login.login";
 	}
 
-	@RequestMapping(value = "workspace.htm", method = RequestMethod.GET)
-	public String workspace() {
-		
-		return "login.workspace";
-	}
-
-	@RequestMapping(value = "main.htm", method = RequestMethod.GET)
-	public String main() {
-
-		return "main.main";
-	}
 }

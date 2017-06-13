@@ -5,7 +5,7 @@
   
   <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
 		<select id="workspacelist" resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
-			SELECT WORKSPACE_NAME FROM WORKSPACE WHERE MEMBER_ID=#{MEMBER_ID}
+			SELECT WORKSPACE_NAME FROM WORKSPACE WHERE MEMBER_ID=#{member_id}
 		</select>
 		<insert id="workspaceinsert">
 			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{workspace_name}, #{member_id})

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
+		<!-- <select id="workspacelist" resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
+			SELECT WORKSPACE_NAME FROM WORKSPACE WHERE MEMBER_ID=#{MEMBER_ID}
+		</select> -->
+		<select id="workspacelist"  resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
+			SELECT WORK.WORKSPACE_NAME
+			FROM WORKSPACE WORK LEFT JOIN (SELECT P.WORKSPACE_NO, M.MEMBER_ID 
+			FROM PROJECT P JOIN PROJECTMEMBER M
+			ON  P.PROJECT_NO=M.PROJECT_NO WHERE M.MEMBER_ID=#{MEMBER_ID}) PRO
+			ON WORK.WORKSPACE_NO=PRO.WORKSPACE_NO
+			WHERE WORK.MEMBER_ID=#{MEMBER_ID} OR PRO.MEMBER_ID=#{MEMBER_ID};
+		</select>
+		
+		<insert id="workspaceinsert" >
+			INSERT INTO 1, ${WORKSPACE_NAME}, ${MEMBER_ID} FROM WORKSPACE
+		</insert>
+  </mapper>
+  
+<!--  select w.WORKSPACE_NAME 
+			from workspace work left join (select a.workspace_no, b.member_id from 
+			project a join projectmember b
+			on a.project_no = b.project_no
+			where b.member_id='anscr@naver.com') p
+			on w.WORKSPACE_NO = p.workspace_no
+			where w.MEMBER_ID='anscr@naver.com' or p.member_id='anscr@naver.com' -->

@@ -30,8 +30,10 @@
 		            </div>
 		
 		        </div>
-		
-		          <!-- 비밀번호찾기 -->
+
+		      </form>	  	
+		       <!-- 비밀번호찾기 -->
+		       <form action="password.htm" method="post">
 		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
 		              <div class="modal-dialog">
 		                  <div class="modal-content">
@@ -41,19 +43,20 @@
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Enter your e-mail address below to reset your password.</p>
-		                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-		
+		                          <input type="text" name="member_id" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+								  <input type="hidden" name="template" value="SearchPassword.vm">	
+								  <input type="hidden" name="subject" value="새로운 비밀번호">
 		                      </div>
 		                      <div class="modal-footer">
 		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-		                          <button class="btn btn-theme" type="button">Submit</button>
+		                         <!--  <button class="btn btn-theme" type="button">Submit</button> -->
+		                          <input type="submit" class="btn btn-theme" value="Submit">
 		                      </div>
 		                  </div>
 		              </div>
 		          </div>
+		         </form> 
 		          <!-- modal -->
-		
-		      </form>	  	
 	  	
 	  	</div>
 	  </div>

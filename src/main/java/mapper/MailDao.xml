@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.nextdoor.mail.dao.MailDao">
+  	<select id="selectTaskdeadline" resultType="kr.co.nextdoor.mail.dto.MailDto" >
+  		select * from mail
+  	</select>
+  		
+  	<select id="searchMember" parameterType="java.lang.String" resultType="kr.co.nextdoor.mail.dto.MailDto">
+  		select * from mail where member_id= #{member_id}
+  	</select>	
+  	
+  	<update id="updatePassword" parameterType="hashMap" >
+  		update member set password=#{password} where member_id=#{member_id}
+  	</update>
+  </mapper>

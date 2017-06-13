@@ -7,7 +7,7 @@
               <div class="row">
                   <div class="col-lg-9 main-chart">
                   
-                  	<div class="row mtbox">
+                  	<div class="row mtbox" >
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
 					  			<span class="li_heart"></span>
@@ -15,7 +15,7 @@
                   			</div>
 					  			<p>933 People liked your page the last 24hs. Whoohoo!</p>
                   		</div>
-                  		<div class="col-md-2 col-sm-2 box0">
+                  		<div class="col-md-2 col-sm-2 box0 ">
                   			<div class="box1">
 					  			<span class="li_cloud"></span>
 					  			<h3>+48</h3>
@@ -232,7 +232,7 @@
       RIGHT SIDEBAR CONTENT
       *********************************************************************************************************************************************************** -->                  
                   
-                  <div class="col-lg-3 ds">
+                  <div class="col-lg-3 ds" id="heart" >
                     <!--COMPLETED ACTIONS DONUTS CHART-->
 						<h3>NOTIFICATIONS</h3>
                                         

@@ -13,6 +13,7 @@ $(function() {
     });
 });
 
+
 var Script = function () {
 
 
@@ -67,6 +68,29 @@ var Script = function () {
                 'margin-left': '0'
             });
             $("#container").removeClass("sidebar-closed");
+        }
+    });
+    
+    //연습용 toggle
+    $('.fa-cog').click(function () {
+        if ($('#heart').is(":visible") === true) {
+            $('#main-content').css({
+                'margin-left': '210px'
+            });
+            $('#heart').css({
+                'margin-left': '210px'
+            });
+            $('#heart').hide();
+            $("#container").addClass("rightbar-closed");
+        } else {
+            $('#main-content').css({
+                'margin-left': '210px'
+            });
+            $('#heart').show();
+            $('#heart').css({
+                'margin-left': '0'
+            });
+            $("#container").removeClass("rightbar-closed");
         }
     });
 

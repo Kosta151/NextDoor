@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
  <!--sidebar start-->
        <aside>
-          <div id="sidebar"  class="nav-collapse ">
+          <div id="sidebar"  class="nav-collapse " style="overflow: visible;">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               

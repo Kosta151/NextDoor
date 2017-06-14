@@ -20,6 +20,8 @@ public class TaskController {
 	@RequestMapping(value ="task.htm")
 	public ModelAndView listTask(int project_no , ModelAndView mv) {
 		mv.addObject("tasklist", taskservice.TaskList(project_no));
+		mv.addObject("project_no", project_no);
+		
 		mv.setViewName("task.task");
 		
 		return mv;
@@ -27,6 +29,8 @@ public class TaskController {
 	
 	@RequestMapping(value ="insertTask.htm")
 	public String insertTask(TaskDTO taskdto) {
+		
+		System.out.println(taskdto.toString());
 		
 		taskservice.TaskInsert(taskdto);
 				

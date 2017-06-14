@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.nextdoor.task.dao.TaskDAO">
+		<insert id="insertTask">
+			INSERT INTO TASK(task_no, project_no, task_cont) 
+			VALUES(#{task_no}, #{project_no}, #{task_cont})
+		</insert>
+		
+		<select id="listTasks" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+			SELECT task_cont FROM TASK WHERE project_no=#{project_no}
+		</select>
+		
+		
+		
+		
+  </mapper>

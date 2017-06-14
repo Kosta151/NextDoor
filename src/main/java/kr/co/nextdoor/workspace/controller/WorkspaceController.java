@@ -19,22 +19,21 @@ public class WorkspaceController {
 	@Autowired
 	private WorkspaceService service;
 
-	//·Î±×ÀÎ ÈÄ ¿öÅ©½ºÆäÀÌ½º ¼±ÅÃ È­¸é
+	//ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½
 	@RequestMapping(value = "workspace.htm")
 	public ModelAndView workspaceList(ModelAndView mav) {
 		mav.addObject("workspacelist",service.WorkspaceList());
 		mav.setViewName("login.workspace");
 		return mav;
-
 	}
 
-	//¿öÅ©½ºÆäÀÌ½º ¸¸µé±â È­¸éÀ¸·Î ÀÌµ¿
+	//ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.GET)
 	public String workspaceInsert() {
 		return "login.workspaceInsert";
 	}
 	
-	//¿öÅ©½ºÆäÀÌ½º ¸¸µçÈÄ ¿öÅ©½ºÆäÀÌ½º ¼±ÅÃÈ­¸éÀ¸·Î ÀÌµ¿
+	//ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.POST)
 	public String workspaceInsert(WorkspaceDTO workspacedto) {
 		System.out.println(workspacedto.toString());
@@ -42,7 +41,16 @@ public class WorkspaceController {
 		return "redirect:workspace.htm";
 	}
 	
-	//¿öÅ©½ºÆäÀÌ½º ¼±ÅÃÈÄ ¸ŞÀÎÈ­¸éÀ¸·Î ÀÌµ¿
+	//ì›Œí¬ìŠ¤í˜ì´ìŠ¤ ì‚­ì œ
+	@RequestMapping("workspaceDelete.htm")
+	public String workspaceDelete(int workspace_no) throws Exception{
+		service.deleteWorkspace(workspace_no);
+		return "redirect:workspace.htm";
+	}
+
+	
+	
+	//ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping(value = "main.htm", method = RequestMethod.GET)
 	public String main() {
 		return "main.main";

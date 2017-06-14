@@ -15,7 +15,10 @@
 		</select>
 		<insert id="workspaceinsert">
 			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{workspace_name}, #{member_id})
-
 		</insert>
+		
+		<delete id="deleteWorkspace">
+			DELETE FROM WORKSPACE WHERE WORKSPACE_NO = #{workspace_no}
+		</delete>
   </mapper>
   

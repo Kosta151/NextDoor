@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.nextdoor.project.dao.ProjectDAO">
+
+	<insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
+		insert into project(project_name, workspace_no, member_id, public) 
+		values(#{project_name}, 15, #{member_id}, 1)
+	</insert>
+	
+	<insert id="insertProjectModi">
+		insert
+		into projectmodi(projectmodi_no, project_no, project_start, project_end)
+		values(#{projectmodi_no}, #{project_no}, #{project_start}, #{project_end})
+	</insert>
+	
+	<update id="updateProject">
+		update project
+		set project_name = #{project_name}
+		where project_no = #{project_no}
+	</update>
+	
+	<update id="updateProjectModi">
+		update projectmodi
+		set project_start = #{project_start},
+			project_end = #{project_end}
+		where projectmodi_no = #{projectmodi_no}
+    </update>
+	
+	<delete id="deleteProject">
+		delete project where project_no = #{project_no}
+	</delete>
+	
+	<!-- 프로젝트 목록 보기 -->
+	<select id="projectList" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
+		SELECT PROJECT_NAME FROM PROJECT WHERE MEMBER_ID = #{MEMBER_ID}
+	</select>
+</mapper>

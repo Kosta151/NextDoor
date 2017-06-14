@@ -12,6 +12,15 @@
 		<put-attribute name="content" value="/WEB-INF/views/login/{1}.jsp" />
 	</definition>
 
+	<!-- project -->
+	<definition name="project.*" template="/WEB-INF/views/project/inc/layout.jsp">
+      <put-attribute name="title" value="NextDoor"/>
+      <put-attribute name="header" value="/WEB-INF/views/project/inc/header.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/project/inc/footer.jsp"/>
+      <put-attribute name="aside" value="/WEB-INF/views/project/inc/aside.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/views/project/{1}.jsp"/>
+   	</definition>
+
 	<!-- main -->
 	<definition name="*.*" template="/WEB-INF/views/main/inc/layout.jsp">
 		<put-attribute name="title" value="NextDoor"/>

@@ -7,7 +7,7 @@
 		        <h2 class="form-login-heading">Work Space</h2>
 		        <div class="login-wrap">
  		        	<c:forEach items="${workspacelist}" var="list">
-		        		<a href="main.htm" class="btn btn-default btn-lg btn-block">
+		        		<a href="projectList.htm" class="btn btn-default btn-lg btn-block">
 		        			${list.workspace_name}
 		        			<i class="fa fa-chevron-right"></i>
 		        		</a>

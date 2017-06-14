@@ -57,6 +57,7 @@ html .fc,
 .fc-header-title {
   display: inline-block;
   vertical-align: top;
+  color: black;
   }
   
 .fc-header-title h2 {

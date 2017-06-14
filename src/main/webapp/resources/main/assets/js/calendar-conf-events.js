@@ -33,15 +33,11 @@ var Script = function () {
     var m = date.getMonth();
     var y = date.getFullYear();
 
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,basicWeek,basicDay'
-        },
-        editable: true,
-        droppable: true, // this allows things to be dropped onto the calendar !!!
-        drop: function(date, allDay) { // this function is called when something is dropped
+    calendar = $('#calendar').fullCalendar({
+     
+        /* editable: true,*/
+        /*droppable: true, */// this allows things to be dropped onto the calendar !!!
+        /*drop: function(date, allDay) { // this function is called when something is dropped
 
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
@@ -63,54 +59,91 @@ var Script = function () {
                 $(this).remove();
             }
 
-        },
-        events: [
+        },*/
+       
+        /*events: [
             {
-                title: 'All Day Event',
-                start: new Date(y, m, 1)
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, d-5),
-                end: new Date(y, m, d-2)
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d-3, 16, 0),
-                allDay: false
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d+4, 16, 0),
-                allDay: false
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d+1, 19, 0),
-                end: new Date(y, m, d+1, 22, 30),
-                allDay: false
-            },
-            {
-                title: 'Click for Google',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
+                title: 'My Event',
+                start: '2017-06-12',
                 url: 'http://google.com/'
             }
-        ]
+            // other events here
+        ],
+        eventClick: function(event) {
+            if (event.url) {
+                window.open(event.url);
+                return false;
+            }
+        },*/
+       /* eventClick: function(calEvent, jsEvent, view) {
+           $("#myModal").dialog('open')*/
+            /*alert('Event: ' + calEvent.title);
+            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+            alert('View: ' + view.name);
+
+            // change the border color just for fun
+            $(this).css('color', 'red');*/
+
+       /* },*/
+      header: {
+         left: "prev,next today",
+         center: "title",
+         right: 'month,agendaWeek,agendaDay'
+         },
+         titleFormat: {
+         month: "yyyy년 MMMM",
+         week: "[yyyy] MMM d일{ [yyyy] MMM d일}",
+         day: "yyyy년 MMM d일 dddd"
+         },
+         allDayDefault: true,
+         defaultView: "month",
+         editable: false,
+         weekends : false,
+         monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+         monthNamesShort: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+         dayNames: ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
+         dayNamesShort: ["일","월","화","수","목","금","토"],
+         buttonText: {
+         today : "오늘",
+         month : "월별",
+         week : "주별",
+         day : "일별"
+         },
+         selectable:true,
+         select : function(event, jsEvent, view){
+            $('#myModal2').modal();
+         }
+           
+
+
+            
     });
+   /*$('#myModal2').dialog({
+        autoOpen:false,
+           modal : true,
+          draggable : true, //창 드래그 못하게
+          resizable : false, //창 크기 고정
+          height : 350,
+          width : 550,  
+         
+     });*/
+   /*
+   $('#deletemodalclose').click(function(){
+       $('#myModalDelete').dialog('close'); 
+      
+   });
+   $('#insertmodalclose').click(function(){
+       $('#myModal').dialog('close'); 
+      
+   });*/
+   $('#start').datepicker({
+       dateFormat: "yy-mm-dd"
+    });
+    $('#end').datepicker({
+       dateFormat: "yy-mm-dd"
+       
+    });
+   
 
 
 }();

@@ -104,7 +104,6 @@ a, a:hover, a:focus {
   border-color: #797979;
 }
 
-
 .btn-theme02 {
   color: #fff;
   background-color: #ac92ec;
@@ -224,8 +223,6 @@ ul.top-menu > li > .logout {
 	background: #ffcc00 ;
 	margin-top: 15px;
 }
-
-
 
 
 /*sidebar navigation*/
@@ -763,37 +760,31 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     margin-left: -180px;
 }
 
-/* 연습용-시작 */
-.rightbar-closed > #heart{
-    display: none;
-}
-
-.rightbar-closed #main-content {
-    margin-left: 210px;
-}
-  .rightbar-closed #heart {
-    margin-left: 210px;
-}
-
- .rightbar-toggle-right {
-    float: right;
-   /*  padding-right: 15px; */
+/*--project toggle---*/
+.project-toggle-box {
+    float: left;
+    padding-right: 15px;
     margin-top: 20px;
 }
 
-.rightbar-toggle-right .fa-cog {
+.project-toggle-box .pj-bars {
     cursor: pointer;
     display: inline-block;
     font-size: 20px;
-    
-    
-
-} 
-.heart{
-	float: right;
-	display: none;
 }
-/* 연습용-끝*/
+
+
+.project-closed > #project /* > ul */ {
+    display: none;
+}
+
+.project-closed #main-content {
+    margin-right: 0px; 
+}
+
+.project-closed #project {
+    margin-right: -180px;
+} 
 
 /* Dash Side */
 

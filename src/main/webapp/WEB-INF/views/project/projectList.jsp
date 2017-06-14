@@ -5,6 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
       <section id="main-content">
           <section class="wrapper site-min-height">
@@ -15,7 +16,7 @@
           		
 				
 					<div class="row">
-						<!-- TWITTER PANEL -->
+					
 						<c:forEach items="${projectlist}" var="plist">
 						<div class="col-lg-2 col-md-2 col-sm-2 mb">
 							<div class="grey-panel pn donut-chart">
@@ -37,10 +38,10 @@
 											}
 										];
 										var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-								</script>
+							</script>
 							
 							<p class="user">진행도 뿌려질거야</p>
-							<a href="taskList.htm"><p>이거 클릭하면 업무로 가요</p></a>
+							<a href="task.htm?project_no=${plist.project_no}"><p>이거 클릭하면 업무로 가요</p></a>
 							</div>
 						</div><!-- /col-md-4 -->
 						</c:forEach>
@@ -48,7 +49,7 @@
 
 						
 						<div class="col-lg-2 col-md-2 col-sm-2 mb">
-							<!-- WHITE PANEL - TOP USER -->
+							
 							<div class="white-panel pn">
 								<div class="white-header">
 									<h5>새 프로젝트 추가</h5>
@@ -60,15 +61,14 @@
 		  				
 		  				
 				          <!-- Modal -->
-                      
-                      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                      	  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                           <div class="modal-dialog">
+                          <form action="insertProject.htm" method="post">
                               <div class="modal-content">
                                   <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                       <h4 class="modal-title">새 프로젝트 생성</h4>
                                   </div>
-                                  <form action="insertProject.htm" method="post">
                                   <div class="modal-body">
                                       <p class="centered"><!-- <img class="img-circle" width="80" src="resources/main/assets/img/ui-sam.jpg"> --></p>
                                       <p>프로젝트명</p>
@@ -76,14 +76,13 @@
                                       
                                 <input type="radio" name="public" value="public" >공개<br>
                                 <input type="radio" name="public" value="private">비공개<br>
-                             
                                   </div>
                                   <div class="modal-footer centered">
                                       <button class="btn btn-theme03" type="submit">생성</button>
                                       <button data-dismiss="modal" class="btn btn-theme04" type="button">취소</button>
                                   </div>
-                                  </form>
                               </div>
+                            </form>
                           </div>
                       </div>
                       <!-- modal -->

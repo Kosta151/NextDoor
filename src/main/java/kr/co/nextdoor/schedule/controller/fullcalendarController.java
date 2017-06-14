@@ -10,7 +10,7 @@ public class fullcalendarController {
 	@RequestMapping(value="calendar.htm" , method=RequestMethod.GET)
 	public String calendar(){
 		System.out.println("캘린더 View 페이지");
-		return "fullcalendar.fullcalendar_task";
+		return "fullcalendar.fullcalendarTask";
 	}
 	
 }

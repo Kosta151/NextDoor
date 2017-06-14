@@ -64,11 +64,11 @@
 		<div class="overlay">
 			<div class="text-center video-caption">
 				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.8s">
-					<h1 class="big-heading font-light"><span id="js-rotating">We are Next Door, 네이버에 Next Door 검색, 당신의 프로젝트 파트너 </span></h1>
+					<h1 class="big-heading font-light"><span id="js-rotating">We are Next Door, Your Project partner, open the door </span></h1>
 				</div>
 				<div class="wow bounceInUp" data-wow-offset="0" data-wow-delay="1s">
 					<div class="margintop-30">
-						<a href="login.htm" class="btn btn-skin" id="btn-scroll">Start here</a>
+						<a href="login.htm" class="btn btn-skin" id="btn-scroll">start here</a>
 					</div>
 				</div>
 			</div>
@@ -105,17 +105,9 @@
                                                             <ul class="nav navbar-nav navbar-right">
                                                                   <li class="active"><a href="#intro">Home</a></li>
                                                                   <li><a href="#about">About Us</a></li>
-																   <li><a href="#service">Services</a></li>
+																  <li><a href="#service">Services</a></li>
                                                                   <li><a href="#works">Works</a></li>				                                                                  
-                                                                  
-                                                                  <li><a href="#contact">Contact</a></li>
-																  <li class="dropdown nav-toggle">
-                                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropwdown<b class="caret"></b></a>
-                                                                        <ul class="dropdown-menu">
-                                                                              <li><a class="external" href="#">Sub menu</a></li>
-                                                                               <li><a class="external" href="#">Sub menu</a></li>
-                                                                        </ul>
-                                                                  </li>
+                                                                  <li><a href="#contact">Contact</a></li>  
                                                             </ul>
                                                       </div>
                                                       <!-- /.Navbar-collapse -->
@@ -137,7 +129,7 @@
 					<div class="section-heading text-center">
 					<h2 class="h-bold">About</h2>
 					<div class="divider-header"></div>
-					<p>Lorem ipsum dolor sit amet, agam perfecto sensibus usu at duo ut iriure.</p>
+					<p></p>
 					</div>
 					</div>
 				</div>
@@ -227,7 +219,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="text-center">
-						<h2 class="big-heading highlight-dark wow bounceInDown" data-wow-delay="0.2s">We start from pixel perfect pattern</h2>
+						<h2 class="big-heading highlight-dark wow bounceInDown" data-wow-delay="0.2s">We start from NextDoor</h2>
 						</div>
 					</div>				
 				</div>
@@ -243,7 +235,7 @@
 					<div class="section-heading text-center">
 					<h2 class="h-bold">Services</h2>
 					<div class="divider-header"></div>
-					<p>Lorem ipsum dolor sit amet, agam perfecto sensibus usu at duo ut iriure.</p>
+					<p></p>
 					</div>
 					</div>
 				</div>
@@ -417,14 +409,14 @@
 						<div class="testimonialslide clearfix flexslider">
 							<ul class="slides">
 								<li><blockquote>
-								Usu ei porro deleniti similique, per no consetetur necessitatibus. Ut sed augue docendi alienum, ex oblique scaevola inciderint pri, unum movet cu cum. Et cum impedit epicuri
+								Our scientific power has outrun our spiritual power. We have guided missiles and misguided men. 
 									</blockquote>
-									<h4>Daniel Dan <span>&#8213; MA System</span></h4> 
+									<h4> Martin Luther King Jr.</h4> 
 								</li>
 								<li><blockquote>
-								Usu ei porro deleniti similique, per no consetetur necessitatibus. Ut sed augue docendi alienum, ex oblique scaevola inciderint pri, unum movet cu cum. Et cum impedit epicuri 
+								Be sure that it is not you that is mortal, but only your body. For that man whom your outward form reveals is not yourself; the spirit is the true self, not that physical figure which and be pointed out by your finger. 
 									</blockquote>
-									<h4>Mark Wellbeck <span>&#8213; AC Software </span></h4>
+									<h4>Cicero </h4>
 								</li>	
 							</ul>
 						</div>					
@@ -510,17 +502,6 @@
 					<div class="text-center">
 						<a href="#intro" class="totop"><i class="pe-7s-angle-up pe-3x"></i></a>
 						
-						<div class="social-widget">
-							
-							
-							<ul class="team-social">
-									<li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li class="social-dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-							</ul>						
-						
-						</div>
 						<p>&copy;Valera Theme. All Rights Reserved</p>
                         <div class="credits">
                             <!-- 

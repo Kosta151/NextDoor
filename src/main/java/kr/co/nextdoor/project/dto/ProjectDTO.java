@@ -4,9 +4,8 @@ public class ProjectDTO {
 	private String project_no;
 	private String project_name;
 	private String workspace_no;
+	private String workspace_name;
 	private String member_id;
-	
-	public ProjectDTO(){}
 
 	public String getProject_no() {
 		return project_no;
@@ -32,6 +31,14 @@ public class ProjectDTO {
 		this.workspace_no = workspace_no;
 	}
 
+	public String getWorkspace_name() {
+		return workspace_name;
+	}
+
+	public void setWorkspace_name(String workspace_name) {
+		this.workspace_name = workspace_name;
+	}
+
 	public String getMember_id() {
 		return member_id;
 	}
@@ -39,25 +46,4 @@ public class ProjectDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

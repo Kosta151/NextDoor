@@ -4,21 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
-
 		<select id="workspacelist"  resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
 			SELECT WORK.WORKSPACE_NAME
 			FROM WORKSPACE WORK LEFT JOIN (SELECT P.WORKSPACE_NO, M.MEMBER_ID 
 			FROM PROJECT P JOIN PROJECTMEMBER M
 			ON  P.PROJECT_NO=M.PROJECT_NO WHERE M.MEMBER_ID=#{MEMBER_ID}) PRO
 			ON WORK.WORKSPACE_NO=PRO.WORKSPACE_NO
-			WHERE WORK.MEMBER_ID=#{MEMBER_ID} OR PRO.MEMBER_ID=#{MEMBER_ID};
+			WHERE WORK.MEMBER_ID=#{MEMBER_ID} OR PRO.MEMBER_ID=#{MEMBER_ID}
 		</select>
 		<insert id="workspaceinsert">
 			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{workspace_name}, #{member_id})
 		</insert>
-		
-		<delete id="deleteWorkspace">
-			DELETE FROM WORKSPACE WHERE WORKSPACE_NO = #{workspace_no}
-		</delete>
   </mapper>
   

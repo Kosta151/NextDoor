@@ -16,18 +16,18 @@ public class ProjectService {
 
 	@Autowired
 	private SqlSession sqlsession;
-	
-	public List<ProjectDTO> projectList() throws Exception{
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+	// 프로젝트 목록보기
+	public List<ProjectDTO> projectList(ProjectDTO projectdto) throws Exception {
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-		return projectdao.projectList(user.getUsername());
+		return projectdao.projectList(projectdto);
 	}
-	
-	public int projectInsert(ProjectDTO projectdto) throws Exception{
+
+	// 프로젝트 추가하기
+	public int projectInsert(ProjectDTO projectdto) throws Exception {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		projectdto.setMember_id(user.getUsername());
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
 		return projectdao.insertProject(projectdto);
 	}
-	
 }

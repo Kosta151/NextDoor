@@ -1,8 +1,5 @@
 package kr.co.nextdoor.workspace.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,44 +12,29 @@ import kr.co.nextdoor.workspace.service.WorkspaceService;
 
 @Controller
 public class WorkspaceController {
-	
+
 	@Autowired
 	private WorkspaceService service;
 
-	//�α��� �� ��ũ�����̽� ���� ȭ��
+	// 로그인후 워크스페이스 선택화면으로 이동
 	@RequestMapping(value = "workspace.htm")
-	public ModelAndView workspaceList(ModelAndView mav) {
-		mav.addObject("workspacelist",service.WorkspaceList());
-		mav.setViewName("login.workspace");
-		return mav;
+	public String workspaceList(Model model) {
+		model.addAttribute("workspacelist", service.WorkspaceList());
+		return "login.workspace";
+
 	}
 
-	//��ũ�����̽� ����� ȭ������ �̵�
+	// 워크스페이스 추가화면으로 이동
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.GET)
 	public String workspaceInsert() {
 		return "login.workspaceInsert";
 	}
-	
-	//��ũ�����̽� ������ ��ũ�����̽� ����ȭ������ �̵�
+
+	// 워크스페이스 추가후 워크스페이스 선택화면으로 이동
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.POST)
 	public String workspaceInsert(WorkspaceDTO workspacedto) {
 		System.out.println(workspacedto.toString());
 		service.WorkspaceInsert(workspacedto);
 		return "redirect:workspace.htm";
-	}
-	
-	//워크스페이스 삭제
-	@RequestMapping("workspaceDelete.htm")
-	public String workspaceDelete(int workspace_no) throws Exception{
-		service.deleteWorkspace(workspace_no);
-		return "redirect:workspace.htm";
-	}
-
-	
-	
-	//��ũ�����̽� ������ ����ȭ������ �̵�
-	@RequestMapping(value = "main.htm", method = RequestMethod.GET)
-	public String main() {
-		return "main.main";
 	}
 }

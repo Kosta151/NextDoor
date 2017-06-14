@@ -33,12 +33,7 @@ public class LoginController {
 
 	@RequestMapping(value = "join.htm", method = RequestMethod.POST)
 	public String join(MemberDTO memberdto) {
-		MemberDAO memberdao = sqlSession.getMapper(MemberDAO.class);
-		System.out.println("id : " +memberdto.getMember_id());
-		System.out.println("name : " + memberdto.getName());
-		System.out.println("password : " +memberdto.getPassword());
-		
-		
+		MemberDAO memberdao = sqlSession.getMapper(MemberDAO.class);		
 		memberdto.setPassword(this.bCryptPasswordEncoder.encode(memberdto.getPassword()));
 		
 		int result = memberdao.insertMember(memberdto);

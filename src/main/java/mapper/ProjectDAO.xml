@@ -3,55 +3,40 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.nextdoor.project.dao.ProjectDAO">
-	
-	<!-- 프로젝트 생성 -->
+
 	<insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
 		insert into project(project_name, workspace_no, member_id, public) 
-		values(#{project_name}, #{workspace_no}, #{member_id}, 1)
+		values(#{project_name}, 15, #{member_id}, 1)
 	</insert>
 	
-	<!-- 프로젝트멤버 생성 -->
-	<insert id="insertProjectMember">
-		insert into projectmember(member_id, project_no)
-		values(#{member_id}, #{project_no})
-	</insert>
-	
-	<!-- 프로젝트 추가생성 -->
 	<insert id="insertProjectModi">
 		insert
 		into projectmodi(projectmodi_no, project_no, project_start, project_end)
 		values(#{projectmodi_no}, #{project_no}, #{project_start}, #{project_end})
 	</insert>
 	
-	<!-- 프로젝트 수정 -->
 	<update id="updateProject">
 		update project
 		set project_name = #{project_name}
 		where project_no = #{project_no}
 	</update>
 	
-	<!-- 프로젝트 추가수정 -->
 	<update id="updateProjectModi">
 		update projectmodi
 		set project_start = #{project_start},
 			project_end = #{project_end}
 		where projectmodi_no = #{projectmodi_no}
     </update>
-    
-	<!-- 프로젝트 삭제 -->
+	
 	<delete id="deleteProject">
 		delete project where project_no = #{project_no}
 	</delete>
 	
 	<!-- 프로젝트 목록 보기 -->
 	<select id="projectList" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-		SELECT PROJECT_NAME,PROJECT_NO FROM PROJECT WHERE MEMBER_ID = #{MEMBER_ID}
+		SELECT P.PROJECT_NAME
+		FROM PROJECT P JOIN WORKSPACE W join PROJECTMEMBER M
+		ON W.WORKSPACE_NO = P.WORKSPACE_NO and W.MEMBER_ID = P.MEMBER_ID and P.PROJECT_NO = M.PROJECT_NO
+		WHERE M.MEMBER_ID = #{member_id} AND W.WORKSPACE_NAME = #{workspace_name};
 	</select>
-	
-	<!-- 캘린더 프로젝트 생성 -->
-	<insert id="insertFullcalendarProject">
-		insert into project(PROJECT_NAME, WORKSPACE_NO, MEMBER_ID, PUBLIC) 
-		values(#{project_name}, #{workspace_no}, #{member_id}, 1)
-	</insert>
-	
 </mapper>

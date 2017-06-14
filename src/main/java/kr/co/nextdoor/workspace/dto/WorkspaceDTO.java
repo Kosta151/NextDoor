@@ -4,8 +4,9 @@ public class WorkspaceDTO {
 	private String workspace_no;
 	private String workspace_name;
 	private String member_id;
-	
-	public WorkspaceDTO(){}
+
+	public WorkspaceDTO() {
+	}
 
 	public String getWorkspace_no() {
 		return workspace_no;
@@ -30,6 +31,4 @@ public class WorkspaceDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-
-
 }

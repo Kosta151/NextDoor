@@ -1,6 +1,4 @@
-package kr.co.nextdoor.project.service;
-
-import java.util.List;
+package kr.co.nextdoor.schedule.service;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +10,16 @@ import kr.co.nextdoor.project.dao.ProjectDAO;
 import kr.co.nextdoor.project.dto.ProjectDTO;
 
 @Service
-public class ProjectService {
-
+public class FullcalendarService {
+	
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public List<ProjectDTO> projectList() throws Exception{
+	public int fullcalendarProjectInsert(ProjectDTO projectDTO) throws Exception{
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		projectDTO.setMember_id(user.getUsername());
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-		return projectdao.projectList(user.getUsername());
+		return projectdao.insertFullcalendarProject(projectDTO);
 	}
-	
-	public int projectInsert(ProjectDTO projectdto) throws Exception{
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		projectdto.setMember_id(user.getUsername());
-		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-		return projectdao.insertProject(projectdto);
-	}
-	
+
 }

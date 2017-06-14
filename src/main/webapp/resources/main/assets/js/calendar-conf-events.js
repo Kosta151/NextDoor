@@ -34,7 +34,9 @@ var Script = function () {
     var y = date.getFullYear();
 
     calendar = $('#calendar').fullCalendar({
-     
+    	dayClick: function() {
+    		 $('#myModal2').modal();
+        },
         /* editable: true,*/
         /*droppable: true, */// this allows things to be dropped onto the calendar !!!
         /*drop: function(date, allDay) { // this function is called when something is dropped
@@ -109,10 +111,11 @@ var Script = function () {
          week : "주별",
          day : "일별"
          },
-         selectable:true,
+         selectable:true
+         /*,
          select : function(event, jsEvent, view){
             $('#myModal2').modal();
-         }
+         }*/
            
 
 

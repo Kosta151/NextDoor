@@ -145,7 +145,7 @@
             <div class="col-xs-6 col-sm-3 col-md-3">				
 				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="0.2s">
                         <div class="team-wrapper-overlay">
-                          <h5>Keyla Cruse</h5>
+                          <h5>김선화</h5>
                           <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
                           <div class="social-icons">
 								<ul class="team-social">
@@ -162,7 +162,7 @@
 			<div class="col-xs-6 col-sm-3 col-md-3">
 				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="0.5s">
                         <div class="team-wrapper-overlay">
-                          <h5>Tanya Doe</h5>
+                          <h5>최성용</h5>
                           <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
                           <div class="social-icons">
 								<ul class="team-social">
@@ -178,7 +178,7 @@
 			<div class="col-xs-6 col-sm-3 col-md-3">
 				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="0.8s">
                         <div class="team-wrapper-overlay">
-                          <h5>Heck Steven</h5>
+                          <h5>박찬섭</h5>
                           <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
                           <div class="social-icons">
 								<ul class="team-social">
@@ -194,7 +194,7 @@
 			<div class="col-xs-6 col-sm-3 col-md-3">
 				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="1s">
                         <div class="team-wrapper-overlay">
-                          <h5>Adrian Dawn</h5>
+                          <h5>문창균</h5>
                           <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
                           <div class="social-icons">
 								<ul class="team-social">
@@ -205,6 +205,70 @@
                           </div>
                         </div>
                         <img src="resources/index/img/team/4.jpg" alt="" />
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="1s">
+                        <div class="team-wrapper-overlay">
+                          <h5>송지은</h5>
+                          <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
+                          <div class="social-icons">
+								<ul class="team-social">
+									<li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+                          </div>
+                        </div>
+                        <img src="resources/index/img/team/5.jpg" alt="" />
+                </div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="1s">
+                        <div class="team-wrapper-overlay">
+                          <h5>이재민</h5>
+                          <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
+                          <div class="social-icons">
+								<ul class="team-social">
+									<li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+                          </div>
+                        </div>
+                        <img src="resources/index/img/team/6.jpg" alt="" />
+                </div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="1s">
+                        <div class="team-wrapper-overlay">
+                          <h5>장진환</h5>
+                          <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
+                          <div class="social-icons">
+								<ul class="team-social">
+									<li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+                          </div>
+                        </div>
+                        <img src="resources/index/img/team/7.jpg" alt="" />
+                </div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="team-wrapper-big wow bounceInUp" data-wow-delay="1s">
+                        <div class="team-wrapper-overlay">
+                          <h5>임모군</h5>
+                          <p>Graeco voluptua sed ea, malorum quaeque cotidieque per eu, quo id possit dissentias.</p>
+                          <div class="social-icons">
+								<ul class="team-social">
+									<li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+                          </div>
+                        </div>
+                        <img src="resources/index/img/team/8.jpg" alt="" />
                 </div>
             </div>
         </div>		
@@ -233,7 +297,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
 					<div class="section-heading text-center">
-					<h2 class="h-bold">Services</h2>
+					<h2 class="h-bold">We Studied</h2>
 					<div class="divider-header"></div>
 					<p></p>
 					</div>
@@ -254,7 +318,7 @@
 						<span class="pe-7s-monitor pe-5x"></span> 
 					</div>
 					<div class="service-desc">						
-						<h5>Web Design</h5>
+						<h5>Spring</h5>
 						<p>
 						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
 						</p>
@@ -270,7 +334,7 @@
 						<span class="pe-7s-camera pe-5x"></span> 
 					</div>
 					<div class="service-desc">
-						<h5>Photography</h5>
+						<h5>Java</h5>
 						<p>
 						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
 						</p>
@@ -286,7 +350,7 @@
 						<span class="pe-7s-note pe-5x"></span> 
 					</div>
 					<div class="service-desc">
-						<h5>Graphic design</h5>
+						<h5>HTML/CSS</h5>
 						<p>
 						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
 						</p>
@@ -302,7 +366,7 @@
 						<span class="pe-7s-phone pe-5x"></span> 
 					</div>
 					<div class="service-desc">
-						<h5>Mobile apps</h5>
+						<h5>DataBase</h5>
 						<p>
 						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
 						</p>

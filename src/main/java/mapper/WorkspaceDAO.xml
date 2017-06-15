@@ -5,7 +5,7 @@
   
   <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
 		<select id="workspacelist"  resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
-			SELECT WORK.WORKSPACE_NAME
+			SELECT WORK.WORKSPACE_NAME,WORK.WORKSPACE_NO
 			FROM WORKSPACE WORK LEFT JOIN (SELECT P.WORKSPACE_NO, M.MEMBER_ID 
 			FROM PROJECT P JOIN PROJECTMEMBER M
 			ON  P.PROJECT_NO=M.PROJECT_NO WHERE M.MEMBER_ID=#{MEMBER_ID}) PRO

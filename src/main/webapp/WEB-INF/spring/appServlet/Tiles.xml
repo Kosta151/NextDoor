@@ -11,6 +11,15 @@
 	<definition name="login.*" template="/WEB-INF/views/login/inc/layout.jsp">
 		<put-attribute name="content" value="/WEB-INF/views/login/{1}.jsp" />
 	</definition>
+	
+	<!-- fullcalendar -->
+	<definition name="fullcalendar.*" template="/WEB-INF/views/fullcalendar/inc/layout.jsp">
+      <put-attribute name="title" value="NextDoor"/>
+      <put-attribute name="header" value="/WEB-INF/views/fullcalendar/inc/header.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/fullcalendar/inc/footer.jsp"/>
+      <put-attribute name="aside" value="/WEB-INF/views/fullcalendar/inc/aside.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/views/fullcalendar/{1}.jsp"/>
+   	</definition>
 
 	<!-- project -->
 	<definition name="project.*" template="/WEB-INF/views/project/inc/layout.jsp">

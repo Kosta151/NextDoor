@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * ÀÎµ¦½ºÄÁÆ®·Ñ·¯ : ÀÎµ¦½º È­¸é
+ * ì¸ë±ìŠ¤ë¡œ ì´ë™
  */
 @Controller
 

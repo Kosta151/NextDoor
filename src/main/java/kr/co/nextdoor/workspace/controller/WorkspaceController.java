@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.nextdoor.workspace.dto.WorkspaceDTO;
 import kr.co.nextdoor.workspace.service.WorkspaceService;
@@ -21,7 +20,6 @@ public class WorkspaceController {
 	public String workspaceList(Model model) {
 		model.addAttribute("workspacelist", service.WorkspaceList());
 		return "login.workspace";
-
 	}
 
 	// 워크스페이스 추가화면으로 이동

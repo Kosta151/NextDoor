@@ -6,10 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 프로젝트 목록 보기 -->
 	<select id="projectList" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-		SELECT P.PROJECT_NAME, P.PROJECT_NO
-		FROM PROJECT P JOIN WORKSPACE W join PROJECTMEMBER M
-		ON W.WORKSPACE_NO = P.WORKSPACE_NO and W.MEMBER_ID = P.MEMBER_ID and P.PROJECT_NO = M.PROJECT_NO
-		WHERE M.MEMBER_ID = #{member_id} AND W.WORKSPACE_NO = #{workspace_no};
+		select p.project_name, p.project_no
+		from project p join workspace w join projectmember m
+		on w.workspace_no = p.workspace_no and w.member_id = p.member_id and p.project_no = m.project_no
+		where m.member_id = #{member_id} and w.workspace_no = #{workspace_no};
 	</select>
 	
 	<!-- 프로젝트 추가 -->

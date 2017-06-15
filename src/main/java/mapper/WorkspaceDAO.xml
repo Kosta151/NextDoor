@@ -5,15 +5,15 @@
   
   <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
 		<select id="workspacelist"  resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
-			SELECT WORK.WORKSPACE_NAME,WORK.WORKSPACE_NO
-			FROM WORKSPACE WORK LEFT JOIN (SELECT P.WORKSPACE_NO, M.MEMBER_ID 
-			FROM PROJECT P JOIN PROJECTMEMBER M
-			ON  P.PROJECT_NO=M.PROJECT_NO WHERE M.MEMBER_ID=#{MEMBER_ID}) PRO
-			ON WORK.WORKSPACE_NO=PRO.WORKSPACE_NO
-			WHERE WORK.MEMBER_ID=#{MEMBER_ID} OR PRO.MEMBER_ID=#{MEMBER_ID}
+			select distinct work.workspace_name, work.workspace_no
+			from workspace work left join (select p.workspace_no, m.member_id 
+			from project p join projectmember m
+			on  p.project_no=m.project_no where m.member_id=#{member_id}) pro
+			on work.workspace_no=pro.workspace_no
+			where work.member_id=#{member_id} or pro.member_id=#{member_id} 
 		</select>
 		<insert id="workspaceinsert">
-			INSERT INTO WORKSPACE(WORKSPACE_NAME, MEMBER_ID) VALUES(#{workspace_name}, #{member_id})
+			insert into workspace(workspace_name, member_id) values(#{workspace_name}, #{member_id})
 		</insert>
   </mapper>
   

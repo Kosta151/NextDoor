@@ -5,12 +5,10 @@
   
   <mapper namespace="kr.co.nextdoor.member.dao.MemberDAO">
   	<insert id="insertMember" parameterType="kr.co.nextdoor.member.dto.MemberDTO">
-
-  		INSERT INTO MEMBER(MEMBER_ID, NAME, PASSWORD, MEMBER_CONFI) VALUES(#{member_id}, #{name}, #{password}, '1');
+  		insert into member(member_id, name, password, member_confi) values(#{member_id}, #{name}, #{password}, '1');
   	</insert>
   	<insert id="insertRole">
-  		INSERT INTO MEMBERAUTH(MEMBER_ID, ROLE_NAME) VALUES(#{member_id}, 'ROLE_USER');
-
+  		insert into memberauth(member_id, role_name) values(#{member_id}, 'role_user');
   	</insert>	
   		
   </mapper>

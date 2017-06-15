@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import kr.co.nextdoor.project.dao.ProjectDAO;
@@ -28,6 +26,8 @@ public class ProjectService {
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
 		return projectdao.insertProject(projectdto);
 	}
+	
+	// 프로젝트 멤버에 추가
 	public void insertProjectMember(ProjectDTO projectdto) throws Exception{
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
 		projectdao.insertProjectMember(projectdto);

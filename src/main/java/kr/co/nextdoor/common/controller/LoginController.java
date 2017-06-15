@@ -19,18 +19,21 @@ public class LoginController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	// 로그인 화면으로 이동
 	@RequestMapping(value = "login.htm", method = RequestMethod.GET)
 	public String login() {
 
 		return "login.login";
 	}
 
+	// 회원가입 화면으로 이동
 	@RequestMapping(value = "join.htm", method = RequestMethod.GET)
 	public String join() {
 
 		return "login.join";
 	}
 
+	// 회원가입 후 로그인페이지 이동
 	@RequestMapping(value = "join.htm", method = RequestMethod.POST)
 	public String join(MemberDTO memberdto) {
 		MemberDAO memberdao = sqlSession.getMapper(MemberDAO.class);		

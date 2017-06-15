@@ -3,42 +3,42 @@ package kr.co.nextdoor.file.dto;
 import java.util.Date;
 
 public class FileDTO {
+
+	private String file_no;
+	private String specifictask_no;
+	private String file_name;
+	private Date file_date;
+	private String file_size;
 	
-	private int FILE_NO;
-	private int SPECIFICTASK_NO;
-	private String FILE_NAME;
-	private Date FILE_DATE;
-	private int FILE_SIZE;
-	public int getFILE_NO() {
-		return FILE_NO;
+	public String getFile_no() {
+		return file_no;
 	}
-	public void setFILE_NO(int fILE_NO) {
-		FILE_NO = fILE_NO;
+	public void setFile_no(String file_no) {
+		this.file_no = file_no;
 	}
-	public int getSPECIFICTASK_NO() {
-		return SPECIFICTASK_NO;
+	public String getSpecifictask_no() {
+		return specifictask_no;
 	}
-	public void setSPECIFICTASK_NO(int sPECIFICTASK_NO) {
-		SPECIFICTASK_NO = sPECIFICTASK_NO;
+	public void setSpecifictask_no(String specifictask_no) {
+		this.specifictask_no = specifictask_no;
 	}
-	public String getFILE_NAME() {
-		return FILE_NAME;
+	public String getFile_name() {
+		return file_name;
 	}
-	public void setFILE_NAME(String fILE_NAME) {
-		FILE_NAME = fILE_NAME;
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
-	public Date getFILE_DATE() {
-		return FILE_DATE;
+	public Date getFile_date() {
+		return file_date;
 	}
-	public void setFILE_DATE(Date fILE_DATE) {
-		FILE_DATE = fILE_DATE;
+	public void setFile_date(Date file_date) {
+		this.file_date = file_date;
 	}
-	public int getFILE_SIZE() {
-		return FILE_SIZE;
+	public String getFile_size() {
+		return file_size;
 	}
-	public void setFILE_SIZE(int fILE_SIZE) {
-		FILE_SIZE = fILE_SIZE;
+	public void setFile_size(String file_size) {
+		this.file_size = file_size;
 	}
-	
 	
 }

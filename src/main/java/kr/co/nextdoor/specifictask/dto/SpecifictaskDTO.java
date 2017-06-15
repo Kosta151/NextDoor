@@ -1,30 +1,28 @@
 package kr.co.nextdoor.specifictask.dto;
 
-public class SpecifictaskDTO {
+public class SpecificTaskDTO {
 	
-	private int SPECIFICTASK_NO;
-	private int TASK_NO;
-	private String SPECIFICTASK_CONT;
-	public int getSPECIFICTASK_NO() {
-		return SPECIFICTASK_NO;
-	}
-	public void setSPECIFICTASK_NO(int sPECIFICTASK_NO) {
-		SPECIFICTASK_NO = sPECIFICTASK_NO;
-	}
-	public int getTASK_NO() {
-		return TASK_NO;
-	}
-	public void setTASK_NO(int tASK_NO) {
-		TASK_NO = tASK_NO;
-	}
-	public String getSPECIFICTASK_CONT() {
-		return SPECIFICTASK_CONT;
-	}
-	public void setSPECIFICTASK_CONT(String sPECIFICTASK_CONT) {
-		SPECIFICTASK_CONT = sPECIFICTASK_CONT;
-	}
+	private String specifictask_no;
+	private String task_no;
+	private String specifictask_cont;
 	
-	
-	
+	public String getSpecifictask_no() {
+		return specifictask_no;
+	}
+	public void setSpecifictask_no(String specifictask_no) {
+		this.specifictask_no = specifictask_no;
+	}
+	public String getTask_no() {
+		return task_no;
+	}
+	public void setTask_no(String task_no) {
+		this.task_no = task_no;
+	}
+	public String getSpecifictask_cont() {
+		return specifictask_cont;
+	}
+	public void setSpecifictask_cont(String specifictask_cont) {
+		this.specifictask_cont = specifictask_cont;
+	}
 
 }

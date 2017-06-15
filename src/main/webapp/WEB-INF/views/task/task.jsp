@@ -5,7 +5,7 @@
 <head>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">\
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -21,9 +21,9 @@
 </head>
  
 <c:set value="${project_no}" var="project_no"></c:set>
-
-<section id="main-content">
-          <section class="wrapper">
+s
+<section id="main-content" >
+          <section class="wrapper site-min-height">
  			<div class="col-lg-9 main-chart">
                   		<div>
                   			<h3><i class="fa fa-angle-right"></i> 보람사조</h3>

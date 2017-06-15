@@ -2,51 +2,50 @@ package kr.co.nextdoor.specifictask.dto;
 
 import java.util.Date;
 
-public class SpecifictaskModiDTO {
+public class SpecificTaskModiDTO {
 	
-	private int SPECIFICTASKMODI_NO;
-	private int SPECIFICTASK_NO;
-	private String MEMBER_ID;
-	private Date SPECIFICTASK_START;
-	private Date SPECIFICTASK_END;
-	private String SPECIFICTASK_COMP;
-	public int getSPECIFICTASKMODI_NO() {
-		return SPECIFICTASKMODI_NO;
-	}
-	public void setSPECIFICTASKMODI_NO(int sPECIFICTASKMODI_NO) {
-		SPECIFICTASKMODI_NO = sPECIFICTASKMODI_NO;
-	}
-	public int getSPECIFICTASK_NO() {
-		return SPECIFICTASK_NO;
-	}
-	public void setSPECIFICTASK_NO(int sPECIFICTASK_NO) {
-		SPECIFICTASK_NO = sPECIFICTASK_NO;
-	}
-	public String getMEMBER_ID() {
-		return MEMBER_ID;
-	}
-	public void setMEMBER_ID(String mEMBER_ID) {
-		MEMBER_ID = mEMBER_ID;
-	}
-	public Date getSPECIFICTASK_START() {
-		return SPECIFICTASK_START;
-	}
-	public void setSPECIFICTASK_START(Date sPECIFICTASK_START) {
-		SPECIFICTASK_START = sPECIFICTASK_START;
-	}
-	public Date getSPECIFICTASK_END() {
-		return SPECIFICTASK_END;
-	}
-	public void setSPECIFICTASK_END(Date sPECIFICTASK_END) {
-		SPECIFICTASK_END = sPECIFICTASK_END;
-	}
-	public String getSPECIFICTASK_COMP() {
-		return SPECIFICTASK_COMP;
-	}
-	public void setSPECIFICTASK_COMP(String sPECIFICTASK_COMP) {
-		SPECIFICTASK_COMP = sPECIFICTASK_COMP;
-	}
+	private String specifictaskmodi_no;
+	private String specifictask_no;
+	private String member_id;
+	private Date specifictask_start;
+	private Date specifictask_end;
+	private String specifictask_comp;
 	
-	
+	public String getSpecifictaskmodi_no() {
+		return specifictaskmodi_no;
+	}
+	public void setSpecifictaskmodi_no(String specifictaskmodi_no) {
+		this.specifictaskmodi_no = specifictaskmodi_no;
+	}
+	public String getSpecifictask_no() {
+		return specifictask_no;
+	}
+	public void setSpecifictask_no(String specifictask_no) {
+		this.specifictask_no = specifictask_no;
+	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public Date getSpecifictask_start() {
+		return specifictask_start;
+	}
+	public void setSpecifictask_start(Date specifictask_start) {
+		this.specifictask_start = specifictask_start;
+	}
+	public Date getSpecifictask_end() {
+		return specifictask_end;
+	}
+	public void setSpecifictask_end(Date specifictask_end) {
+		this.specifictask_end = specifictask_end;
+	}
+	public String getSpecifictask_comp() {
+		return specifictask_comp;
+	}
+	public void setSpecifictask_comp(String specifictask_comp) {
+		this.specifictask_comp = specifictask_comp;
+	}
 
 }

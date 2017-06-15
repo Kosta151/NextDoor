@@ -19,10 +19,12 @@ public class TaskController {
 	private TaskService taskservice;
 
 	@RequestMapping(value = "task.htm")
-	public ModelAndView listTask(@RequestParam("project_no") String project_no, TaskDTO taskdto,
+	public ModelAndView listTask(String project_no, TaskDTO taskdto,
 			ModelAndView mv) {
 		
 		taskdto.setProject_no(project_no);
+		
+		mv.addObject("project_no" , project_no);
 		mv.addObject("tasklist", taskservice.TaskList(project_no));
 		mv.setViewName("task.task");
 
@@ -36,7 +38,6 @@ public class TaskController {
 
 		taskservice.TaskInsert(taskdto);
 
-		return "redirect:task.htm";
+		return "redirect:task.htm?project_no="+taskdto.getProject_no();
 	}
-
 }

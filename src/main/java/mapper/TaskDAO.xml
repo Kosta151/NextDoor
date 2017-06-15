@@ -5,15 +5,12 @@
   
   <mapper namespace="kr.co.nextdoor.task.dao.TaskDAO">
 		<insert id="insertTask">
-			INSERT INTO TASK(task_no, project_no, task_cont) 
-			VALUES(#{task_no}, #{project_no}, #{task_cont})
+			INSERT INTO TASK(project_no, task_cont) 
+			VALUES(#{project_no}, #{task_cont})
 		</insert>
 		
 		<select id="listTasks" resultType="kr.co.nextdoor.task.dto.TaskDTO">
 			SELECT task_no, task_cont FROM TASK WHERE project_no=#{project_no}
 		</select>
-		
-		
-		
-		
+				
   </mapper>

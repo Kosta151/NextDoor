@@ -5,7 +5,7 @@
 <head>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">\
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -21,9 +21,9 @@
 </head>
  
 <c:set value="${project_no}" var="project_no"></c:set>
-s
-<section id="main-content" >
-          <section class="wrapper site-min-height">
+
+<section id="main-content">
+          <section class="wrapper">
  			<div class="col-lg-9 main-chart">
                   		<div>
                   			<h3><i class="fa fa-angle-right"></i> 보람사조</h3>
@@ -44,9 +44,7 @@ s
 					                          <input type="text" name="task_cont" placeholder="업무명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 					                          <input type="hidden" name="project_no" value="${project_no}" >
 					                      </div>
-					                      <div class="modal-footer centered">
-					                      	  
-					                      	  	  
+					                      <div class="modal-footer centered">					                      	 					                      	  	  
 						                          <button class="btn btn-theme03" type="submit">생성</button>
 						                          <button data-dismiss="modal" class="btn btn-theme04" type="button">취소</button>
 					                      </div>
@@ -58,24 +56,101 @@ s
                   		</div>
                   		
                   		<!-- userid와 프로젝트 name을 가지고 업무리스트 뿌리기 -->
-                  	<c:forEach items="${tasklist}" var="list">
-                  		<div class="col-lg-3 col-md-3 col-sm-3 mb">
-                  		
-                  			
-							 <div class="steps pn">
-								
-							    <label for="op1">${list.task_cont}
-							    	<button class="btn btn-success btn-xs">
-							    	<i class="fa fa-pencil fa-fw"></i>
-							    	<i class="fa fa-plus"></i>
-							    	</button>
-							    </label>					   
-							</div> 
+                  		<br>
+                  	 <c:forEach items="${tasklist}" var="list"> 
+                  		<div class="col-lg-4 col-md-4 col-sm-4 mb">
+                  			<div class="darkblue-panel pn">
+                  			<section class="task-panel tasks-widget">
+	                	<div class="panel-heading">
+	                        <div class="pull-left"><h5><i class="fa fa-tasks"></i> ${list.task_cont}</h5></div>
+	                        <br>
+	                 	</div>
+                          <!-- <div class="panel-body">
+                              <div class="task-content">
+                                  <ul id="sortable" class="task-list ui-sortable">                                   
+                                      <li class="list-primary" style="position: relative; left: 0px; top: 0px;">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Dashgum - Admin Panel Theme</span>
+                                              <span class="badge bg-theme">Done</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li><li class="list-danger">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Extensive collection of plugins</span>
+                                              <span class="badge bg-warning">Cool</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-success">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Free updates always, no extra fees.</span>
+                                              <span class="badge bg-success">2 Days</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-warning">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">More features coming soon</span>
+                                              <span class="badge bg-info">Tomorrow</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="list-info">
+                                          <i class=" fa fa-ellipsis-v"></i>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Hey, seriously, you should buy this Dashboard</span>
+                                              <span class="badge bg-important">Now</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>                             
+                          </div> -->
+                      		</section>
+                      		</div>                              			
 					   </div>
-				  </c:forEach>		
+				   </c:forEach>	
           </div>
-          
-          
+                  
           <!-- 오른쪽 사이드 바 -->
           <div class="col-lg-3 ds" id="test">
                     <!--COMPLETED ACTIONS DONUTS CHART-->

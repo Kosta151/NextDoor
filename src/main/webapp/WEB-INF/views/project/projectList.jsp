@@ -27,7 +27,7 @@
 							</script>
 							<p class="user">70%</p>
 							<form action="task.htm" method="post">
-								<button type="submit" value="${plist.project_name}">업무보기</button>
+								<button type="submit" name="project_no" value="${plist.project_no}">업무보기</button>
 							</form>
 							</div>
 						</div><!-- /col-md-4 -->

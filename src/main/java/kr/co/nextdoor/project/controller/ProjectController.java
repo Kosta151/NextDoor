@@ -20,11 +20,11 @@ public class ProjectController {
 
 	// 워크스페이스 선택시 프로젝트 선택화면으로 이동
 	@RequestMapping("projectList.htm")
-	public ModelAndView projectList(@RequestParam("workspace_name") String workspace_name, Principal principal,
+	public ModelAndView projectList(@RequestParam("workspace_no") String workspace_no, Principal principal,
 			ProjectDTO projectdto) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		projectdto.setMember_id(principal.getName());
-		projectdto.setWorkspace_name(workspace_name);
+		projectdto.setWorkspace_name(workspace_no);
 		mav.addObject("projectlist", service.projectList(projectdto));
 		mav.setViewName("project.projectList");
 		return mav;

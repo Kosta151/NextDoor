@@ -18,7 +18,7 @@ public class TaskService {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public List<TaskDTO> TaskList(int project_no){
+	public List<TaskDTO> TaskList(String project_no){
 		
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		List<TaskDTO> list  = taskdao.listTasks(project_no);

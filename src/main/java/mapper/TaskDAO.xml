@@ -10,7 +10,7 @@
 		</insert>
 		
 		<select id="listTasks" resultType="kr.co.nextdoor.task.dto.TaskDTO">
-			SELECT task_cont FROM TASK WHERE project_no=#{project_no}
+			SELECT task_no, task_cont FROM TASK WHERE project_no=#{project_no}
 		</select>
 		
 		

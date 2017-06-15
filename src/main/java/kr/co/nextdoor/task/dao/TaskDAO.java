@@ -7,7 +7,7 @@ import kr.co.nextdoor.task.dto.TaskDTO;
 public interface TaskDAO {
 	
 	//업무 리스트
-	public List<TaskDTO> listTasks(int project_no);
+	public List<TaskDTO> listTasks(String project_no);
 	//업무 삭제
 	public int deleteTask(int taskno);
 	//업무 수정

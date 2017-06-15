@@ -34,9 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 프로젝트 목록 보기 -->
 	<select id="projectList" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-		SELECT P.PROJECT_NAME
+		SELECT P.PROJECT_NAME, P.PROJECT_NO
 		FROM PROJECT P JOIN WORKSPACE W join PROJECTMEMBER M
 		ON W.WORKSPACE_NO = P.WORKSPACE_NO and W.MEMBER_ID = P.MEMBER_ID and P.PROJECT_NO = M.PROJECT_NO
-		WHERE M.MEMBER_ID = #{member_id} AND W.WORKSPACE_NAME = #{workspace_name};
+		WHERE M.MEMBER_ID = #{member_id} AND W.WORKSPACE_NO = #{workspace_no};
 	</select>
 </mapper>

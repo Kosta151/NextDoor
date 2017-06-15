@@ -79,7 +79,15 @@
                           <li><a  href="chartjs.html">Chartjs</a></li>
                       </ul>
                   </li>
-
+				 <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class=" fa fa-bar-chart-o"></i>
+                          <span>chat</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="chat.htm">chat</a></li>
+                      </ul>
+                 	 </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

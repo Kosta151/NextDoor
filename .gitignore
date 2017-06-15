@@ -120,4 +120,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/java,maven,eclipse,windows
-src/main/java/kr/co/nextdoor/chat/service/ChatConfig.java
+

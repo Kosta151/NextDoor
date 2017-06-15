@@ -8,13 +8,13 @@
           		<div class="col-lg-12">
 					<div class="row">
 						<!-- PANEL -->
-						<c:forEach items="${projectlist}" var="plist">
+						<c:forEach items="${projectlist}" var="list">
 						<div class="col-lg-2 col-md-2 col-sm-2 mb">
 							<div class="grey-panel pn donut-chart">
 							<div class="grey-header">
-								<h5>${plist.project_name}<a href="projectUpdate.htm">&nbsp&nbsp<i class="fa fa-cog" aria-hidden="true"></i></a></h5>
+								<h5>${list.project_name}<a href="projectUpdate.htm">&nbsp&nbsp<i class="fa fa-cog" aria-hidden="true"></i></a></h5>
 							</div>
-							<canvas id="${plist.project_name}" height="120" width="120" ></canvas>
+							<canvas id="${list.project_name}" height="120" width="120" ></canvas>
 							<script>
 								var doughnutData = [ {
 									value : 55,
@@ -23,11 +23,11 @@
 									value : 45,
 									color : "#fdfdfd"
 								} ];
-								var myDoughnut = new Chart(document.getElementById("${plist.project_name}").getContext("2d")).Doughnut(doughnutData);
+								var myDoughnut = new Chart(document.getElementById("${list.project_name}").getContext("2d")).Doughnut(doughnutData);
 							</script>
 							<p class="user">70%</p>
 							<form action="task.htm" method="post">
-								<button type="submit" name="project_no" value="${plist.project_no}">업무보기</button>
+								<button type="submit" name="project_no" value="${list.project_no}">업무보기</button>
 							</form>
 							</div>
 						</div><!-- /col-md-4 -->
@@ -62,6 +62,7 @@
                                   <form action="insertProject.htm" method="post">
                                   <div class="modal-body">
                                       <p>프로젝트명</p>
+                                      	<input type="hidden" name="workspace_no" value="${workspace_no}">
 										<input type="text" name="project_name" placeholder="project명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 										<br>
 										<div class="btn-group" data-toggle="buttons">

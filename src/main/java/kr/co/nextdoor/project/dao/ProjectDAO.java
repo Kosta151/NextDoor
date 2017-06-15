@@ -8,6 +8,12 @@ import kr.co.nextdoor.project.dto.ProjectModiDTO;
 
 public interface ProjectDAO {
 
+	// �봽濡쒖젥�듃 �쟾泥� 由ъ뒪�듃
+	public List<ProjectDTO> projectList(ProjectDTO projectdto) throws Exception;
+
+	// 프로젝트멤버추가
+	public void insertProjectMember(ProjectDTO projectdto) throws Exception;
+	
 	// �봽濡쒖젥�듃 �깮�꽦
 	public int insertProject(ProjectDTO projectDTO) throws Exception;
 
@@ -19,9 +25,6 @@ public interface ProjectDAO {
 
 	// �봽濡쒖젥�듃 �궘�젣
 	public int deleteProject(int PROJECT_NO) throws Exception;
-
-	// �봽濡쒖젥�듃 �쟾泥� 由ъ뒪�듃
-	public List<ProjectDTO> projectList(ProjectDTO projectdto) throws Exception;
 
 	// �봽濡쒖젥�듃 硫ㅻ쾭珥덈�
 	public int sendMember(ProjectDTO projectDTO) throws Exception;

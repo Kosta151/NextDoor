@@ -4,7 +4,6 @@ public class ProjectDTO {
 	private String project_no;
 	private String project_name;
 	private String workspace_no;
-	private String workspace_name;
 	private String member_id;
 
 	public String getProject_no() {
@@ -29,14 +28,6 @@ public class ProjectDTO {
 
 	public void setWorkspace_no(String workspace_no) {
 		this.workspace_no = workspace_no;
-	}
-
-	public String getWorkspace_name() {
-		return workspace_name;
-	}
-
-	public void setWorkspace_name(String workspace_name) {
-		this.workspace_name = workspace_name;
 	}
 
 	public String getMember_id() {

@@ -25,9 +25,12 @@ public class ProjectService {
 
 	// 프로젝트 추가하기
 	public int projectInsert(ProjectDTO projectdto) throws Exception {
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		projectdto.setMember_id(user.getUsername());
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
 		return projectdao.insertProject(projectdto);
+	}
+	public void insertProjectMember(ProjectDTO projectdto) throws Exception{
+		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+		projectdao.insertProjectMember(projectdto);
+		return;
 	}
 }

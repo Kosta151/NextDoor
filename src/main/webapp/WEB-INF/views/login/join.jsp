@@ -58,7 +58,7 @@ $(function(){
             <form name="loginform" id="loginform" class="form-login" action="join.htm" method="post">
               <h2 class="form-login-heading">join now</h2>
               <div class="login-wrap">
-                  <input id="member_id" type="email" class="form-control" name="member_id" placeholder="User Email" autofocus>
+                  <input id="member_id" type="text" class="form-control" name="member_id" placeholder="User Email" autofocus>
                   <p id="vail_id" style="display:none; margin:0px">이메일을 입력하세요</p>
                   <br>
                   <input id="password" type="password" class="form-control" name="password" placeholder="Password">

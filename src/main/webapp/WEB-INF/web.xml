@@ -29,7 +29,31 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
+	
+	<!--  -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				kr.co.nextdoor.chat.service.ChatConfig
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contextClass</param-name>
+			<param-value>
+				org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+			</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
 	<!-- UTF-8 Fileter -->
 	<filter>
 		<filter-name>EncodingFilter</filter-name>

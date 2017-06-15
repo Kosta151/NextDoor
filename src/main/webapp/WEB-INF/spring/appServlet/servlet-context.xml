@@ -3,12 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/task
-		http://www.springframework.org/schema/task/spring-task.xsd">
+		http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
@@ -49,5 +51,13 @@
 	<task:executor id="executor" keep-alive="5" pool-size="5-10" queue-capacity="10" rejection-policy="DISCARD_OLDEST"/>
 	<task:scheduler id="schedule" pool-size="10"/>
 	<task:annotation-driven executor="executor" scheduler="schedule"/>
+	
+	<!-- websocket  -->
+	<beans:bean id="chatHandler" class="kr.co.nextdoor.chat.service.ChatHandler" />
+	<beans:bean id="chatHandlerInterceptor" class="kr.co.nextdoor.chat.service.ChatHandlerInterceptor" />
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler" path="/chat.htm" />
+		<websocket:sockjs />
+	</websocket:handlers>
 	
 </beans:beans>

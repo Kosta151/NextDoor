@@ -1,11 +1,17 @@
 package kr.co.nextdoor.member.dto;
 
+/*
+* @Class : MemberDTO
+* @Date : 2017. 06. 16
+* @Author : 이재민
+* @Desc : memberdto
+*/
 public class MemberDTO {
 	private String member_id;
 	private String password;
 	private String name;
-	
-	public MemberDTO(){}
+
+	public MemberDTO() {}
 
 	public String getMember_id() {
 		return member_id;
@@ -30,7 +36,4 @@ public class MemberDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-	
 }

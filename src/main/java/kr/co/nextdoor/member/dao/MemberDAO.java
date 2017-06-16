@@ -2,10 +2,29 @@ package kr.co.nextdoor.member.dao;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
 
+/*
+* @Class : MemberDAO
+* @Date : 2017. 06. 16
+* @Author : 이재민
+* @Desc : 회원가입에 대한 DAO
+*/
 public interface MemberDAO {
-	/*ȸ������*/
-	public int insertMember(MemberDTO memberdto);
+
+	/*
+	* @method Name : insertMember
+	* @date : 2017. 06. 16
+	* @author : 이재민
+	* @description : 회원가입
+	* @return : void
+	*/
+	public void insertMember(MemberDTO memberdto);
 	
-	/*���ѵ��*/
-	public void insertRole(String email);
+	/*
+	* @method Name : insertRole
+	* @date : 2017. 06. 16
+	* @author : 이재민
+	* @description : 권한 부여
+	* @return : void
+	*/
+	public void insertRole(String member_id);
 }

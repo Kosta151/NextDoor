@@ -31,7 +31,6 @@ public class WorkspaceController {
 	// 워크스페이스 추가후 워크스페이스 선택화면으로 이동
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.POST)
 	public String workspaceInsert(WorkspaceDTO workspacedto) {
-		System.out.println(workspacedto.toString());
 		service.WorkspaceInsert(workspacedto);
 		return "redirect:workspace.htm";
 	}

@@ -11,12 +11,10 @@
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
-		
 		                </span>
 		            </label>
 		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
 		            <hr>
-		            
 		            <div class="login-social-link centered">
 		            <p>or you can sign in via your social network</p>
 		                <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
@@ -28,11 +26,10 @@
 		                    Create an account
 		                </a>
 		            </div>
-		
 		        </div>
+		      </form>
 
-		      </form>	  	
-		       <!-- 비밀번호찾기 -->
+		       <!-- 비밀번호찾기 modal -->
 		       <form action="password.htm" method="post">
 		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
 		              <div class="modal-dialog">
@@ -55,8 +52,8 @@
 		                  </div>
 		              </div>
 		          </div>
-		         </form> 
-		          <!-- modal -->
-	  	
+		       </form> 
+		       <!-- modal end -->
+
 	  	</div>
 	  </div>

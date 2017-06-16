@@ -2,25 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 
-<head>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">\
-
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-  <script>
-  $( function() {
-    $( "#tabs" ).tabs();
-  } );
-  </script>
-  
-</head>
  
-<c:set value="${project_no}" var="project_no"></c:set>
+<%-- <c:set value="${project_no}" var="project_no"></c:set> --%>
 
 <section id="main-content">
           <section class="wrapper">
@@ -41,8 +25,8 @@
 					                      <div class="modal-body">					                	  
 					                          <p class="centered"></p>
 					                          <p>업무명</p>
-					                          <input type="text" name="task_cont" placeholder="업무명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
-					                          <input type="hidden" name="project_no" value="${project_no}" >
+					                          <input type="text" id="task_cont" name="task_cont" placeholder="업무명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
+					                          <input type="hidden" id="project_no" name="project_no" value="${project_no}" > 
 					                      </div>
 					                      <div class="modal-footer centered">					                      	 					                      	  	  
 						                          <button class="btn btn-theme03" type="submit">생성</button>
@@ -57,12 +41,13 @@
                   		
                   		<!-- userid와 프로젝트 name을 가지고 업무리스트 뿌리기 -->
                   		<br>
-                  	 <c:forEach items="${tasklist}" var="list"> 
+                  
+                  	
                   		<div class="col-lg-4 col-md-4 col-sm-4 mb">
                   			<div class="darkblue-panel pn">
                   			<section class="task-panel tasks-widget">
 	                	<div class="panel-heading">
-	                        <div class="pull-left"><h5><i class="fa fa-tasks"></i> ${list.task_cont}</h5></div>
+	                        <div class="pull-left" id="ajaxtest"><h5><i class="fa fa-tasks"></i> ${list.task_cont}</h5></div>
 	                        <br>
 	                 	</div>
                           <!-- <div class="panel-body">
@@ -148,9 +133,9 @@
                       		</section>
                       		</div>                              			
 					   </div>
-				   </c:forEach>	
-          </div>
-                  
+				 
+          </div> 
+                  </div>
           <!-- 오른쪽 사이드 바 -->
           <div class="col-lg-3 ds" id="test">
                     <!--COMPLETED ACTIONS DONUTS CHART-->

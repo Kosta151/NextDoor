@@ -10,4 +10,7 @@ public interface WorkspaceDAO {
 
 	// 워크스페이스 추가
 	public int workspaceinsert(WorkspaceDTO workspacedto);
+	
+	// 워크스페이스 삭제
+	public int deleteWorkspace(int workspace_no);
 }

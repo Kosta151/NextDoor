@@ -35,4 +35,11 @@ public class WorkspaceController {
 		service.WorkspaceInsert(workspacedto);
 		return "redirect:workspace.htm";
 	}
+	
+	// 워크스페이스 삭제후 워크스페이스 선택화면으로 이동
+	@RequestMapping("workspaceDelete.htm")
+	public String workspaceDelete(int workspace_no) throws Exception{
+		service.deleteWorkspace(workspace_no);
+		return "redirect:workspace.htm";
+	}
 }

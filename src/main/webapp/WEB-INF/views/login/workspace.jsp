@@ -10,7 +10,9 @@
  		        	<form action="projectList.htm" method="post">
 						<input type="hidden" name="workspace_no" value="${list.workspace_no}">
 						<button class="btn btn-default btn-lg btn-block" type="submit">${list.workspace_name}</button>
- 		        		<a href="workspaceDelete.htm?workspace_no=${list.workspace_no}"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+ 		        		<a href="workspaceDelete.htm?workspace_no=${list.workspace_no}" class="close" aria-hidden="true" data-dismiss="alert" type="button">×</a>
+ 		        		<!--<button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a>  -->
+ 		        		<!-- <i class="fa fa-times-circle" aria-hidden="true"></i> --></a>
 		        	</form>
 		        	</c:forEach>
 		        	<a class="btn btn-theme btn-block" href="workspaceInsert.htm"><i class="fa fa-plus"></i> 새로운워크스페이스 만들기</a>

@@ -12,7 +12,9 @@
 						<div class="col-lg-2 col-md-2 col-sm-2 mb">
 							<div class="grey-panel pn donut-chart">
 							<div class="grey-header">
-								<h5>${list.project_name}<a href="projectUpdate.htm">&nbsp&nbsp<i class="fa fa-cog" aria-hidden="true"></i></a></h5>
+								<h5>${list.project_name}<a href="projectUpdate.htm?project_no=${projectmodilist.project_no }">&nbsp&nbsp
+								<i class="fa fa-cog" aria-hidden="true"></i></a>
+								<%-- <a href="projectDelete.htm?project_no=${list.project_no}" class="close" aria-hidden="true" data-dismiss="alert" type="button">×</a> --%></h5>
 							</div>
 							<canvas id="${list.project_name}" height="120" width="120" ></canvas>
 							<script>

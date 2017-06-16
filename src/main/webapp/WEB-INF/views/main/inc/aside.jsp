@@ -9,7 +9,7 @@
               	  <p class="centered"><a href="profile.html"><img src="resources/main/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Marcel Newman</h5>
               	  	
-                  <li class="mt">
+                  <!-- <li class="mt">
                       <a class="active" href="index.html">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
@@ -38,11 +38,11 @@
                           <li><a  href="gallery.html">Gallery</a></li>
                           <li><a  href="todo_list.html">Todo List</a></li>
                       </ul>
-                  </li>
+                  </li> -->
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Extra Pages</span>
+                          <i class="fa fa-tasks"></i>
+                          <span>개인 업무</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="blank.html">Blank Page</a></li>
@@ -51,18 +51,25 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="task.htm" >
                           <i class="fa fa-tasks"></i>
-                          <span>Forms</span>
+                          <span>전체 업무</span>
+                      </a>
+                  </li>
+                  
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-calendar"></i>
+                          <span>달력보기</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="form_component.html">Form Components</a></li>
+                          <li><a  href="calendar.htm">업무 관리 달력</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>Data Tables</span>
+                          <i class="fa fa-cogs"></i>
+                          <span>사다리 타기</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="basic_table.html">Basic Table</a></li>
@@ -81,13 +88,13 @@
                   </li>
 				 <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class=" fa fa-bar-chart-o"></i>
+                          <i class=" fa fa-desktop"></i>
                           <span>chat</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="chat.htm">chat</a></li>
                       </ul>
-                 	 </li>
+                 </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

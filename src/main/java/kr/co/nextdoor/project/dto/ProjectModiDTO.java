@@ -3,35 +3,35 @@ package kr.co.nextdoor.project.dto;
 import java.util.Date;
 
 public class ProjectModiDTO {
-	private int PROJECTMODI_NO;
-	private int PROJECT_NO;
-	private Date PROJECT_START;
-	private Date PROJECT_END;
+	private String projectmodi_no;
+	private String project_no;
+	private Date project_start;
+	private Date project_end;
 	
-	public int getPROJECTMODI_NO() {
-		return PROJECTMODI_NO;
+	public String getProjectmodi_no() {
+		return projectmodi_no;
 	}
-	public void setPROJECTMODI_NO(int pROJECTMODI_NO) {
-		PROJECTMODI_NO = pROJECTMODI_NO;
+	public void setProjectmodi_no(String projectmodi_no) {
+		this.projectmodi_no = projectmodi_no;
 	}
-	public int getPROJECT_NO() {
-		return PROJECT_NO;
+	public String getProject_no() {
+		return project_no;
 	}
-	public void setPROJECT_NO(int pROJECT_NO) {
-		PROJECT_NO = pROJECT_NO;
+	public void setProject_no(String project_no) {
+		this.project_no = project_no;
 	}
-	public Date getPROJECT_START() {
-		return PROJECT_START;
+	public Date getProject_start() {
+		return project_start;
 	}
-	public void setPROJECT_START(Date pROJECT_START) {
-		PROJECT_START = pROJECT_START;
+	public void setProject_start(Date project_start) {
+		this.project_start = project_start;
 	}
-	public Date getPROJECT_END() {
-		return PROJECT_END;
+	public Date getProject_end() {
+		return project_end;
 	}
-	public void setPROJECT_END(Date pROJECT_END) {
-		PROJECT_END = pROJECT_END;
+	public void setProject_end(Date project_end) {
+		this.project_end = project_end;
 	}
 	
-	
+
 }

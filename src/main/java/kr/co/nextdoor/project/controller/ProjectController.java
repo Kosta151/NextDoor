@@ -45,4 +45,11 @@ public class ProjectController {
 
 		return "project.projectUpdate";
 	}
+	/*
+	// 프로젝트 삭제
+	@RequestMapping("projectDelete.htm")
+	public String deleteProject(int project_no) throws Exception{
+		service.deleteProject(project_no);
+		return "redirect:projectList.htm";
+	}*/
 }

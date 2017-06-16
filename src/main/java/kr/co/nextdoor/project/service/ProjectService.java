@@ -33,4 +33,10 @@ public class ProjectService {
 		projectdao.insertProjectMember(projectdto);
 		return;
 	}
+	
+	/*// 프로젝트 삭제하기
+	public int deleteProject(int project_no) throws Exception{
+		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+		return projectdao.deleteProject(project_no);
+	}*/
 }

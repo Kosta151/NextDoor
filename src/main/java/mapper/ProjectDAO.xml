@@ -43,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 	
 	<delete id="deleteProject">
-		delete project where project_no = #{project_no}
+		delete from project where project_no = #{project_no}
 	</delete>
+	
 </mapper>

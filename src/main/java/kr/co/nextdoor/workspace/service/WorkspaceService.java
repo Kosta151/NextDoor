@@ -31,4 +31,10 @@ public class WorkspaceService {
 		WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
 		return workspacedao.workspaceinsert(workspacedto);
 	}
+	
+	// 워크스페이스 삭제
+	public int deleteWorkspace(int workspace_no) throws Exception{
+		WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
+		return workspacedao.deleteWorkspace(workspace_no);
+	}
 }

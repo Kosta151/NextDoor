@@ -24,7 +24,7 @@ public interface ProjectDAO {
 	public int updateProject(ProjectDTO projectDTO) throws Exception;
 
 	// �봽濡쒖젥�듃 �궘�젣
-	public int deleteProject(int PROJECT_NO) throws Exception;
+	public int deleteProject(int project_no) throws Exception;
 
 	// �봽濡쒖젥�듃 硫ㅻ쾭珥덈�
 	public int sendMember(ProjectDTO projectDTO) throws Exception;

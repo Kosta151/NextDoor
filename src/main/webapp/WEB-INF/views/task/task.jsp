@@ -7,7 +7,7 @@
 <%-- <c:set value="${project_no}" var="project_no"></c:set> --%>
 
 <section id="main-content">
-          <section class="wrapper">
+          <section class="wrapper site-min-height">
  			<div class="col-lg-9 main-chart">
                   		<div>
                   			<h3><i class="fa fa-angle-right"></i> 보람사조</h3>
@@ -133,9 +133,8 @@
                       		</section>
                       		</div>                              			
 					   </div>
-				 
-          </div> 
-                  </div>
+          		</div> 
+                  
           <!-- 오른쪽 사이드 바 -->
           <div class="col-lg-3 ds" id="test">
                     <!--COMPLETED ACTIONS DONUTS CHART-->
@@ -177,5 +176,34 @@
                   		</div>                   
            
                   </div><!-- /col-lg-3 -->
+                  
+                  	<!-- 파일 업로드 -->
+         			<div class="col-lg-3 ds" id="test">
+                    <!--COMPLETED ACTIONS DONUTS CHART-->
+						<h3>세부업무 설정</h3>            
+	                       <div class="form-panel" >
+	                  	   <div class="btn-group">
+							  <div class="btn-group btn-group-justified">
+							  <div class="btn-group">
+							    <button type="button" class="btn btn-theme">속성</button>
+							  </div>
+							  <div class="btn-group">
+							    <button type="button" class="btn btn-theme02">파일</button>
+							  </div>
+							</div>
+					  	   </div>
+	                      <form class="form-horizontal style-form" action="file.htm" method="post" enctype="multipart/form-data">
+	                          <div class="form-group">
+	                              <label class="col-sm-3 col-sm-3 control-label">파일업로드</label>
+	                              <input type="hidden" name="specifictask_no" value="3">
+	                              <input type="file" name="file">
+	                          </div>                
+	                          <button type="submit" class="btn btn-theme03">수정완료</button>
+	                          <button type="reset" class="btn btn-theme04">업무삭제</button>
+	                      </form>
+                  		</div>                   
+           
+                  </div><!-- /col-lg-3 -->
+                  
 		  </section>
 </section>

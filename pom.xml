@@ -199,6 +199,13 @@
 			<version>4.0.1.RELEASE</version>
 		</dependency>
 		
+		<!-- Facebook -->
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-facebook</artifactId>
+		    <version>2.0.3.RELEASE</version>
+		</dependency>
+		
 		<!-- Fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -211,14 +218,21 @@
 			<version>1.4</version>
 		</dependency>
 		
-		<!-- mail -->
+		<!-- Facebook -->
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-facebook</artifactId>
+		    <version>2.0.3.RELEASE</version>
+		</dependency>
+		
+		<!-- Mail -->
 		<dependency>
     		<groupId>com.sun.mail</groupId>
     		<artifactId>javax.mail</artifactId>
     		<version>1.5.4</version>
 		</dependency>
 		
-		<!-- velocity -->
+		<!-- Velocity -->
 		<dependency>
     		<groupId>org.apache.velocity</groupId>
     		<artifactId>velocity</artifactId>

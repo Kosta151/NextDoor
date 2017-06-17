@@ -2,10 +2,13 @@ package kr.co.nextdoor.file.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class FileDTO {
 
 	private String file_no;
 	private String specifictask_no;
+	private String original_name;
 	private String file_name;
 	private Date file_date;
 	private String file_size;
@@ -21,6 +24,12 @@ public class FileDTO {
 	}
 	public void setSpecifictask_no(String specifictask_no) {
 		this.specifictask_no = specifictask_no;
+	}
+	public String getOriginal_name() {
+		return original_name;
+	}
+	public void setOriginal_name(String original_name) {
+		this.original_name = original_name;
 	}
 	public String getFile_name() {
 		return file_name;
@@ -39,6 +48,15 @@ public class FileDTO {
 	}
 	public void setFile_size(String file_size) {
 		this.file_size = file_size;
+	}
+	
+	private CommonsMultipartFile file;
+
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+	public void setFile(CommonsMultipartFile file) {
+		this.file = file;
 	}
 	
 }

@@ -21,12 +21,10 @@ public class ChatHandlerInterceptor extends HttpSessionHandshakeInterceptor {
 	@Override
 	public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
 			Map<String, Object> attributes) throws Exception {
-
-		System.out.println("Before handshake");
-		System.out.println("URI:" + request.getURI());
 		ServletServerHttpRequest sshr = (ServletServerHttpRequest) request;
 		HttpServletRequest req = sshr.getServletRequest();
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		attributes.put("project_no", req.getSession().getAttribute("project_no"));
 		attributes.put("user_id", user.getUsername());
 		return super.beforeHandshake(request, response, wsHandler, attributes);
 	}

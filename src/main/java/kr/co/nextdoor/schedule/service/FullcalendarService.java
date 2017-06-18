@@ -15,11 +15,12 @@ public class FullcalendarService {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public int fullcalendarProjectInsert(ProjectDTO projectDTO) throws Exception{
+	//수정중...
+	/*public int fullcalendarProjectInsert(ProjectDTO projectDTO) throws Exception{
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		projectDTO.setMember_id(user.getUsername());
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
 		return projectdao.insertFullcalendarProject(projectDTO);
-	}
+	}*/
 
 }

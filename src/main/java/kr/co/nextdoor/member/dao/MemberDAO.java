@@ -27,4 +27,6 @@ public interface MemberDAO {
 	* @return : void
 	*/
 	public void insertRole(String member_id);
+	
+	public int checkId(String member_id);
 }

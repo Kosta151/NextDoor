@@ -9,33 +9,61 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.nextdoor.workspace.dto.WorkspaceDTO;
 import kr.co.nextdoor.workspace.service.WorkspaceService;
 
+/*
+* @Class : WorkspaceController
+* @Date : 2017. 06. 13
+* @Author : 이재민
+* @Desc : workspace
+*/
+
 @Controller
 public class WorkspaceController {
 
 	@Autowired
 	private WorkspaceService service;
-
-	// 로그인후 워크스페이스 선택화면으로 이동
+	
+	/*
+    * @method Name : workspaceList
+    * @date : 2017. 06. 13
+    * @author : 이재민
+    * @description : 로그인 후 워크스페이스 선택화면으로 이동
+    */
 	@RequestMapping(value = "workspace.htm")
 	public String workspaceList(Model model) {
-		model.addAttribute("workspacelist", service.WorkspaceList());
+		model.addAttribute("workspacelist", service.listWorkspace());
 		return "login.workspace";
 	}
 
-	// 워크스페이스 추가화면으로 이동
+	/*
+    * @method Name : workspaceInsert
+    * @date : 2017. 06. 13
+    * @author : 이재민
+    * @description : 워크스페이스 추가화면으로 이동
+    */
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.GET)
 	public String workspaceInsert() {
+		
 		return "login.workspaceInsert";
 	}
-
-	// 워크스페이스 추가후 워크스페이스 선택화면으로 이동
+	
+	/*
+    * @method Name : workspaceInsert
+    * @date : 2017. 06. 13
+    * @author : 이재민
+    * @description : 워크스페이스 추가 후 워크스페이스 선택화면으로 이동
+    */ 
 	@RequestMapping(value = "workspaceInsert.htm", method = RequestMethod.POST)
 	public String workspaceInsert(WorkspaceDTO workspacedto) {
-		service.WorkspaceInsert(workspacedto);
+		service.insertWorkspace(workspacedto);
 		return "redirect:workspace.htm";
 	}
 	
-	// 워크스페이스 삭제후 워크스페이스 선택화면으로 이동
+	/*
+    * @method Name : workspaceDelete
+    * @date : 2017. 06. 15
+    * @author : 송지은
+    * @description : 워크스페이스 삭제 후 워크스페이스 선택화면으로 이동
+    */
 	@RequestMapping("workspaceDelete.htm")
 	public String workspaceDelete(int workspace_no) throws Exception{
 		service.deleteWorkspace(workspace_no);

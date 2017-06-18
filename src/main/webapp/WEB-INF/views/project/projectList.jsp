@@ -64,7 +64,6 @@
                                   <form action="insertProject.htm" method="post">
                                   <div class="modal-body">
                                       <p>프로젝트명</p>
-                                      	<input type="hidden" name="workspace_no" value="${workspace_no}">
 										<input type="text" name="project_name" placeholder="project명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 										<br>
 										<div class="btn-group" data-toggle="buttons">

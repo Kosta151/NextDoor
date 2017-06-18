@@ -81,6 +81,28 @@
                     {type: "block", label: "Regular event", }
                 ]
             });
+            
+            $.ajax({
+    			url : "tasklist.htm",
+    			type : "post",
+    			dataType : "json",
+    			success : function(data){
+    				console.log(data);
+    				alert("success");
+    				
+    				$.each(data.data , function(index,obj){
+    					console.log(obj);
+    					console.log(obj.task_cont);
+    					$("#ajaxtest").append("<div>"); 
+    					 $("#ajaxtest").append(obj.task_cont);
+    					 $("#ajaxtest").append("</div>"); 
+    				});
+    				
+    			},
+    			error : function(){
+    				alert("error")
+    			}
+    		});
         });
         
         
@@ -91,5 +113,6 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
+    
 </body>
 </html> 

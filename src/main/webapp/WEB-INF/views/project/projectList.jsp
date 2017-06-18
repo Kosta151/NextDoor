@@ -28,9 +28,10 @@
 								var myDoughnut = new Chart(document.getElementById("${list.project_name}").getContext("2d")).Doughnut(doughnutData);
 							</script>
 							<p class="user">70%</p>
-							<form action="task.htm" method="post">
+							<%-- <form action="task.htm" method="post">
 								<button type="submit" name="project_no" value="${list.project_no}">업무보기</button>
-							</form>
+							</form> --%>
+							<button ><a href="task.htm?project_no=${list.project_no}">업무보기</a></button>
 							</div>
 						</div><!-- /col-md-4 -->
 						</c:forEach>

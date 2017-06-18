@@ -74,23 +74,5 @@ public interface ProjectDAO {
     * @return : int
     */
 	public int sendProjectMember(ProjectDTO projectDTO) throws Exception;
-	
-	/*
-    * @method Name : insertFullcalendarProject
-    * @date : 2017. 06.
-    * @author : 최성용
-    * @description : 캘린더 프로젝트 생성
-    * @return : int
-    */
-    public int insertFullcalendarProject(ProjectDTO projectDTO)throws Exception;
-    
-    /*
-     * @method Name : fullcalendarProjectList
-     * @date : 2017. 06.
-     * @author : 최성용
-     * @description : 캘린더 프로젝트 전체 리스트
-     * @return : ArrayList
-     */
-    public ArrayList<ProjectDTO> fullcalendarProjectList()throws Exception;
 
 }

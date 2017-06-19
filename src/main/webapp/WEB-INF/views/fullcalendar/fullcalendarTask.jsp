@@ -6,16 +6,42 @@
 <head>
 <meta charset="UTF-8">
 <!-- DatePicker(jQuery UI) -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link href="resources/main/assets/js/fullcalendar/jquery-ui.css" rel="stylesheet" />
+<link href="resources/main/assets/js/fullcalendar/jquery-ui.theme.css" rel="stylesheet" />
+<link href="resources/main/assets/js/fullcalendar/jquery-ui.structure.css" rel="stylesheet" />
+<link href="resources/main/assets/js/fullcalendar/jquery-ui.min.css" rel="stylesheet" />
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<script type="text/javascript">
-   
-</script>
+<!-- <script type="text/javascript">
+$(document).ready(function () {
+    
+    $.ajax({
+		url : "fullcalendartasklist.htm",
+		type : "post",
+		dataType : "json",
+		success : function(data){
+			console.log(data);
+			alert("success");
+			
+			$.each(data.data , function(index,obj){
+				console.log(obj);
+				console.log(obj.task_cont);
+				$("#ajaxtest").append("<div>"); 
+				 $("#ajaxtest").append(obj.task_cont);
+				 $("#ajaxtest").append("</div>"); 
+			});
+			
+		},
+		error : function(){
+			alert("error")
+		}
+	});
+});
+</script> -->
 <style>
    body {
       margin: 40px 10px;
@@ -53,23 +79,31 @@
                               <div class="modal-content">
                                   <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                      <h4 class="modal-title">새 프로젝트 생성</h4>
+                                      <h4 class="modal-title">업무 생성</h4>
                                   </div>
-                                  <form action="insertProject.htm" method="post">
+                                  <form action="insertfullcalendartask.htm" method="post">
                                   <div class="modal-body">
-                                      <p>프로젝트명</p>
-                                      	<input type="hidden" name="workspace_no" value="${workspace_no}">
-										<input type="text" name="project_name" placeholder="project명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
-										<br>
-										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-default">
-												<input type="radio" name="options" value="public" autocomplete="off" checked> 공개
-											</label>
-											<label class="btn btn-default">
-												<input type="radio" name="options" value="private" autocomplete="off"> 비공개
-											</label>
-										</div>
+                                  <select name="task_no">
+	                                		 <option selected="selected">업무를 선택해주세요</option>
+	                                 <c:forEach items="${tasklist}" var="list">
+	                               		 <option value="${list.task_no}">${list.task_cont}</option>
+	                                 </c:forEach>
+									</select>
+                                      <p>상세 업무명</p>                                  
+										<input type="text" name="specifictask_cont" placeholder="상세업무명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
+										<br> 
+									<select name="member_id">
+	                                		 <option selected="selected">업무 배정할 인원을 선택하세요</option>
+	                                 <c:forEach items="${memberlist}" var="mlist">
+	                               		 <option value="${mlist.member_id}"> ${mlist.member_id}</option>
+	                                 </c:forEach>
+									</select>
+										<!-- 왜 얘만 하면 404 가 뜨지?????????????????????????????????????????? -->
+										<!--  <input type="text"  name="specifictask_start" placeholder="일정의 시작"><br> 
+                 						 <input type="text"  name="specifictask_end" id="specifictask_end" placeholder="일정의 마지막"><br>  -->
                                   </div>
+                                  <input type="text"  name="specifictask_start"  id="specifictask_start" placeholder="일정의 시작"><br> 
+                 				  <input type="text"  name="specifictask_end" id="specifictask_end" placeholder="일정의 마지막"><br> 
                                   <div class="modal-footer centered">
                                       <button class="btn btn-warning" type="submit">생성</button>
                                       <button data-dismiss="modal" class="btn btn-default" type="button">취소</button>

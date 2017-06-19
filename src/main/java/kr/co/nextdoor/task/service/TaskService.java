@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
+import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.task.dao.TaskDAO;
 import kr.co.nextdoor.task.dto.TaskDTO;
 import kr.co.nextdoor.workspace.dao.WorkspaceDAO;
@@ -32,6 +33,14 @@ public class TaskService {
 		
 		return result;
 		
+	}
+	
+	//프로젝트 초대된 맴버 리스트
+	public List<MemberDTO> MemberList(String project_no){
+		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		List<MemberDTO> mlist  =taskdao.memberList(project_no);
+		System.out.println(mlist);
+		return mlist;	
 	}
 
 }

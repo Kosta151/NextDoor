@@ -2,12 +2,11 @@ package kr.co.nextdoor.schedule.service;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
-import kr.co.nextdoor.project.dao.ProjectDAO;
-import kr.co.nextdoor.project.dto.ProjectDTO;
+import kr.co.nextdoor.schedule.dao.FullcalendarDAO;
+import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
+import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 
 @Service
 public class FullcalendarService {
@@ -15,12 +14,29 @@ public class FullcalendarService {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	//수정중...
-	/*public int fullcalendarProjectInsert(ProjectDTO projectDTO) throws Exception{
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		projectDTO.setMember_id(user.getUsername());
-		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-		return projectdao.insertFullcalendarProject(projectDTO);
+		//업무명 보여주기
+	/*	public List<TaskDTO> TaskList(String project_no){
+		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		List<TaskDTO> list = taskdao.listTasks(project_no);
+		return list;
+		
 	}*/
+		
+	//세부업무 추가
+		public int SpecificTaskInsert(SpecificTaskDTO specifictaskdto) throws Exception{
+		FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
+		int result = fullcalendardao.insertFullcalendarSpecificTask(specifictaskdto);
+		return result;
+		
+	}
+		
+	//세부업무 수정추가
+		public int SpecificModiTaskInsert(SpecificTaskModiDTO specificmoditaskdto){
+			FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
+			int result = fullcalendardao.insertFullcalendarSpecificModiTask(specificmoditaskdto);
+			return result;
+		}
+		
+		
 
 }

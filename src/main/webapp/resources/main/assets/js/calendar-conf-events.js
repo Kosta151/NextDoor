@@ -137,15 +137,15 @@ var Script = function () {
    });*/
    
         
-   /* 
-    $('#start').datepicker({
+   
+    $('#specifictask_start').datepicker({
        dateFormat: "yy-mm-dd"
     });
-    $('#end').datepicker({
+    $('#specifictask_end').datepicker({
        dateFormat: "yy-mm-dd"
        
     });
-    */
+    
    
 
 

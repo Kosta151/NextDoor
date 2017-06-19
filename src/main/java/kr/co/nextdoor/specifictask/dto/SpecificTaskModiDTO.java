@@ -1,14 +1,12 @@
 package kr.co.nextdoor.specifictask.dto;
 
-import java.util.Date;
-
 public class SpecificTaskModiDTO {
 	
 	private String specifictaskmodi_no;
 	private String specifictask_no;
 	private String member_id;
-	private Date specifictask_start;
-	private Date specifictask_end;
+	private String specifictask_start;
+	private String specifictask_end;
 	private String specifictask_comp;
 	
 	public String getSpecifictaskmodi_no() {
@@ -29,16 +27,16 @@ public class SpecificTaskModiDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public Date getSpecifictask_start() {
+	public String getSpecifictask_start() {
 		return specifictask_start;
 	}
-	public void setSpecifictask_start(Date specifictask_start) {
+	public void setSpecifictask_start(String specifictask_start) {
 		this.specifictask_start = specifictask_start;
 	}
-	public Date getSpecifictask_end() {
+	public String getSpecifictask_end() {
 		return specifictask_end;
 	}
-	public void setSpecifictask_end(Date specifictask_end) {
+	public void setSpecifictask_end(String specifictask_end) {
 		this.specifictask_end = specifictask_end;
 	}
 	public String getSpecifictask_comp() {
@@ -47,5 +45,4 @@ public class SpecificTaskModiDTO {
 	public void setSpecifictask_comp(String specifictask_comp) {
 		this.specifictask_comp = specifictask_comp;
 	}
-
 }

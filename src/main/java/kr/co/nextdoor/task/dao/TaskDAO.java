@@ -2,6 +2,7 @@ package kr.co.nextdoor.task.dao;
 
 import java.util.List;
 
+import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.task.dto.TaskDTO;
 
 public interface TaskDAO {
@@ -14,5 +15,7 @@ public interface TaskDAO {
 	public int updateTask(TaskDTO taskdto);
 	//업무 입력
 	public int insertTask(TaskDTO taskdto);
+	//초대된 멤버들
+	public List<MemberDTO> memberList(String project_no);
 	
 }

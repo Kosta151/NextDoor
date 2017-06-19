@@ -1,5 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+		<script>
+
+	var sock;
+	$(function() {
+		  
+		  sock.onopen = function(){
+		
+		  };
+		  sock.onmessage = function(event){
+				 var msg = JSON.parse(event.data)
+				 var loginuser = "${loginUser}";
+				if(msg.alarm_receiver=loginuser){
+					$("#top_menu").append("<div>"+msg.message+"</div>");
+					
+				}
+			 }
+			
+		
+	});		
+
+</script>
+	
+	
+	
 <!--header start-->
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
@@ -93,7 +118,7 @@
                     <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-theme">5</span>
+                            <span class="badge bg-theme">4</span>
                         </a>
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-green"></div>

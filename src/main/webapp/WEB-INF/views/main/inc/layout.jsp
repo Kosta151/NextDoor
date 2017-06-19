@@ -87,25 +87,48 @@
     			type : "post",
     			dataType : "json",
     			success : function(data){
-    				console.log(data);
-    				alert("success");
-    				
     				$.each(data.data , function(index,obj){
-    					console.log(obj);
-    					console.log(obj.task_cont);
-    					$("#ajaxtest").append("<div>"); 
-    					 $("#ajaxtest").append(obj.task_cont);
+    					
+    					 
+    					 $("#ajaxtest").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; float:left; ' class='tasktext'>");
+    					 $("#"+obj.task_no+"task").append(obj.task_cont);
     					 $("#ajaxtest").append("</div>"); 
+    					
+    					 $.ajax({
+    						 url : "specifictask.htm",
+    						 type : "post",
+    						 data : {task_no : obj.task_no},
+    						 dataType : "json",
+    						 success : function(data){
+    							 var speicficcont="";
+    							
+    							 $.each(data.data, function(spindex, spobj){
+    								 if(obj.task_no=spobj.task_no){
+    									 
+    									 speicficcont="<div class='task-title-sp'>"
+    									 	  + spobj.specifictask_cont
+    									 	  +"</div>"
+    										 spobj.specifictask_cont + "<br>";
+    									 $("#ajaxspecific").append("<div>");
+    									 $("#"+obj.task_no+"task").append(speicficcont); 
+    									 $("#ajaxspecific").append("</div>");
+    								 }
+    							 });
+    						 },
+    						 error : function(){
+    							alert("error");
+    						 }
+    					 });
+    					 
+    					 
     				});
-    				
     			},
     			error : function(){
     				alert("error")
     			}
     		});
         });
-        
-        
+
         function myNavFunction(id) {
             $("#date-popover").hide();
             var nav = $("#" + id).data("navigation");

@@ -13,7 +13,7 @@ public interface SpecificTaskDAO {
 	//업무 배정
 	public int giveTask(SpecificTaskDTO specifictaskdto);
 	//전체 추가업무리스트
-	public List<SpecificTaskDTO> getSpecifictasks(SpecificTaskDTO specifictaskdto);
+	public List<SpecificTaskDTO> listSpecifictask(String task_no);
 	//추가업무 수정
 	public int updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto);
 	//추가업무 삭제

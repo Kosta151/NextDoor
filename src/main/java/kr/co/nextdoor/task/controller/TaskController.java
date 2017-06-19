@@ -32,7 +32,6 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value = "tasklist.htm", method=RequestMethod.POST)
-	
 	public View listTask(Model model, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
 		

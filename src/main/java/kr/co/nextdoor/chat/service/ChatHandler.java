@@ -14,19 +14,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ChatHandler extends TextWebSocketHandler {
 
-	//프로젝트 정보를 담고 있는 맵
-	private static Map<String, Object> projectmember;
-	//웹소켓 사용자 리스트
 	private List<WebSocketSession> connectedUsers;
+	
+	//프로젝트 정보를 담고 있는 맵 key=group번호, data=그룹에 접속한 웹소켓 세션리스트
+	private static Map<String, Object> projectmember;
 
+    static{
+    	projectmember = new HashMap<String, Object>();
+    }
 	//생성자 초기화
 	public ChatHandler(){
-		projectmember = new HashMap<String, Object>();
+		
 		connectedUsers = new ArrayList<WebSocketSession>();
 	}
 	
-	@SuppressWarnings("unchecked")
+	//map에서 key를 통해  group 번호에 connectUsers리스트를 가져온후 -> websocketsession을 connectUsers에 추가
 	@Override
+	@SuppressWarnings("unchecked")
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		Map<String, Object> map = session.getAttributes();
 		String user_id = (String)map.get("user_id");
@@ -34,15 +38,21 @@ public class ChatHandler extends TextWebSocketHandler {
 		System.out.println("접속ID : " + user_id);
 		System.out.println("채팅접속프로젝트번호 : " + project_no);
 		
+		//project_no로 생성되어 있는 채팅방이 없으면 새로운 배열을 생성해주고
+		System.out.println("Map에 Key값이 있는지 확인 2번째 접속부턴 true"+projectmember.containsKey(project_no));
+		System.out.println("Map이 비어있는지 확인 비어있으면 True" + projectmember.isEmpty());
 		if(!projectmember.containsKey(project_no)){
+			System.out.println("Map에 있는 Key의 size 배열 넣기 전 : " + projectmember.size());
 			projectmember.put(project_no, new ArrayList<WebSocketSession>());
+			System.out.println("Map에 있는 Key의 size 배열 넣은 후 : " + projectmember.size());
 		}
 			List<WebSocketSession> conn = (List<WebSocketSession>) projectmember.get(project_no);
 			conn.add(session);
+			System.out.println(project_no +" / "+ conn.iterator() + "/" + projectmember.toString());
 			projectmember.put(project_no, conn);
+			System.out.println("Map에 Session을 넣은 후 Map size : " + projectmember.size());
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		Map<String, Object> map = session.getAttributes();
@@ -54,17 +64,15 @@ public class ChatHandler extends TextWebSocketHandler {
 		System.out.println("Group 번호 : "+project_no);
 		System.out.println("메시지 : "+message.getPayload());		
 		System.out.println("------------------------------");
-		System.out.println();
+	
 		List<WebSocketSession> conn = (List<WebSocketSession>) projectmember.get(project_no);
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("user_id", user_id);
 		data.put("message", message.getPayload());
 		ObjectMapper om = new ObjectMapper();
-		 String jsonStr = om.writeValueAsString(data);
+		String jsonStr = om.writeValueAsString(data);
 		for(WebSocketSession webSocketSession : conn){
-			if(!session.getId().equals(webSocketSession)){
-				webSocketSession.sendMessage(new TextMessage(jsonStr));		
-			}
+			webSocketSession.sendMessage(new TextMessage(jsonStr));		
 		}
 	}
 	
@@ -90,6 +98,7 @@ public class ChatHandler extends TextWebSocketHandler {
 		String jsonStr = om.writeValueAsString(data);
 		for(WebSocketSession webSocketSession : conn){
 			if(!session.getId().equals(webSocketSession)){
+				
 				webSocketSession.sendMessage(new TextMessage(jsonStr));		
 			}
 		}

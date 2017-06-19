@@ -3,6 +3,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <sec:authentication property="name" var="loginUser" />
+    <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
+<script src="resources/sockjs-0.3.js"></script>
+
 <script>
 
 
@@ -13,7 +16,7 @@ var sock;
 $(function() {
 	//소켓 url을 chat-sock으로 설정 후 소켓 생성
 	console.log("opening websocket");
-	sock = new SockJS("http://" +document.domain + ":8090/nextdoor/socket.htm");
+	sock = new SockJS("http://" +document.domain + ":8090/nextdoor/chat-ws");
 	
 	//접속 이벤트 발생 시 메시지 전송
 	sock.onopen = function() {
@@ -69,7 +72,32 @@ $(function() {
 
 
 </script>
-                 
+
+     <section id="main-content">
+          <section class="wrapper site-min-height">
+              <!-- page start-->
+              <div class="chat-room mt">
+                  <aside class="right-side">
+                      <div class="invite-row">
+                          <h4 class="pull-left">Team Members</h4>
+                          <a href="#" class="btn btn-theme04 pull-right">+ Invite</a>
+                      </div>
+                      <ul class="chat-available-user">
+                          <li>
+                              <a href="chat_room.html">
+                                  Paul Brown
+                                  <span class="text-muted">1h:02m</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="chat_room.html">
+                                  David Duncan
+                                  <span class="text-muted">1h:08m</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </aside>
+
             <div id="userList">
             	<aside class="mid-side">
               		<div class="chat-room-head">
@@ -90,4 +118,5 @@ $(function() {
                   <input type="hidden" id="nickname" value="${loginUser}">   
              </div>
              	 <!-- page end-->			
-
+        </section>
+     </section><!-- /MAIN CONTENT -->

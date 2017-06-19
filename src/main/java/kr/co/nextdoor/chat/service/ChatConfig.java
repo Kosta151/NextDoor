@@ -21,7 +21,7 @@ public class ChatConfig extends WebMvcConfigurerAdapter implements WebSocketConf
 	
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		
-		registry.addHandler(chatWebSocketHandler(), "/socket.htm").addInterceptors(new ChatHandlerInterceptor())
+		registry.addHandler(chatWebSocketHandler(), "/chat-ws").addInterceptors(new ChatHandlerInterceptor())
 				.withSockJS();
 	}
 

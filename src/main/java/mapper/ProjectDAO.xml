@@ -4,46 +4,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.nextdoor.project.dao.ProjectDAO">
 
-	<!-- 프로젝트 목록 보기 -->
-	<select id="listProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-		select p.project_name, p.project_no
-		from project p join workspace w join projectmember m
-		on w.workspace_no = p.workspace_no and w.member_id = p.member_id and p.project_no = m.project_no
-		where m.member_id = #{member_id} and w.workspace_no = #{workspace_no};
-	</select>
-	
-	<!-- 프로젝트 추가 -->
-	<insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
-		insert into project(project_name, workspace_no, member_id, public) 
-		values(#{project_name}, #{workspace_no}, #{member_id}, 1)
-	</insert>
-	
-	<!-- 프로젝트에 멤버추가(프로젝트 만들면서) -->
-	<insert id="insertProjectMember">
-		insert into projectmember(member_id, project_no) values(#{member_id}, (select project_no from project where workspace_no=#{workspace_no} and project_name=#{project_name}))
-	</insert>
-	
-	<insert id="insertProjectModi">
-		insert
-		into projectmodi(projectmodi_no, project_no, project_start, project_end)
-		values(#{projectmodi_no}, #{project_no}, #{project_start}, #{project_end})
-	</insert>
-	
-	<update id="updateProject">
-		update project
-		set project_name = #{project_name}
-		where project_no = #{project_no}
-	</update>
-	
-	<update id="updateProjectModi">
-		update projectmodi
-		set project_start = #{project_start},
-			project_end = #{project_end}
-		where projectmodi_no = #{projectmodi_no}
+   <!-- 프로젝트 목록 보기 -->
+   <select id="listProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
+      select p.project_name, p.project_no
+      from project p join workspace w join projectmember m
+      on w.workspace_no = p.workspace_no and w.member_id = p.member_id and p.project_no = m.project_no
+      where m.member_id = #{member_id} and w.workspace_no = #{workspace_no};
+   </select>
+   
+   <!-- 프로젝트 추가 -->
+   <insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
+      insert into project(project_name, workspace_no, member_id, public) 
+      values(#{project_name}, #{workspace_no}, #{member_id}, 1)
+   </insert>
+   
+   <!-- 프로젝트에 멤버추가(프로젝트 만들면서) -->
+   <insert id="insertProjectMember">
+      insert into projectmember(member_id, project_no) values(#{member_id}, (select project_no from project where workspace_no=#{workspace_no} and project_name=#{project_name}))
+   </insert>
+   
+   <insert id="insertProjectModi">
+      insert
+      into projectmodi(project_no, project_start, project_end)
+      values(#{project_no}, #{project_start}, #{project_end})
+   </insert>
+   
+   <update id="updateProject">
+      update project
+      set project_name = #{project_name}
+      where project_no = #{project_no}
+   </update>
+   
+   <update id="updateProjectModi">
+      update projectmodi
+      set project_start = #{project_start},
+         project_end = #{project_end}
+      where projectmodi_no = #{projectmodi_no}
     </update>
-	
-	<delete id="deleteProject">
-		delete from project where project_no = #{project_no}
-	</delete>
-	
+   
+   <delete id="deleteProject">
+      delete from project where project_no = #{project_no}
+   </delete>
+   
 </mapper>

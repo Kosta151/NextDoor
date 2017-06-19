@@ -68,7 +68,17 @@ a, a:hover, a:focus {
 	text-decoration: none;
 }	
 
-
+/* tasklist */
+.tasktext{
+	color: white;
+	font-size: xx-large;
+	width:25%;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.tasktext:hover {
+	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
+	
+}
 
 /*Theme Backgrounds*/
 

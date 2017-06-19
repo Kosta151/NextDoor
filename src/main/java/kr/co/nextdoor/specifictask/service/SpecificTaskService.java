@@ -1,23 +1,44 @@
 package kr.co.nextdoor.specifictask.service;
 
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.co.nextdoor.specifictask.dao.SpecificTaskDAO;
+import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import kr.co.nextdoor.file.dto.FileDTO;
-import kr.co.nextdoor.specifictask.dao.SpecificTaskDAO;
+
+
 
 @Service
 public class SpecificTaskService {
 	
 	@Autowired
-	private SqlSession sqlsession;
+
+	SqlSession sqlsession;
+	
+	
+	
+	public List<SpecificTaskDTO> listSpecificTask(String task_no){
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		List<SpecificTaskDTO> specifictasklist = specifictaskdao.listSpecifictask(task_no);	
+		return specifictasklist;
+	}
+
+
+
 	
 	public int UploadFile(FileDTO filedto, CommonsMultipartFile file, HttpServletRequest request) throws IOException{
 		
@@ -45,4 +66,4 @@ public class SpecificTaskService {
 		return result;
 	}
 }
-;
+

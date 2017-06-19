@@ -121,3 +121,9 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/java,maven,eclipse,windows
 
+src/main/java/kr/co/nextdoor/schedule/dao/FullcalendarDAO.java
+src/main/java/mapper/FullcalendarDAO.xml
+src/main/webapp/resources/main/assets/js/fullcalendar/jquery-ui.css
+src/main/webapp/resources/main/assets/js/fullcalendar/jquery-ui.min.css
+src/main/webapp/resources/main/assets/js/fullcalendar/jquery-ui.structure.css
+src/main/webapp/resources/main/assets/js/fullcalendar/jquery-ui.theme.css

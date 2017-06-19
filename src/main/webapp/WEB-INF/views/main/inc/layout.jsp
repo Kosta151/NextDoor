@@ -87,11 +87,15 @@
     			type : "post",
     			dataType : "json",
     			success : function(data){
+    				var taskcont = "";
+    							
     				$.each(data.data , function(index,obj){
-    					
+    					taskcont = "<div class='taskcont'>"
+    							 + obj.task_cont
+    							 + "</div>";
     					 
-    					 $("#ajaxtest").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; float:left; ' class='tasktext'>");
-    					 $("#"+obj.task_no+"task").append(obj.task_cont);
+    					 $("#ajaxtest").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; float:left; ' class='taskbox'>");
+    					 $("#"+obj.task_no+"task").append(taskcont);
     					 $("#ajaxtest").append("</div>"); 
     					
     					 $.ajax({
@@ -105,7 +109,7 @@
     							 $.each(data.data, function(spindex, spobj){
     								 if(obj.task_no=spobj.task_no){
     									 
-    									 speicficcont="<div class='task-title-sp'>"
+    									 speicficcont="<div class='specifictaskbox'>"
     									 	  + spobj.specifictask_cont
     									 	  +"</div>"
     										 spobj.specifictask_cont + "<br>";

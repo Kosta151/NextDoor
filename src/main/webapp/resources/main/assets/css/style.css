@@ -69,14 +69,42 @@ a, a:hover, a:focus {
 }	
 
 /* tasklist */
-.tasktext{
-	color: white;
-	font-size: xx-large;
+.taskbox{
+	border-radius:10px;
 	width:25%;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
-.tasktext:hover {
-	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
+
+.taskcont {
+	border-radius:10px;
+	text-align: center;
+	background-color : #ffd777;
+	color : white;
+	font-size : xx-large;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
+	
+}
+
+.taskcont:HOVER {
+	
+	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
+	
+}
+
+.specifictaskbox{
+	border-radius:10px;
+	text-align: center;
+	background-color : D7D4E4;
+	color : 3F3C4A;
+	font-size : xx-large;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	
+}
+
+.specifictaskbox:HOVER {
+	
+	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
 	
 }
 

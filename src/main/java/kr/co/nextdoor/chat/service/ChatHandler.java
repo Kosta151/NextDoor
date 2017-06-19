@@ -2,7 +2,6 @@ package kr.co.nextdoor.chat.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,54 +14,63 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ChatHandler extends TextWebSocketHandler {
 
-	/*
-	 * WebSocketSession Á¢¼ÓÇÑ È¸¿ø ¸®½ºÆ®
-	 */
+	//í”„ë¡œì íŠ¸ ì •ë³´ë¥¼ ë‹´ê³  ìˆëŠ” ë§µ
+	private static Map<String, Object> projectmember;
+	//ì›¹ì†Œì¼“ ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸
+	private List<WebSocketSession> connectedUsers;
 
-	static List<WebSocketSession> connectedUsers = new ArrayList<WebSocketSession>();
-
+	//ìƒì„±ì ì´ˆê¸°í™”
+	public ChatHandler(){
+		projectmember = new HashMap<String, Object>();
+		connectedUsers = new ArrayList<WebSocketSession>();
+	}
+	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		System.out.println("Á¢¼ÓÇÑ IP : " + session.getRemoteAddress().getHostName());
-		connectedUsers.add(session);
-		// È¸¿øÀÌ Á¢¼ÓÇÏ¸é Á¢¼ÓÀ¯Àú¼¼¼Ç¸®½ºÆ®¿¡ ¼¼¼Ç Ãß°¡
+		Map<String, Object> map = session.getAttributes();
+		String user_id = (String)map.get("user_id");
+		String project_no = (String)map.get("project_no");
+		System.out.println("ì ‘ì†ID : " + user_id);
+		System.out.println("ì±„íŒ…ì ‘ì†í”„ë¡œì íŠ¸ë²ˆí˜¸ : " + project_no);
+		
+		if(!projectmember.containsKey(project_no)){
+			projectmember.put(project_no, new ArrayList<WebSocketSession>());
+		}
+			List<WebSocketSession> conn = (List<WebSocketSession>) projectmember.get(project_no);
+			conn.add(session);
+			projectmember.put(project_no, conn);
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		connectedUsers.remove(session);
-		// È¸¿øÀÌ Á¢¼ÓÀ» Á¾·áÇÏ¸é Á¢¼ÓÀ¯Àú¼¼¼Ç¸®½ºÆ®¿¡¼­ ¼¼¼Ç Á¦°Å
 	}
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		Map<String, Object> map = session.getAttributes();
-		String user_id = (String) map.get("user_id");
+		String user_id = (String)map.get("user_id");
+		String project_no = (String)map.get("project_no");
+		System.out.println("----------ê·¸ë£¹ ì±„íŒ…ë°©-------------");
+		System.out.println("user ì´ë¦„ : "+user_id);
+		System.out.println("Group ë²ˆí˜¸ : "+project_no);
+		System.out.println("ë©”ì‹œì§€ : "+message.getPayload());		
+		System.out.println("------------------------------");
+		List<WebSocketSession> conn = (List<WebSocketSession>) projectmember.get(project_no);
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("user_id", user_id);
 		data.put("message", message.getPayload());
-		System.out.println(user_id + "/" + message.getPayload()); // ID¿Í ¸Ş¼¼Áö
-
 		ObjectMapper om = new ObjectMapper();
-		String jsonStr = om.writeValueAsString(data);
-		System.out.println(connectedUsers.size()); // connectedUsers ¹è¿­ÀÇ »çÀÌÁî¸¦
-													// º½(¸î¸íÀÌ ¿¬°áµÇ¾îÀÖ´ÂÁö)
-		for (WebSocketSession webSocketSession : connectedUsers) {
-			if (!session.getId().equals(webSocketSession)) {
-				System.out.println(session.getId() + "//" + webSocketSession); // ¼¼¼Ç¿¡
-																				// ÀÖ´Â
-																				// ¾ÆÀÌµğµé¿¡
-																				// FOR¹®
-																				// µ¹¸é¼­..
-				webSocketSession.sendMessage(new TextMessage(jsonStr));
+		 String jsonStr = om.writeValueAsString(data);
+		for(WebSocketSession webSocketSession : conn){
+			if(!session.getId().equals(webSocketSession)){
+				webSocketSession.sendMessage(new TextMessage(jsonStr));		
 			}
 		}
-		// ¼ÒÄÏ ¸Ş¼¼Áö°¡ ¿ÔÀ»½Ã Ã³¸® sendMessage : jsonTypeÀÇ À¯ÀúÁ¤º¸ + ¸Ş¼¼Áö
 	}
 
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-		// ¿¡·¯Ã³¸®
 		super.handleTransportError(session, exception);
 	}
 

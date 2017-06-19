@@ -1,5 +1,10 @@
 package kr.co.nextdoor.project.dto;
-
+/*
+* @Class : ProjectDTO
+* @Date : 2017. 06. 13
+* @Author : 송지은
+* @Desc : projectDTO
+*/
 public class ProjectDTO {
 	private String project_no;
 	private String project_name;

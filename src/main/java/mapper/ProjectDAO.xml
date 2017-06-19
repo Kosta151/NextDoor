@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="kr.co.nextdoor.project.dao.ProjectDAO">
 
 	<!-- 프로젝트 목록 보기 -->
-	<select id="projectList" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
+	<select id="listProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
 		select p.project_name, p.project_no
 		from project p join workspace w join projectmember m
 		on w.workspace_no = p.workspace_no and w.member_id = p.member_id and p.project_no = m.project_no

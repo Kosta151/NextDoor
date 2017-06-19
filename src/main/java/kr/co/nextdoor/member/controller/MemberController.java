@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.member.service.MemberService;
@@ -16,9 +17,9 @@ import kr.co.nextdoor.member.service.MemberService;
 */
 @Controller
 public class MemberController {
-
+	
 	@Autowired
-	private MemberService service;
+	private MemberService memberservice;
 
 	/*
 	* @method Name : login
@@ -54,7 +55,23 @@ public class MemberController {
 	*/
 	@RequestMapping(value = "join.htm", method = RequestMethod.POST)
 	public String join(MemberDTO memberdto) {
-		service.insertMember(memberdto);
+		memberservice.insertMember(memberdto);
 		return "login.login";
 	}
+	
+	/*
+	* @method Name : checkId
+	* @date : 2017. 06. 18
+	* @author : 김선화
+	* @description : 아이디 중복체크
+	* @param : String
+	* @return : @ResponseBody
+	*/
+	@RequestMapping(value="checkId.htm", method = RequestMethod.POST)
+	public @ResponseBody String checkId(String member_id) throws Exception {
+		
+		return memberservice.checkId(member_id);
+	}
+	
+	
 }

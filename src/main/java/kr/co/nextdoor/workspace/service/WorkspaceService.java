@@ -10,31 +10,56 @@ import org.springframework.stereotype.Service;
 
 import kr.co.nextdoor.workspace.dao.WorkspaceDAO;
 import kr.co.nextdoor.workspace.dto.WorkspaceDTO;
-
+/*
+* @Class : WorkspaceService
+* @Date : 2017. 06. 
+* @Author : 이재민
+* @Desc : workspace controller에 대한 service
+*/
 @Service
 public class WorkspaceService {
 
 	@Autowired
 	private SqlSession sqlsession;
 
-	// 워크스페이스 리스트
-	public List<WorkspaceDTO> WorkspaceList() {
+   /*
+    * @method Name : listWorkspace
+    * @date : 2017. 06. 
+    * @author : 이재민
+    * @description : workspace 목록
+    * @return : List
+    */
+	public List<WorkspaceDTO> listWorkspace() {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
-		return workspacedao.workspacelist(user.getUsername());
+		return workspacedao.listWorkspace(user.getUsername());
 	}
 
-	// 워크스페이스 추가
-	public int WorkspaceInsert(WorkspaceDTO workspacedto) {
+	/*
+    * @method Name : insertWorkspace
+    * @date : 2017. 06. 
+    * @author : 이재민
+    * @description : workspace 생성
+    * @param : workspacedto
+    * @return : int
+    */
+	public int insertWorkspace(WorkspaceDTO workspacedto) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		workspacedto.setMember_id(user.getUsername());
 		WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
-		return workspacedao.workspaceinsert(workspacedto);
+		return workspacedao.insertWorkspace(workspacedto);
 	}
 	
-	// 워크스페이스 삭제
+	/*
+    * @method Name : deleteWorkspace
+    * @date : 2017. 06. 
+    * @author : 이재민
+    * @description : workspace 삭제
+    * @param : workspace_no
+    * @return : int
+    */
 	public int deleteWorkspace(int workspace_no) throws Exception{
-		WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
-		return workspacedao.deleteWorkspace(workspace_no);
+			WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
+			return workspacedao.deleteWorkspace(workspace_no);
 	}
 }

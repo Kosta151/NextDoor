@@ -39,4 +39,25 @@ public class MemberService {
 		memberdao.insertRole(memberdto.getMember_id());
 		return;
 	}
+	
+	/*
+	* @method Name : checkId
+	* @date : 2017. 06. 18
+	* @author : 김선화
+	* @description : id중복체크
+	* @param : String
+	* @return : String
+	*/
+	public String checkId(String member_id) throws Exception {
+		String result;
+		MemberDAO memberdao = sqlSession.getMapper(MemberDAO.class);
+		if (memberdao.checkId(member_id) > 0) {
+			result = "false"; // 아이디사용불가
+			System.out.println(result);
+		} else {
+			result = "true"; // 아이디사용가능
+			System.out.println(result);
+		}
+		return result;
+	}
 }

@@ -21,12 +21,12 @@ public class fullcalendarController {
 	
 	//캘린더 프로젝트 목록 보기
 	//캘린더 프로젝트 생성
-	@RequestMapping(value="insertFullcalendarProject.htm", method=RequestMethod.POST)
+	/*@RequestMapping(value="insertFullcalendarProject.htm", method=RequestMethod.POST)
 	public String fullcalendarProjectInsert(ProjectDTO projectdto) throws Exception{
 		System.out.println("캘린더에 프로젝트 삽입");
 		service.fullcalendarProjectInsert(projectdto);
 		return "fullcalendar.fullcalendarTask";
 			
-	}
+	}*/
 	
 }

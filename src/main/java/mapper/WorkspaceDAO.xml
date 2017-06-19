@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
-		<select id="workspacelist"  resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
+		<select id="listWorkspace"  resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
 			select distinct work.workspace_name, work.workspace_no
 			from workspace work left join (select p.workspace_no, m.member_id 
 			from project p join projectmember m
@@ -12,7 +12,7 @@
 			on work.workspace_no=pro.workspace_no
 			where work.member_id=#{member_id} or pro.member_id=#{member_id} 
 		</select>
-		<insert id="workspaceinsert">
+		<insert id="insertWorkspace">
 			insert into workspace(workspace_name, member_id) values(#{workspace_name}, #{member_id})
 		</insert>
 		<delete id="deleteWorkspace">

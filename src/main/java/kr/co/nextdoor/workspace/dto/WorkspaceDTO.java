@@ -1,5 +1,11 @@
 package kr.co.nextdoor.workspace.dto;
 
+/*
+* @Class : WorkspaceDTO
+* @Date : 2017. 06. 13
+* @Author : 이재민
+* @Desc : workspaceDTO
+*/
 public class WorkspaceDTO {
 	private String workspace_no;
 	private String workspace_name;

@@ -47,12 +47,12 @@
 		<beans:property name="order" value="1" />
 	</beans:bean>
 	
-	<!-- scheduleing -->
+	<!-- Scheduleing -->
 	<task:executor id="executor" keep-alive="5" pool-size="5-10" queue-capacity="10" rejection-policy="DISCARD_OLDEST"/>
 	<task:scheduler id="schedule" pool-size="10"/>
 	<task:annotation-driven executor="executor" scheduler="schedule"/>
 	
-	<!-- websocket  -->
+	<!-- Websocket  -->
 	<beans:bean id="chatHandler" class="kr.co.nextdoor.chat.service.ChatHandler" />
 	<beans:bean id="chatHandlerInterceptor" class="kr.co.nextdoor.chat.service.ChatHandlerInterceptor" />
 	<websocket:handlers>
@@ -60,11 +60,17 @@
 		<websocket:sockjs />
 	</websocket:handlers>
 	
-	<!-- ajax/json -->
+	<!-- Ajax/Json -->
 	<beans:bean id="jsonView"
 		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 		<beans:property name="contentType" value="text/html;charset=UTF-8" />
 	</beans:bean>
+	
+	<!-- Fileupload -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="maxUploadSize" value="100000000" />
+        <beans:property name="maxInMemorySize" value="100000000" />
+    </beans:bean>
 	
 	
 </beans:beans>

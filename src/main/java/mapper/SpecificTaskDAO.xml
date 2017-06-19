@@ -7,4 +7,10 @@
 	<select id="listSpecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
 		select * from specifictask where task_no=#{task_no}
 	</select>
+	
+		<!-- 파일업로드 -->
+	<insert id="uploadFile">
+		insert into file(specifictask_no, original_name, file_name, file_date, file_size)
+		values(#{specifictask_no},#{original_name},#{file_name},now(),#{file_size})
+	</insert>
 </mapper>

@@ -1,7 +1,12 @@
 package kr.co.nextdoor.project.dto;
 
 import java.util.Date;
-
+/*
+* @Class : ProjectModiDTO
+* @Date : 2017. 06. 14
+* @Author : 송지은
+* @Desc : projectModiDTO
+*/
 public class ProjectModiDTO {
 	private String projectmodi_no;
 	private String project_no;
@@ -32,6 +37,4 @@ public class ProjectModiDTO {
 	public void setProject_end(Date project_end) {
 		this.project_end = project_end;
 	}
-	
-
 }

@@ -25,49 +25,78 @@ import kr.co.nextdoor.project.service.ProjectService;
 @SessionAttributes({"workspace_no", "project_no", "task_no", "specifictast_no"})
 public class ProjectController {
 
-	@Autowired
-	private ProjectService service;
+   @Autowired
+   private ProjectService service;
 
-	/*
+   /*
     * @method Name : projectList
     * @date : 2017. 06. 13
     * @author : 송지은
     * @description : 워크스페이스 선택시 프로젝트 선택화면으로 이동
     */
-	@RequestMapping("projectList.htm")
-	public String listProject(ProjectDTO projectdto, Principal principal, Model model) throws Exception {
-		projectdto.setMember_id(principal.getName());
-		model.addAttribute("projectlist", service.listProject(projectdto));
-		model.addAttribute("workspace_no", projectdto.getWorkspace_no());
-		return "project.projectList";
-	}
+   @RequestMapping("projectList.htm")
+   public String listProject(ProjectDTO projectdto, Principal principal, Model model) throws Exception {
+      projectdto.setMember_id(principal.getName());
+      model.addAttribute("projectlist", service.listProject(projectdto));
+      model.addAttribute("workspace_no", projectdto.getWorkspace_no());
+      return "project.projectList";
+   }
 
-	/*
+   /*
     * @method Name : projectInsert
     * @date : 2017. 06. 13
     * @author : 송지은
     * @description : 프로젝트 생성 후 프로젝트 리스트 화면으로 이동
     */
-	@RequestMapping(value = "insertProject.htm", method = RequestMethod.POST)
-	public String insertProject(ProjectDTO projectdto, Principal principal, Model model, HttpSession session) throws Exception {
-		String workspace_no = (String) session.getAttribute("workspace_no");
-		projectdto.setWorkspace_no(workspace_no);
-		projectdto.setMember_id(principal.getName());
-		service.insertProject(projectdto);
-		service.insertProjectMember(projectdto);
-		model.addAttribute("projectlist", service.listProject(projectdto));
-		return "project.projectList";
-	}
-	
-	/*
+   @RequestMapping(value = "insertProject.htm", method = RequestMethod.POST)
+   public String insertProject(ProjectDTO projectdto, Principal principal, Model model, HttpSession session) throws Exception {
+      String workspace_no = (String) session.getAttribute("workspace_no");
+      projectdto.setWorkspace_no(workspace_no);
+      projectdto.setMember_id(principal.getName());
+      service.insertProject(projectdto);
+      service.insertProjectMember(projectdto);
+      model.addAttribute("projectlist", service.listProject(projectdto));
+      return "project.projectList";
+   }
+   
+   /*
     * @method Name : projectDelete
     * @date : 2017. 06. 16
     * @author : 송지은
     * @description : 프로젝트 삭제 후 프로젝트 리스트 화면으로 이동
     */
-	@RequestMapping("projectDelete.htm")
-	public String deleteProject(int project_no) throws Exception{
-		service.deleteProject(project_no);
-		return "project.projectList";
-	}
+   @RequestMapping("projectDelete.htm")
+   public String deleteProject(int project_no) throws Exception{
+      service.deleteProject(project_no);
+      return "redirect:projectList.htm";
+   }
+   
+   /*
+    * @method Name : projectUpdate
+    * @date : 2017. 06. 18
+    * @author : 송지은
+    * @description : 프로젝트 생성 후 프로젝트 수정 화면으로 이동
+    */
+    @RequestMapping(value = "projectUpdate.htm", method = RequestMethod.GET)
+    public String projectUpdate(String project_no, Model model) throws Exception{
+       /*service.insertProjectModi(project_no);*/
+       System.out.println(project_no);
+       model.addAttribute("project_no", project_no);
+       return "project.projectUpdate";
+    }
+    
+    /*
+     * @method Name : projectUpdate
+     * @date : 2017. 06. 18
+     * @author : 송지은
+     * @description : 프로젝트 수정 후에 프로젝트 리스트 화면으로 이동
+     */
+    @RequestMapping(value = "projectUpdate.htm", method = RequestMethod.POST)
+    public String prijectUpdate(HttpSession session, String project_no) throws Exception{
+       session.getAttribute("project_no");
+       System.out.println(session.getAttribute("project_no"));
+       service.insertProjectModi(project_no);
+       return "redirect:projectList.htm";
+    }
+
 }

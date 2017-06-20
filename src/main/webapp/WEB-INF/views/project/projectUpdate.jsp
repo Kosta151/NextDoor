@@ -4,54 +4,31 @@
         
       <section id="main-content">
           <section class="wrapper">
-          <div class="sidebar-toggle-box">
+          <!-- <div class="sidebar-toggle-box">
                   <div class="fa fa-heart tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-          </div>
-          
-             <h3><i class="fa fa-angle-right"></i> 프로젝트 명</h3>
-             
+          </div> -->
+             <h3><i class="fa fa-angle-right"></i> 프로젝트 명 : ${projectlist.project_name}</h3>
              <div id="project">
              <div id="container">
              <div class="row mt">
                 <div class="col-lg-12">
                    <div class="form-panel">
-                        <form action="projectList.htm" method = "POST" class="form-horizontal style-form">
-                             <div class="form-group">
-                                <label class="control-label col-md-3">프로젝트 명</label>
-                                <div class="col-md-3 col-xs-11">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${list.project_name}" id="start">
-                                    <span class="input-group-btn add-on">
-                                              <!-- <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button> -->
-                                    </span>
-                                </div>
-                            </div>
-                  
+                        <form action="projectUpdate.htm" method = "POST" class="form-horizontal style-form">        
                             <div class="form-group">
+                            <input type="hidden" name="project_no" value="${project_no}">
                                 <label class="control-label col-md-3">시작일</label>
                                 <div class="col-md-3 col-xs-11">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_start}" id="start">
+                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_start}" id="project_start" name="project_start">
                                     <span class="input-group-btn add-on">
-                                              <!-- <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button> -->
+                                              <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                                     </span>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
-                                <label class="control-label col-md-3">시작일</label>
-                                <div class="col-md-3 col-xs-11">
-      
-                                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                                        <input type="text" readonly="" value="01-01-2014" size="16" class="form-control">
-                                            <span class="input-group-btn add-on">
-                                              <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                                            </span>
-                                    </div>
-                                    <span class="help-block">Select date</span>
-                                </div>
-                            </div> -->
+                    
                             <div class="form-group">
                                 <label class="control-label col-md-3">마감일</label>
                                 <div class="col-md-3 col-xs-11">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_end}" id="end">
+                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_end}" id="project_end" name="project_end">
                                     <span class="input-group-btn add-on">
                                               <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                                     </span>
@@ -70,7 +47,7 @@
                                                <h4 class="modal-title">멤버초대</h4>
                                            </div>
                                            <div class="modal-body">
-                                               <p class="centered"><!-- <img class="img-circle" width="80" src="resources/main/assets/img/ui-sam.jpg"> --></p>
+                                               <!-- <p class="centered"><img class="img-circle" width="80" src="resources/main/assets/img/ui-sam.jpg"></p> -->
                                                <p>이메일</p>
                                                <input type="text" name="member_id" placeholder="이메일을 입력해주세요." class="form-control placeholder-no-fix">
                                                <p>이름</p>
@@ -87,30 +64,28 @@
                                        </div>
                                    </div>
                                </div>
-                      <!-- modal -->
+                     <!-- modal -->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3">공개여부</label>
                                 <div class="col-md-4">
-                                    <form>
                                 <input type="radio" name="choose" value="public" checked>공개
-                                <input type="radio" name="choose" value="private">비공개<br>
-                             </form> 
-                                    
-                                    <span class="help-block">* 공개는 워크스페이스 인원 / 비공개는 프로젝트 인원만 공개</span>
-                                    
-                                    <input type="submit" value="수정하기">
-                                </div>
-                            </div>
-                        </form>
+                                <input type="radio" name="choose" value="private">비공개<br> 
+                                 <span class="help-block">* 공개는 워크스페이스 인원 / 비공개는 프로젝트 인원만 공개</span> 
+                                
+                                  
+                         </div>
+                     </div>
+                     <button type="submit" class="btn btn-primary">수정하기</button>
+                            </form> 
+                      </div>
+                  </div>
+                        
                   </div><!-- /form-panel -->
                 </div><!-- /col-lg-12 -->
              </div><!-- /row -->
-             </div>
-             </div>
       </section>
       </section>
-
 
 

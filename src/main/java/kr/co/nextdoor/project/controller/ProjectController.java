@@ -1,4 +1,4 @@
-package kr.co.nextdoor.project.controller;
+   package kr.co.nextdoor.project.controller;
 
 import java.security.Principal;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.nextdoor.project.dto.ProjectDTO;
+import kr.co.nextdoor.project.dto.ProjectModiDTO;
 import kr.co.nextdoor.project.service.ProjectService;
 
 /*
@@ -22,7 +23,7 @@ import kr.co.nextdoor.project.service.ProjectService;
 */
 
 @Controller
-@SessionAttributes({"workspace_no", "project_no", "task_no", "specifictast_no"})
+@SessionAttributes({"workspace_no", "project_no", "task_no", "specifictask_no"})
 public class ProjectController {
 
    @Autowired
@@ -82,6 +83,10 @@ public class ProjectController {
        /*service.insertProjectModi(project_no);*/
        System.out.println(project_no);
        model.addAttribute("project_no", project_no);
+       model.addAttribute("projectlist", service.listProject(project_no));
+       model.addAttribute("projectmodilist", service.listProjectModi(project_no));
+       System.out.println("service.listProjectModi(projectmodi_no)" + service.listProjectModi(project_no));
+       /* model.addAttribute("workspace_no", projectdto.getWorkspace_no()); */
        return "project.projectUpdate";
     }
     
@@ -92,10 +97,14 @@ public class ProjectController {
      * @description : 프로젝트 수정 후에 프로젝트 리스트 화면으로 이동
      */
     @RequestMapping(value = "projectUpdate.htm", method = RequestMethod.POST)
-    public String prijectUpdate(HttpSession session, String project_no) throws Exception{
-       session.getAttribute("project_no");
-       System.out.println(session.getAttribute("project_no"));
-       service.insertProjectModi(project_no);
+    public String prijectUpdate(HttpSession session, ProjectModiDTO projectmodidto, Model model) throws Exception{
+       System.out.println("프로젝트 시작일 마감일 추가할거야");
+       String project_no = (String) session.getAttribute("project_no");
+       System.out.println();
+       projectmodidto.setProject_no(project_no);
+       System.out.println("projectmodidto.getProject_start()" + projectmodidto.getProject_start());
+       System.out.println("projectmodidto.getProject_end()" + projectmodidto.getProject_end());
+       service.insertProjectModi(projectmodidto);
        return "redirect:projectList.htm";
     }
 

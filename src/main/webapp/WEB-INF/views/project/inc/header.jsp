@@ -1,25 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+		<script>
+
+	var sock;
+	$(function() {
+		  
+		  sock.onopen = function(){
+		
+		  };
+		  sock.onmessage = function(event){
+				 var msg = JSON.parse(event.data)
+				 var loginuser = "${loginUser}";
+				if(msg.alarm_receiver=loginuser){
+					$("#top_menu").append("<div>"+msg.message+"</div>");
+					
+				}
+			 }
+			
+		
+	});		
+
+</script>
+	
+	
+	
 <!--header start-->
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
+              <div class="sidebar-toggle-right">
+                  <div class="fa fa-cog tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+              
             <!--logo start-->
-            <a href="index.html" class="logo"><b>NEXTDOOR</b></a>
+            <a href="index.html" class="logo"><b>Next Door</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                    
+                    
+                        <a data-toggle="dropdown"  href="index.html#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">4</span>
                         </a>
-                        <ul class="dropdown-menu extended tasks-bar">
+                        <ul class="dropdown-menu extended green">
                             <div class="notify-arrow notify-arrow-green"></div>
                             <li>
+                            
+                            
+                            
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                             <li>
@@ -84,7 +118,7 @@
                     <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-theme">5</span>
+                            <span class="badge bg-theme">4</span>
                         </a>
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-green"></div>

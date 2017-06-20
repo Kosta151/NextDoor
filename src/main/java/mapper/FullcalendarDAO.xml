@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.nextdoor.schedule.dao.FullcalendarDAO">
+		<insert id="insertFullcalendarSpecificTask">
+			INSERT
+			INTO SPECIFICTASK(task_no,specifictask_cont ) 
+			VALUES(#{task_no}, #{specifictask_cont})
+		</insert>
+		
+		<!-- <select id="listTasks" resultType="kr.co.nextdoor.task.dto.TaskDTaO">
+			SELECT task_no, task_cont FROM TASK WHERE project_no=#{project_no}
+		</select> -->
+	   <insert id="insertFullcalendarSpecificModiTask" >
+			INSERT INTO SPECIFICTASKMODI(specifictask_no, member_id, specifictask_start, specifictask_end, specifictask_comp)
+			VALUES( #{specifictask_no}, #{member_id}, #{specifictask_start}, #{specifictask_end}, '1')
+	   </insert>	 
+  </mapper>

@@ -53,10 +53,13 @@
 	<task:annotation-driven executor="executor" scheduler="schedule"/>
 	
 	<!-- Websocket  -->
-	<beans:bean id="chatHandler" class="kr.co.nextdoor.chat.service.ChatHandler" />
+		<beans:bean id="chatHandler" class="kr.co.nextdoor.chat.service.ChatHandler" />
 	<beans:bean id="chatHandlerInterceptor" class="kr.co.nextdoor.chat.service.ChatHandlerInterceptor" />
+	<beans:bean id="alarmHandler" class="kr.co.nextdoor.alarm.service.AlarmHandler" />
+	<beans:bean id="alarmHandlerInterceptor" class="kr.co.nextdoor.alarm.service.AlarmHandlerInterceptor" />
 	<websocket:handlers>
 		<websocket:mapping handler="chatHandler" path="/chat.htm" />
+		<websocket:mapping handler="alarmHandler" path="/alarm.htm" />
 		<websocket:sockjs />
 	</websocket:handlers>
 	

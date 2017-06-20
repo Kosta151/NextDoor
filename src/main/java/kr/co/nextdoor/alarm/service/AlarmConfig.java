@@ -1,5 +1,5 @@
 
-package kr.co.nextdoor.chat.service;
+package kr.co.nextdoor.alarm.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,18 +16,18 @@ import org.springframework.web.socket.handler.PerConnectionWebSocketHandler;
 @Configuration
 @EnableWebMvc
 @EnableWebSocket
-@ComponentScan(basePackages = { "kr.co.nextdoor.chat" })
-public class ChatConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
+@ComponentScan(basePackages = {"kr.co.nextdoor.alarm"})
+public class AlarmConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
 	
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		
-		registry.addHandler(chatWebSocketHandler(), "/chat-ws").addInterceptors(new ChatHandlerInterceptor())
+		registry.addHandler(alramSocketHandler(), "/task.htm").addInterceptors(new AlarmHandlerInterceptor())
 				.withSockJS();
 	}
 
 	@Bean
-	public WebSocketHandler chatWebSocketHandler() {
-		return new PerConnectionWebSocketHandler(ChatHandler.class);
+	public WebSocketHandler alramSocketHandler() {
+		return new PerConnectionWebSocketHandler(AlarmHandler.class);
 	}
 
 	@Override

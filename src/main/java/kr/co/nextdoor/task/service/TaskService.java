@@ -1,5 +1,6 @@
 package kr.co.nextdoor.task.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,14 +20,14 @@ public class TaskService {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public List<TaskDTO> TaskList(String project_no){
+	public List<TaskDTO> listTask(String project_no){
 		
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		List<TaskDTO> list  = taskdao.listTasks(project_no);
 		return list;	
 	}
 	
-	public int TaskInsert(TaskDTO taskdto){
+	public int insertTask(TaskDTO taskdto){
 		
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		int result = taskdao.insertTask(taskdto);
@@ -36,11 +37,17 @@ public class TaskService {
 	}
 	
 	//프로젝트 초대된 맴버 리스트
-	public List<MemberDTO> MemberList(String project_no){
+	public List<MemberDTO> listMember(String project_no){
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		List<MemberDTO> mlist  =taskdao.memberList(project_no);
 		System.out.println(mlist);
 		return mlist;	
 	}
 
+	
+	public int deleteTask(TaskDTO taskdto){
+		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		int resutl = taskdao.deleteTask(taskdto);
+		return resutl;
+	}
 }

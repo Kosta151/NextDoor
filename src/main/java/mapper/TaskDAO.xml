@@ -10,12 +10,16 @@
 		</insert>
 		
 		<select id="listTasks" resultType="kr.co.nextdoor.task.dto.TaskDTO">
-			SELECT task_no, task_cont FROM TASK WHERE project_no=#{project_no}
+			SELECT task_no, task_cont, project_no FROM TASK WHERE project_no=#{project_no}
 		</select>
 		
 		<!-- 프로젝트에 들어있는 멤버 업무 배정 -->
 		<select id="memberList" resultType="kr.co.nextdoor.member.dto.MemberDTO">
 	   		SELECT MEMBER_ID,PROJECT_NO FROM PROJECTMEMBER WHERE project_no= #{project_no}
-	 	 </select>
+	 	</select>
+		
+		<delete id="deleteTask" >
+			delete from task where project_no=#{project_no} and task_no=#{task_no}
+		</delete>		
 				
   </mapper>

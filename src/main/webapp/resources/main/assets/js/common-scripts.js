@@ -94,6 +94,7 @@ var Script = function () {
         }
     });
     
+    
 //  project toggle
     $(function() {
         function responsiveView() {
@@ -178,6 +179,6 @@ var Script = function () {
             }, 2000)
         })
     }
-
+    
 
 }();

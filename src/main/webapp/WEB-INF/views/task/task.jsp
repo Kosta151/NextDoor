@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <section id="main-content">
 	<section class="wrapper">
 		<div class="col-lg-9 main-chart">
@@ -43,55 +44,37 @@
 					</div>
 				</div>
 				<!-- modal -->
+				<!-- 세부업무 Modal -->
+                         <!-- <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal1" class="modal fade">
+                             <div class="modal-dialog">
+                                 <div class="modal-content">
+                                    <form action="insertpecifictask.htm" >
+                                     <div class="modal-header">
+                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                         <h4 class="modal-title">세부업무생성</h4>
+                                     </div>
+                                     <div class="modal-body" id="taskno">                                    
+                                         <p class="centered"></p>
+                                         <p>세부업무명</p>
+                                         <input type="text" name="specifictask_cont" placeholder="세부업무명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
+                                         
+                                     </div>
+                                     <div class="modal-footer centered">                                                                                        
+                                            <button class="btn btn-theme03" type="submit">생성</button>
+                                            <button data-dismiss="modal" class="btn btn-theme04" type="button">취소</button>
+                                     </div>
+                                     </form>
+                                 </div>
+                             </div>
+                         </div> -->
+                        <!-- modal -->
 			</div>
 
 			<!-- userid와 프로젝트 name을 가지고 업무리스트 뿌리기 -->
-			<br>
-					
-			<br>
-		
-			<div id="ajaxtest">
-				
-			</div>
-			<div id="ajaxspecific">
-				
-			</div>
-			
-		<%-- 	<div class="col-lg-4 col-md-4 col-sm-4 mb">
-					<div class="darkblue-panel pn">
-						<section class="task-panel tasks-widget">
-							<div class="panel-heading">
-								<div class="pull-left">
-									<h5>
-										<i class="fa fa-tasks"></i> 
-									</h5>
-									<div class="pull-right">
-										<button class="btn btn-success btn-xs" data-toggle="modal"
-											data-target="#myModal1">
-											<i class="fa fa-plus"></i>
-										</button>
-										<button class="btn btn-primary btn-xs">
-											<i class="fa fa-pencil"></i><a class="btn-del button"
-												href="noticeDel.htm?seq=${notice.seq}"></a>
-										</button>
-										<button class="btn btn-danger btn-xs">
-											<a class="btn-del button"
-												href="deleteTask.htm?task_no=${list.task_no}&project_no=${project_no}"><i
-												class="fa fa-trash-o "></i></a>
-										</button>
-									</div>
-								</div>
-								<br>
-							</div>
-							<br>
-							<div class="panel-body">
-								<div class="task-content">
-									<ul id="sortable" class="task-list ui-sortable">
-										<li class="list-primary"
-											style="position: relative; left: 0px; top: 0px;">
- --%>
-
-			
+			<br> <br>
+			<div id="ajaxtest"></div>
+			<div id="ajaxspecific"></div>
+	
 		</div>
 
 		<!-- 오른쪽 사이드 바 -->
@@ -125,13 +108,13 @@
 						<div class="form-group">
 							<p>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시작일: <input
-									type="text" id="datepicker">
+									type="text" id="datepicker_start">
 							</p>
 						</div>
 						<div class="form-group">
 							<p>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마감일: <input
-									type="text" id="datepicker">
+									type="text" id="datepicker_end">
 							</p>
 						</div>
 					</div>

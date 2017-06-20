@@ -178,6 +178,14 @@ var Script = function () {
             }, 2000)
         })
     }
+    
+    $('#project_start').datepicker({
+    	dateFormat:"yy-mm-dd"
+    });
+    
+    $('#project_end').datepicker({
+    	dateFormat:"yy-mm-dd"
+    });
 
 
 }();

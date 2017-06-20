@@ -5,19 +5,9 @@
 <html>
   <head>
   	<!-- DatePicker(jQuery UI) -->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	
-	<script type="application/javascript">
-		$('#start').datepicker({
-	       dateFormat: "yy-mm-dd"
-	    });
-	    $('#end').datepicker({
-	       dateFormat: "yy-mm-dd"
-	       
-	    });
-    </script>
 	
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,8 +50,8 @@
     <script src="resources/main/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="resources/main/assets/js/jquery.sparkline.js"></script>
     
-
-    <!--common script for all pages-->
+    <!--common script for all pages--> 
+    <script src="resources/main/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
    	<script src="resources/main/assets/js/common-scripts.js"></script>
    	<script type="text/javascript" src="resources/main/assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="resources/main/assets/js/gritter-conf.js"></script>

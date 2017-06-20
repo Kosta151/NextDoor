@@ -18,7 +18,7 @@
                             <input type="hidden" name="project_no" value="${project_no}">
                                 <label class="control-label col-md-3">시작일</label>
                                 <div class="col-md-3 col-xs-11">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_start}" id="start" name="project_start">
+                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_start}" id="project_start" name="project_start">
                                     <span class="input-group-btn add-on">
                                               <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                                     </span>
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3">마감일</label>
                                 <div class="col-md-3 col-xs-11">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_end}" id="end" name="project_end">
+                                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_end}" id="project_end" name="project_end">
                                     <span class="input-group-btn add-on">
                                               <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                                     </span>

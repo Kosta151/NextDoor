@@ -10,8 +10,8 @@ import java.util.Date;
 public class ProjectModiDTO {
 	private String projectmodi_no;
 	private String project_no;
-	private Date project_start;
-	private Date project_end;
+	private String project_start;
+	private String project_end;
 	
 	public String getProjectmodi_no() {
 		return projectmodi_no;
@@ -25,16 +25,18 @@ public class ProjectModiDTO {
 	public void setProject_no(String project_no) {
 		this.project_no = project_no;
 	}
-	public Date getProject_start() {
+	public String getProject_start() {
 		return project_start;
 	}
-	public void setProject_start(Date project_start) {
+	public void setProject_start(String project_start) {
 		this.project_start = project_start;
 	}
-	public Date getProject_end() {
+	public String getProject_end() {
 		return project_end;
 	}
-	public void setProject_end(Date project_end) {
+	public void setProject_end(String project_end) {
 		this.project_end = project_end;
 	}
+	
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.nextdoor.project.dao.ProjectDAO;
 import kr.co.nextdoor.project.dto.ProjectDTO;
+import kr.co.nextdoor.project.dto.ProjectModiDTO;
 /*
 * @Class : ProjectService
 * @Date : 2017. 06. 13
@@ -60,6 +61,20 @@ public class ProjectService {
 	}
 	
 	/*
+    * @method Name : listProject
+    * @date : 2017. 06.19
+    * @author : 송지은
+    * @description : 프로젝트 수정(project_name select)
+    * @param : project_no
+    * @return : ProjectDTO
+    */
+	public ProjectDTO listProject(String project_no) throws Exception{
+		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+		return projectdao.getProject(project_no);
+		
+	}
+	
+	/*
     * @method Name : insertProjectModi
     * @date : 2017. 06.
     * @author : 송지은
@@ -67,11 +82,24 @@ public class ProjectService {
     * @param : project_no
     * @return : int
     */
-	public int insertProjectModi(String project_no) throws Exception{
+	public int insertProjectModi(ProjectModiDTO projectmodidto) throws Exception{
 		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-		return projectdao.insertProjectModi(project_no);
+		return projectdao.insertProjectModi(projectmodidto);
 	}
 	
+	/*
+    * @method Name : listProjectModi
+    * @date : 2017. 06.19
+    * @author : 송지은
+    * @description : 프로젝트 수정(project_name select)
+    * @param : projectmodidto
+    * @return : int
+    */
+	public ProjectModiDTO listProjectModi(String project_no) throws Exception{
+		ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+		return projectdao.listProjectModi(project_no);
+		
+	}
 	/*
     * @method Name : deleteProject
     * @date : 2017. 06. 16

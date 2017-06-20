@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.nextdoor.project.dto.ProjectDTO;
+import kr.co.nextdoor.project.dto.ProjectModiDTO;
 
 /*
 * @Class : ProjectDAO
@@ -41,13 +42,32 @@ public interface ProjectDAO {
 	public int insertProject(ProjectDTO projectDTO) throws Exception;
 
 	/*
+    * @method Name : getProject
+    * @date : 2017. 06. 19
+    * @author : 송지은
+    * @description : 프로젝트수정 리스트
+    * @return : ProjectDTO
+    */
+	public ProjectDTO getProject(String project_no) throws Exception;
+	
+	/*
     * @method Name : insertProjectModi
     * @date : 2017. 06. 
     * @author : 송지은
     * @description : 프로젝트 수정하기(시작일, 마감일 추가)
     * @return : int
     */
-	public int insertProjectModi(String project_no) throws Exception;
+	public int insertProjectModi(ProjectModiDTO projectmodidto) throws Exception;
+	
+	/*
+    * @method Name : listProjectModi
+    * @date : 2017. 06. 20
+    * @author : 송지은
+    * @description : 프로젝트 수정페이지 리스트
+    * @return : String
+    */
+	public ProjectModiDTO listProjectModi(String project_no) throws Exception;
+		
 	/*
     * @method Name : updateProject
     * @date : 2017. 06. 

@@ -34,16 +34,23 @@ public class TaskController {
 	@RequestMapping(value = "tasklist.htm", method=RequestMethod.POST)
 	public View listTask(Model model, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
-		
-		List<TaskDTO> tasklist = taskservice.TaskList(project_no);
+		System.out.println("project_no : " +project_no);
+		List<TaskDTO> tasklist = taskservice.listTask(project_no);
 		model.addAttribute("data", tasklist);
 		return jsonview;
 	}
 
 	@RequestMapping(value = "insertTask.htm")
-	public String insertTask(TaskDTO taskdto) {
-		System.out.println(taskdto.toString());
-		taskservice.TaskInsert(taskdto);
+	public String insertTask(TaskDTO taskdto, HttpSession session) {
+		String project_no = (String) session.getAttribute("project_no");
+		taskdto.setProject_no(project_no);
+		taskservice.insertTask(taskdto);
 		return "redirect:task.htm?project_no="+taskdto.getProject_no();
+	}
+	
+	@RequestMapping("deletetask.htm")
+	public String deleteTask(TaskDTO taskdto){
+		taskservice.deleteTask(taskdto);
+		return "task.task";
 	}
 }

@@ -70,6 +70,7 @@ a, a:hover, a:focus {
 
 /* tasklist */
 .taskbox{
+	float : left;
 	border-radius:10px;
 	width:25%;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
@@ -84,7 +85,16 @@ a, a:hover, a:focus {
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 	
 }
-
+.taskinput {
+	border-radius:10px;
+	border:none;
+	text-align: center;
+	background-color : #ffd777;
+	color : white;
+	font-size : xx-large;
+	width: 70%;
+	
+}
 .taskcont:HOVER {
 	
 	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
@@ -543,6 +553,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     -webkit-border-radius: 4px;
 }
 
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari and Chrome */
     .dropdown-menu.extended  {
@@ -645,7 +656,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .top-nav li.dropdown .dropdown-menu {
-    float: right;
+    float: left;
     right: 0;
     left: auto;
 }

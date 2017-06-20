@@ -13,4 +13,9 @@
 		insert into file(specifictask_no, original_name, file_name, file_date, file_size)
 		values(#{specifictask_no},#{original_name},#{file_name},now(),#{file_size})
 	</insert>
+	
+	<!-- 상세업무 생성 -->
+	<insert id="insertSpecifictask" parameterType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
+		insert into specifictask(task_no, specifictask_cont) values(#{task_no}, #{specifictask_cont})
+	</insert>
 </mapper>

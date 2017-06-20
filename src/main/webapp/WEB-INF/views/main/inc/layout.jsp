@@ -42,6 +42,7 @@
 	<!-- js placed at the end of the document so the pages load faster -->
     <script src="resources/main/assets/js/jquery.js"></script>
     <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
+    <script src="resources/main/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="resources/main/assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="resources/main/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="resources/main/assets/js/jquery.scrollTo.min.js"></script>
@@ -88,16 +89,35 @@
     			dataType : "json",
     			success : function(data){
     				var taskcont = "";
-    							
-    				$.each(data.data , function(index,obj){
-    					taskcont = "<div class='taskcont'>"
-    							 + obj.task_cont
-    							 + "</div>";
+    			
+
+    				$.each(data.data , function(index,obj){	
+    					 taskcont = "<div class='taskcont'>"
+    						 + "<input type='text' class='taskinput' value='"+obj.task_cont+"'>"
+    						 + "<div class='dropdown btn-alian' >"
+    						 + "<button class='btn btn-success btn-xs btn-pualian' data-toggle='dropdown'>"
+    						 + "<i class='fa fa-plus'></i></button>"
+    						 + "<div class='dropdown-menu taskbox'>"    						
+    						 + "<form action='insertpecifictask.htm'><div class='modal-header taskcont'>"
+    						 + "<h4 class='modal-title'>세부업무생성</h4></div><div class='modal-body'>"
+    						 + "<p>세부업무명</p>"
+    						 + "<input type='text' name='specifictask_cont' placeholder='세부업무명을 입력해주세요.' autocomplete='off' class='form-control placeholder-no-fix'>"
+    						 + "<input type='hidden' name='task_no' value='"+obj.task_no+"'>"
+    						 + "</div><div class='modal-footer centered'>" 
+    						 + "<button class='btn btn-theme03' type='submit'>생성</button>"
+    						 + "<button data-dismiss='modal' class='btn btn-theme04' type='button'>취소</button>"
+    						 + "</div></form></div></div>"
+    						 + "<button class='btn btn-danger btn-xs btn-alian'>"
+    						 + "<a href='deletetask.htm?task_no="+obj.task_no+"&project_no="+obj.project_no+"'>"
+    						 + "<i class='fa fa-trash-o'>"		
+    						 + "</i></a></button>"
+    						 + "</div>";
     					 
     					 $("#ajaxtest").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; float:left; ' class='taskbox'>");
     					 $("#"+obj.task_no+"task").append(taskcont);
-    					 $("#ajaxtest").append("</div>"); 
-    					
+    					 $("#ajaxtest").append("</div>");
+    				
+    					 
     					 $.ajax({
     						 url : "specifictask.htm",
     						 type : "post",
@@ -105,13 +125,15 @@
     						 dataType : "json",
     						 success : function(data){
     							 var speicficcont="";
-    							
+
     							 $.each(data.data, function(spindex, spobj){
     								 if(obj.task_no=spobj.task_no){
     									 
     									 speicficcont="<div class='specifictaskbox'>"
     									 	  + spobj.specifictask_cont
-    									 	  +"</div>"
+    									 	  + "<button class='btn btn-primary btn-xs btn-alian'>"
+    									 	  + "<i class='fa fa-pencil'></i><a class='btn-del button'></a>"
+    									 	  +"</button></div>"
     										 spobj.specifictask_cont + "<br>";
     									 $("#ajaxspecific").append("<div>");
     									 $("#"+obj.task_no+"task").append(speicficcont); 

@@ -65,5 +65,13 @@ public class SpecificTaskService {
 
 		return result;
 	}
+	
+	public int insertSpecificTask(SpecificTaskDTO specifictaskdto){
+		System.out.println(specifictaskdto.getSpecifictask_cont());
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		int result = specifictaskdao.insertSpecifictask(specifictaskdto);
+		
+		return result;
+	}
 }
 

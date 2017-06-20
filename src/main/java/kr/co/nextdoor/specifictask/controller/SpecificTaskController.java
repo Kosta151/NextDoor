@@ -1,6 +1,5 @@
 package kr.co.nextdoor.specifictask.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,43 +18,50 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import kr.co.nextdoor.file.dto.FileDTO;
 
-
 @Controller
 public class SpecificTaskController {
 
 	@Autowired
 	SpecificTaskService specifictaskservice;
-	
+
 	@Autowired
 	View jsonview;
-	
-	@RequestMapping(value="specifictask.htm", method=RequestMethod.POST)
-	public View listSpecificTask(String task_no, Model model){
+
+	@RequestMapping(value = "specifictask.htm", method = RequestMethod.POST)
+	public View listSpecificTask(String task_no, Model model) {
 		List<SpecificTaskDTO> specifictasklist = specifictaskservice.listSpecificTask(task_no);
 		model.addAttribute("data", specifictasklist);
 		return jsonview;
-		
+
 	}
 
-	@RequestMapping(value="file.htm", method = RequestMethod.POST)
-	public String uploadFile(FileDTO filedto, HttpServletRequest request) throws IOException { 
-		
+	@RequestMapping(value = "file.htm", method = RequestMethod.POST)
+	public String uploadFile(FileDTO filedto, HttpServletRequest request) throws IOException {
+
 		System.out.println(filedto.getSpecifictask_no());
 		CommonsMultipartFile file = filedto.getFile();
-		int result =  specifictaskservice.UploadFile(filedto, file, request);
-		
-		if(result>0){
+		int result = specifictaskservice.UploadFile(filedto, file, request);
+
+		if (result > 0) {
 			return "index.htm";
-		}else{
+		} else {
 			return "index.htm";
 		}
 
-
-
-
-	
-
-	
 	}
-	
+	@RequestMapping("insertpecifictask.htm")
+	public String insertSpecificTask(SpecificTaskDTO specifictask){
+		specifictaskservice.insertSpecificTask(specifictask);
+
+		return "task.task";
+	}
+
+	@RequestMapping("deletespecifictask.htm")
+	public String deleteSpecificTask(String specifictask_no){
+		System.out.println("delete controller");
+		System.out.println("specifictask_no : " + specifictask_no );
+		
+		
+		return "task.task";
+	}
 }

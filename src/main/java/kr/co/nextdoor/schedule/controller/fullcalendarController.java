@@ -33,8 +33,8 @@ public class fullcalendarController {
 	public String listTask(Model model, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
 		System.out.println("contoller 프로젝트 " + project_no);
-		List<TaskDTO> tasklist = taskservice.TaskList(project_no);
-		List<MemberDTO> memberlist = taskservice.MemberList(project_no);
+		List<TaskDTO> tasklist = taskservice.listTask(project_no);
+		List<MemberDTO> memberlist = taskservice.listMember(project_no);
 		model.addAttribute("tasklist", tasklist);
 		model.addAttribute("memberlist", memberlist);
 		System.out.println("calendar view 이동");

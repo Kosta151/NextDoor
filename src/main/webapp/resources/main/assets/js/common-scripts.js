@@ -94,7 +94,6 @@ var Script = function () {
         }
     });
     
-    
 //  project toggle
     $(function() {
         function responsiveView() {
@@ -180,15 +179,13 @@ var Script = function () {
         })
     }
     
-
     $('#project_start').datepicker({
-    	dateFormat:"yy-mm-dd"
+       dateFormat:"yy-mm-dd"
     });
     
     $('#project_end').datepicker({
-    	dateFormat:"yy-mm-dd"
+       dateFormat:"yy-mm-dd"
     });
-
 
 
 }();

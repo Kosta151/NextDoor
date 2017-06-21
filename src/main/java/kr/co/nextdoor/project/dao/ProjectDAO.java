@@ -20,54 +20,54 @@ public interface ProjectDAO {
     * @description : 프로젝트 목록
     * @return : List
     */
-   public List<ProjectDTO> listProject(ProjectDTO projectdto) throws Exception;
+	public List<ProjectDTO> listProject(ProjectDTO projectdto) throws Exception;
 
-   /*
+	/*
     * @method Name : insertProjectMember
     * @date : 2017. 06. 14
     * @author : 송지은
     * @description : 프로젝트 멤버 생성
     * @return : void
     */
-   public void insertProjectMember(ProjectDTO projectdto) throws Exception;
-   
-   /*
+	public void insertProjectMember(ProjectDTO projectdto) throws Exception;
+	
+	/*
     * @method Name : insertProject
     * @date : 2017. 06. 13
     * @author : 송지은
     * @description : 프로젝트 생성하기
     * @return : int
     */
-   public int insertProject(ProjectDTO projectDTO) throws Exception;
+	public int insertProject(ProjectDTO projectDTO) throws Exception;
 
-   /*
+	/*
     * @method Name : getProject
     * @date : 2017. 06. 19
     * @author : 송지은
     * @description : 프로젝트수정 리스트
     * @return : ProjectDTO
     */
-   public ProjectDTO getProject(String project_no) throws Exception;
-   
-   /*
+	public ProjectDTO getProject(String project_no) throws Exception;
+	
+	/*
     * @method Name : insertProjectModi
     * @date : 2017. 06. 
     * @author : 송지은
     * @description : 프로젝트 수정하기(시작일, 마감일 추가)
     * @return : int
     */
-   public int insertProjectModi(ProjectModiDTO projectmodidto) throws Exception;
-   
-   /*
+	public int insertProjectModi(ProjectModiDTO projectmodidto) throws Exception;
+	
+	/*
     * @method Name : listProjectModi
     * @date : 2017. 06. 20
     * @author : 송지은
     * @description : 프로젝트 수정페이지 리스트
     * @return : String
     */
-   public ProjectModiDTO listProjectModi(String project_no) throws Exception;
-      
-   /*
+	public ProjectModiDTO listProjectModi(String project_no) throws Exception;
+		
+	/*
     * @method Name : updateProject
     * @date : 2017. 06. 
     * @author : 송지은
@@ -75,23 +75,23 @@ public interface ProjectDAO {
     * @return : int
     */
 
-   public int updateProject(ProjectDTO projectDTO) throws Exception;
-   /*
+	public int updateProject(ProjectDTO projectDTO) throws Exception;
+	/*
     * @method Name : deleteProject
     * @date : 2017. 06. 16
     * @author : 송지은
     * @description : 프로젝트 삭제하기
     * @return : int
     */
-   public int deleteProject(int project_no) throws Exception;
-   
-   /*
+	public int deleteProject(int project_no) throws Exception;
+	
+	/*
     * @method Name : sendProjectMember
     * @date : 2017. 06. 
     * @author : 송지은
     * @description : 프로젝트 멤버초대 이메일 전송
     * @return : int
     */
-   public int sendProjectMember(ProjectDTO projectDTO) throws Exception;
+	public int sendProjectMember(ProjectDTO projectDTO) throws Exception;
 
 }

@@ -1,11 +1,18 @@
 package kr.co.nextdoor.member.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.nextdoor.member.dao.MemberDAO;
 import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.member.service.MemberService;
 
@@ -17,6 +24,9 @@ import kr.co.nextdoor.member.service.MemberService;
 */
 @Controller
 public class MemberController {
+	
+	@Autowired
+	private SqlSession sqlsession;
 	
 	@Autowired
 	private MemberService memberservice;
@@ -65,13 +75,42 @@ public class MemberController {
 	* @author : 김선화
 	* @description : 아이디 중복체크
 	* @param : String
-	* @return : @ResponseBody
+	* @return : String
 	*/
 	@RequestMapping(value="checkId.htm", method = RequestMethod.POST)
 	public @ResponseBody String checkId(String member_id) throws Exception {
 		
 		return memberservice.checkId(member_id);
 	}
+	
+	/*
+	* @method Name : fblogin
+	* @date : 2017. 06. 21
+	* @author : 김선화
+	* @description : 페이스북 로그인
+	* @param : String
+	* @return : String
+	*/
+	@RequestMapping("fblogin.htm")
+	public @ResponseBody String fblogin(String email, HttpSession session) throws Exception {
+		session.setAttribute("member_id", email);
+		return sqlsession.getMapper(MemberDAO.class).getfbpassword(email);
+	}	
+		
+	/*
+	* @method Name : fbsignup
+	* @date : 2017. 06. 21
+	* @author : 김선화
+	* @description : 페이스북 회원가입
+	* @param : String
+	* @return : void
+	*/ 
+	@RequestMapping("fbjoin.htm")
+	public @ResponseBody void fbsignup(String email, String fbaccesstoken) throws Exception {
+
+		MemberDAO memberdao = sqlsession.getMapper(MemberDAO.class);
+		memberdao.fbjoin(email, fbaccesstoken);
+	}	
 	
 	
 }

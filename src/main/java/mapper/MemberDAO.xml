@@ -16,10 +16,19 @@
 	<select id="checkId" resultType="Integer" parameterType="String">
 		SELECT count(member_id) FROM member WHERE member_id=#{member_id}
 	</select>
-	
-  	<!-- 페이스북 로그인 -->
   	
   	<!-- 페이스북 회원가입  -->
+	<insert id="fbjoin" parameterType="String">
+		insert into member(member_id, name, password,member_confi) VALUES (#{param1},'김선화', #{param2},'1')
+	</insert>
+	
+	<!-- 페이스북 비밀번호 가져오기 -->
+  	<select resultType="String" id="getfbpassword" parameterType="String">
+		SELECT password FROM member WHERE member_id=#{email}
+	</select>
   
+  
+  
+
   		
   </mapper>

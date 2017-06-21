@@ -1,59 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/resources/login/facebook.js" ></script>
     <script src="${pageContext.request.contextPath}/resources/login/joinCheck.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="ValidationJS/jquery.validate.js"></script>
- 
- 
-<script>
-$(function(){
-        
-     $("#loginform").validate({
-        rules: {
-        	member_id: {
-                required : true,
-                minlength : 30
-            },
-            password: {
-                required : true,
-                minlength : 10
-            },
-            repassword: {
-                required : true,
-                minlength : 10,
-                equalTo : password
-            },
-            name: {
-                required : true,
-                minlength : 2
-            }
-        },
-        //규칙체크 실패시 출력될 메시지
-        messages : {
-        	member_id: {
-                required : "필수로입력하세요",
-                minlength : "최소 {0}글자이상이어야 합니다",
-                //remote : "존재하는 아이디입니다"
-            },
-            password: {
-                required : "필수로입력하세요",
-                minlength : "최소 {0}글자이상이어야 합니다"
-            },
-            repassword: {
-                required : "필수로입력하세요",
-                minlength : "최소 {0}글자이상이어야 합니다",
-                equalTo : "비밀번호가 일치하지 않습니다."
-            },
-            name: {
-                required : "필수로입력하세요",
-                minlength : "최소 {0}글자이상이어야 합니다"
-            }
-        }
-    });
-});
- 
-</script>
-
      <div id="login-page">
         <div class="container">
             <form name="loginform" id="loginform" class="form-login" action="join.htm" method="post">
@@ -72,10 +19,12 @@ $(function(){
                   <hr>
                   <div class="login-social-link centered">
                   <p>or you can sign in via your social network</p>
-                      <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                      <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+                      <button class="btn btn-facebook" type="button" onclick="login()"><i class="fa fa-facebook"></i> Facebook</button>
+                      <button class="btn btn-twitter" type="button"><i class="fa fa-twitter"></i> Twitter</button>
                   </div>
               </div>
-            </form>        
+            </form>    
+            
+                
         </div>
      </div>

@@ -42,7 +42,7 @@ public class MailSenderService {
 	
 	public void sendMail(MailDto maildto) throws Exception{
 		
-		//��Ȯ��
+		//��Ȯ��
 		System.out.println(maildto.getMember_id());
 		System.out.println(maildto.getSubject());
 		System.out.println(maildto.getTemplate());
@@ -71,11 +71,42 @@ public class MailSenderService {
 		mailSender.send(msg);
 	}
 	
+	//프로젝트 멤버 초대
+	public void inviteSendMail(MailDto maildto) throws Exception{
+		
+		System.out.println(maildto.getMember_id());
+		System.out.println(maildto.getName());
+
+		MimeMessage msg = mailSender.createMimeMessage();
+		MimeMessageHelper message = new MimeMessageHelper(msg, true, "utf-8");
+		System.out.println("sendMail");
+		message.setFrom("anscr@naver.com");
+		message.setTo(new InternetAddress(maildto.getMember_id()));
+		message.setSubject("멤버초대 on NextDoor");
+		
+
+		Template template = velocityEngin.getTemplate("/mailvelocity/" + "inviteMember.vm");
+		
+		VelocityContext velocityContext = new VelocityContext();
+		velocityContext.put("member_id", maildto.getMember_id());
+		velocityContext.put("name", maildto.getName());
+		velocityContext.put("content", "멤버 초대가 도착하였습니다.");
+		
+		
+		StringWriter stringwriter = new StringWriter();
+		template.merge(velocityContext, stringwriter);
+		
+		
+		message.setText(stringwriter.toString(),true);
+		
+		mailSender.send(msg);
+	}
+	
 	public void senddeadline(){
 		SimpleDateFormat simpledateformat = new SimpleDateFormat ("yyyy-MM-dd"); 
 		Date currentTime = new Date(); 
 		simpledateformat.format ( currentTime ); 
-		System.out.println ( "���糯�� : " + simpledateformat.format ( currentTime ) );		
+		System.out.println ( "���糯�� : " + simpledateformat.format ( currentTime ) );		
 		
 		MailDao maildao = sqlsession.getMapper(MailDao.class);
 		ArrayList<MailDto> maildtolist = maildao.selectTaskdeadline();
@@ -91,7 +122,7 @@ public class MailSenderService {
 					System.out.println("sendMail");
 					message.setFrom("anscr@naver.com");
 					message.setTo(new InternetAddress(maildtolist.get(i).getMember_id()));
-					message.setSubject("schedule ���� �߼�");
+					message.setSubject("schedule ���� �߼�");
 					
 
 					Template template = velocityEngin.getTemplate("/mailvelocity/deadline.vm");

@@ -19,13 +19,13 @@ public class MailController {
 	@Autowired
 	private MailSenderService mailsenderservice;
 	
-	//ÃÊ´ë ¸ŞÀÏ
+	//ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="/mail.htm", method=RequestMethod.GET)
 	public String mailFrom(){
-		System.out.println("¸ŞÀÏ ÆûÀ¸·Î ÀÌµ¿");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
 		return "mail.mailForm";
 	}
-	//ÃÊ´ë ¸ŞÀÏ 
+	//ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	@RequestMapping(value="/mail.htm", method=RequestMethod.POST)
 	public String mailSender(MailDto maildto) throws Exception{
 		
@@ -36,14 +36,25 @@ public class MailController {
 		
 		return "index.index";
 	}
-	//½ºÄÉÁì¸µ ¸ŞÀÏ
+	
+	//í”„ë¡œì íŠ¸ ë©¤ë²„ ì´ˆëŒ€
+	@RequestMapping(value="/inviteMail.htm", method=RequestMethod.POST)
+	public String invitemailSender(MailDto maildto) throws Exception{
+		System.out.println("mailController");
+		mailsenderservice.inviteSendMail(maildto);
+		
+		return "project.projectUpdate";
+	}
+	
+	
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ì¸µ ï¿½ï¿½ï¿½ï¿½
 	@Scheduled(cron="0 09 0 * * ?")
 	public void senddeadline(){
-		System.out.println("schedul ¹ß¼Û");
+		System.out.println("schedul ï¿½ß¼ï¿½");
 		mailsenderservice.senddeadline();
 	}
 	
-	//ºñ¹Ğ¹øÈ£ Ã£±â¸ŞÀÏ
+	//ï¿½ï¿½Ğ¹ï¿½È£ Ã£ï¿½ï¿½ï¿½ï¿½ï¿½
 		/*@RequestMapping(value="/password.htm", method=RequestMethod.POST)
 		public String searchPassword(MailDto maildto) throws Exception{
 			System.out.println(maildto.getMember_id());        

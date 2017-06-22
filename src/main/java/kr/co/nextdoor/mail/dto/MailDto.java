@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class MailDto {
 	private String member_id;
+	private String name;
 	private String subject;
 	private String template;
 	private Date taskdate;
@@ -14,6 +15,12 @@ public class MailDto {
 	}
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getSubject() {
 		return subject;
@@ -41,9 +48,10 @@ public class MailDto {
 	}
 	@Override
 	public String toString() {
-		return "MailDto [member_id=" + member_id + ", subject=" + subject + ", template=" + template + ", taskdate="
-				+ taskdate + ", content=" + content + "]";
+		return "MailDto [member_id=" + member_id + ", name=" + name + ", subject=" + subject + ", template=" + template
+				+ ", taskdate=" + taskdate + ", content=" + content + "]";
 	}
+	
 	
 	
 	

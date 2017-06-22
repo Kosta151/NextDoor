@@ -59,6 +59,15 @@ public interface ProjectDAO {
 	public int insertProjectModi(ProjectModiDTO projectmodidto) throws Exception;
 	
 	/*
+    * @method Name : updateProjectModi
+    * @date : 2017. 06. 22
+    * @author : 송지은
+    * @description : 프로젝트 수정하기(시작일, 마감일 수정)
+    * @return : String
+    */
+	public int updateProjectModi(ProjectModiDTO projectmodidto) throws Exception;
+	
+	/*
     * @method Name : listProjectModi
     * @date : 2017. 06. 20
     * @author : 송지은

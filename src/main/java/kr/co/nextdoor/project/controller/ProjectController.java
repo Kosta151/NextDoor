@@ -81,11 +81,12 @@ public class ProjectController {
     @RequestMapping(value = "projectUpdate.htm", method = RequestMethod.GET)
     public String projectUpdate(String project_no, Model model) throws Exception{
        /*service.insertProjectModi(project_no);*/
-       System.out.println(project_no);
+       System.out.println("ㅌㅌ너는 누구:" + project_no);
        model.addAttribute("project_no", project_no);
        model.addAttribute("projectlist", service.listProject(project_no));
+       System.out.println("service.listProject(project_no)"+ service.listProject(project_no));
        model.addAttribute("projectmodilist", service.listProjectModi(project_no));
-       System.out.println("service.listProjectModi(projectmodi_no)" + service.listProjectModi(project_no));
+       System.out.println("service.listProjectModi(projectmodi_no) mm :" + service.listProjectModi(project_no));
        /* model.addAttribute("workspace_no", projectdto.getWorkspace_no()); */
        return "project.projectUpdate";
     }
@@ -97,14 +98,20 @@ public class ProjectController {
      * @description : 프로젝트 수정 후에 프로젝트 리스트 화면으로 이동
      */
     @RequestMapping(value = "projectUpdate.htm", method = RequestMethod.POST)
-    public String prijectUpdate(HttpSession session, ProjectModiDTO projectmodidto, Model model) throws Exception{
-       System.out.println("프로젝트 시작일 마감일 추가할거야");
+    public String projectUpdate(ProjectModiDTO projectmodidto, HttpSession session) throws Exception{
        String project_no = (String) session.getAttribute("project_no");
-       System.out.println();
        projectmodidto.setProject_no(project_no);
-       System.out.println("projectmodidto.getProject_start()" + projectmodidto.getProject_start());
-       System.out.println("projectmodidto.getProject_end()" + projectmodidto.getProject_end());
-       service.insertProjectModi(projectmodidto);
+       System.out.println("projectUpdateController");
+       ProjectModiDTO modidto = service.listProjectModi(project_no);
+       
+       if(modidto == null){
+    	   System.out.println("insert탈거야?");
+    	   service.insertProjectModi(projectmodidto);
+       }else{
+    	   System.out.println("update탈거야?");
+    	   service.updateProjectModi(projectmodidto);
+       }
+       
        return "redirect:projectList.htm";
     }
 

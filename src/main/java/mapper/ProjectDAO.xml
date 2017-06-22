@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       update projectmodi
       set project_start = #{project_start},
           project_end = #{project_end}
-      where projectmodi_no = #{projectmodi_no}
+      where project_no = #{project_no}
     </update>
    
    <select id="listProjectModi" resultType="kr.co.nextdoor.project.dto.ProjectModiDTO">

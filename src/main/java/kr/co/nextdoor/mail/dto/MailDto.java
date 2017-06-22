@@ -9,7 +9,6 @@ public class MailDto {
 	private String template;
 	private Date taskdate;
 	private String content;
-	
 	public String getMember_id() {
 		return member_id;
 	}
@@ -51,7 +50,6 @@ public class MailDto {
 		return "MailDto [member_id=" + member_id + ", name=" + name + ", subject=" + subject + ", template=" + template
 				+ ", taskdate=" + taskdate + ", content=" + content + "]";
 	}
-	
 	
 	
 	

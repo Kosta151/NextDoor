@@ -79,7 +79,6 @@ public class MailSenderService {
 
 		MimeMessage msg = mailSender.createMimeMessage();
 		MimeMessageHelper message = new MimeMessageHelper(msg, true, "utf-8");
-		System.out.println("sendMail");
 		message.setFrom("anscr@naver.com");
 		message.setTo(new InternetAddress(maildto.getMember_id()));
 		message.setSubject("멤버초대 on NextDoor");

@@ -77,45 +77,42 @@
 					fb_email=member.email; 	
 					
 					$.ajax({	
-				    	  type: "get",
-				    	  url: "duplicationCheck.nn",
-				    	  data: {"email":fb_email}, // ,"fbaccesstoken":accessToken}, 이거 어케해야딜지몰겠듀ㅠㅠ
+				    	  type: "post",
+				    	  url: "checkId.htm",
+				    	  data: {"member_id":fb_email}, // ,"fbaccesstoken":accessToken}, 이거 어케해야딜지몰겠듀ㅠㅠ
 				    	  dataType: "json",
 				    	  success : function(result) {		
-									if(result == false){ //중복된 값을 타면 로그인이 된다. 
+									if(result == false){ //중복된 값을 타면 로그인이 된다. 										
 										
 										$.ajax({	
 									    	  type: "post",
-									    	  url: "fblogin.nn",
-									    	  data: {"email":fb_email}, // ,"fbaccesstoken":accessToken}, 이거 어케해야딜지몰겠듀ㅠㅠ
-									    	  success: function(result){//로그인성공
-									    		  	
-										    		   document.getElementById('username').value = fb_email;
-									                   document.getElementById('password').value = result;
-									                   document.getElementById('loginform').submit();
-										    		  
+									    	  url: "fblogin.htm",
+									    	  data: {"email":fb_email},
+									    	  success: function(result){
+									    		  console.log(result);
+									    		
+									    		  location.href="workspace.htm";
 									    	  },
-										      error:function(error){//로그인실패
-										    	  alert(error.statusText);
-										     }
-										});
+									    	  error:function(error){
+									    		  alert('login js error!');
+									    		  alert(error.statusText);
+									    	  }
+										}); 
 										
-							
-										
+
 									}else{ //회원가입 한다. 
 									
 										console.log(response.authResponse.accessToken);
-										$.ajax({	
-									    	  type: "get",
-									    	  url: "fbsignup.nn",
+										$.ajax({
+									    	  type: "post",
+									    	  url: "fbjoin.htm",
 									    	  data: {"email":fb_email,
 									    		     "fbaccesstoken":response.authResponse.accessToken}, // ,"fbaccesstoken":accessToken}, 이거 어케해야딜지몰겠듀ㅠㅠ
 									    	  success: function(){
-									    		  alert('회원가입이 되셨습니다 로그인 페이지 가서 해주세요 ㅎㅎ');
-									    		  location.href="index.nn";
+									    		  location.href="login.htm";
 									    	  },
 									    	  error:function(error){
-									    		  alert('error!');
+									    		  alert('join js error!');
 									    		  alert(error.statusText);
 									    	  }
 										});
@@ -142,7 +139,7 @@
 			//이 값을 패스워드에 넣어서 패스워드가 
 	
 			
-			},{scope: 'email'}); //email 에 대한 권한을 요청한다.
+			},{scope: 'public_profile , email'}); //email 에 대한 권한을 요청한다.
 
 	}
 	
@@ -158,18 +155,5 @@
 			//사용자의 혼동을 줄이고 보안을 지키기 위하여 이러한 로그아웃 방식을 채택하고 있다.
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

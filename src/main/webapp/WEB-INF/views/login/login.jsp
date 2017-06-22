@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<script src="${pageContext.request.contextPath}/resources/login/facebook.js" ></script>
-	 
 	<div id="login-page">
 	  	<div class="container">
 		      <form class="form-login" action="./login" method="post">
@@ -18,8 +17,8 @@
 		            <hr>
 		            <div class="login-social-link centered">
 		            <p>or you can sign in via your social network</p>
-		                <button class="btn btn-facebook" name="loginBtn" type="submit" onclick="login()"><i class="fa fa-facebook"></i> Facebook</button>
-		                <!-- <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button> -->
+		                <button class="btn btn-facebook" name="loginBtn" type="button" onclick="login()"><i class="fa fa-facebook"></i> Facebook</button>
+		                <button class="btn btn-twitter" type="button"><i class="fa fa-twitter"></i> Twitter</button>
 		            </div>
 		            <div class="registration">
 		                Don't have an account yet?<br/>
@@ -29,6 +28,8 @@
 		            </div>
 		        </div>
 		      </form>
+		      
+		      
 
 		       <!-- 비밀번호찾기 modal -->
 		       <form action="password.htm" method="post">

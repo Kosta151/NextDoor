@@ -29,4 +29,8 @@ public interface MemberDAO {
 	public void insertRole(String member_id);
 	
 	public int checkId(String member_id);
+	
+	public String getfbpassword(String email);
+	
+	public void fbjoin(String email, String fbaccesstoken);
 }

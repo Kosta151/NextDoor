@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
+import kr.co.nextdoor.member.dto.MemberDTO;
+import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.task.dto.TaskDTO;
 import kr.co.nextdoor.task.service.TaskService;
 
@@ -25,8 +27,19 @@ public class TaskController {
 	private View jsonview;
 
 	@RequestMapping(value="task.htm", method=RequestMethod.GET)
-	public String listTask(String project_no, Model model, HttpSession session){
-		session.setAttribute("project_no", project_no);
+	public String listTask(ProjectDTO projectdto, Model model, HttpSession session){
+	session.setAttribute("project_no", projectdto.getProject_no());
+		
+		String specifictask = (String) session.getAttribute("specifictask_no");
+		String specifictaskcont = (String) session.getAttribute("specifictask_cont");
+		
+		List<MemberDTO> memberlist = taskservice.listMember(projectdto.getProject_no());
+		session.setAttribute("memberlist", memberlist);
+		
+		model.addAttribute("project_name", projectdto.getProject_name());
+		session.setAttribute("specifictask_no", specifictask);
+		session.setAttribute("specifictask_cont", specifictaskcont);
+		
 		System.out.println("task view 이동");
 		return "task.task";
 	}

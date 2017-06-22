@@ -14,6 +14,31 @@
 		values(#{specifictask_no},#{original_name},#{file_name},now(),#{file_size})
 	</insert>
 	
+	<!-- 수정완료버튼  -->
+	 <update id="updateModiSpecifictask">
+		update SpecificTaskModi set member_id=#{member_id}, 
+		specifictask_start=#{specifictask_start}, 
+		specifictask_end=#{specifictask_end}
+		where specifictask_no=#{specifictask_no}
+	</update>
+	
+	<!-- 수정값 불러오기 -->
+	<select id="detailModiSpecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO">
+		select member_id,specifictask_start,specifictask_end from SpecificTaskModi
+		where specifictask_no=#{specifictask_no}
+	</select>
+	
+	<!-- 수정값 입력하기 -->
+	<insert id="insertModiSpecifictask">
+		insert into SpecificTaskModi(specifictask_no,member_id,specifictask_start,specifictask_end)
+		values(#{specifictask_no},#{member_id},#{specifictask_start},#{specifictask_end})
+	</insert>
+	
+	<!-- 세부업무삭제 -->
+	<delete id="deleteSpecifictask">
+		delete from specifictask where specifictask_no=#{specifictask_no}
+	</delete>
+	
 	<!-- 상세업무 생성 -->
 	<insert id="insertSpecifictask" parameterType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
 		insert into specifictask(task_no, specifictask_cont) values(#{task_no}, #{specifictask_cont})

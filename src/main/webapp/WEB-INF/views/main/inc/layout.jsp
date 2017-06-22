@@ -5,6 +5,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
@@ -41,8 +43,8 @@
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
     <script src="resources/main/assets/js/jquery.js"></script>
-    <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
-    <script src="resources/main/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script> 
+    
     <script src="resources/main/assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="resources/main/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="resources/main/assets/js/jquery.scrollTo.min.js"></script>
@@ -50,14 +52,16 @@
     <script src="resources/main/assets/js/jquery.sparkline.js"></script>
 
     <!--common script for all pages-->
+    <script src="resources/main/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
    	<script src="resources/main/assets/js/common-scripts.js"></script>
+   	
    	<script type="text/javascript" src="resources/main/assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="resources/main/assets/js/gritter-conf.js"></script>
    	
     <!--script for this page-->
   	 <script src="resources/main/assets/js/sparkline-chart.js"></script>    
-	<script src="resources/main/assets/js/zabuto_calendar.js"></script>	
-	
+	 <script src="resources/main/assets/js/zabuto_calendar.js"></script>
+	 
 	<script type="application/javascript">
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
@@ -89,35 +93,16 @@
     			dataType : "json",
     			success : function(data){
     				var taskcont = "";
-    			
-
-    				$.each(data.data , function(index,obj){	
-    					 taskcont = "<div class='taskcont'>"
-    						 + "<input type='text' class='taskinput' value='"+obj.task_cont+"'>"
-    						 + "<div class='dropdown btn-alian' >"
-    						 + "<button class='btn btn-success btn-xs btn-pualian' data-toggle='dropdown'>"
-    						 + "<i class='fa fa-plus'></i></button>"
-    						 + "<div class='dropdown-menu taskbox'>"    						
-    						 + "<form action='insertpecifictask.htm'><div class='modal-header taskcont'>"
-    						 + "<h4 class='modal-title'>세부업무생성</h4></div><div class='modal-body'>"
-    						 + "<p>세부업무명</p>"
-    						 + "<input type='text' name='specifictask_cont' placeholder='세부업무명을 입력해주세요.' autocomplete='off' class='form-control placeholder-no-fix'>"
-    						 + "<input type='hidden' name='task_no' value='"+obj.task_no+"'>"
-    						 + "</div><div class='modal-footer centered'>" 
-    						 + "<button class='btn btn-theme03' type='submit'>생성</button>"
-    						 + "<button data-dismiss='modal' class='btn btn-theme04' type='button'>취소</button>"
-    						 + "</div></form></div></div>"
-    						 + "<button class='btn btn-danger btn-xs btn-alian'>"
-    						 + "<a href='deletetask.htm?task_no="+obj.task_no+"&project_no="+obj.project_no+"'>"
-    						 + "<i class='fa fa-trash-o'>"		
-    						 + "</i></a></button>"
-    						 + "</div>";
+    							
+    				$.each(data.data , function(index,obj){
+    					taskcont = "<div class='taskcont'>"
+    							 + obj.task_cont
+    							 + "</div>";
     					 
     					 $("#ajaxtest").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; float:left; ' class='taskbox'>");
     					 $("#"+obj.task_no+"task").append(taskcont);
-    					 $("#ajaxtest").append("</div>");
-    				
-    					 
+    					 $("#ajaxtest").append("</div>"); 
+    					
     					 $.ajax({
     						 url : "specifictask.htm",
     						 type : "post",
@@ -125,21 +110,21 @@
     						 dataType : "json",
     						 success : function(data){
     							 var speicficcont="";
-
+    							
     							 $.each(data.data, function(spindex, spobj){
     								 if(obj.task_no=spobj.task_no){
     									 
     									 speicficcont="<div class='specifictaskbox'>"
     									 	  + spobj.specifictask_cont
-    									 	  + "<button class='btn btn-primary btn-xs btn-alian'>"
-    									 	  + "<i class='fa fa-pencil'></i><a class='btn-del button'></a>"
-    									 	  +"</button></div>"
+    									 	  +"</div>"
     										 spobj.specifictask_cont + "<br>";
     									 $("#ajaxspecific").append("<div>");
-    									 $("#"+obj.task_no+"task").append(speicficcont); 
+    									 " <td valign='top' width='580' colspan='4'> "
+    									    $("#"+obj.task_no+"task").append("<a id='toggletest' href='detailSpecifictask.htm?specifictask_no="+spobj.specifictask_no+"&specifictask_cont="+spobj.specifictask_cont+"'>"+speicficcont+"</a>");    							
     									 $("#ajaxspecific").append("</div>");
     								 }
     							 });
+    					
     						 },
     						 error : function(){
     							alert("error");

@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
+import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 import kr.co.nextdoor.specifictask.service.SpecificTaskService;
 
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import kr.co.nextdoor.file.dto.FileDTO;
 
@@ -56,12 +59,41 @@ public class SpecificTaskController {
 		return "task.task";
 	}
 
-	@RequestMapping("deletespecifictask.htm")
-	public String deleteSpecificTask(String specifictask_no){
-		System.out.println("delete controller");
-		System.out.println("specifictask_no : " + specifictask_no );
+	@RequestMapping(value ="deleteSpecifictask.htm")
+	public String deleteSpecifictask(String specifictask_no){
 		
+		System.out.println("specifictask_no : " + specifictask_no);
+		specifictaskservice.deleteSpecifictask(specifictask_no);
 		
 		return "task.task";
+	}
+	
+	//specifictask_no에 따른 디테일값 받아오기 
+	@RequestMapping(value = "detailSpecifictask.htm", method=RequestMethod.GET)
+	public String detailModiSpecifictask(SpecificTaskDTO specifictaskdto ,Model model, HttpSession session){
+			
+		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskdto.getSpecifictask_no());
+		
+		session.setAttribute("modidto", modidto);
+		session.setAttribute("specifictask_no", specifictaskdto.getSpecifictask_no());
+		session.setAttribute("specifictask_cont", specifictaskdto.getSpecifictask_cont());
+					
+		return "task.task";
+	}
+		
+	@RequestMapping(value ="updateSpecifictask.htm")
+	public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto){
+							
+		System.out.println("specifictaskmodidto.getSpecifictask_no() jjh : "+specifictaskmodidto.getSpecifictask_no());
+		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
+		
+		if(modidto==null){
+			specifictaskservice.insertModiSpecifictask(specifictaskmodidto);
+		}else{
+			specifictaskservice.updateModiSpecifictask(specifictaskmodidto);		
+		}
+		
+		return "task.task";
+					
 	}
 }

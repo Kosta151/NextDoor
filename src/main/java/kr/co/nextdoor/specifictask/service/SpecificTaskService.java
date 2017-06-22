@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.nextdoor.specifictask.dao.SpecificTaskDAO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
+import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,10 +27,7 @@ import kr.co.nextdoor.file.dto.FileDTO;
 public class SpecificTaskService {
 	
 	@Autowired
-
 	SqlSession sqlsession;
-	
-	
 	
 	public List<SpecificTaskDTO> listSpecificTask(String task_no){
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
@@ -37,9 +35,6 @@ public class SpecificTaskService {
 		return specifictasklist;
 	}
 
-
-
-	
 	public int UploadFile(FileDTO filedto, CommonsMultipartFile file, HttpServletRequest request) throws IOException{
 		
 		String fname = file.getOriginalFilename();
@@ -72,6 +67,38 @@ public class SpecificTaskService {
 		int result = specifictaskdao.insertSpecifictask(specifictaskdto);
 		
 		return result;
+	}
+	
+	//수정값 insert
+	public int insertModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto)
+	{
+			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+			int result = specifictaskdao.insertModiSpecifictask(specifictaskmodidto);	
+			return result;			
+	};  
+		
+	//수정값 업데이트
+	public int updateModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto)
+	{
+			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+			int result = specifictaskdao.updateModiSpecifictask(specifictaskmodidto);	
+			return result;			
+	};  
+		
+	//수정값 받아오기
+	public SpecificTaskModiDTO detailModiSpecifictask(String specifictask_no){
+			System.out.println("jjh:"+specifictask_no);
+			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+			SpecificTaskModiDTO specifictaskdto = specifictaskdao.detailModiSpecifictask(specifictask_no);		
+			return specifictaskdto;		
+	}
+			
+	//세부업무 삭제
+	public int deleteSpecifictask(String specifictask_no){
+				
+			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+			int result = specifictaskdao.deleteSpecifictask(specifictask_no);
+			return result;
 	}
 }
 

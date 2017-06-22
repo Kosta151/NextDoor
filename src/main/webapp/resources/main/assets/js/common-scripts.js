@@ -186,6 +186,14 @@ var Script = function () {
     $('#project_end').datepicker({
        dateFormat:"yy-mm-dd"
     });
+    
+    $('#specifictask_start').datepicker({
+       dateFormat: "yy-mm-dd"
+    });
+
+  	$('#specifictask_end').datepicker({
+       dateFormat: "yy-mm-dd"
+    });
 
 
 }();

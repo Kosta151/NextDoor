@@ -6,7 +6,7 @@
 		<div class="col-lg-9 main-chart">
 			<div>
 				<h3>
-					<i class="fa fa-angle-right"></i> 보람사조
+					<i class="fa fa-angle-right"></i> ${project_name}
 				</h3>
 				<button type="button" class="btn btn-theme02" data-toggle="modal"
 					data-target="#myModal">
@@ -30,6 +30,8 @@
 									<input type="text" id="task_cont" name="task_cont"
 										placeholder="업무명을 입력해주세요." autocomplete="off"
 										class="form-control placeholder-no-fix"> 
+									<input type="hidden" id="project_no" name="project_no"
+										value="${project_no}">
 								</div>
 								<div class="modal-footer centered">
 									<button class="btn btn-theme03" type="submit">생성</button>
@@ -51,9 +53,14 @@
 		</div>
 
 		<!-- 오른쪽 사이드 바 -->
-		<div class="col-lg-3 ds" style="float: right;" id="test">
+		<div class="col-lg-3 ds" style="float: right;" id="toggletest_jjh">
 			<!--COMPLETED ACTIONS DONUTS CHART-->
-			<h3>세부업무 설정</h3>
+			<h3>세부업무 수정</h3>
+			<div class="task-checkbox">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="list-child" value="">
+                  <input type="text" name="specifictask_cont" value="${specifictask_cont}">
+            </div>
+			
 			<div class="form-panel">
 				<div class="btn-group">
 					<div class="btn-group btn-group-justified">
@@ -65,12 +72,16 @@
 						</div>
 					</div>
 				</div>
-				<form class="form-horizontal style-form" method="get">
+				<form action="updateSpecifictask.htm" class="form-horizontal style-form" method="post">
 					<div class="form-group">
 						<label class="col-sm-3 col-sm-3 control-label">업무배정</label>
-						<button type="button" class="btn btn-theme02">
-							<i class="fa fa-plus"></i>
-						</button>
+						<select name="member_id">
+							<option value="" selected="selected">멤버선택</option>	
+							<c:forEach items="${memberlist}" var="mlist">			
+								<option value="${mlist.member_id}" >${mlist.member_id}</option>	
+							</c:forEach>							
+						</select>
+						<p>배정된 인원 : ${modidto.member_id}</p>
 					</div>
 					<div class="form-group">
 						<div class="form-group">
@@ -80,22 +91,32 @@
 						</div>
 						<div class="form-group">
 							<p>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시작일: <input
-									type="text" id="datepicker">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시작일:
+								<input type="text" id="specifictask_start"
+									name="specifictask_start"
+									value="${modidto.specifictask_start}">
 							</p>
 						</div>
 						<div class="form-group">
-							<p>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마감일: <input
-									type="text" id="datepicker">
-							</p>
+							 <p> 
+								
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마감일: 
+								<input type="text" id="specifictask_end"
+								name="specifictask_end"
+								value="${modidto.specifictask_end}">
+							 </p> 
+								
 						</div>
 					</div>
-					<button type="button" class="btn btn-theme03">수정완료</button>
-					<button type="button" class="btn btn-theme04">업무삭제</button>
+					<input type="hidden" name="specifictask_no" value="${specifictask_no}">
+					<button type="submit" class="btn btn-theme03">수정완료</button>
+					<button type="button" class="btn btn-theme04"><a href="deleteSpecifictask.htm?specifictask_no=${specifictask_no}">업무삭제</a></button>
+					<br>
+					
 				</form>
+				
 			</div>
-		</div>
+		</div> <!-- 오른쪽 사이드바 끝  -->
 	</section>
 
 </section>

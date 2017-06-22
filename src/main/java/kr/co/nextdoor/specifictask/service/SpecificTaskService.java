@@ -21,20 +21,40 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import kr.co.nextdoor.file.dto.FileDTO;
 
-
-
+/*
+* @Class : SpecificTaskService
+* @Date : 2017. 06. 16
+* @Author : 문창균
+* @Desc : SpecificTaskController에 대한 service
+*/
 @Service
 public class SpecificTaskService {
 	
 	@Autowired
 	SqlSession sqlsession;
 	
+	/*
+    * @method Name : listSpecificTask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무출력
+    * @param : task_no
+    * @return : List<SpecificTaskDTO>
+    */
 	public List<SpecificTaskDTO> listSpecificTask(String task_no){
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		List<SpecificTaskDTO> specifictasklist = specifictaskdao.listSpecifictask(task_no);	
 		return specifictasklist;
 	}
 
+	/*
+    * @method Name : UploadFile
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 파일업로드
+    * @param : filedto, file, request 
+    * @return : int
+    */
 	public int UploadFile(FileDTO filedto, CommonsMultipartFile file, HttpServletRequest request) throws IOException{
 		
 		String fname = file.getOriginalFilename();
@@ -61,6 +81,14 @@ public class SpecificTaskService {
 		return result;
 	}
 	
+	/*
+    * @method Name : insertSpecificTask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무추가
+    * @param : specifictaskdto
+    * @return : int
+    */
 	public int insertSpecificTask(SpecificTaskDTO specifictaskdto){
 		System.out.println(specifictaskdto.getSpecifictask_cont());
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
@@ -69,7 +97,14 @@ public class SpecificTaskService {
 		return result;
 	}
 	
-	//수정값 insert
+	/*
+    * @method Name : insertModiSpecifictask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무수정값 추가
+    * @param : specifictaskmodidto
+    * @return : int
+    */
 	public int insertModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto)
 	{
 			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
@@ -77,7 +112,14 @@ public class SpecificTaskService {
 			return result;			
 	};  
 		
-	//수정값 업데이트
+	/*
+    * @method Name : updateModiSpecifictask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무수정값 업데이트
+    * @param : specifictaskmodidto
+    * @return : int
+    */
 	public int updateModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto)
 	{
 			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
@@ -85,7 +127,14 @@ public class SpecificTaskService {
 			return result;			
 	};  
 		
-	//수정값 받아오기
+	/*
+    * @method Name : detailModiSpecifictask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무수정값 출력
+    * @param : specifictask_no
+    * @return : SpecificTaskModiDTO
+    */
 	public SpecificTaskModiDTO detailModiSpecifictask(String specifictask_no){
 			System.out.println("jjh:"+specifictask_no);
 			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
@@ -93,7 +142,14 @@ public class SpecificTaskService {
 			return specifictaskdto;		
 	}
 			
-	//세부업무 삭제
+	/*
+    * @method Name : deleteSpecifictask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무 삭제
+    * @param : specifictask_no
+    * @return : int
+    */
 	public int deleteSpecifictask(String specifictask_no){
 				
 			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);

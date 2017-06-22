@@ -21,6 +21,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import kr.co.nextdoor.file.dto.FileDTO;
 
+/*
+* @Class : SpecificTaskController
+* @Date : 2017. 06. 16
+* @Author : 문창균
+* @Desc : 세부업무 controller
+*/
 @Controller
 public class SpecificTaskController {
 
@@ -30,6 +36,12 @@ public class SpecificTaskController {
 	@Autowired
 	View jsonview;
 
+   /*
+   * @method Name : listSpecificTask
+   * @date : 2017. 06. 16
+   * @author : 문창균
+   * @description : 세부업무리스트의 비동기 출력
+   */
 	@RequestMapping(value = "specifictask.htm", method = RequestMethod.POST)
 	public View listSpecificTask(String task_no, Model model) {
 		List<SpecificTaskDTO> specifictasklist = specifictaskservice.listSpecificTask(task_no);
@@ -38,6 +50,12 @@ public class SpecificTaskController {
 
 	}
 
+   /*
+   * @method Name : uploadFile
+   * @date : 2017. 06. 16
+   * @author : 김선화
+   * @description : 파일업로드
+   */
 	@RequestMapping(value = "file.htm", method = RequestMethod.POST)
 	public String uploadFile(FileDTO filedto, HttpServletRequest request) throws IOException {
 
@@ -52,13 +70,26 @@ public class SpecificTaskController {
 		}
 
 	}
-	@RequestMapping("insertpecifictask.htm")
+	
+	/*
+   * @method Name : insertSpecificTask
+   * @date : 2017. 06. 16
+   * @author : 문창균
+   * @description : 세부업무 추가
+   */
+	@RequestMapping("insertSpecifictask.htm")
 	public String insertSpecificTask(SpecificTaskDTO specifictask){
 		specifictaskservice.insertSpecificTask(specifictask);
 
 		return "task.task";
 	}
 
+	/*
+   * @method Name : deleteSpecifictask
+   * @date : 2017. 06. 16
+   * @author : 문창균
+   * @description : 세부업무 삭제
+   */
 	@RequestMapping(value ="deleteSpecifictask.htm")
 	public String deleteSpecifictask(String specifictask_no){
 		
@@ -68,7 +99,12 @@ public class SpecificTaskController {
 		return "task.task";
 	}
 	
-	//specifictask_no에 따른 디테일값 받아오기 
+	/*
+   * @method Name : detailModiSpecifictask
+   * @date : 2017. 06. 16
+   * @author : 장진환
+   * @description : 세부업무 수정값 출력
+   */
 	@RequestMapping(value = "detailSpecifictask.htm", method=RequestMethod.GET)
 	public String detailModiSpecifictask(SpecificTaskDTO specifictaskdto ,Model model, HttpSession session){
 			
@@ -81,6 +117,12 @@ public class SpecificTaskController {
 		return "task.task";
 	}
 		
+	/*
+   * @method Name : updateSpecifictask
+   * @date : 2017. 06. 16
+   * @author : 장진환
+   * @description : 세부업무 수정값 업데이트
+   */
 	@RequestMapping(value ="updateSpecifictask.htm")
 	public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto){
 							

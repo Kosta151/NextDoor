@@ -17,6 +17,15 @@ import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.task.dto.TaskDTO;
 import kr.co.nextdoor.task.service.TaskService;
 
+
+/*
+* @Class : TaskController
+* @Date : 2017. 06. 13 
+* @Author : 장진환
+* @Desc : task
+*/
+
+
 @Controller
 public class TaskController {
 
@@ -26,6 +35,12 @@ public class TaskController {
 	@Autowired
 	private View jsonview;
 
+	/*
+    * @method Name : listTask
+    * @date : 2017. 06. 13
+    * @author : 장진환
+    * @description : 업무 선택시 업무 출력 화면으로 이동
+    */
 	@RequestMapping(value="task.htm", method=RequestMethod.GET)
 	public String listTask(ProjectDTO projectdto, Model model, HttpSession session){
 	session.setAttribute("project_no", projectdto.getProject_no());
@@ -44,6 +59,12 @@ public class TaskController {
 		return "task.task";
 	}
 	
+	/*
+    * @method Name : listTask
+    * @date : 2017. 06. 13
+    * @author : 장진환
+    * @description : 업무리스트 출력의 비동기 화면 처리
+    */
 	@RequestMapping(value = "tasklist.htm", method=RequestMethod.POST)
 	public View listTask(Model model, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
@@ -52,7 +73,13 @@ public class TaskController {
 		model.addAttribute("data", tasklist);
 		return jsonview;
 	}
-
+	
+	/*
+    * @method Name : insertTask
+    * @date : 2017. 06. 13
+    * @author : 장진환
+    * @description : 업무생성 후 업무리스트 화면으로 이동
+    */
 	@RequestMapping(value = "insertTask.htm")
 	public String insertTask(TaskDTO taskdto, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
@@ -61,6 +88,13 @@ public class TaskController {
 		return "redirect:task.htm?project_no="+taskdto.getProject_no();
 	}
 	
+	
+	/*
+    * @method Name : deleteTask
+    * @date : 2017. 06. 13
+    * @author : 장진환
+    * @description : 업무삭제
+    */
 	@RequestMapping("deletetask.htm")
 	public String deleteTask(TaskDTO taskdto){
 		taskservice.deleteTask(taskdto);

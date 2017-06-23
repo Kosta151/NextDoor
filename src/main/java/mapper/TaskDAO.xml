@@ -9,7 +9,7 @@
 			VALUES(#{project_no}, #{task_cont})
 		</insert>
 		
-		<select id="listTasks" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+		<select id="listTask" resultType="kr.co.nextdoor.task.dto.TaskDTO">
 			SELECT task_no, task_cont, project_no FROM TASK WHERE project_no=#{project_no}
 		</select>
 		

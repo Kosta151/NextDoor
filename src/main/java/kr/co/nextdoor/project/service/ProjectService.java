@@ -127,4 +127,17 @@ public class ProjectService {
       return projectdao.listMember();
       
    }
+   
+   /*
+    * @method Name : updateProjectModi
+    * @date : 2017. 06.22
+    * @author : 송지은
+    * @description : 프로젝트 수정(시작일, 마감일 수정)
+    * @param : projectmodidto
+    * @return : int
+    */
+   public int updateProjectModi(ProjectModiDTO projectmodidto) throws Exception{
+      ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+      return projectdao.updateProjectModi(projectmodidto);
+   }
 }

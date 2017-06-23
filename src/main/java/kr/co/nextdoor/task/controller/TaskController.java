@@ -69,7 +69,7 @@ public class TaskController {
 	public View listTask(Model model, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
 		System.out.println("project_no : " +project_no);
-		List<TaskDTO> tasklist = taskservice.listTasks(project_no);
+		List<TaskDTO> tasklist = taskservice.listTask(project_no);
 		model.addAttribute("data", tasklist);
 		return jsonview;
 	}

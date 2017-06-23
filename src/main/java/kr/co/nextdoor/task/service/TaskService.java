@@ -34,10 +34,10 @@ public class TaskService {
     * @param : project_no
     * @return : List<TaskDTO>
     */
-	public List<TaskDTO> listTasks(String project_no){
+	public List<TaskDTO> listTask(String project_no){
 		
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
-		List<TaskDTO> list  = taskdao.listTasks(project_no);
+		List<TaskDTO> list  = taskdao.listTask(project_no);
 		return list;	
 	}
 	

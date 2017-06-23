@@ -47,39 +47,7 @@ public class SpecificTaskService {
 		return specifictasklist;
 	}
 
-	/*
-    * @method Name : UploadFile
-    * @date : 2017. 06. 16
-    * @author : 문창균
-    * @description : 파일업로드
-    * @param : filedto, file, request 
-    * @return : int
-    */
-	public int UploadFile(FileDTO filedto, CommonsMultipartFile file, HttpServletRequest request) throws IOException{
-		
-		String fname = file.getOriginalFilename();
-		String path = request.getSession().getServletContext().getRealPath("/nextdoor/upload");
-		String uploadedFileName = System.currentTimeMillis()+UUID.randomUUID().toString()+"_"+ fname;
-		String fullpath = path + "\\" + uploadedFileName;
-		
-		if (!fname.equals("")) {
-			// 서버에 파일 쓰기 작업
-			FileOutputStream fs = new FileOutputStream(fullpath);
-			fs.write(file.getBytes());
-			fs.close();
-		}
-		
-		System.out.println(filedto.getSpecifictask_no());
-		filedto.setSpecifictask_no(filedto.getSpecifictask_no());
-		filedto.setOriginal_name(fname);
-		filedto.setFile_name(fullpath);
-		filedto.setFile_size("12");
-		
-		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
-		int result = specifictaskdao.uploadFile(filedto);
-
-		return result;
-	}
+	
 	
 	/*
     * @method Name : insertSpecificTask
@@ -105,12 +73,12 @@ public class SpecificTaskService {
     * @param : specifictaskmodidto
     * @return : int
     */
-	public int insertModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto)
-	{
-			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
-			int result = specifictaskdao.insertModiSpecifictask(specifictaskmodidto);	
-			return result;			
-	};  
+	public int insertModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto){
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		int result = specifictaskdao.insertModiSpecifictask(specifictaskmodidto);	
+		
+		return result;			
+	}
 		
 	/*
     * @method Name : updateModiSpecifictask
@@ -120,12 +88,12 @@ public class SpecificTaskService {
     * @param : specifictaskmodidto
     * @return : int
     */
-	public int updateModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto)
-	{
-			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
-			int result = specifictaskdao.updateModiSpecifictask(specifictaskmodidto);	
-			return result;			
-	};  
+	public int updateModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto){
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		int result = specifictaskdao.updateModiSpecifictask(specifictaskmodidto);	
+		
+		return result;			
+	}  
 		
 	/*
     * @method Name : detailModiSpecifictask
@@ -136,10 +104,11 @@ public class SpecificTaskService {
     * @return : SpecificTaskModiDTO
     */
 	public SpecificTaskModiDTO detailModiSpecifictask(String specifictask_no){
-			System.out.println("jjh:"+specifictask_no);
-			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
-			SpecificTaskModiDTO specifictaskdto = specifictaskdao.detailModiSpecifictask(specifictask_no);		
-			return specifictaskdto;		
+		System.out.println("jjh:"+specifictask_no);
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		SpecificTaskModiDTO specifictaskdto = specifictaskdao.detailModiSpecifictask(specifictask_no);		
+		
+		return specifictaskdto;		
 	}
 			
 	/*
@@ -150,11 +119,45 @@ public class SpecificTaskService {
     * @param : specifictask_no
     * @return : int
     */
-	public int deleteSpecifictask(String specifictask_no){
+	public int deleteSpecifictask(String specifictask_no){	
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		int result = specifictaskdao.deleteSpecifictask(specifictask_no);
+		
+		return result;
+	}
+	
+	/*
+	 * @method Name : UploadFile
+	 * @date : 2017. 06. 16
+	 * @author : 김선화
+	 * @description : 파일업로드
+	 * @param : filedto, file, request 
+	 * @return : int
+	 */
+	//파일업로드
+	public int uploadFile(FileDTO filedto, CommonsMultipartFile file, HttpServletRequest request) throws IOException{
 				
-			SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
-			int result = specifictaskdao.deleteSpecifictask(specifictask_no);
-			return result;
+		String fname = file.getOriginalFilename();
+		String path = request.getSession().getServletContext().getRealPath("/nextdoor/upload");
+		String uploadedFileName = System.currentTimeMillis()+UUID.randomUUID().toString()+"_"+ fname;
+		String fullpath = path + "\\" + uploadedFileName;
+				
+		if (!fname.equals("")) {
+			// 서버에 파일 쓰기 작업
+			FileOutputStream fs = new FileOutputStream(fullpath);
+			fs.write(file.getBytes());
+			fs.close();
+		}
+				
+		filedto.setSpecifictask_no(filedto.getSpecifictask_no());
+		filedto.setOriginal_name(fname);
+		filedto.setFile_name(fullpath);
+		filedto.setFile_size(file.getSize());
+				
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		int result = specifictaskdao.uploadFile(filedto);
+
+		return result;
 	}
 }
 

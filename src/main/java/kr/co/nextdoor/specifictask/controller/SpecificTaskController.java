@@ -49,27 +49,6 @@ public class SpecificTaskController {
 		return jsonview;
 
 	}
-
-   /*
-   * @method Name : uploadFile
-   * @date : 2017. 06. 16
-   * @author : 김선화
-   * @description : 파일업로드
-   */
-	@RequestMapping(value = "file.htm", method = RequestMethod.POST)
-	public String uploadFile(FileDTO filedto, HttpServletRequest request) throws IOException {
-
-		System.out.println(filedto.getSpecifictask_no());
-		CommonsMultipartFile file = filedto.getFile();
-		int result = specifictaskservice.UploadFile(filedto, file, request);
-
-		if (result > 0) {
-			return "index.htm";
-		} else {
-			return "index.htm";
-		}
-
-	}
 	
 	/*
    * @method Name : insertSpecificTask
@@ -138,4 +117,21 @@ public class SpecificTaskController {
 		return "task.task";
 					
 	}
+	
+	//업무별 파일 업로드
+	@RequestMapping(value = "uploadfile.htm")
+	public String uploadFile(FileDTO filedto, HttpServletRequest request) throws IOException {
+		CommonsMultipartFile file = filedto.getFile();
+		specifictaskservice.uploadFile(filedto, file, request);
+		return "task.task";
+	}
+			
+	//프로젝트 별 파일리스트 목록 보여주기
+	@RequestMapping(value = "listfile.htm")
+	public String listFile() throws IOException {
+			
+		return "task.listfile";
+
+	}
+	
 }

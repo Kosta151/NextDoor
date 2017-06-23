@@ -11,7 +11,7 @@ public class FileDTO {
 	private String original_name;
 	private String file_name;
 	private Date file_date;
-	private String file_size;
+	private long file_size;
 	
 	public String getFile_no() {
 		return file_no;
@@ -43,10 +43,10 @@ public class FileDTO {
 	public void setFile_date(Date file_date) {
 		this.file_date = file_date;
 	}
-	public String getFile_size() {
+	public long getFile_size() {
 		return file_size;
 	}
-	public void setFile_size(String file_size) {
+	public void setFile_size(long file_size) {
 		this.file_size = file_size;
 	}
 	

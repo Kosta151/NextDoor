@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.project.dao.ProjectDAO;
 import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.project.dto.ProjectModiDTO;
@@ -88,19 +89,6 @@ public class ProjectService {
    }
    
    /*
-    * @method Name : updateProjectModi
-    * @date : 2017. 06.22
-    * @author : 송지은
-    * @description : 프로젝트 수정(시작일, 마감일 수정)
-    * @param : projectmodidto
-    * @return : int
-    */
-   public int updateProjectModi(ProjectModiDTO projectmodidto) throws Exception{
-      ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-      return projectdao.updateProjectModi(projectmodidto);
-   }
-   
-   /*
     * @method Name : listProjectModi
     * @date : 2017. 06.19
     * @author : 송지은
@@ -124,5 +112,19 @@ public class ProjectService {
    public int deleteProject(int project_no) throws Exception{
          ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
          return projectdao.deleteProject(project_no);
+   }
+   
+   /*
+    * @method Name : listProjectModi
+    * @date : 2017. 06.19
+    * @author : 송지은
+    * @description : 프로젝트 수정(project_name select)
+    * @param : projectmodidto
+    * @return : int
+    */
+   public MemberDTO listMember() throws Exception{
+      ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+      return projectdao.listMember();
+      
    }
 }

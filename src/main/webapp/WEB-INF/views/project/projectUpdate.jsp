@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    <!--main content start-->
         
       <section id="main-content">
@@ -69,6 +70,13 @@
                           </div>
                           <div class="modal-body">
                               <!-- <p class="centered"><img class="img-circle" width="80" src="resources/main/assets/img/ui-sam.jpg"></p> -->
+                              <%-- <select name="member_id" class="form-control placeholder-no-fix">
+                              		<option selected="selected">프로젝트에 초대할 멤버를 선택하세요</option>
+                              	<c:forEach items="${memberlist}" var="mlist">
+                              		<option value="${mlist.member_id}">${mlist.member.id}</option>
+                              	</c:forEach>
+                              </select> --%>
+                              
                               <p>이메일</p>
                               <input type="text" name="member_id" placeholder="이메일을 입력해주세요." class="form-control placeholder-no-fix">
                               <p>이름</p>

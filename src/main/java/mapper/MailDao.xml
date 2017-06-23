@@ -15,4 +15,9 @@
   	<update id="updatePassword" parameterType="hashMap" >
   		update member set password=#{password} where member_id=#{member_id}
   	</update>
+  	
+  	<insert id="insertProjectMember">
+  		insert into projectmember(member_id, project_no)
+  		values('1@naver.com', 256)
+  	</insert>
   </mapper>

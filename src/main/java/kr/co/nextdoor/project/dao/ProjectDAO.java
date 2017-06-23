@@ -2,6 +2,7 @@ package kr.co.nextdoor.project.dao;
 
 import java.util.List;
 
+import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.project.dto.ProjectModiDTO;
 
@@ -51,7 +52,7 @@ public interface ProjectDAO {
 	
 	/*
     * @method Name : insertProjectModi
-    * @date : 2017. 06. 
+    * @date : 2017. 06. 20
     * @author : 송지은
     * @description : 프로젝트 수정하기(시작일, 마감일 추가)
     * @return : int
@@ -94,13 +95,14 @@ public interface ProjectDAO {
     */
 	public int deleteProject(int project_no) throws Exception;
 	
+	
 	/*
-    * @method Name : sendProjectMember
-    * @date : 2017. 06. 
+    * @method Name : listMember
+    * @date : 2017. 06. 22
     * @author : 송지은
-    * @description : 프로젝트 멤버초대 이메일 전송
-    * @return : int
+    * @description : 프로젝트에 초대할 멤버 select
+    * @return : MemberDTO
     */
-	public int sendProjectMember(ProjectDTO projectDTO) throws Exception;
+	public MemberDTO listMember() throws Exception;
 
 }

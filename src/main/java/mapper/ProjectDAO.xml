@@ -23,12 +23,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       insert into projectmember(member_id, project_no) values(#{member_id}, (select project_no from project where workspace_no=#{workspace_no} and project_name=#{project_name}))
    </insert>
    
+   <!-- 프로젝트 이름 select -->
    <select id="getProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
       select project_name
       from project
       where project_no = #{project_no}
    </select>
    
+   <!--프로젝트에 시작일, 마감일 추가  -->
    <insert id="insertProjectModi" parameterType="kr.co.nextdoor.project.dto.ProjectModiDTO">
       insert
       into projectmodi(project_no, project_start, project_end)
@@ -58,5 +60,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <delete id="deleteProject">
       delete from project where project_no = #{project_no}
    </delete>
+   
+   <select id="listMember">
+   	   select member_id, name from member
+   </select>
    
 </mapper>

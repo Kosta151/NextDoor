@@ -1,23 +1,30 @@
 package kr.co.nextdoor.mail.controller;
 
 
+import java.security.Principal;
 import java.util.Random;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.nextdoor.mail.dto.MailDto;
 import kr.co.nextdoor.mail.service.MailSenderService;
+import kr.co.nextdoor.project.service.ProjectService;
 
 
 @Controller
+@SessionAttributes({"project_no"})
 public class MailController {
 
 	@Autowired
 	private MailSenderService mailsenderservice;
+	
 	
 	//�ʴ� ����
 	@RequestMapping(value="/mail.htm", method=RequestMethod.GET)
@@ -31,18 +38,18 @@ public class MailController {
 		
 		mailsenderservice.sendMail(maildto);
 		
-	
-
-		
 		return "index.index";
 	}
 	
 	//프로젝트 멤버 초대
-	@RequestMapping(value="/inviteMail.htm", method=RequestMethod.POST)
-	public String invitemailSender(MailDto maildto) throws Exception{
-		System.out.println("mailController");
+	@RequestMapping(value="inviteMail.htm", method=RequestMethod.POST)
+	public String invitemailSender(MailDto maildto, String member_id,  Principal principal, HttpSession session) throws Exception{
+		String project_no = (String) session.getAttribute("project_no");
+		maildto.setMember_id(member_id);
+		System.out.println("mailControllermailControllermailControllermailController");
 		mailsenderservice.inviteSendMail(maildto);
-		
+		mailsenderservice.insertProjectMember(member_id, project_no);
+		System.out.println("insertProjectMember 타는거야????");
 		return "project.projectUpdate";
 	}
 	

@@ -26,6 +26,8 @@ import org.springframework.stereotype.Service;
 import kr.co.nextdoor.mail.dao.MailDao;
 import kr.co.nextdoor.mail.dto.MailDto;
 import kr.co.nextdoor.member.dto.MemberDTO;
+import kr.co.nextdoor.project.dao.ProjectDAO;
+import kr.co.nextdoor.project.dto.ProjectDTO;
 
 @Service
 public class MailSenderService {
@@ -39,7 +41,14 @@ public class MailSenderService {
 	private SqlSession sqlsession;
 	
 	
-	
+	/*
+    * @method Name : sendMail
+    * @date : 2017. 06. 
+    * @author : 문창균
+    * @description : 
+    * @param : maildto
+    * @return : void
+    */
 	public void sendMail(MailDto maildto) throws Exception{
 		
 		//��Ȯ��
@@ -71,7 +80,14 @@ public class MailSenderService {
 		mailSender.send(msg);
 	}
 	
-	//프로젝트 멤버 초대
+	/*
+    * @method Name : inviteSendMail
+    * @date : 2017. 06. 22
+    * @author : 송지은
+    * @description : 프로젝트 멤버 초대
+    * @param : maildto
+    * @return : void
+    */
 	public void inviteSendMail(MailDto maildto) throws Exception{
 		
 		System.out.println(maildto.getMember_id());
@@ -99,6 +115,13 @@ public class MailSenderService {
 		message.setText(stringwriter.toString(),true);
 		
 		mailSender.send(msg);
+	}
+	
+	//프로젝트 멤버 초대 후에 프로젝트멤버 insert
+	public void insertProjectMember(String member_id, String project_no) throws Exception{
+	      MailDao maildao = sqlsession.getMapper(MailDao.class);
+	      maildao.insertProjectMember();
+	      return;
 	}
 	
 	public void senddeadline(){

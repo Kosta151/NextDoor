@@ -1,5 +1,11 @@
 package kr.co.nextdoor.specifictask.dto;
 
+/*
+* @Class : SpecificTaskDTO
+* @Date : 2017. 06. 16
+* @Author : 문창균
+* @Desc : SpecificTaskDTO
+*/
 public class SpecificTaskDTO {
 	
 	private String specifictask_no;

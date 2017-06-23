@@ -6,32 +6,93 @@ import kr.co.nextdoor.file.dto.FileDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 
+/*
+* @Class : SpecificTaskDAO
+* @Date : 2017. 06. 16
+* @Author : 문창균
+* @Desc : 세부업무에 대한 DAO
+*/
 public interface SpecificTaskDAO {
 
-	//상세업무 생성
+	/*
+    * @method Name : insertSpecifictask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무 추가
+    * @return : int
+    */
 	public int insertSpecifictask(SpecificTaskDTO specifictaskdto);
 
-	//전체 추가업무리스트
+	/*
+    * @method Name : listSpecifictask
+    * @date : 2017. 06. 16
+    * @author : 문창균
+    * @description : 세부업무리스트 출력
+    * @return : List<SpecificTaskDTO>
+    */
 	public List<SpecificTaskDTO> listSpecifictask(String task_no);
 	
-	//상세업무 수정
+	/*
+	    * @method Name : updateSpecifictask
+	    * @date : 2017. 06. 16
+	    * @author : 문창균
+	    * @description : 세부업무 수정
+	    * @return : int
+	    */
 	public int updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto);
 	
-	//상세업무 삭제
+	/*
+	    * @method Name : deleteSpecifictask
+	    * @date : 2017. 06. 16
+	    * @author : 문창균
+	    * @description : 세부업무 삭제
+	    * @return : int
+	    */
 	public int deleteSpecifictask(String specifictask_no);
 	
-	//상세업무 Modi값 insert
+	/*
+	    * @method Name : insertModiSpecifictask
+	    * @date : 2017. 06. 16
+	    * @author : 문창균
+	    * @description : 세부업무수정값 추가
+	    * @return : int
+	    */
 	public int insertModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto); 
 		
-	//상세업무 Modi update
+	/*
+	    * @method Name : updateModiSpecifictask
+	    * @date : 2017. 06. 16
+	    * @author : 문창균
+	    * @description : 세부업무수정값 업데이트
+	    * @return : int
+	    */
 	public int updateModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto);
 	
-	//추가업무 수정값 불러오기
+	/*
+	    * @method Name : detailModiSpecifictask
+	    * @date : 2017. 06. 16
+	    * @author : 문창균
+	    * @description : 세부업무수정값 출력
+	    * @return : SpecificTaskModiDTO
+	    */
 	public SpecificTaskModiDTO detailModiSpecifictask(String specifictask_no);
 	
-	//파일업로드
+	/*
+	    * @method Name : uploadFile
+	    * @date : 2017. 06. 16
+	    * @author : 김선화
+	    * @description : 파일업로드
+	    * @return : int
+	    */
 	public int uploadFile(FileDTO filedto);
-	//파일리스트 뿌리기 
+	
+	/*
+	    * @method Name : listFiles
+	    * @date : 2017. 06. 16
+	    * @author : 김선화
+	    * @description : 파일목록 리스트 출력
+	    * @return : List<FileDTO>
+	    */
 	public List<FileDTO> listFiles(SpecificTaskDTO specifictaskdto);
 	
 }

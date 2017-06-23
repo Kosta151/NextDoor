@@ -70,10 +70,13 @@ public class SpecificTaskController {
    * @description : 세부업무 삭제
    */
 	@RequestMapping(value ="deleteSpecifictask.htm")
-	public String deleteSpecifictask(String specifictask_no){
+	public String deleteSpecifictask(String specifictask_no, HttpSession session){
 		
 		System.out.println("specifictask_no : " + specifictask_no);
 		specifictaskservice.deleteSpecifictask(specifictask_no);
+		
+		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictask_no);
+		session.setAttribute("modidto", modidto);
 		
 		return "task.task";
 	}
@@ -103,7 +106,7 @@ public class SpecificTaskController {
    * @description : 세부업무 수정값 업데이트
    */
 	@RequestMapping(value ="updateSpecifictask.htm")
-	public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto){
+	public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto, HttpSession session){
 							
 		System.out.println("specifictaskmodidto.getSpecifictask_no() jjh : "+specifictaskmodidto.getSpecifictask_no());
 		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
@@ -113,6 +116,9 @@ public class SpecificTaskController {
 		}else{
 			specifictaskservice.updateModiSpecifictask(specifictaskmodidto);		
 		}
+		
+		modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
+		session.setAttribute("modidto", modidto);
 		
 		return "task.task";
 					

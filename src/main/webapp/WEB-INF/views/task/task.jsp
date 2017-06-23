@@ -66,7 +66,7 @@
 			<div>
 	        	<label>업무배정</label>
 	            	<select name="member_id">
-	                	<option value="" selected="selected">멤버선택</option>   
+	                	<option value="${modidto.member_id}">${modidto.member_id}</option>   
 	                    	<c:forEach items="${memberlist}" var="mlist">         
 	                        	<option value="${mlist.member_id}" >${mlist.member_id}</option>   
 	                        </c:forEach>                     
@@ -89,7 +89,7 @@
 		        </div>
 	        </div>
 	        <input type="hidden" name="specifictask_no" value="${specifictask_no}">
-	        <button type="submit">수정완료</button>
+	        <button type="submit">업무수정</button>
 	        <button type="button"><a href="deleteSpecifictask.htm?specifictask_no=${specifictask_no}">업무삭제</a></button>                       
 	      </form> 
 	</div>

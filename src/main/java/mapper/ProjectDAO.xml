@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <!-- 프로젝트 추가 -->
    <insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
-      insert into project(project_name, workspace_no, member_id, public) 
+      insert into project(project_name, workspace_no, member_id, open) 
       values(#{project_name}, #{workspace_no}, #{member_id}, 1)
    </insert>
    

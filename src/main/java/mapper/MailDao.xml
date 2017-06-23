@@ -18,6 +18,6 @@
   	
   	<insert id="insertProjectMember">
   		insert into projectmember(member_id, project_no)
-  		values('1@naver.com', 256)
+  		values(#{member_id}, #{project_no})
   	</insert>
   </mapper>

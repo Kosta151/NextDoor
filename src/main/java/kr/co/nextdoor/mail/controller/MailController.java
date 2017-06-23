@@ -19,7 +19,6 @@ import kr.co.nextdoor.project.service.ProjectService;
 
 
 @Controller
-@SessionAttributes({"project_no"})
 public class MailController {
 
 	@Autowired
@@ -43,13 +42,15 @@ public class MailController {
 	
 	//프로젝트 멤버 초대
 	@RequestMapping(value="inviteMail.htm", method=RequestMethod.POST)
-	public String invitemailSender(MailDto maildto, String member_id,  Principal principal, HttpSession session) throws Exception{
-		String project_no = (String) session.getAttribute("project_no");
-		maildto.setMember_id(member_id);
-		System.out.println("mailControllermailControllermailControllermailController");
+	public String invitemailSender(MailDto maildto, Principal principal, HttpSession session) throws Exception{
+		/*String member_id = (String) session.getAttribute("member_id");*/
+		/*String project_no = (String) session.getAttribute("project_no");*/
+		System.out.println(maildto.getMember_id());
+		System.out.println("프로젝트아이디" + session.getAttribute("project_no"));
+		maildto.setMember_id(maildto.getMember_id());
+		maildto.setProject_no((String)session.getAttribute("project_no"));
 		mailsenderservice.inviteSendMail(maildto);
-		mailsenderservice.insertProjectMember(member_id, project_no);
-		System.out.println("insertProjectMember 타는거야????");
+		mailsenderservice.insertProjectMember(maildto);
 		return "project.projectUpdate";
 	}
 	

@@ -10,5 +10,5 @@ public interface MailDao {
 	public ArrayList<MailDto> selectTaskdeadline();
 	public MailDto searchMember(String member_id);
 	public int updatePassword(HashMap<String, String> map);
-	public String insertProjectMember();
+	public void insertProjectMember(MailDto maildto);
 }

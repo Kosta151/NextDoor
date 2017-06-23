@@ -31,6 +31,8 @@ import kr.co.nextdoor.project.dto.ProjectDTO;
 
 @Service
 public class MailSenderService {
+	private static final String String = null;
+
 	@Autowired
 	private JavaMailSender mailSender;
 	
@@ -118,9 +120,9 @@ public class MailSenderService {
 	}
 	
 	//프로젝트 멤버 초대 후에 프로젝트멤버 insert
-	public void insertProjectMember(String member_id, String project_no) throws Exception{
+	public void insertProjectMember(MailDto maildto) throws Exception{
 	      MailDao maildao = sqlsession.getMapper(MailDao.class);
-	      maildao.insertProjectMember();
+	      maildao.insertProjectMember(maildto);
 	      return;
 	}
 	

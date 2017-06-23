@@ -95,4 +95,11 @@ public interface SpecificTaskDAO {
 	    */
 	public List<FileDTO> listFiles(SpecificTaskDTO specifictaskdto);
 	
+	//insert를 위한 select(specifictask_no를 얻기위한 DAO)
+	public SpecificTaskDTO seleteSpecificTaskComp(String specifictask_no);
+	
+	//업무 확인
+	public int checkSpecifcitask(SpecificTaskDTO specifictaskdto);
+	
+	
 }

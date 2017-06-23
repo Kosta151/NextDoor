@@ -1868,6 +1868,10 @@ PANELS CONFIGURATIONS
 	width: 20px;
 }
 
+.sp-checkbox {
+	float: left;
+	margin: 10px;
+}
 .brand-highlight {
 background: #fffbcc !important;
 }

@@ -58,7 +58,7 @@ public class SpecificTaskService {
     * @return : int
     */
 	public int insertSpecificTask(SpecificTaskDTO specifictaskdto){
-		System.out.println(specifictaskdto.getSpecifictask_cont());
+		
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		int result = specifictaskdao.insertSpecifictask(specifictaskdto);
 		
@@ -104,7 +104,7 @@ public class SpecificTaskService {
     * @return : SpecificTaskModiDTO
     */
 	public SpecificTaskModiDTO detailModiSpecifictask(String specifictask_no){
-		System.out.println("jjh:"+specifictask_no);
+		
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		SpecificTaskModiDTO specifictaskdto = specifictaskdao.detailModiSpecifictask(specifictask_no);		
 		
@@ -159,5 +159,30 @@ public class SpecificTaskService {
 
 		return result;
 	}
+	
+	/*
+	 * @method Name : checkSpecifcitask
+	 * @date : 2017. 06. 23
+	 * @author : 문창균
+	 * @description : 세부업무 확인
+	 * @param : SpecificTaskDTO 
+	 * @return : int
+	 */
+	public int checkSpecifcitask(SpecificTaskDTO specifictaskdto){
+		
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		int result = specifictaskdao.checkSpecifcitask(specifictaskdto);
+		return result;
+		
+	}
+	
+	public SpecificTaskDTO seleteSpecificTaskComp(String specifictask_no){
+		
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		SpecificTaskDTO specifictask = specifictaskdao.seleteSpecificTaskComp(specifictask_no);
+		
+		return specifictask;
+	}
+	
 }
 

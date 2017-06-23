@@ -56,7 +56,7 @@ public class SpecificTaskController {
    * @author : 문창균
    * @description : 세부업무 추가
    */
-	@RequestMapping("insertSpecifictask.htm")
+	@RequestMapping("insertspecifictask.htm")
 	public String insertSpecificTask(SpecificTaskDTO specifictask){
 		specifictaskservice.insertSpecificTask(specifictask);
 
@@ -72,7 +72,6 @@ public class SpecificTaskController {
 	@RequestMapping(value ="deleteSpecifictask.htm")
 	public String deleteSpecifictask(String specifictask_no, HttpSession session){
 		
-		System.out.println("specifictask_no : " + specifictask_no);
 		specifictaskservice.deleteSpecifictask(specifictask_no);
 		
 		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictask_no);
@@ -108,7 +107,6 @@ public class SpecificTaskController {
 	@RequestMapping(value ="updateSpecifictask.htm")
 	public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto, HttpSession session){
 							
-		System.out.println("specifictaskmodidto.getSpecifictask_no() jjh : "+specifictaskmodidto.getSpecifictask_no());
 		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
 		
 		if(modidto==null){
@@ -139,5 +137,22 @@ public class SpecificTaskController {
 		return "task.listfile";
 
 	}
+	
+	/*
+	   * @method Name : checkSpecificTask
+	   * @date : 2017. 06. 23
+	   * @author : 문창균
+	   * @description : 세부업무 작업 확인
+	   */
+	@RequestMapping("checkspecifictask.htm")
+	public String checkSpecificTask(String specifictask_no){
+		
+		SpecificTaskDTO specifictaskdto = specifictaskservice.seleteSpecificTaskComp(specifictask_no);
+		specifictaskdto.setSpecifictask_no(specifictask_no);
+		specifictaskservice.checkSpecifcitask(specifictaskdto);
+		
+		return "task.task";
+	}
+	
 	
 }

@@ -11,7 +11,15 @@ public class SpecificTaskDTO {
 	private String specifictask_no;
 	private String task_no;
 	private String specifictask_cont;
+	private String specifictask_comp;
 	
+	
+	public String getSpecifictask_comp() {
+		return specifictask_comp;
+	}
+	public void setSpecifictask_comp(String specifictask_comp) {
+		this.specifictask_comp = specifictask_comp;
+	}
 	public String getSpecifictask_no() {
 		return specifictask_no;
 	}

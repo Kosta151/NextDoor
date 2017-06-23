@@ -41,6 +41,22 @@
 	
 	<!-- 상세업무 생성 -->
 	<insert id="insertSpecifictask" parameterType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
-		insert into specifictask(task_no, specifictask_cont) values(#{task_no}, #{specifictask_cont})
+		insert into specifictask(task_no, specifictask_cont, specifictask_comp) values(#{task_no}, #{specifictask_cont}, '0')
 	</insert>
+	
+	<update id="checkSpecifcitask">
+		update specifictask 
+		<set>
+			<if test="specifictask_comp == 0">specifictask_comp='1'</if>
+			<if test="specifictask_comp == 1">specifictask_comp='0'</if>
+		</set>
+		 where specifictask_no = #{specifictask_no}
+	</update>
+	
+	<select id="seleteSpecificTaskComp" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
+		select specifictask_comp from specifictask where specifictask_no=#{specifictask_no}
+	</select>
+	
+
+	
 </mapper>

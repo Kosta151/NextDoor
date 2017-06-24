@@ -2,6 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chat</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/sockjs-0.3.js"></script>
+<script src="resources/jquery-1.8.3 .min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootst rapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <sec:authentication property="name" var="loginUser" />
 <script>
 
@@ -13,7 +22,7 @@ var sock;
 $(function() {
 	//소켓 url을 chat-sock으로 설정 후 소켓 생성
 	console.log("opening websocket");
-	sock = new SockJS("http://" +document.domain + ":8090/nextdoor/socket.htm");
+	sock = new SockJS("http://" +document.domain + ":8090/nextdoor/chat.htm");
 	
 	//접속 이벤트 발생 시 메시지 전송
 	sock.onopen = function() {
@@ -69,6 +78,32 @@ $(function() {
 
 
 </script>
+</head>
+  <body>
+ 	<section id="main-content">
+          <section class="wrapper site-min-height">
+              <!-- page start-->
+              <div class="chat-room mt">
+                  <aside class="right-side">
+                      <div class="invite-row">
+                          <h4 class="pull-left">Team Members</h4>
+                          <a href="#" class="btn btn-theme04 pull-right">+ Invite</a>
+                      </div>
+                      <ul class="chat-available-user">
+                          <li>
+                              <a href="chat_room.html">
+                                  Paul Brown
+                                  <span class="text-muted">1h:02m</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="chat_room.html">
+                                  David Duncan
+                                  <span class="text-muted">1h:08m</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </aside>
                  
             <div id="userList">
             	<aside class="mid-side">
@@ -90,4 +125,7 @@ $(function() {
                   <input type="hidden" id="nickname" value="${loginUser}">   
              </div>
              	 <!-- page end-->			
-
+		</section>
+	 </section><!-- /MAIN CONTENT -->
+  </body>
+</html>

@@ -20,17 +20,17 @@ public class FullcalendarService {
 	@Autowired
 	private SqlSession sqlsession;
 
-	//세부업무 추가
+	//�꽭遺��뾽臾� 異붽�
 	public void SpecificTaskInsert(SpecificTaskDTO specificetaskdto, HttpSession session) throws Exception{
 	FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
 	fullcalendardao.insertFullcalendarSpecificTask(specificetaskdto);
 	session.setAttribute("specifictask_no", specificetaskdto.getSpecifictask_no());
 	return;
 	}
-   //세부업무 수정추가
+   //�꽭遺��뾽臾� �닔�젙異붽�
 	public void SpecificModiTaskInsert(SpecificTaskModiDTO specifictaskmodidto, String task_no, String specifictask_cont){
 	FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
-	HashMap<String, String> map = new HashMap<>();
+	HashMap<String, String> map = new HashMap();
 	map.put("task_no", task_no);
 	map.put("member_id", specifictaskmodidto.getMember_id());
 	map.put("specifictask_end", specifictaskmodidto.getSpecifictask_end());

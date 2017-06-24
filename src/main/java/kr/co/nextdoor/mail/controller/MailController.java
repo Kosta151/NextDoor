@@ -45,13 +45,14 @@ public class MailController {
 	public String invitemailSender(MailDto maildto, Principal principal, HttpSession session) throws Exception{
 		/*String member_id = (String) session.getAttribute("member_id");*/
 		/*String project_no = (String) session.getAttribute("project_no");*/
+		String projectno=(String) session.getAttribute("project_no");
 		System.out.println(maildto.getMember_id());
 		System.out.println("프로젝트아이디" + session.getAttribute("project_no"));
 		maildto.setMember_id(maildto.getMember_id());
 		maildto.setProject_no((String)session.getAttribute("project_no"));
 		mailsenderservice.inviteSendMail(maildto);
 		mailsenderservice.insertProjectMember(maildto);
-		return "project.projectUpdate";
+		return "redirect:projectUpdate.htm?project_no="+projectno;
 	}
 	
 	

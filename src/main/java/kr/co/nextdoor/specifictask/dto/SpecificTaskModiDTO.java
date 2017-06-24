@@ -13,7 +13,6 @@ public class SpecificTaskModiDTO {
 	private String member_id;
 	private String specifictask_start;
 	private String specifictask_end;
-	private String specifictask_comp;
 	
 	public String getSpecifictaskmodi_no() {
 		return specifictaskmodi_no;
@@ -45,10 +44,5 @@ public class SpecificTaskModiDTO {
 	public void setSpecifictask_end(String specifictask_end) {
 		this.specifictask_end = specifictask_end;
 	}
-	public String getSpecifictask_comp() {
-		return specifictask_comp;
-	}
-	public void setSpecifictask_comp(String specifictask_comp) {
-		this.specifictask_comp = specifictask_comp;
-	}
+	
 }

@@ -80,7 +80,7 @@ public class fullcalendarController {
 		
 		ArrayList<SpecificTaskModiDTO> calendarlist = fullcalendardao.calendarList();
 		
-		System.out.println("callist:" + calendarlist);
+		System.out.println("calendarlist:" + calendarlist);
 		
 		 JSONArray array = new JSONArray();
 		 for(int i = 0; i<calendarlist.size(); i++){

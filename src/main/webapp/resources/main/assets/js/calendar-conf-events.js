@@ -58,7 +58,7 @@
     	
     	//캘린더 한글 적용
     	header: {
-            left: "prev,nex	t today",
+            left: "prev,next today",
             center: "title",
             right: 'month,agendaWeek,agendaDay'
             },

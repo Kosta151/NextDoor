@@ -6,13 +6,13 @@
   <mapper namespace="kr.co.nextdoor.schedule.dao.FullcalendarDAO">
         <insert id="insertFullcalendarSpecificTask">
             INSERT
-            INTO SPECIFICTASK(task_no,specifictask_cont ) 
-            VALUES(#{task_no}, #{specifictask_cont})
+            INTO SPECIFICTASK(task_no,specifictask_cont,specifictask_comp) 
+            VALUES(#{task_no}, #{specifictask_cont},'0')
         </insert>
 
        <insert id="insertFullcalendarSpecificModiTask" parameterType="hashMap">
-			INSERT INTO SPECIFICTASKMODI(specifictask_no, member_id, specifictask_start, specifictask_end, specifictask_comp)
-			VALUES( (SELECT specifictask_no from specifictask where task_no = #{task_no} and specifictask_cont = #{specifictask_cont}) , #{member_id}, #{specifictask_start}, #{specifictask_end}, '1')
+			INSERT INTO SPECIFICTASKMODI(specifictask_no, member_id, specifictask_start, specifictask_end)
+			VALUES( (SELECT specifictask_no from specifictask where task_no = #{task_no} and specifictask_cont = #{specifictask_cont}) , #{member_id}, #{specifictask_start}, #{specifictask_end})
 	   	</insert>
 	   	
 	   	<select id="calendarList"  resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO"> 

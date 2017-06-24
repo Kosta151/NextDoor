@@ -33,13 +33,17 @@ public class ProjectController {
     * @method Name : projectList
     * @date : 2017. 06. 13
     * @author : 송지은
-    * @description : 워크스페이스 선택시 프로젝트 선택화면으로 이동
+    * @description : 워크스페이스 선택시 프로젝트 선택화면으로 이동 세션에 워크스페이스 번호가 담겨있으면 워크스페이스 번호를 DTO객체에 넣어줌
     */
    @RequestMapping("projectList.htm")
-   public String listProject(ProjectDTO projectdto, Principal principal, Model model) throws Exception {
+   public String listProject(HttpSession session,ProjectDTO projectdto, Principal principal, Model model) throws Exception {
       projectdto.setMember_id(principal.getName());
+      if(!(session.getAttribute("workspace_no")==null)){
+          projectdto.setWorkspace_no((String) session.getAttribute("workspace_no"));
+      }
       model.addAttribute("projectlist", service.listProject(projectdto));
       model.addAttribute("workspace_no", projectdto.getWorkspace_no());
+
       return "project.projectList";
    }
 

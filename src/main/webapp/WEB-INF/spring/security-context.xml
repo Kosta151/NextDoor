@@ -15,7 +15,8 @@
 							 password-parameter="password"
 							 />
 							 
-		<security:logout logout-success-url="/index.htm" />
+		<security:logout logout-url="/logout" 
+						 logout-success-url="/login.htm" />
 	</security:http>
 	
 	<security:authentication-manager>

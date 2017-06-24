@@ -3,58 +3,60 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       <section id="main-content">
           <section class="wrapper site-min-height">
-             <h3><i class="fa fa-angle-right"></i> 내 프로젝트</h3>
-             <div class="row mt">
-                <div class="col-lg-12">
-               <div class="row">
-                  <!-- PANEL -->
-                  <c:forEach items="${projectlist}" var="list">
-                  <div class="col-lg-2 col-md-2 col-sm-2 mb">
-                     <div class="grey-panel pn donut-chart">
-                     <div class="grey-header">
-                        <h5>${list.project_name}<a href="projectUpdate.htm?project_no=${list.project_no }">&nbsp&nbsp
-                        <i class="fa fa-cog" aria-hidden="true"></i></a>
-                        <a href="projectDelete.htm?project_no=${list.project_no}" class="close" aria-hidden="true" data-dismiss="alert" type="button">×</a></h5>
-                     </div>
-                     <canvas id="${list.project_name}" height="120" width="120" ></canvas>
-                     <script>
-                        var doughnutData = [ {
-                           value : 55,
-                           color : "#FF6B6B"
-                        }, {
-                           value : 45,
-                           color : "#fdfdfd"
-                        } ];
-                        var myDoughnut = new Chart(document.getElementById("${list.project_name}").getContext("2d")).Doughnut(doughnutData);
-                     </script>
-                     <p class="user">70%</p>
-                     <%-- <form action="task.htm" method="post">
-                        <button type="submit" name="project_no" value="${list.project_no}">업무보기</button>
-                     </form> --%>
-                     <button ><a href="task.htm?project_no=${list.project_no}">업무보기</a></button>
-                     </div>
-                  </div><!-- /col-md-4 -->
-                  </c:forEach>
+              <h3><i class="fa fa-angle-right"></i> 내 프로젝트</h3>
+              <div class="row mt">
+                  <div class="col-lg-12">
+				    <div class="row">
+					<!-- PANEL -->
+					<c:forEach items="${projectlist}" var="list">
+						<div class="col-lg-2 col-md-2 col-sm-2 mb">
+							<div class="grey-panel pn donut-chart">
+								<div class="grey-header">
+									<h5>${list.project_name}<a
+											href="projectUpdate.htm?project_no=${list.project_no }">&nbsp&nbsp
+											<i class="fa fa-cog" aria-hidden="true"></i>
+										</a> <a href="projectDelete.htm?project_no=${list.project_no}"
+											class="close" aria-hidden="true" data-dismiss="alert"
+											type="button">×</a>
+									</h5>
+								</div>
+								<canvas id="${list.project_name}" height="120" width="120"></canvas>
+								<script>
+			                        var doughnutData = [ {
+			                           value : 55,
+			                           color : "#FF6B6B"
+			                        }, {
+			                           value : 45,
+			                           color : "#fdfdfd"
+			                        } ];
+			                        var myDoughnut = new Chart(document.getElementById("${list.project_name}").getContext("2d")).Doughnut(doughnutData);
+			                       </script>
+								<p class="user">70%</p>
+								<button onclick="location.href='task.htm?project_no=${list.project_no}'">업무보기</button>
+							</div>
+						</div>
+					</c:forEach>
 
-                  <div class="col-lg-2 col-md-2 col-sm-2 mb">
-                     <!-- WHITE PANEL - TOP USER -->
-                     <div class="white-panel pn">
-                        <div class="white-header">
-                           <h5>새 프로젝트 추가</h5>
-                        </div>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button>
-                        <h2><a data-toggle="modal" href="#myModal"></a></h2>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <p class="small mt"><!-- MEMBER SINCE --></p>
-                              <p><!-- 2012 --></p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div><!-- /END 6TH ROW OF PANELS -->
-               
-                  <!-- Modal -->
+					<div class="col-lg-2 col-md-2 col-sm-2 mb">
+						<!-- WHITE PANEL - TOP USER -->
+						<div class="white-panel pn">
+							<div class="white-header">
+								<h5>새 프로젝트 추가</h5>
+							</div>
+							<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+								<i class="fa fa-plus"></i>
+							</button>
+							<h2><a data-toggle="modal" href="#myModal"></a></h2>
+							<div class="row">
+								<div class="col-md-6">
+									<p class="small mt"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal -->
                       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                           <div class="modal-dialog modal-sm">
                               <div class="modal-content">

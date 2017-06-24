@@ -82,7 +82,7 @@
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
 	            	
-                    <li><a class="logout" href="login.html">Logout</a></li> 
+                    <li><a class="logout" href="/nextdoor/logout">Logout</a></li> 
                     
                     <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
 							    WorkSpace <span class="caret"></span>

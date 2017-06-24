@@ -5,6 +5,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
@@ -116,8 +119,7 @@
    						 taskcomp = "<div id='"+obj.task_no+"comp'>"
 	 		  				+ "<h4>완료된 업무</h4>"
 	 		 				+ "</div>"
-    					 
-    					 			
+    					    					 			
     					 $("#ajaxtest").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; float:left; ' class='taskbox'>");
     					 $("#"+obj.task_no+"task").append(taskcont);
     					 $("#ajaxtest").append("</div>");
@@ -136,15 +138,16 @@
     								 if(obj.task_no=spobj.task_no){
     									 
     									 console.log(comp);
-    									 
     									 speicficcont="<div class='specifictaskbox' style='background-color : none;' id='"+spobj.specifictask_no+"specific'>"
-    									 	  + spobj.specifictask_cont
-    									 	  + "<button class='btn btn-primary btn-xs btn-alian'>"
-    									 	  + "<i class='fa fa-pencil'></i><a class='btn-del button'></a>"
-    									 	  + "</button>"
+    									 	  + spobj.specifictask_cont   									 	  						 	  	
+    									 	  + "<button class='btn btn-success btn-xs btn-alian'>"    	
+    									 	  + "<a href='detailSpecifictask.htm?specifictask_no="+spobj.specifictask_no+"&specifictask_cont="+spobj.specifictask_cont+"'>" 
+    									 	  + "<i class='fa fa-pencil'>"    									 	
+    									 	  + "</i></a></button>"  
+    									 	 
     									 	  + "<input type='checkbox' class='sp-checkbox' id='"+spobj.specifictask_no+"sp-checkbox' value='"+spobj.specifictask_no+"'>"
     									 	  + "</div>"
-    										 
+    									 	
     									 	/*  $("#"+obj.task_no+"task").append(speicficcont); */
     									 	 comp = spobj.specifictask_comp;
     									 	
@@ -153,9 +156,7 @@
     									 }else if(comp==1){
     										 $("#"+obj.task_no+"comp").append(speicficcont);
     									 } 
-    									   
-    							
-    									 
+    									   	 
     									 $("#"+spobj.specifictask_no+"sp-checkbox").click(function(){
     										alert("세부 업무 번호" + spobj.specifictask_no); 
     										var specifictaskno=spobj.specifictask_no;
@@ -164,6 +165,34 @@
     										checkspecifictask(specifictaskno,taskno,speicficcont);
     									 });
     								 }
+    								 
+    								 $("#"+spobj.specifictask_no+"toggletest").click(function () {
+    								        if ($('#toggletest_jjh').is(":visible") == true) {
+    								            $('#main-content').css({
+    								                'margin-left': '210px'
+    								            });
+    								            $('#toggletest_jjh').css({
+    								                'margin-right': '-210px'
+    								            });
+    								            $('#toggletest_jjh').hide(); 
+    								            $("#container").addClass("sidebar-closed");
+    									    } else {
+    									            $('#main-content').css({
+    									                'margin-right': '0px'
+    									            });
+    									            $('#toggletest_jjh').show();
+    									            $('#toggletest_jjh').css({
+    									                'margin-right': '0'
+    									            }); 
+    									            $("#container").removeClass("sidebar-closed");
+    									            
+    									         } 
+    								        
+    									    
+    									 });
+    								 
+    								 
+    								 
     							 });
     							 
     							
@@ -202,6 +231,8 @@
 				 }
 			 }); 
        }
+        
+        
         
         
         function myNavFunction(id) {

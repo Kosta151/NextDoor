@@ -67,10 +67,14 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a href="listfile.htm" >
+                      <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
-                          <span>파일 목록</span>
+                          <span>사다리 타기</span>
                       </a>
+                      <ul class="sub">
+                          <li><a  href="basic_table.html">Basic Table</a></li>
+                          <li><a  href="responsive_table.html">Responsive Table</a></li>
+                      </ul>
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >

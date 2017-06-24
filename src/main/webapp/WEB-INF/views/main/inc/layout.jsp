@@ -83,6 +83,14 @@
                 ]
             });
             
+           
+            
+            var page=1;
+			 $(window).scroll(function() {
+	                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+	                  console.log(++page);
+            
+            
             $.ajax({
     			url : "tasklist.htm",
     			type : "post",
@@ -90,7 +98,12 @@
     			success : function(data){
     				var taskcont = "";
     				var taskcomp = "";
-
+						
+    				
+    		                 /*  $("#ajaxtest").append("<h1>Page " + page + "</h1><BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~"); */
+    		                  
+    		           
+    				
     				$.each(data.data , function(index,obj){	
     					 taskcont = "<div class='taskcont' id='"+obj.task_no+"tasktitle'>"
     						 + "<input type='text' class='taskinput' value='"+obj.task_cont+"'>"
@@ -155,13 +168,13 @@
     									 } 
     									   
     							
-    									 
+    									 var spcont =speicficcont;
     									 $("#"+spobj.specifictask_no+"sp-checkbox").click(function(){
     										alert("세부 업무 번호" + spobj.specifictask_no); 
     										var specifictaskno=spobj.specifictask_no;
     										var taskno = obj.task_no;
-    										speicficcont
-    										checkspecifictask(specifictaskno,taskno,speicficcont);
+    										spcont
+    										checkspecifictask(specifictaskno,taskno,spcont);
     									 });
     								 }
     							 });
@@ -177,13 +190,16 @@
     				});
     			},
     			error : function(){
-    				alert("error")
+    				alert("error");
     			}
     		});
+    		     }
+            });
+		
         });
         
-        function checkspecifictask(specifictaskno,taskno,speicficcont){
-        	console.log(specifictaskno);
+        function checkspecifictask(specifictaskno,taskno,spcont){
+        	
        	  $.ajax({
 				 url : "checkspecifictask.htm",
 				 type : "post",
@@ -193,7 +209,7 @@
 					 alert("success");
 					
 					$("#"+specifictaskno + "specific").hide();
-					$("#" +taskno+"task").append(speicficcont);
+					$("#" +taskno+"task").append(spcont);
 					
 				
 				 },

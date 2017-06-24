@@ -2,16 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Chat</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="resources/sockjs-0.3.js"></script>
-<script src="resources/jquery-1.8.3 .min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootst rapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <sec:authentication property="name" var="loginUser" />
+    <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
+<script src="resources/sockjs-0.3.js"></script>
+
 <script>
 
 
@@ -22,7 +16,7 @@ var sock;
 $(function() {
 	//소켓 url을 chat-sock으로 설정 후 소켓 생성
 	console.log("opening websocket");
-	sock = new SockJS("http://" +document.domain + ":8090/nextdoor/chat.htm");
+	sock = new SockJS("http://" +document.domain + ":8090/nextdoor/chat-ws");
 	
 	//접속 이벤트 발생 시 메시지 전송
 	sock.onopen = function() {
@@ -78,9 +72,8 @@ $(function() {
 
 
 </script>
-</head>
-  <body>
- 	<section id="main-content">
+
+     <section id="main-content">
           <section class="wrapper site-min-height">
               <!-- page start-->
               <div class="chat-room mt">
@@ -104,7 +97,7 @@ $(function() {
                           </li>
                       </ul>
                   </aside>
-                 
+
             <div id="userList">
             	<aside class="mid-side">
               		<div class="chat-room-head">
@@ -125,7 +118,5 @@ $(function() {
                   <input type="hidden" id="nickname" value="${loginUser}">   
              </div>
              	 <!-- page end-->			
-		</section>
-	 </section><!-- /MAIN CONTENT -->
-  </body>
-</html>
+        </section>
+     </section><!-- /MAIN CONTENT -->

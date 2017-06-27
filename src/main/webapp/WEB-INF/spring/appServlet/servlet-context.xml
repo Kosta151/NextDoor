@@ -23,12 +23,6 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
 	<!-- Tiles -->
 	<beans:bean id="tilesconfiguer"
 		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
@@ -39,12 +33,34 @@
 		</beans:property>
 	</beans:bean>
 	
+	<!-- Fileupload/download -->
+	<beans:bean id="download" class="kr.co.nextdoor.file.service.FileDownloadView"/>
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="maxUploadSize" value="100000000" />
+        <beans:property name="maxInMemorySize" value="100000000" />
+    </beans:bean>
+    <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0"/>
+	</beans:bean>
+	
+	<!-- Ajax/Json -->
+	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<beans:property name="contentType" value="text/html;charset=UTF-8" />
+	</beans:bean>
+	
 	<!-- ViewResolver -->
 	<beans:bean id="urlBasedViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles2.TilesView" />
 		<beans:property name="order" value="1" />
+	</beans:bean>
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
 	
 	<!-- Scheduleing -->
@@ -60,17 +76,7 @@
 		<websocket:sockjs />
 	</websocket:handlers>
 	
-	<!-- Ajax/Json -->
-	<beans:bean id="jsonView"
-		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
-		<beans:property name="contentType" value="text/html;charset=UTF-8" />
-	</beans:bean>
 	
-	<!-- Fileupload -->
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <beans:property name="maxUploadSize" value="100000000" />
-        <beans:property name="maxInMemorySize" value="100000000" />
-    </beans:bean>
-	
+
 	
 </beans:beans>

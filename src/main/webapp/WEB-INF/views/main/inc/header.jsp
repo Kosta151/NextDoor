@@ -5,9 +5,6 @@
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
-              <div class="sidebar-toggle-right">
-                  <div class="fa fa-cog tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
               
             <!--logo start-->
             <a href="projectList.htm" class="logo"><b>Next Door</b></a>

@@ -24,7 +24,7 @@
 <body>
      <!--main content start-->
       <section id="main-content">
-        <section class="wrapper">
+        <section class="wrapper site-min-height">
              <h3><i class="fa fa-angle-right"></i> Calendar</h3>
               <!-- page start-->
               <div class="row mt">

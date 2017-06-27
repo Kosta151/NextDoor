@@ -71,28 +71,38 @@ a, a:hover, a:focus {
 /* tasklist */
 .taskbox{
 	float : left;
-	border-radius:10px;
-	width:25%;
-	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+	/* width:25%; */
+	/* box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); */
 }
 
 .taskcont {
-	border-radius:10px;
+	
 	text-align: center;
 	background-color : #ffd777;
-	color : white;
-	font-size : xx-large;
+	color : #408080;
+	font-size : medium;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 	
 }
 .taskinput {
-	border-radius:10px;
+	
 	border:none;
 	text-align: center;
 	background-color : #ffd777;
 	color : white;
-	font-size : xx-large;
+	font-size : medium;
 	width: 70%;
+	
+}
+
+.taskcomp {
+	margin-top : 10px;
+	border:none;
+	text-align: center;
+	background-color : #e0e0e0;
+	color : #808080;
+	font-size : medium;
+	width: 100%;
 	
 }
 .taskcont:HOVER {
@@ -102,11 +112,11 @@ a, a:hover, a:focus {
 }
 
 .specifictaskbox{
-	border-radius:10px;
+	
 	text-align: center;
-	background-color : D7D4E4;
+	background-color : #ffffff;
 	color : 3F3C4A;
-	font-size : xx-large;
+	font-size : medium;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 	margin-top: 10px;
 	
@@ -465,13 +475,14 @@ ul.sidebar-menu li a.active i {
 }
 
 .wrapper {
-    display: inline-block;
+	overflow : scroll;
+    /* display: inline-block; */
     margin-top: 60px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
     padding-top: 0px;
-    width: 100%;
+    width: auto;
 }
 
 a.logo {
@@ -1870,7 +1881,7 @@ PANELS CONFIGURATIONS
 
 .sp-checkbox {
 	float: left;
-	margin: 10px;
+	margin-left : 10px;
 }
 .brand-highlight {
 background: #fffbcc !important;
@@ -3492,6 +3503,7 @@ ul.chat-available-user li a:hover {
 }
 
 .site-min-height {
+	width : auto;
     min-height: 900px;
 }
 

@@ -10,7 +10,6 @@
               
               	  <p class="centered"><a href="profile.html"><img src="resources/main/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><sec:authentication property="principal.username"/></h5>
-              	  	
                   <li class="mt">
                       <a class="active" href="#" onClick="window.location.reload( true );">
                           <i class="fa fa-desktop"></i>

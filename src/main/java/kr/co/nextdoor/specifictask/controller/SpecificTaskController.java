@@ -3,10 +3,12 @@ package kr.co.nextdoor.specifictask.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
@@ -27,14 +29,12 @@ import kr.co.nextdoor.file.dto.FileDTO;
 * @Author : 문창균
 * @Desc : 세부업무 controller
 */
+
 @Controller
 public class SpecificTaskController {
 
 	@Autowired
 	SpecificTaskService specifictaskservice;
-
-	@Autowired
-	View jsonview;
 
    /*
    * @method Name : listSpecificTask
@@ -43,10 +43,13 @@ public class SpecificTaskController {
    * @description : 세부업무리스트의 비동기 출력
    */
 	@RequestMapping(value = "specifictask.htm", method = RequestMethod.POST)
-	public View listSpecificTask(String task_no, Model model) {
+	public ModelAndView listSpecificTask(String task_no, Model model) {
 		List<SpecificTaskDTO> specifictasklist = specifictaskservice.listSpecificTask(task_no);
-		model.addAttribute("data", specifictasklist);
-		return jsonview;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("jsonView");
+		mv.addObject("data", specifictasklist);
+		
+		return mv;
 
 	}
 	
@@ -120,22 +123,6 @@ public class SpecificTaskController {
 		
 		return "task.task";
 					
-	}
-	
-	//업무별 파일 업로드
-	@RequestMapping(value = "uploadfile.htm")
-	public String uploadFile(FileDTO filedto, HttpServletRequest request) throws IOException {
-		CommonsMultipartFile file = filedto.getFile();
-		specifictaskservice.uploadFile(filedto, file, request);
-		return "task.task";
-	}
-			
-	//프로젝트 별 파일리스트 목록 보여주기
-	@RequestMapping(value = "listfile.htm")
-	public String listFile() throws IOException {
-			
-		return "task.listfile";
-
 	}
 	
 	/*

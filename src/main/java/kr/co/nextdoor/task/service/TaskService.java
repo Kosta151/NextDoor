@@ -3,6 +3,7 @@ package kr.co.nextdoor.task.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,10 +35,14 @@ public class TaskService {
     * @param : project_no
     * @return : List<TaskDTO>
     */
-	public List<TaskDTO> listTask(String project_no){
-		
+	public List<TaskDTO> listTask(String project_no, String idx){
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
-		List<TaskDTO> list  = taskdao.listTask(project_no);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("project_no", project_no);
+		map.put("idx", idx);
+		
+		List<TaskDTO> list  = taskdao.listTask(map);
+		System.out.println();
 		return list;	
 	}
 	
@@ -85,5 +90,20 @@ public class TaskService {
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		int resutl = taskdao.deleteTask(taskdto);
 		return resutl;
+	}
+	
+	/*
+	    * @method Name : list
+	    * @date : 2017. 06. 27
+	    * @author : 최성용
+	    * @description : 달력 모달에서 업무명 List
+	    * @param : taskdto
+	    * @return : List<TaskDTO>
+	    */
+	public List<TaskDTO> list(String project_no){
+		
+		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		List<TaskDTO> list  = taskdao.list(project_no);
+		return list;	
 	}
 }

@@ -77,24 +77,6 @@ public interface SpecificTaskDAO {
 	    */
 	public SpecificTaskModiDTO detailModiSpecifictask(String specifictask_no);
 	
-	/*
-	    * @method Name : uploadFile
-	    * @date : 2017. 06. 16
-	    * @author : 김선화
-	    * @description : 파일업로드
-	    * @return : int
-	    */
-	public int uploadFile(FileDTO filedto);
-	
-	/*
-	    * @method Name : listFiles
-	    * @date : 2017. 06. 16
-	    * @author : 김선화
-	    * @description : 파일목록 리스트 출력
-	    * @return : List<FileDTO>
-	    */
-	public List<FileDTO> listFiles(SpecificTaskDTO specifictaskdto);
-	
 	//insert를 위한 select(specifictask_no를 얻기위한 DAO)
 	public SpecificTaskDTO seleteSpecificTaskComp(String specifictask_no);
 	

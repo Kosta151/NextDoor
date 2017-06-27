@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-<section id="main-content">
+<section id="main-content" style="width:auto; overflow: scroll;">
 	<section class="wrapper site-min-height">
     	<div>
          	<div>
@@ -47,12 +47,12 @@
     
 <!-- userid와 프로젝트 name을 가지고 업무리스트 뿌리기 -->
     <div class="col-lg-9">
-       <div id="ajaxtest"></div>
+       <div class="ajaxtest"></div>
        <div id="ajaxspecific"></div>
 	</div>  
 </div>
 
-<div class="col-lg-3">
+<div class="col-lg-3" >
 	<div class="tab">
 	  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">속성</button>
 	  <button class="tablinks" onclick="openCity(event, 'Paris')">파일</button>
@@ -108,22 +108,24 @@
 	</div>
 </div>
 
-<!-- tab 자바스크립트 -->
+
+		<!-- tab 자바스크립트 -->
 <script>
 	function openCity(evt, cityName) {
-	    var i, tabcontent, tablinks;
-	    tabcontent = document.getElementsByClassName("tabcontent");
-	    for (i = 0; i < tabcontent.length; i++) {
-	        tabcontent[i].style.display = "none";
-	    }
-	    tablinks = document.getElementsByClassName("tablinks");
-	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].className = tablinks[i].className.replace(" active", "");
-	    }
-	    document.getElementById(cityName).style.display = "block";
-	    evt.currentTarget.className += " active";
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className
+					.replace(" active", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
 	}
-	
+
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
 </script>

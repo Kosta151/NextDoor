@@ -11,7 +11,15 @@ public class TaskDTO {
 	private String task_no;
 	private String project_no;
 	private String task_cont;
+	private String idx;
 	
+	
+	public String getIdx() {
+		return idx;
+	}
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
 	public String getTask_no() {
 		return task_no;
 	}

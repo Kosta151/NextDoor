@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="resources/main/assets/lineicons/style.css">    
     
     <!-- Custom styles for this template -->
-    <link href="resources/main/assets/css/style.css" rel="stylesheet">
+    <link href="resources/main/assets/css/style2.css" rel="stylesheet">
     <link href="resources/main/assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="resources/main/assets/js/chart-master/Chart.js"></script>

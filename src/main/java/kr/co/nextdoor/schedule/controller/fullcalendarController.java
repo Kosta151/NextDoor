@@ -52,8 +52,9 @@ public class fullcalendarController {
 	@RequestMapping(value="calendar.htm", method=RequestMethod.GET)
 	public String listTask(Model model, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
+		String idx = (String) session.getAttribute("idx");
 		System.out.println("contoller 프로젝트 " + project_no);
-		List<TaskDTO> tasklist = taskservice.listTask(project_no);
+		List<TaskDTO> tasklist = taskservice.listTask(project_no, idx);
 		List<MemberDTO> memberlist = taskservice.listMember(project_no);
 		session.setAttribute("tasklist", tasklist);
 		session.setAttribute("memberlist", memberlist);

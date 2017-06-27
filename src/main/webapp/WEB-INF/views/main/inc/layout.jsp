@@ -5,6 +5,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
@@ -59,6 +62,9 @@
 	<script src="resources/main/assets/js/zabuto_calendar.js"></script>	
 	
 	<script type="application/javascript">
+	
+	
+	
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -82,34 +88,45 @@
                     {type: "block", label: "Regular event", }
                 ]
             });
+            // 무한 스크롤링 실행 이벤트
+            var bool_sw = true;
+            var start_idx = 0;
             
-           
+        
             
-            var page=1;
-			 $(window).scroll(function() {
+            
+			$(window).scroll(function() {
 	                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-	                  console.log(++page);
-            
-            
+	                    
+	              	if(bool_sw){
+	              		console.log("start_idx : " + start_idx);
+	              		infinite();
+	              		}
+	              	
+	              		      
+	       	     }
+	            });
+	                  
+	       function infinite(){   
+	    	/* bool_sw = false;  */
+	    	 
             $.ajax({
     			url : "tasklist.htm",
     			type : "post",
+    			data : {idx:start_idx},
     			dataType : "json",
     			success : function(data){
     				var taskcont = "";
     				var taskcomp = "";
-						
+    				start_idx = start_idx+5;
     				
-    		                 /*  $("#ajaxtest").append("<h1>Page " + page + "</h1><BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~"); */
-    		                  
-    		           
-    				
+    				$(".ajaxtest").append("<div id='"+start_idx+"containtask' style='float:none; width : 100%; height : 500px;' margin:'20px;'>");
     				$.each(data.data , function(index,obj){	
     					 taskcont = "<div class='taskcont' id='"+obj.task_no+"tasktitle'>"
-    						 + "<input type='text' class='taskinput' value='"+obj.task_cont+"'>"
-    						 + "<div class='dropdown btn-alian' >"
-    						 + "<button class='btn btn-success btn-xs btn-pualian' data-toggle='dropdown'>"
-    						 + "<i class='fa fa-plus'></i></button>"
+    						 + "<input type='text' class='taskinput ' value='"+obj.task_cont+"'>"
+    						 + "<div class='dropdown btn-alian' style='margin-top:3px;'>"
+    						 + "<a class='dropdown-toggle' data-toggle='dropdown'>"
+    						 + "<i class='fa fa-plus' ></i></a>"
     						 + "<div class='dropdown-menu taskbox'>"    						
     						 + "<form action='insertspecifictask.htm'><div class='modal-header taskcont'>"
     						 + "<h4 class='modal-title'>세부업무생성</h4></div><div class='modal-body'>"
@@ -120,22 +137,22 @@
     						 + "<button class='btn btn-theme03' type='submit'>생성</button>"
     						 + "<button data-dismiss='modal' class='btn btn-theme04' type='button'>취소</button>"
     						 + "</div></form></div></div>"
-    						 + "<button class='btn btn-danger btn-xs btn-alian'>"
+    						 + "<a class='dropdown-toggle'></a>"
     						 + "<a href='deletetask.htm?task_no="+obj.task_no+"&project_no="+obj.project_no+"'>"
     						 + "<i class='fa fa-trash-o'>"		
-    						 + "</i></a></button>"
+    						 + "</i></a>"
     						 + "</div>";
     					 
    						 taskcomp = "<div id='"+obj.task_no+"comp'>"
-	 		  				+ "<h4>완료된 업무</h4>"
+	 		  				+ "<div class='taskcomp'>완료된 업무</div>"
 	 		 				+ "</div>"
-    					 
-    					 			
-    					 $("#ajaxtest").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; float:left; ' class='taskbox'>");
+    					    					 			
+    					 $("#"+start_idx+"containtask").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%;' class='taskbox'>");
     					 $("#"+obj.task_no+"task").append(taskcont);
-    					 $("#ajaxtest").append("</div>");
+    					 $("#"+start_idx+"containtask").append("</div>");
     					 $("#"+obj.task_no+"task").append(taskcomp);
     					 
+    					 //세부 리스트 뿌리는 부분
     					 $.ajax({
     						 url : "specifictask.htm",
     						 type : "post",
@@ -144,31 +161,29 @@
     						 success : function(data){
     							 var speicficcont="";
     							 var comp="";
-    							    							   					 		 				
+    							    						  					 		 				
     							 $.each(data.data, function(spindex, spobj){
+
     								 if(obj.task_no=spobj.task_no){
     									 
     									 console.log(comp);
-    									 
     									 speicficcont="<div class='specifictaskbox' style='background-color : none;' id='"+spobj.specifictask_no+"specific'>"
-    									 	  + spobj.specifictask_cont
-    									 	  + "<button class='btn btn-primary btn-xs btn-alian'>"
-    									 	  + "<i class='fa fa-pencil'></i><a class='btn-del button'></a>"
-    									 	  + "</button>"
+    									 	  + spobj.specifictask_cont   									 	  						 	  	
+    									 	  + "<a class='dropdown-toggle'  style='float;right; margin-right:10px;'>"    	
+    									 	  + "<a href='detailSpecifictask.htm?specifictask_no="+spobj.specifictask_no+"&specifictask_cont="+spobj.specifictask_cont+"'>" 
+    									 	  + "<i class='fa fa-pencil'>"    									 	
+    									 	  + "</i></a></a>"  
     									 	  + "<input type='checkbox' class='sp-checkbox' id='"+spobj.specifictask_no+"sp-checkbox' value='"+spobj.specifictask_no+"'>"
-    									 	  + "</div>"
-    										 
-    									 	/*  $("#"+obj.task_no+"task").append(speicficcont); */
-    									 	 comp = spobj.specifictask_comp;
-    									 	
+    									 	  + "</div>";
+ 							 	
+    									 	 comp = spobj.specifictask_comp; 									 	
     									if(comp==0){
     										 $("#"+obj.task_no+"tasktitle").append(speicficcont);
     									 }else if(comp==1){
     										 $("#"+obj.task_no+"comp").append(speicficcont);
-    									 } 
-    									   
-    							
-    									 var spcont =speicficcont;
+    									 } 							
+    									 var spcont =speicficcont;						 
+    									 //insert 버튼이벤트
     									 $("#"+spobj.specifictask_no+"sp-checkbox").click(function(){
     										alert("세부 업무 번호" + spobj.specifictask_no); 
     										var specifictaskno=spobj.specifictask_no;
@@ -176,28 +191,46 @@
     										spcont
     										checkspecifictask(specifictaskno,taskno,spcont);
     									 });
-    								 }
+    								 } 
+    								 $("#"+spobj.specifictask_no+"toggletest").click(function () {
+    								        if ($('#toggletest_jjh').is(":visible") == true) {
+    								            $('#main-content').css({
+    								                'margin-left': '210px'
+    								            });
+    								            $('#toggletest_jjh').css({
+    								                'margin-right': '-210px'
+    								            });
+    								            $('#toggletest_jjh').hide(); 
+    								            $("#container").addClass("sidebar-closed");
+    									    } else {
+    									            $('#main-content').css({
+    									                'margin-right': '0px'
+    									            });
+    									            $('#toggletest_jjh').show();
+    									            $('#toggletest_jjh').css({
+    									                'margin-right': '0'
+    									            }); 
+    									            $("#container").removeClass("sidebar-closed");   								            
+    									         } 
+    									 });
     							 });
-    							 
-    							
     						 },
     						 error : function(){
     							alert("error");
     						 }
-    					 });
-    					 
-    					 
+    					 });   				
     				});
+    				 $(".ajaxtest").append("</div>");
     			},
     			error : function(){
     				alert("error");
     			}
     		});
-    		     }
-            });
+           
+	      }
 		
         });
-        
+        //insert 버튼 클리시  실행
         function checkspecifictask(specifictaskno,taskno,spcont){
         	
        	  $.ajax({
@@ -218,6 +251,8 @@
 				 }
 			 }); 
        }
+        
+        
         
         
         function myNavFunction(id) {

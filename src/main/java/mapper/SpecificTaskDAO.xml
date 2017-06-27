@@ -5,7 +5,7 @@
   
 <mapper namespace="kr.co.nextdoor.specifictask.dao.SpecificTaskDAO">
 	<select id="listSpecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
-		select * from specifictask where task_no=#{task_no}
+		select DISTINCT * from specifictask where task_no=#{task_no}
 	</select>
 	
 		<!-- 파일업로드 -->

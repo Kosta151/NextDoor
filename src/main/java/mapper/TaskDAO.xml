@@ -6,11 +6,12 @@
   <mapper namespace="kr.co.nextdoor.task.dao.TaskDAO">
 		<insert id="insertTask">
 			INSERT INTO TASK(project_no, task_cont) 
-			VALUES(#{project_no}, #{task_cont})
+			VALUES(#{project_no}, #{task_cont}) 
 		</insert>
 		
-		<select id="listTask" resultType="kr.co.nextdoor.task.dto.TaskDTO">
-			SELECT task_no, task_cont, project_no FROM TASK WHERE project_no=#{project_no}
+		<select id="listTask" parameterType="hashMap" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+			  SELECT * FROM TASK WHERE project_no=#{project_no} limit ${idx},5
+			<!-- SELECT * FROM TASK WHERE project_no=#{project_no} -->
 		</select>
 		
 		<!-- 프로젝트에 들어있는 멤버 업무 배정 -->

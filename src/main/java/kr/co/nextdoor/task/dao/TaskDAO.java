@@ -1,5 +1,6 @@
 package kr.co.nextdoor.task.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
@@ -20,7 +21,7 @@ public interface TaskDAO {
     * @description : 업무 목록
     * @return : List<TaskDTO>
     */
-	public List<TaskDTO> listTask(String project_no);
+	public List<TaskDTO> listTask(HashMap<String, String> map);
 	
 	/*
     * @method Name : deleteTask

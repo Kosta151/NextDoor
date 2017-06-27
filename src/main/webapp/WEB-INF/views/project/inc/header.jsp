@@ -6,7 +6,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="projectList.htm" class="logo"><b>NEXTDOOR</b></a>
+            <a class="logo" href="#" onClick="window.location.reload( true );"><b>Next Door</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -150,6 +150,7 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
+            		<li><a class="logout" href="lockscreen.htm">LockScreen</a></li>
                     <li><a class="logout" href="/nextdoor/logout">Logout</a></li>
             	</ul>
             </div>

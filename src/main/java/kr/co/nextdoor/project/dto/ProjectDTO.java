@@ -10,6 +10,8 @@ public class ProjectDTO {
 	private String project_name;
 	private String workspace_no;
 	private String member_id;
+	private String percent;
+	private String owner;
 
 	public String getProject_no() {
 		return project_no;
@@ -42,4 +44,21 @@ public class ProjectDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
+
+	public String getPercent() {
+		return percent;
+	}
+
+	public void setPercent(String percent) {
+		this.percent = percent;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	
 }

@@ -1,5 +1,7 @@
 package kr.co.nextdoor.workspace.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,8 @@ public class WorkspaceController {
     * @description : 로그인 후 워크스페이스 선택화면으로 이동
     */
 	@RequestMapping(value = "workspace.htm")
-	public String workspaceList(Model model) {
+	public String workspaceList(Model model, HttpSession session) {
+		session.removeAttribute("workspace_no");
 		model.addAttribute("workspacelist", service.listWorkspace());
 		return "login.workspace";
 	}

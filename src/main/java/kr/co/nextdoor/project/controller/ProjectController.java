@@ -9,11 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.project.dto.ProjectModiDTO;
 import kr.co.nextdoor.project.service.ProjectService;
+import kr.co.nextdoor.workspace.service.WorkspaceService;
 
 /*
 * @Class : ProjectController
@@ -23,11 +25,13 @@ import kr.co.nextdoor.project.service.ProjectService;
 */
 
 @Controller
-@SessionAttributes({"workspace_no", "project_no", "task_no", "specifictask_no"})
+@SessionAttributes({"workspace_no", "project_no", "task_no", "specifictask_no","workspacelist"})
 public class ProjectController {
 
    @Autowired
    private ProjectService service;
+   @Autowired
+   private WorkspaceService workspaceservice;
 
    /*
     * @method Name : projectList
@@ -36,14 +40,14 @@ public class ProjectController {
     * @description : 워크스페이스 선택시 프로젝트 선택화면으로 이동 세션에 워크스페이스 번호가 담겨있으면 워크스페이스 번호를 DTO객체에 넣어줌
     */
    @RequestMapping("projectList.htm")
-   public String listProject(HttpSession session,ProjectDTO projectdto, Principal principal, Model model) throws Exception {
-      projectdto.setMember_id(principal.getName());
+   public String listProject(HttpSession session, ProjectDTO projectdto, Model model) throws Exception {
       if(!(session.getAttribute("workspace_no")==null)){
           projectdto.setWorkspace_no((String) session.getAttribute("workspace_no"));
       }
       model.addAttribute("projectlist", service.listProject(projectdto));
+      model.addAttribute("workspacelist", workspaceservice.listWorkspace());
       model.addAttribute("workspace_no", projectdto.getWorkspace_no());
-
+      model.addAttribute("workspace_name", workspaceservice.nameWorkspace(projectdto.getWorkspace_no()));
       return "project.projectList";
    }
 

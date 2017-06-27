@@ -5,12 +5,20 @@
   
   <mapper namespace="kr.co.nextdoor.workspace.dao.WorkspaceDAO">
 		<select id="listWorkspace"  resultType="kr.co.nextdoor.workspace.dto.WorkspaceDTO">
-			select distinct work.workspace_name, work.workspace_no
+			select distinct w.workspace_no, w.workspace_name, w.member_id
+			from
+				projectmember pm
+			    join project p on p.PROJECT_NO=pm.PROJECT_NO
+			    right join workspace w on w.WORKSPACE_NO=p.WORKSPACE_NO
+			where pm.member_id=#{member_id} or w.MEMBER_ID=#{member_id}
+			order by w.WORKSPACE_NO;
+		
+<!-- 			select distinct work.workspace_name, work.workspace_no
 			from workspace work left join (select p.workspace_no, m.member_id 
 			from project p join projectmember m
 			on  p.project_no=m.project_no where m.member_id=#{member_id}) pro
 			on work.workspace_no=pro.workspace_no
-			where work.member_id=#{member_id} or pro.member_id=#{member_id} 
+			where work.member_id=#{member_id} or pro.member_id=#{member_id}  -->
 		</select>
 		<insert id="insertWorkspace">
 			insert into workspace(workspace_name, member_id) values(#{workspace_name}, #{member_id})
@@ -18,5 +26,8 @@
 		<delete id="deleteWorkspace">
 			delete from workspace where workspace_no = #{workspace_no}
 		</delete>
+		<select id="nameWorkspace" resultType="String">
+			select workspace_name from workspace where workspace_no=#{workspace_no}
+		</select>
   </mapper>
   

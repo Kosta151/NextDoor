@@ -18,4 +18,10 @@ public class IndexController {
 
 		return "index.index";
 	}
+	
+	@RequestMapping("lockscreen.htm")
+	public String lockscreen() {
+		
+		return "login.lockscreen";
+	}
 }

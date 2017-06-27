@@ -6,7 +6,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
    <!-- 프로젝트 목록 보기 -->
    <select id="listProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-   		select p.project_no, project_name, IFNULL(ROUND(ROUND(EXP(LOG(t.percent)),6)*100),0) as percent, w.member_id as owner
+   	select a.project_no, a.project_name, IFNULL(ROUND(ROUND(EXP(LOG(b.percent)),6)*100),0) as percent, a.member_id as owner
+		from
+			(select pm.MEMBER_ID, p.PROJECT_NO, p.PROJECT_NAME, p.WORKSPACE_NO
+		from 
+			projectmember pm
+			join project p on p.PROJECT_NO=pm.PROJECT_NO
+		where 
+			pm.member_id=#{member_id} and p.workspace_no=#{workspace_no}) a 
+	        left join
+			 (select t.PROJECT_NO, count(if(st.SPECIFICTASK_COMP='1',st.SPECIFICTASK_COMP,null))/count(st.SPECIFICTASK_NO) as 'percent'
+			from
+			task t
+			left join specifictask st on t.TASK_NO=st.TASK_NO
+		group by t.PROJECT_NO) b
+        on a.project_no=b.project_no;
+   
+<!--    		select p.project_no, project_name, IFNULL(ROUND(ROUND(EXP(LOG(t.percent)),6)*100),0) as percent, w.member_id as owner
 			from 
 				project p
 			    right join workspace w on w.WORKSPACE_NO=p.WORKSPACE_NO
@@ -18,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						group by t.PROJECT_NO
 						) t on t.PROJECT_NO=p.PROJECT_NO
 		where pm.member_id=#{member_id} and w.WORKSPACE_NO=#{workspace_no}
-		group by p.project_no
+		group by p.project_no -->
 
 <!--       
 	select p.project_name, p.project_no

@@ -16,6 +16,8 @@
     <title><tiles:insertAttribute name="title" /></title>
 
     <!-- Bootstrap core CSS -->
+    <link href="resources/main/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="resources/main/assets/js/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
     <link href="resources/main/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="resources/main/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -45,20 +47,23 @@
 	<!-- js placed at the end of the document so the pages load faster -->
     <script src="resources/main/assets/js/jquery.js"></script>
     <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
+    <script src="resources/main/assets/js/fullcalendar/fullcalendar.min.js"></script>
     <script src="resources/main/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="resources/main/assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="resources/main/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="resources/main/assets/js/jquery.scrollTo.min.js"></script>
     <script src="resources/main/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="resources/main/assets/js/jquery.sparkline.js"></script>
-
+	
+	
     <!--common script for all pages-->
    	<script src="resources/main/assets/js/common-scripts.js"></script>
    	<script type="text/javascript" src="resources/main/assets/js/gritter/js/jquery.gritter.js"></script>
-    <script type="text/javascript" src="resources/main/assets/js/gritter-conf.js"></script>
+    <script type="text/javascript" src="resources/main/assets/js/gritter-conf.js"></script> 
+    <script src="resources/main/assets/js/calendar-conf-events.js"></script>
    	
     <!--script for this page-->
-  	 <script src="resources/main/assets/js/sparkline-chart.js"></script>    
+  	<script src="resources/main/assets/js/sparkline-chart.js"></script>    
 	<script src="resources/main/assets/js/zabuto_calendar.js"></script>	
 	
 	<script type="application/javascript">

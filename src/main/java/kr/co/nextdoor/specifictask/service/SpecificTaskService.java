@@ -125,40 +125,7 @@ public class SpecificTaskService {
 		
 		return result;
 	}
-	
-	/*
-	 * @method Name : UploadFile
-	 * @date : 2017. 06. 16
-	 * @author : 김선화
-	 * @description : 파일업로드
-	 * @param : filedto, file, request 
-	 * @return : int
-	 */
-	//파일업로드
-	public int uploadFile(FileDTO filedto, CommonsMultipartFile file, HttpServletRequest request) throws IOException{
-				
-		String fname = file.getOriginalFilename();
-		String path = request.getSession().getServletContext().getRealPath("/nextdoor/upload");
-		String uploadedFileName = System.currentTimeMillis()+UUID.randomUUID().toString()+"_"+ fname;
-		String fullpath = path + "\\" + uploadedFileName;
-				
-		if (!fname.equals("")) {
-			// 서버에 파일 쓰기 작업
-			FileOutputStream fs = new FileOutputStream(fullpath);
-			fs.write(file.getBytes());
-			fs.close();
-		}
-				
-		filedto.setSpecifictask_no(filedto.getSpecifictask_no());
-		filedto.setOriginal_name(fname);
-		filedto.setFile_name(fullpath);
-		filedto.setFile_size(file.getSize());
-				
-		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
-		int result = specifictaskdao.uploadFile(filedto);
 
-		return result;
-	}
 	
 	/*
 	 * @method Name : checkSpecifcitask

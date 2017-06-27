@@ -6,31 +6,22 @@
 <tiles-definitions>
 	<!-- index.index -->
 	<definition name="index.index" template="/WEB-INF/views/index/index.jsp" />
-
+	
 	<!-- login.join -->
 	<definition name="login.*" template="/WEB-INF/views/login/inc/layout.jsp">
 		<put-attribute name="content" value="/WEB-INF/views/login/{1}.jsp" />
 	</definition>
-	
-	<!-- Chart(차트) -->
-	<definition name="chart" template="/WEB-INF/views/chart/inc/layout.jsp">
+   	
+   	<!-- main / task / specifictask / fullcalendar / file / chart -->
+	<definition name="*.*" template="/WEB-INF/views/main/inc/layout.jsp">
       <put-attribute name="title" value="NextDoor"/>
-      <put-attribute name="header" value="/WEB-INF/views/chart/inc/header.jsp"/>
-      <put-attribute name="footer" value="/WEB-INF/views/chart/inc/footer.jsp"/>
-      <put-attribute name="aside" value="/WEB-INF/views/chart/inc/aside.jsp"/>
-      <put-attribute name="content" value="/WEB-INF/views/chart/{1}.jsp"/>
+      <put-attribute name="header" value="/WEB-INF/views/main/inc/header.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/main/inc/footer.jsp"/>
+      <put-attribute name="aside" value="/WEB-INF/views/main/inc/aside.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
    	</definition>
    	
-	<!-- fullcalendar -->
-	<definition name="fullcalendar.*" template="/WEB-INF/views/fullcalendar/inc/layout.jsp">
-      <put-attribute name="title" value="NextDoor"/>
-      <put-attribute name="header" value="/WEB-INF/views/fullcalendar/inc/header.jsp"/>
-      <put-attribute name="footer" value="/WEB-INF/views/fullcalendar/inc/footer.jsp"/>
-      <put-attribute name="aside" value="/WEB-INF/views/fullcalendar/inc/aside.jsp"/>
-      <put-attribute name="content" value="/WEB-INF/views/fullcalendar/{1}.jsp"/>
-   	</definition>
-
-	<!-- project -->
+   	<!-- project  -->
 	<definition name="project.*" template="/WEB-INF/views/project/inc/layout.jsp">
       <put-attribute name="title" value="NextDoor"/>
       <put-attribute name="header" value="/WEB-INF/views/project/inc/header.jsp"/>
@@ -39,28 +30,4 @@
       <put-attribute name="content" value="/WEB-INF/views/project/{1}.jsp"/>
    	</definition>
 
-	<!-- main -->
-	<definition name="*.*" template="/WEB-INF/views/main/inc/layout.jsp">
-		<put-attribute name="title" value="NextDoor"/>
-		<put-attribute name="header" value="/WEB-INF/views/main/inc/header.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/main/inc/footer.jsp"/>
-		<put-attribute name="aside" value="/WEB-INF/views/main/inc/aside.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
-	</definition>
-	
-	<!-- 이거 참고해서 tiles 만들면 됨 -->
-<!-- 	<definition name="main.index" template="/WEB-INF/views/main/inc/layout.jsp">
-		<put-attribute name="title" value="NextDoor" />
-		<put-attribute name="header" value="/WEB-INF/views/main/inc/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/main/index.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/views/main/inc/footer.jsp" />
-		<put-attribute name="aside" value="/WEB-INF/views/main/inc/aside.jsp" />
-	</definition>
-	join.login
-	<definition name="*.*" template="/WEB-INF/views/{1}/inc/layout.jsp">
-		<put-attribute name="title" value="NextDoor" />
-		<put-attribute name="header" value="/WEB-INF/views/{1}/inc/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/views/{1}/inc/footer.jsp" />
-	</definition> -->
 </tiles-definitions>

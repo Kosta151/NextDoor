@@ -7,17 +7,25 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class FileDTO {
 
 	private String file_no;
+	private String project_no;
 	private String specifictask_no;
 	private String original_name;
 	private String file_name;
 	private Date file_date;
 	private long file_size;
+	private String member_id;
 	
 	public String getFile_no() {
 		return file_no;
 	}
 	public void setFile_no(String file_no) {
 		this.file_no = file_no;
+	}
+	public String getProject_no() {
+		return project_no;
+	}
+	public void setProject_no(String project_no) {
+		this.project_no = project_no;
 	}
 	public String getSpecifictask_no() {
 		return specifictask_no;
@@ -49,7 +57,14 @@ public class FileDTO {
 	public void setFile_size(long file_size) {
 		this.file_size = file_size;
 	}
-	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+
+
 	private CommonsMultipartFile file;
 
 	public CommonsMultipartFile getFile() {

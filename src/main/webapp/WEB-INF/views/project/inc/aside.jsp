@@ -9,7 +9,7 @@
               	  <p class="centered"><a href="profile.html"><img src="resources/main/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">${plist.member_id}</h5>
               	  	
-                  <li class="mt">
+                  <li class="sub-menu">
                       <a class="active" href="projectList.htm">
                           <i class="fa fa-desktop"></i>
                           <span>프로젝트</span>

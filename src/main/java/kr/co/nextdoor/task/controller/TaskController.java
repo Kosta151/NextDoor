@@ -32,8 +32,7 @@ public class TaskController {
 	@Autowired
 	private TaskService taskservice;
 	
-	@Autowired
-	private View jsonview;
+	
 
 	/*
     * @method Name : listTask
@@ -66,12 +65,16 @@ public class TaskController {
     * @description : 업무리스트 출력의 비동기 화면 처리
     */
 	@RequestMapping(value = "tasklist.htm", method=RequestMethod.POST)
-	public View listTask(Model model, HttpSession session) {
+	public ModelAndView listTask(Model model, HttpSession session) {
 		String project_no = (String) session.getAttribute("project_no");
 		System.out.println("project_no : " +project_no);
 		List<TaskDTO> tasklist = taskservice.listTask(project_no);
-		model.addAttribute("data", tasklist);
-		return jsonview;
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("jsonView");
+		mv.addObject("data", tasklist);
+
+		return mv;
 	}
 	
 	/*

@@ -54,7 +54,7 @@ public class fullcalendarController {
 		String project_no = (String) session.getAttribute("project_no");
 		String idx = (String) session.getAttribute("idx");
 		System.out.println("contoller 프로젝트 " + project_no);
-		List<TaskDTO> tasklist = taskservice.listTask(project_no, idx);
+		List<TaskDTO> tasklist = taskservice.list(project_no);
 		List<MemberDTO> memberlist = taskservice.listMember(project_no);
 		session.setAttribute("tasklist", tasklist);
 		session.setAttribute("memberlist", memberlist);

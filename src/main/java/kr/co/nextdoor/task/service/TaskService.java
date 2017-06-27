@@ -91,4 +91,19 @@ public class TaskService {
 		int resutl = taskdao.deleteTask(taskdto);
 		return resutl;
 	}
+	
+	/*
+	    * @method Name : list
+	    * @date : 2017. 06. 27
+	    * @author : 최성용
+	    * @description : 달력 모달에서 업무명 List
+	    * @param : taskdto
+	    * @return : List<TaskDTO>
+	    */
+	public List<TaskDTO> list(String project_no){
+		
+		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		List<TaskDTO> list  = taskdao.list(project_no);
+		return list;	
+	}
 }

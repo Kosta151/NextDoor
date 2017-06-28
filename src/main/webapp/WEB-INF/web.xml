@@ -38,6 +38,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				kr.co.nextdoor.chat.service.ChatConfig
+				kr.co.nextdoor.alarm.service.AlarmConfig
 			</param-value>
 		</init-param>
 		<init-param>

@@ -1,132 +1,151 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<sec:authentication property="name" var="loginUser"/>
+<script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
+<script src="resources/sockjs-0.3.js"></script>
+<script src="resources/sweetalert.css"></script>
+<script src="resources/sweetalert.min.js"></script>
+<script src="resources/sweetalert-dev.js"></script>
+	<script>
+		var sock;
+		$(function() {
+			
+			console.log("opening websocket");
+ 			sock = new SockJS("http://" +document.domain + ":8090/nextdoor/alarm");
+ 			 
+			sock.onopen = function(){
+				  console.log("opened websocket");
+				  sock.send("");
+			  };
+			
+			  sock.onmessage = function(event){
+					 var msg = JSON.parse(event.data);
+					 var receiver = msg.receiver;
+					 var user_id = msg.user_id;
+					 var specifictask_cont = msg.specifictask_cont;
+					 var user = '${loginUser}'
+					 if(msg.receiver!=""){	
+					 if(user!=user_id){
+						  console.log("아이디 : "+msg.specifictask_cont +"  // 받는이 : "+ msg.receiver );
+						$("#alarmarea").html("<li class='error'>"+user_id+"님이"+receiver+"님에게"+specifictask_cont+"배당 받으셨습니다</li>");
+						$('.error').fadeIn(1000).delay(1000).fadeOut(1000);
+					 	} 
+					 }
+				 };
+		 		  $('#btn-submit').click(function(){
+		 			  var receiver = $("#select").val();
+		 			 if($("#selet").val() != ""){  	 
+		 				 sock.send(receiver)
+		 				
+		 			/* 	 $.ajax({
+		 					  
+		 					  type:"post",
+		 					  dataType: "json",
+		 					  url:"updateSpecifictask.htm",
+		 					  data:{"Alarm": evt.data},
+		 					  success:function(data){
+		 						  
+		 						  console.log("헤더 업데이트 성공");
+		 						  console.log(data);
+		 						  $('#alarm').empty();  
+		 						  $('#alarm').html(data);
+		 					
+		 					  }
+		 				  });	 */
+		 		  }
+				  });	  
+		 		 
+ 
+		 	
+		});
+	/* 	function listProject(loginuser){
+        	console.log(loginuser);
+       	  $.ajax({
+				 url : "projectList.htm",
+				 type : "post",
+				 dataType: "json",
+				 data : {loginuser : ${loginUser}},
+				 success : function(data){
+					console.log(data);
+					 alert("success");
+					
+					  $('#count').empty();  
+					  $('#count').html(data);
+					
+				
+				 },
+				 error : function(){
+					alert("error");
+				 }
+			 });  
+       }*/
+
+</script>
+<style>
+.error {
+    width: 250px;
+    height: 20px;
+    height:auto;
+    position: fixed;
+    left: 50%;
+    margin-left:-125px;
+    bottom: 100px;
+    z-index: 9999;
+    background-color: #383838;
+    color: #F0F0F0;
+    font-family: Calibri;
+    font-size: 15px;
+    padding: 10px;
+    text-align:center;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}
+
+</style>
+	
+	
+	
 <!--header start-->
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
+              <div class="sidebar-toggle-right">
+                  <div class="fa fa-cog tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
             <!--logo start-->
-            <a class="logo" href="#" onClick="window.location.reload( true );"><b>Next Door</b></a>
+            <a href="index.html" class="logo"><b>Next Door</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
+            <ul id="alarmarea"></ul>
                 <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-tasks"></i>
-                            <span class="badge bg-theme">4</span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 4 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">DashGum Admin Panel</div>
-                                        <div class="percent">40%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Database Update</div>
-                                        <div class="percent">60%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Product Development</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Payments Sent</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
+                <ul class="nav top-menu" >
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-theme">5</span>
-                        </a>
+                       <a data-toggle="dropdown" class="dropdown-toggle" onclick="location.href='URL'=alarmlist.htm" >  <!--  -->
+                            <i class="fa fa-envelope-o">
+                            <span class="badge bg-theme" id="count">${alarmcount}</span> <!--컨트롤러에서 담아서 쏴줌  -->
+                      	</i>
+                      </a>
                         <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-green"></div>
+                            <div class="notify-ar bvrow notify-arrow-green"></div>
                             <li>
-                                <p class="green">You have 5 new messages</p>
+                                <p class="green">알림 내용</p>
                             </li>
+                            
+                            <c:forEach items="${alarmlist}" var="alarm">	
                             <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-zac.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Zac Snider</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi mate, how is everything?
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-divya.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Divya Manian</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                    <span class="message">
-                                     Hi, I need your help with this.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-danro.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dan Rogers</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Love your new Dashboard.
-                                    </span>
-                                </a>
-                            </li>
+                              <a href="index.html#">
+								<span class="from">${alarm.alarm_sender}</span>
+								<span class="time">${alarm.alarm_date}</span>	
+								<span class="message">${alarm.alarm_cont}</span>                                     
+                          	</a>
+                            </li>   
+                            	</c:forEach>
                             <li>
                                 <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-sherman.jpg"></span>
@@ -150,8 +169,10 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-            		<li><a class="logout" href="lockscreen.htm">LockScreen</a></li>
-                    <li><a class="logout" href="/nextdoor/logout">Logout</a></li>
+                    <li><a class="logout" href="login.html">Logout</a></li>
+            	</ul>
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="${pageContext.request.contextPath}/mail.htm">mail</a></li>
             	</ul>
             </div>
         </header>

@@ -53,7 +53,7 @@
        <div id="ajaxspecific"></div>
 	</div>  
 </div>
- 
+ <ul id="alarmarea"></ul>
 <div class="col-lg-3" id="toggletest_jjh">
 	<div class="form-panel">
 	
@@ -66,7 +66,7 @@
 	  	<hr> --%>
 		<div class="form-group">
         	<label>업무배정  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            	<select name="member_id">
+            	<select name="member_id" id="select">
                 	<option value="${modidto.member_id}">${modidto.member_id}</option>   
                     	<c:forEach items="${memberlist}" var="mlist">         
                         	<option value="${mlist.member_id}" >${mlist.member_id}</option>   
@@ -95,7 +95,7 @@
        		</div>
        		<hr>
 	        <input type="hidden" id="specifictask_no" name="specifictask_no" value="">
-	        <button type="submit" class="btn btn-primary">수정</button>
+	        <button type="submit" class="btn btn-primary" id="btn-submit">수정</button>
 	       	 <%-- <button type="button"><a href="deleteSpecifictask.htm?specifictask_no=${specifictaskno}">업무삭제</a></button> --%>                      
 	      </form> 
 	      <br>

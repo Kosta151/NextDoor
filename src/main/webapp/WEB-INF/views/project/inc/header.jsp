@@ -37,21 +37,7 @@
 		 			 if($("#select").val() != ""){  	 
 		 				 sock.send(receiver)
 		 				
-		 			/* 	 $.ajax({
-		 					  
-		 					  type:"post",
-		 					  dataType: "json",
-		 					  url:"updateSpecifictask.htm",
-		 					  data:{"Alarm": evt.data},
-		 					  success:function(data){
-		 						  
-		 						  console.log("헤더 업데이트 성공");
-		 						  console.log(data);
-		 						  $('#alarm').empty();  
-		 						  $('#alarm').html(data);
-		 					
-		 					  }
-		 				  });	 */
+		 		
 		 		  }
 				  });	  
 		 		 
@@ -116,7 +102,7 @@
             <a class="logo" href="#" onClick="window.location.reload( true );"><b>Next Door</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
-<!--             <ul id="alarmarea"></ul> -->
+
                 <!--  notification start -->
                 <ul class="nav top-menu" >
                     <!-- inbox dropdown start-->

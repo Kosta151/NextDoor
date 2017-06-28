@@ -2,6 +2,41 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<script type="text/javascript">
+$(function(){
+	
+	
+	$("#btn").click(function(){
+	   if($("#project_name").val()==""){
+	      swal("프로젝트명을 입력해주세요");
+	      $("#project_name").focus();
+	      return false;
+	   }else{
+	      /* swal('프로젝트 생성!', 'You clicked the button!', 'success') */
+	       swal({
+	                 title: "프로젝트 생성 완료!",
+	                 type: "success",
+	                 showCancelButton: false,
+	                 confirmButtonColor: "#194f89",
+	                 confirmButtonText: "확인",
+	                 closeOnConfirm: false
+	                 
+	               },
+		        	 function(isConfirm){
+		        		  if (isConfirm) {
+		        			  location.href="insertProject.htm";
+		        				$('#projectform').submit();
+		        		  }
+					 }
+	       );
+	     
+	   }
+	   
+	   });         
+});
+
+
+</script>
       <section id="main-content">
           <section class="wrapper site-min-height">
               <h3><i class="fa fa-angle-right"></i> ${workspaceinfo}</h3>
@@ -30,6 +65,7 @@
 						</div>
 						<div onclick="location.href='task.htm?project_no=${list.project_no}'">
 						<canvas id="${list.project_name}" height="120" width="120"></canvas>
+						
 						<script>
 									var doughnutData = [
 											{
@@ -86,10 +122,10 @@
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                       <h4 class="modal-title">새 프로젝트 생성</h4>
                                   </div>
-                                  <form action="insertProject.htm" method="post">
+                                  <form action="insertProject.htm" method="post"   id="projectform">
 	                                  <div class="modal-body">
 	                                      <p>프로젝트명</p>
-	                              <input type="text" name="project_name" placeholder="project명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
+	                              <input type="text" name="project_name"  id="project_name" placeholder="project명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 	                              <br>
 <!-- 	                              <div class="btn-group" data-toggle="buttons">
 	                                 <label class="btn btn-default">
@@ -101,7 +137,7 @@
 	                              </div> -->
 	                                  </div>
 	                                  <div class="modal-footer centered">
-	                                      <button class="btn btn-warning" type="submit">생성</button>
+	                                       <button type="button" class="btn btn-warning" id="btn">생성 </button>
 	                                      <button data-dismiss="modal" class="btn btn-default" type="button">취소</button>
 	                                  </div>
                                   </form>

@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="resources/main/assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="resources/main/assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="resources/main/assets/lineicons/style.css">    
-    
+    <link rel="stylesheet" type="text/css" href="resources/main/assets/css/sweetalert.css">
     <!-- Custom styles for this template -->
     <link href="resources/main/assets/css/style2.css" rel="stylesheet">
     <link href="resources/main/assets/css/style-responsive.css" rel="stylesheet">
@@ -59,7 +59,7 @@
     <!--script for this page-->
       <script src="resources/main/assets/js/sparkline-chart.js"></script>    
    <script src="resources/main/assets/js/zabuto_calendar.js"></script>   
-   
+   <script src="resources/main/assets/js/sweetalert.min.js"></script>
 
 </body>
 </html> 

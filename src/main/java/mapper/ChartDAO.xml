@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="kr.co.nextdoor.chart.dao.ChartDAO">
+        
+ <select id="chartAll" resultType="kr.co.nextdoor.chart.dto.ChartDTO">
+    select p.project_no, p.project_name, ifnull(round(round(exp(log(t.percent)),6)*100),0) as percent, w.member_id as owner
+           from 
+             project p
+             right join workspace w on w.workspace_no=p.workspace_no
+             right join projectmember pm on p.member_id=pm.member_id
+             left join (select t.project_no, round(count(if(st.specifictask_comp='1',st.specifictask_comp,null))/count(st.specifictask_no),2) as 'percent'
+                     from
+                     task t
+                     left join specifictask st on t.task_no=st.task_no
+                  group by t.project_no
+                  ) t on t.project_no=p.project_no
+  </select>
+
+</mapper>

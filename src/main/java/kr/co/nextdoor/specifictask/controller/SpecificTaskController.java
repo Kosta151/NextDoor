@@ -36,6 +36,7 @@ public class SpecificTaskController {
 	@Autowired
 	SpecificTaskService specifictaskservice;
 
+
    /*
    * @method Name : listSpecificTask
    * @date : 2017. 06. 16
@@ -43,7 +44,7 @@ public class SpecificTaskController {
    * @description : 세부업무리스트의 비동기 출력
    */
 	@RequestMapping(value = "specifictask.htm", method = RequestMethod.POST)
-	public ModelAndView listSpecificTask(String task_no, Model model) {
+	public ModelAndView listSpecificTask(String task_no) {
 		List<SpecificTaskDTO> specifictasklist = specifictaskservice.listSpecificTask(task_no);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("jsonView");
@@ -60,10 +61,12 @@ public class SpecificTaskController {
    * @description : 세부업무 추가
    */
 	@RequestMapping("insertspecifictask.htm")
-	public String insertSpecificTask(SpecificTaskDTO specifictask){
+	public ModelAndView insertSpecificTask(SpecificTaskDTO specifictask){
 		specifictaskservice.insertSpecificTask(specifictask);
-
-		return "task.task";
+		ModelAndView model = new ModelAndView();
+		model.addObject("data", specifictask);
+		model.setViewName("jsonView");
+		return model;
 	}
 
 	/*

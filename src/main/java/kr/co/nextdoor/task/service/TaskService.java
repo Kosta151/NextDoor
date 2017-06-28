@@ -88,7 +88,9 @@ public class TaskService {
     */
 	public int deleteTask(TaskDTO taskdto){
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		System.out.println("삭제");
 		int resutl = taskdao.deleteTask(taskdto);
+		System.out.println("resutl : " + resutl);
 		return resutl;
 	}
 }

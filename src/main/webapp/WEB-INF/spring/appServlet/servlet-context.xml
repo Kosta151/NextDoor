@@ -68,14 +68,7 @@
 	<task:scheduler id="schedule" pool-size="10"/>
 	<task:annotation-driven executor="executor" scheduler="schedule"/>
 	
-	<!-- Websocket  -->
-	<beans:bean id="chatHandler" class="kr.co.nextdoor.chat.service.ChatHandler" />
-	<beans:bean id="chatHandlerInterceptor" class="kr.co.nextdoor.chat.service.ChatHandlerInterceptor" />
-	<websocket:handlers>
-		<websocket:mapping handler="chatHandler" path="/chat.htm" />
-		<websocket:sockjs />
-	</websocket:handlers>
-	
+
 	
 
 	

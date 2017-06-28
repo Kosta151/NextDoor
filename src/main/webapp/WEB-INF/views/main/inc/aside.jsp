@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
  <!--sidebar start-->
        <aside>
           <div id="sidebar"  class="nav-collapse " style="overflow: visible;">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               	  <p class="centered"><a href="profile.html"><img src="resources/main/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
+              	  <h5 class="centered"><sec:authentication property="principal.username"/></h5>
               	  
                   <li class="mt">
                       <a href="<%=request.getContextPath()%>/projectList.htm?workspace_no=${workspace_no}" >

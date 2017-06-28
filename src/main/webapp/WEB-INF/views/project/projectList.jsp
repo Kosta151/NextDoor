@@ -8,13 +8,13 @@
               <div class="row mt">
                   <div class="col-lg-12">
 				    <div class="row">
+				    <sec:authentication property="principal.username" var="loginuser"/>
 					<!-- PANEL -->
 			<c:forEach items="${projectlist}" var="list">
 				<div class="col-md-4 col-sm-4 mb">
 					<div class="grey-panel pn donut-chart">
 						<div class="grey-header">
 							<h5>${list.project_name}
-								<sec:authentication property="principal.username" var="loginuser"/>
 								<c:choose>
 									<c:when test="${workspaceowner==loginuser}">
 									  <div class="box-tools pull-right">

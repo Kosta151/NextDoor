@@ -67,7 +67,7 @@ public class ProjectController {
       service.insertProject(projectdto);
       service.insertProjectMember(projectdto);
       model.addAttribute("projectlist", service.listProject(projectdto));
-      return "project.projectList";
+      return "redirect:projectList.htm";
    }
    
    /*

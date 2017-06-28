@@ -5,9 +5,6 @@
 <sec:authentication property="name" var="loginUser"/>
 <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
 <script src="resources/sockjs-0.3.js"></script>
-<script src="resources/sweetalert.css"></script>
-<script src="resources/sweetalert.min.js"></script>
-<script src="resources/sweetalert-dev.js"></script>
 	<script>
 		var sock;
 		$(function() {
@@ -36,7 +33,8 @@
 				 };
 		 		  $('#btn-submit').click(function(){
 		 			  var receiver = $("#select").val();
-		 			 if($("#selet").val() != ""){  	 
+		 			  console.log(receiver);
+		 			 if($("#select").val() != ""){  	 
 		 				 sock.send(receiver)
 		 				
 		 			/* 	 $.ajax({
@@ -114,11 +112,8 @@
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
-              <div class="sidebar-toggle-right">
-                  <div class="fa fa-cog tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Next Door</b></a>
+            <a class="logo" href="#" onClick="window.location.reload( true );"><b>Next Door</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
             <ul id="alarmarea"></ul>
@@ -169,10 +164,8 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
-            	</ul>
-            	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="${pageContext.request.contextPath}/mail.htm">mail</a></li>
+                    <li><a class="logout" href="lockscreen.htm">LockScreen</a></li>
+                    <li><a class="logout" href="/nextdoor/logout">Logout</a></li>
             	</ul>
             </div>
         </header>

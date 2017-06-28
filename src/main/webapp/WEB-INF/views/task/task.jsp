@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
+ 
 <section id="main-content" style="width:auto; overflow: scroll;">
 	<section class="wrapper site-min-height">
     	<div>
@@ -53,7 +53,7 @@
        <div id="ajaxspecific"></div>
 	</div>  
 </div>
-
+ 
 <div class="col-lg-3" id="toggletest_jjh">
 	<div class="form-panel">
 	
@@ -86,7 +86,7 @@
 		            
 		            </p>
 		        <%-- <input type="text" id="specifictask_start" name="specifictask_start" value="${modidto.specifictask_start}"></p> --%>
-		        </div>     
+		        </div>      
                 <div class="form-group">
 		        	<p>마감일:<input class="form-control form-control-inline input-medium default-date-picker" size="8" type="text" value="${modidto.specifictask_end}" id="specifictask_end" name="specifictask_end">
 		            </p>

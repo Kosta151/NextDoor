@@ -1,4 +1,4 @@
-   package kr.co.nextdoor.project.controller;
+package kr.co.nextdoor.project.controller;
 
 import java.security.Principal;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import kr.co.nextdoor.alarm.service.AlarmService;
 import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.project.dto.ProjectModiDTO;
 import kr.co.nextdoor.project.service.ProjectService;
@@ -25,14 +26,16 @@ import kr.co.nextdoor.workspace.service.WorkspaceService;
 */
 
 @Controller
-@SessionAttributes({"workspace_no", "project_no", "task_no", "specifictask_no","workspacelist"})
+@SessionAttributes({"workspace_no", "project_no", "task_no", "specifictask_no", "workspaceinfo", "workspacelist", "projectlist"})
 public class ProjectController {
 
    @Autowired
    private ProjectService service;
    @Autowired
    private WorkspaceService workspaceservice;
-
+   @Autowired
+   private AlarmService alarmservice;
+   
    /*
     * @method Name : projectList
     * @date : 2017. 06. 13
@@ -40,17 +43,16 @@ public class ProjectController {
     * @description : 워크스페이스 선택시 프로젝트 선택화면으로 이동 세션에 워크스페이스 번호가 담겨있으면 워크스페이스 번호를 DTO객체에 넣어줌
     */
    @RequestMapping("projectList.htm")
-   public String listProject(HttpSession session, ProjectDTO projectdto, Model model) throws Exception {
-      if(!(session.getAttribute("workspace_no")==null)){
-          projectdto.setWorkspace_no((String) session.getAttribute("workspace_no"));
-      }
+   public String listProject(@RequestParam(value="workspace_no") String workspace_no, ProjectDTO projectdto, Model model, HttpSession session, Principal principal) throws Exception {
       model.addAttribute("projectlist", service.listProject(projectdto));
       model.addAttribute("workspacelist", workspaceservice.listWorkspace());
-      model.addAttribute("workspace_no", projectdto.getWorkspace_no());
-      model.addAttribute("workspace_name", workspaceservice.nameWorkspace(projectdto.getWorkspace_no()));
+      model.addAttribute("workspace_no", workspace_no);
+      model.addAttribute("workspaceinfo", workspaceservice.nameWorkspace(workspace_no));
+      model.addAttribute("workspaceowner", workspaceservice.ownerWorkspace(workspace_no));
+      session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
       return "project.projectList";
    }
-
+   
    /*
     * @method Name : projectInsert
     * @date : 2017. 06. 13
@@ -65,7 +67,7 @@ public class ProjectController {
       service.insertProject(projectdto);
       service.insertProjectMember(projectdto);
       model.addAttribute("projectlist", service.listProject(projectdto));
-      return "project.projectList";
+      return "redirect:projectList.htm";
    }
    
    /*

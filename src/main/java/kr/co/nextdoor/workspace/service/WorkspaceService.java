@@ -64,15 +64,19 @@ public class WorkspaceService {
 	}
 	
 	/*
-	    * @method Name : deleteWorkspace
+	    * @method Name : 
 	    * @date : 2017. 06. 
 	    * @author : 이재민
-	    * @description : workspace 삭제
+	    * @description : 
 	    * @param : workspace_no
-	    * @return : int
+	    * @return : String
 	    */
 	public String nameWorkspace(String workspace_no) throws Exception{
 			WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
 			return workspacedao.nameWorkspace(workspace_no);
 	}
+	public String ownerWorkspace(String workspace_no) throws Exception{
+		WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
+		return workspacedao.ownerWorkspace(workspace_no);
+}
 }

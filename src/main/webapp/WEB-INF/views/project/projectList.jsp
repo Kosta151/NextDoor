@@ -4,20 +4,19 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
       <section id="main-content">
           <section class="wrapper site-min-height">
-              <h3><i class="fa fa-angle-right"></i> ${workspace_name}</h3>
+              <h3><i class="fa fa-angle-right"></i> ${workspaceinfo}</h3>
               <div class="row mt">
                   <div class="col-lg-12">
 				    <div class="row">
+				    <sec:authentication property="principal.username" var="loginuser"/>
 					<!-- PANEL -->
 			<c:forEach items="${projectlist}" var="list">
-			<c:set var="owner" value="${list.owner}"/>
 				<div class="col-md-4 col-sm-4 mb">
 					<div class="grey-panel pn donut-chart">
 						<div class="grey-header">
 							<h5>${list.project_name}
-								<sec:authentication property="principal.username" var="loginuser"/>
 								<c:choose>
-									<c:when test="${list.owner==loginuser}">
+									<c:when test="${workspaceowner==loginuser}">
 									  <div class="box-tools pull-right">
 							                <div class="btn-group">
 							                  <button type="button" class="close" data-toggle="dropdown" onclick="location.href='projectUpdate.htm?project_no=${list.project_no}'">
@@ -57,7 +56,7 @@
 				</div>
 			</c:forEach>
 			<c:choose>
-				<c:when test="${owner==loginuser}">
+				<c:when test="${workspaceowner==loginuser}">
 					<div class="col-md-4 col-sm-4 mb">
 						<!-- WHITE PANEL - TOP USER -->
 						<div class="white-panel pn">
@@ -92,14 +91,14 @@
 	                                      <p>프로젝트명</p>
 	                              <input type="text" name="project_name" placeholder="project명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 	                              <br>
-	                              <div class="btn-group" data-toggle="buttons">
+<!-- 	                              <div class="btn-group" data-toggle="buttons">
 	                                 <label class="btn btn-default">
 	                                    <input type="radio" name="options" value="public" autocomplete="off" checked> 공개
 	                                 </label>
 	                                 <label class="btn btn-default">
 	                                    <input type="radio" name="options" value="private" autocomplete="off"> 비공개
 	                                 </label>
-	                              </div>
+	                              </div> -->
 	                                  </div>
 	                                  <div class="modal-footer centered">
 	                                      <button class="btn btn-warning" type="submit">생성</button>

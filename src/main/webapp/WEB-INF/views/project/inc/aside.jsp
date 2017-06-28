@@ -24,10 +24,9 @@
                       </a>
                       <ul class="sub">
                       	  <c:forEach items="${workspacelist}" var="list">
-                      	    <form id="worklist" action="projectList.htm" method="post">
-                              <input name="workspace_no" type="hidden" value="${list.workspace_no}">
-                      		  <li><a href="javascript:{}" onclick="document.getElementById('worklist').submit();">${list.workspace_name}</a></li>
-                            </form>
+                      	   <form id="worklist" action="projectList" method="get">
+                      		  <li><a href="projectList.htm?workspace_no=${list.workspace_no}">${list.workspace_name}</a></li>
+                           </form>
                           </c:forEach>
                       </ul>
                   </li>

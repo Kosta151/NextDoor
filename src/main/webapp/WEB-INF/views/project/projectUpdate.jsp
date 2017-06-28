@@ -41,16 +41,14 @@
                                     <button class="btn btn-theme" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button>
                                 </div>
                             </div>
-                            <div class="form-group">
+<!--                             <div class="form-group">
                                 <label class="control-label col-md-3">공개여부</label>
                                 <div class="col-md-4">
                                 <input type="radio" name="choose" value="public" checked>공개
                                 <input type="radio" name="choose" value="private">비공개<br> 
                                  <span class="help-block">* 공개는 워크스페이스 인원 / 비공개는 프로젝트 인원만 공개</span> 
-                                
-                                  
-                         </div>
-                     </div>
+                                </div>
+                    		 </div> -->
                      <button type="submit" class="btn btn-primary">수정하기</button>
                             </form> 
                       </div>

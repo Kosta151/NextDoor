@@ -7,7 +7,7 @@
 		      <div class="form-login">
 		        <h2 class="form-login-heading">Work Space</h2>
 		        <div class="login-wrap">
- 		        	<form action="projectList.htm" method="post">
+ 		        	<form action="projectList.htm" method="get">
  		        	<sec:authentication property="principal.username" var="loginuser"/>
  		        	<c:forEach items="${workspacelist}" var="list">
 						<c:choose>

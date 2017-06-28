@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import kr.co.nextdoor.alarm.service.AlarmService;
 import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.project.dto.ProjectModiDTO;
 import kr.co.nextdoor.project.service.ProjectService;
-import kr.co.nextdoor.workspace.dto.WorkspaceDTO;
 import kr.co.nextdoor.workspace.service.WorkspaceService;
 
 /*
@@ -33,7 +33,9 @@ public class ProjectController {
    private ProjectService service;
    @Autowired
    private WorkspaceService workspaceservice;
-
+   @Autowired
+   private AlarmService alarmservice;
+   
    /*
     * @method Name : projectList
     * @date : 2017. 06. 13
@@ -41,13 +43,13 @@ public class ProjectController {
     * @description : 워크스페이스 선택시 프로젝트 선택화면으로 이동 세션에 워크스페이스 번호가 담겨있으면 워크스페이스 번호를 DTO객체에 넣어줌
     */
    @RequestMapping("projectList.htm")
-   public String listProject(@RequestParam(value="workspace_no") String workspace_no, ProjectDTO projectdto, Model model) throws Exception {
+   public String listProject(@RequestParam(value="workspace_no") String workspace_no, ProjectDTO projectdto, Model model, HttpSession session, Principal principal) throws Exception {
       model.addAttribute("projectlist", service.listProject(projectdto));
       model.addAttribute("workspacelist", workspaceservice.listWorkspace());
-      System.out.println(workspace_no+"파라미터 넘어오는지 확인");
       model.addAttribute("workspace_no", workspace_no);
       model.addAttribute("workspaceinfo", workspaceservice.nameWorkspace(workspace_no));
       model.addAttribute("workspaceowner", workspaceservice.ownerWorkspace(workspace_no));
+      session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
       return "project.projectList";
    }
    

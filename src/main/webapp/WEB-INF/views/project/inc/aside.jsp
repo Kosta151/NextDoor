@@ -8,7 +8,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="resources/main/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="#" onClick="window.location.reload( true );"><img src="resources/main/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><sec:authentication property="principal.username"/></h5>
                   <li class="mt">
                       <a class="active" href="#" onClick="window.location.reload( true );">
@@ -29,13 +29,6 @@
                            </form>
                           </c:forEach>
                       </ul>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="projectList.htm" >
-                          <i class="fa fa-tasks"></i>
-                          <span>내업무</span>
-                      </a>
                   </li>
               <!-- sidebar menu end-->
           </div>

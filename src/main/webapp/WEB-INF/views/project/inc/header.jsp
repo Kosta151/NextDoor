@@ -116,7 +116,7 @@
             <a class="logo" href="#" onClick="window.location.reload( true );"><b>Next Door</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
-            <ul id="alarmarea"></ul>
+<!--             <ul id="alarmarea"></ul> -->
                 <!--  notification start -->
                 <ul class="nav top-menu" >
                     <!-- inbox dropdown start-->

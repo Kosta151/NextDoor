@@ -100,6 +100,18 @@ public class SpecificTaskController {
 					
 		return "task.task";
 	}
+	
+	@RequestMapping(value = "detailSpecifictaskajax.htm", method=RequestMethod.POST)
+	public ModelAndView detailModiSpecifictask(String specifictask_no, Model model){
+			
+		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictask_no);
+		ModelAndView mv = new ModelAndView();	
+		mv.addObject("data", modidto);
+		mv.setViewName("jsonView");
+		
+		return mv;
+	}
+	
 		
 	/*
    * @method Name : updateSpecifictask

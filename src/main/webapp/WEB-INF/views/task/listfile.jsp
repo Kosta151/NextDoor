@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<link href="resources/main/assets/css/style2.css" rel="stylesheet">
 <section id="main-content">
 	<section class="wrapper site-min-height">
 		<div class="row mt">

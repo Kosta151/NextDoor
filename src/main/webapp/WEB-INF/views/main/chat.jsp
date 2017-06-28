@@ -5,6 +5,7 @@
 <sec:authentication property="name" var="loginUser" />
     <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
 <script src="resources/sockjs-0.3.js"></script>
+<link href="resources/main/assets/css/style2.css" rel="stylesheet">
 
 <script>
 

@@ -25,11 +25,11 @@
      <!--main content start-->
       <section id="main-content">
         <section class="wrapper site-min-height">
-             <h3><i class="fa fa-angle-right"></i> Calendar</h3>
+             <h3><i class="fa fa-angle-right"></i> 배정된 인원을 달력에서 확인해보세요</h3>
               <!-- page start-->
               <div class="row mt">
-                   <aside class="col-lg-3 mt"></aside>
-                  <aside class="col-lg-6 mt">
+                   <aside class="col-lg-0 mt"></aside>
+                  <aside class="col-lg-12 mt">
                       <section class="panel">
                           <div class="panel-body">
                               <div id="calendar"></div>

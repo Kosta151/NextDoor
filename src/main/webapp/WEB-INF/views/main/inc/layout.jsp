@@ -173,13 +173,21 @@
     									 
     									 console.log(comp);
     									 speicficcont="<div class='specifictaskbox' style='background-color : none;' id='"+spobj.specifictask_no+"specific'>"
-    									 	  + spobj.specifictask_cont   									 	  						 	  	
+    									 	  /* + spobj.specifictask_cont   									 	  						 	  	
     									 	  + "<a class='dropdown-toggle'  style='float;right; margin-right:10px;'>"    	
     									 	  + "<a href='detailSpecifictask.htm?specifictask_no="+spobj.specifictask_no+"&specifictask_cont="+spobj.specifictask_cont+"'>" 
     									 	  + "<i class='fa fa-pencil'>"    									 	
     									 	  + "</i></a></a>"  
     									 	  + "<input type='checkbox' class='sp-checkbox' id='"+spobj.specifictask_no+"sp-checkbox' value='"+spobj.specifictask_no+"'>"
-    									 	  + "</div>";
+    									 	  + "</div>"; */
+    									 	  
+    									 	  + spobj.specifictask_cont   									 	  						 	  	
+	   									 	  + "<a class='dropdown-toggle'  style='float;right; margin-right:10px;'>"    	
+	   									 	  + "<button style='background-color: window;' id='"+spobj.specifictask_no+"toggletest' value='"+spobj.specifictask_no+"'>" 
+	   									 	  + "<i class='fa fa-pencil'>"    									 	
+	   									 	  + "</i></button></a>"  
+	   									 	  + "<input type='checkbox' class='sp-checkbox' id='"+spobj.specifictask_no+"sp-checkbox' value='"+spobj.specifictask_no+"'>"
+	   									 	  + "</div>";
  							 	
     									 	 comp = spobj.specifictask_comp; 									 	
     									if(comp==0){
@@ -198,28 +206,42 @@
     									 });
     								 } 
     								 $("#"+spobj.specifictask_no+"toggletest").click(function () {
-    								        if ($('#toggletest_jjh').is(":visible") == true) {
-    								            $('#main-content').css({
-    								                'margin-left': '210px'
-    								            });
-    								            $('#toggletest_jjh').css({
-    								                'margin-right': '-210px'
-    								            });
-    								            $('#toggletest_jjh').hide(); 
-    								            $("#container").addClass("sidebar-closed");
-    									    } else {
-    									            $('#main-content').css({
-    									                'margin-right': '0px'
-    									            });
-    									            $('#toggletest_jjh').show();
-    									            $('#toggletest_jjh').css({
-    									                'margin-right': '0'
-    									            }); 
-    									            $("#container").removeClass("sidebar-closed");   								            
-    									         } 
-    									 });
-    							 });
-    						 },
+    									 
+								         if ($('#toggletest_jjh').is(":visible") == true) {
+								            $('#main-content').css({
+								                'margin-left': '210px'
+								            });
+								            $('#toggletest_jjh').css({
+								                'margin-right': '-210px'
+								            });
+								            $('#toggletest_jjh').hide(1000); 
+								            
+									    } else {
+									            $('#main-content').css({
+									                'margin-right': '0px'
+									            });
+									             $('#toggletest_jjh').slideToggle();   
+									            $('#toggletest_jjh').css({
+									                'margin-right': '0'
+									            }); 
+									             
+									            
+									         }  
+								        var specifictaskno=spobj.specifictask_no;
+								        /* var specifictaskcont=spobj.specifictask_cont; */
+								        detailSpecifictask(specifictaskno);
+								        /* var specifictaskstart = $('#specifictask_start').val();
+								        var specifictaskend = $('#specifictask_end').val(); */
+								        
+									    
+									 });
+								 
+								 
+								 
+							 });
+							 
+							
+						 },
     						 error : function(){
     							alert("error");
     						 }
@@ -256,6 +278,38 @@
 				 }
 			 }); 
        }
+        
+         function detailSpecifictask(specifictaskno,specifictaskcont){
+        	console.log(specifictaskno);  
+         	  $.ajax({
+  				 url : "detailSpecifictaskajax.htm",
+  				 type : "post",
+  				 data : {specifictask_no : $("#"+specifictaskno+"toggletest").val()},			 
+  				 dataType : "json",
+  				 success : function(data){
+  					 	
+  					 	console.log(data.data);
+  					 				
+  					 if(data.data!=null){
+  						 $("#specifictask_start").val(data.data.specifictask_start);
+  						 $("#specifictask_end").val(data.data.specifictask_end);
+  						 $("#taskmember_id").val(data.data.member_id); 
+  						 $("#specifictask_no").val(specifictaskno);
+  						 $(".specifictask_no").val(specifictaskno);
+  						 
+  					 }else{			 
+  						 $("#specifictask_start").val("");
+  						 $("#specifictask_end").val("");
+  						 $("#taskmember_id").val(""); 
+  						 $("#specifictask_no").val(specifictaskno);
+  						 $(".specifictask_no").val(specifictaskno);
+  					 } 						
+  				 },
+  				 error : function(){
+  					alert("error");
+  				 }
+  			 }); 
+       } 
         
         
         

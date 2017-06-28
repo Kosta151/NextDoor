@@ -5,9 +5,6 @@
 <sec:authentication property="name" var="loginUser"/>
 <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
 <script src="resources/sockjs-0.3.js"></script>
-<script src="resources/sweetalert.css"></script>
-<script src="resources/sweetalert.min.js"></script>
-<script src="resources/sweetalert-dev.js"></script>
 	<script>
 		var sock;
 		$(function() {
@@ -36,7 +33,8 @@
 				 };
 		 		  $('#btn-submit').click(function(){
 		 			  var receiver = $("#select").val();
-		 			 if($("#selet").val() != ""){  	 
+		 			  console.log(receiver);
+		 			 if($("#select").val() != ""){  	 
 		 				 sock.send(receiver)
 		 				
 		 			/* 	 $.ajax({

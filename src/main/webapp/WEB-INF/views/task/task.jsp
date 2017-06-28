@@ -65,10 +65,10 @@
 	  	<form action="updateSpecifictask.htm" method="post">
 			<div>
 	        	<label>업무배정</label>
-	            	<select name="member_id" id="select">
+	            	<select name="member_id" id="select" value="">
 	                	<option value="${modidto.member_id}">${modidto.member_id}</option>   
 	                    	<c:forEach items="${memberlist}" var="mlist">         
-	                        	<option value="${mlist.member_id}" >${mlist.member_id}</option>   
+	                        	<option value="${mlist.member_id}" id="sel" >${mlist.member_id}</option>   
 	                        </c:forEach>                     
 	                 </select>
 	        	<p>배정된 인원 : ${modidto.member_id}</p>
@@ -89,7 +89,7 @@
 		        </div>
 	        </div>
 	        <input type="hidden" name="specifictask_no" value="${specifictask_no}">
-	        <button type="submit">업무수정</button>
+	        <button type="submit" id="btn-submit">업무수정</button>
 	        <button type="button"><a href="deleteSpecifictask.htm?specifictask_no=${specifictask_no}">업무삭제</a></button>                       
 	      </form> 
 	</div>
@@ -102,7 +102,7 @@
 	       <input type="hidden" name="specifictask_no" value="${specifictask_no}"> 
 	       <input type="file" name="file">
 	    </div>                
-	    <button type="submit" id=btn-submit>수정완료</button>
+	    <button type="submit">수정완료</button>
 	   	<button type="reset">업무삭제</button>
 	   </form>
 	</div>

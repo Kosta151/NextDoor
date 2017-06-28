@@ -1,8 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="resources/main/assets/js/sweetalert.min.js"></script>
+<link href="resources/main/assets/css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="resources/main/assets/css/sweetalert.css">
 <section id="main-content" style="width:auto; overflow: scroll;">
- <link href="resources/main/assets/css/style.css" rel="stylesheet">
+ <script type="text/javascript">
+$(function(){
+	
+	
+	$("#taskbtn").click(function(){
+	   if($("#task_cont").val()==""){
+	      swal("업무명을 입력해주세요");
+	      $("#task_cont").focus();
+	      return false;
+	   }else{
+	      /* swal('프로젝트 생성!', 'You clicked the button!', 'success') */
+	       swal({
+	                 title: "업무 생성 완료!",
+	                 type: "success",
+	                 showCancelButton: false,
+	                 confirmButtonColor: "#194f89",
+	                 confirmButtonText: "확인",
+	                 closeOnConfirm: false
+	                 
+	               },
+		        	 function(isConfirm){
+		        		  if (isConfirm) {
+		        			  location.href="insertTask.htm";
+		        				$('#taskform').submit();
+		        		  }
+					 }
+	       );
+	     
+	   }
+	   
+	   });         
+});
+
+
+</script>
 	<section class="wrapper site-min-height">
     	<div>
          	<div>
@@ -18,7 +55,7 @@
                tabindex="-1" id="myModal" class="modal fade">
                <div class="modal-dialog">
                   <div class="modal-content">
-                     <form action="insertTask.htm">
+                     <form action="insertTask.htm" id="taskform">
                         <div class="modal-header">
                            <button type="button" class="close" data-dismiss="modal"
                               aria-hidden="true">&times;</button>
@@ -34,7 +71,7 @@
                               value="${project_no}">
                         </div>
                         <div class="modal-footer centered">
-                           <button class="btn btn-theme03" type="submit">생성</button>
+                           <button class="btn btn-theme03" type="button" id="taskbtn">생성</button>
                            <button data-dismiss="modal" class="btn btn-theme04"
                               type="button">취소</button>
                         </div>

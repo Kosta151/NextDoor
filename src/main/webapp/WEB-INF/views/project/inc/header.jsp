@@ -23,19 +23,21 @@
 					 var user_id = msg.user_id;
 					 var specifictask_cont = msg.specifictask_cont;
 					 var user = '${loginUser}'
-					 if(msg.receiver!=""){	
 					 if(user!=user_id){
 						  console.log("아이디 : "+msg.specifictask_cont +"  // 받는이 : "+ msg.receiver );
 						$("#alarmarea").html("<li class='error'>"+user_id+"님이"+receiver+"님에게"+specifictask_cont+"배당 받으셨습니다</li>");
 						$('.error').fadeIn(1000).delay(1000).fadeOut(1000);
 					 	} 
-					 }
 				 };
 		 		  $('#btn-submit').click(function(){
-		 			  var receiver = $("#select").val();
-		 			  console.log(receiver);
+		 			 var receiver = $("#select").val();
+		 			  var specifictask_cont = $('#task').val();
+		 			  var obj = {};
+		 			  obj.receiver = receiver;
+		 			  obj.specifictask_cont = specifictask_cont;
+		 			  var str = JSON.stringify(obj);
 		 			 if($("#select").val() != ""){  	 
-		 				 sock.send(receiver)
+		 				 sock.send(str);
 		 				
 		 		
 		 		  }
@@ -44,27 +46,7 @@
  
 		 	
 		});
-	/* 	function listProject(loginuser){
-        	console.log(loginuser);
-       	  $.ajax({
-				 url : "projectList.htm",
-				 type : "post",
-				 dataType: "json",
-				 data : {loginuser : ${loginUser}},
-				 success : function(data){
-					console.log(data);
-					 alert("success");
-					
-					  $('#count').empty();  
-					  $('#count').html(data);
-					
-				
-				 },
-				 error : function(){
-					alert("error");
-				 }
-			 });  
-       }*/
+	
 
 </script>
 <style>

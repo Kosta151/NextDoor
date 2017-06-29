@@ -3,6 +3,8 @@ package kr.co.nextdoor.specifictask.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +18,16 @@ import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 import kr.co.nextdoor.specifictask.service.SpecificTaskService;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import kr.co.nextdoor.alarm.dto.AlarmDTO;
+import kr.co.nextdoor.alarm.service.AlarmService;
 import kr.co.nextdoor.file.dto.FileDTO;
 
 /*
@@ -36,7 +43,8 @@ public class SpecificTaskController {
 	@Autowired
 	SpecificTaskService specifictaskservice;
 
-
+	@Autowired
+	AlarmService alarmservice;
    /*
    * @method Name : listSpecificTask
    * @date : 2017. 06. 16
@@ -44,7 +52,7 @@ public class SpecificTaskController {
    * @description : 세부업무리스트의 비동기 출력
    */
 	@RequestMapping(value = "specifictask.htm", method = RequestMethod.POST)
-	public ModelAndView listSpecificTask(String task_no) {
+	public ModelAndView listSpecificTask(String task_no, Model model) {
 		List<SpecificTaskDTO> specifictasklist = specifictaskservice.listSpecificTask(task_no);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("jsonView");
@@ -61,12 +69,10 @@ public class SpecificTaskController {
    * @description : 세부업무 추가
    */
 	@RequestMapping("insertspecifictask.htm")
-	public ModelAndView insertSpecificTask(SpecificTaskDTO specifictask){
+	public String insertSpecificTask(SpecificTaskDTO specifictask){
 		specifictaskservice.insertSpecificTask(specifictask);
-		ModelAndView model = new ModelAndView();
-		model.addObject("data", specifictask);
-		model.setViewName("jsonView");
-		return model;
+
+		return "task.task";
 	}
 
 	/*
@@ -103,6 +109,18 @@ public class SpecificTaskController {
 					
 		return "task.task";
 	}
+	
+	@RequestMapping(value = "detailSpecifictaskajax.htm", method=RequestMethod.POST)
+	public ModelAndView detailModiSpecifictask(String specifictask_no, Model model){
+			
+		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictask_no);
+		ModelAndView mv = new ModelAndView();	
+		mv.addObject("data", modidto);
+		mv.setViewName("jsonView");
+		
+		return mv;
+	}
+	
 		
 	/*
    * @method Name : updateSpecifictask
@@ -111,10 +129,33 @@ public class SpecificTaskController {
    * @description : 세부업무 수정값 업데이트
    */
 	@RequestMapping(value ="updateSpecifictask.htm")
-	public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto, HttpSession session){
-							
-		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
+	public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto, SpecificTaskDTO specifictaskdto ,HttpSession session){
+		//알림 관련 추가(박찬섭) start
+		SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");
+		AlarmDTO alarmdto = new AlarmDTO();
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
+		alarmdto.setAlarm_receiver(specifictaskmodidto.getMember_id()); //
+		System.out.println(specifictaskmodidto.getMember_id());
+		
+		alarmdto.setSpecifictask_no(specifictaskmodidto.getSpecifictask_no());
+		
+		
+		alarmdto.setAlarm_date(dayTime.format(new Date(System.currentTimeMillis()))) ;
+		
+		String alarm_sender=user.getUsername();
+		alarmdto.setAlarm_sender(alarm_sender);
+		
+		String specifictask_name = specifictaskdto.getSpecifictask_cont();
+		String alarm_cont= user.getUsername()+"님이"+specifictaskmodidto.getMember_id()+"님에게"+specifictask_name+"배당하셨습니다";
+		alarmdto.setAlarm_cont(alarm_cont);
+	
+		
+		alarmservice.insertAlarm(alarmdto);
+		
+		session.setAttribute("alarmcount", alarmservice.CountAlarmList(user.getUsername()));
+		SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
+		//알림 관련 추가(박찬섭) end
 		if(modidto==null){
 			specifictaskservice.insertModiSpecifictask(specifictaskmodidto);
 		}else{

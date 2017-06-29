@@ -37,4 +37,8 @@ public interface WorkspaceDAO {
     * @return : int
     */
 	public int deleteWorkspace(int workspace_no);
+	
+	public String nameWorkspace(String workspace_no);
+	
+	public String ownerWorkspace(String workspace_no);
 }

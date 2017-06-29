@@ -6,12 +6,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
    <!-- 프로젝트 목록 보기 -->
    <select id="listProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-      select p.project_name, p.project_no
-      from project p join workspace w join projectmember m
-      on w.workspace_no = p.workspace_no and w.member_id = p.member_id and p.project_no = m.project_no
-      where m.member_id = #{member_id} and w.workspace_no = #{workspace_no};
+   	select a.project_no, a.project_name, IFNULL(ROUND(ROUND(EXP(LOG(b.percent)),6)*100),0) as percent, a.member_id as owner
+		from
+			(select pm.MEMBER_ID, p.PROJECT_NO, p.PROJECT_NAME, p.WORKSPACE_NO
+		from 
+			projectmember pm
+			join project p on p.PROJECT_NO=pm.PROJECT_NO
+		where 
+			pm.member_id=#{member_id} and p.workspace_no=#{workspace_no}) a 
+	        left join
+			 (select t.PROJECT_NO, count(if(st.SPECIFICTASK_COMP='1',st.SPECIFICTASK_COMP,null))/count(st.SPECIFICTASK_NO) as 'percent'
+			from
+			task t
+			left join specifictask st on t.TASK_NO=st.TASK_NO
+		group by t.PROJECT_NO) b
+        on a.project_no=b.project_no
    </select>
-   
+
+	<!-- 워크스페이스 주인 검색 -->
+	<select id="workspaceOwner" parameterType="String" resultType="String">
+		select member_id from workspace where workspace_no=#{workspace_no}
+	</select>
    <!-- 프로젝트 추가 -->
    <insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
       insert into project(project_name, workspace_no, member_id, open) 

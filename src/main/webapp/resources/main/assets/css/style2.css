@@ -71,38 +71,28 @@ a, a:hover, a:focus {
 /* tasklist */
 .taskbox{
 	float : left;
-	/* width:25%; */
-	/* box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); */
+	border-radius:10px;
+	width:25%;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .taskcont {
-	
+	border-radius:10px;
 	text-align: center;
 	background-color : #ffd777;
-	color : #408080;
-	font-size : medium;
+	color : white;
+	font-size : xx-large;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 	
 }
 .taskinput {
-	
+	border-radius:10px;
 	border:none;
 	text-align: center;
 	background-color : #ffd777;
 	color : white;
-	font-size : medium;
+	font-size : xx-large;
 	width: 70%;
-	
-}
-
-.taskcomp {
-	margin-top : 10px;
-	border:none;
-	text-align: center;
-	background-color : #e0e0e0;
-	color : #808080;
-	font-size : medium;
-	width: 100%;
 	
 }
 .taskcont:HOVER {
@@ -112,11 +102,11 @@ a, a:hover, a:focus {
 }
 
 .specifictaskbox{
-	
+	border-radius:10px;
 	text-align: center;
-	background-color : #ffffff;
+	background-color : D7D4E4;
 	color : 3F3C4A;
-	font-size : medium;
+	font-size : xx-large;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 	margin-top: 10px;
 	
@@ -475,14 +465,13 @@ ul.sidebar-menu li a.active i {
 }
 
 .wrapper {
-	overflow : scroll;
-    /* display: inline-block; */
+    display: inline-block;
     margin-top: 60px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
     padding-top: 0px;
-    width: auto;
+    width: 100%;
 }
 
 a.logo {
@@ -845,32 +834,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .project-closed #project {
     margin-right: -180px;
 } 
-
-/*--task toggle---*/
-
-.sidebar-toggle-box {
-    float: left;
-    padding-right: 15px;
-    margin-top: 20px;
-}
-
-.sidebar-toggle-box .fa-bars {
-    cursor: pointer;
-    display: inline-block;
-    font-size: 20px;
-}
-
- #toggletest_jjh {
-    display: none;
-} 
-
-.sidebar-closed #main-content {
-    margin-left: 0px;
-}
-
-.sidebar-closed #toggletest_jjh {
-    margin-left: -180px;
-}
 
 /* Dash Side */
 
@@ -1907,7 +1870,7 @@ PANELS CONFIGURATIONS
 
 .sp-checkbox {
 	float: left;
-	margin-left : 10px;
+	margin: 10px;
 }
 .brand-highlight {
 background: #fffbcc !important;
@@ -3529,7 +3492,6 @@ ul.chat-available-user li a:hover {
 }
 
 .site-min-height {
-	width : auto;
     min-height: 900px;
 }
 

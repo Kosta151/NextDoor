@@ -1,27 +1,25 @@
 package kr.co.nextdoor.alarm.dto;
 
 import java.sql.Date;
-
+/*
+* @Class : AlarmDTO
+* @Date : 2017. 06. 13 
+* @Author : 박찬섭
+* @Desc : Alarm
+*/
 public class AlarmDTO {
-	
-		private int alarm_no;
-		private int specifictask_no;
+		
+		private String specifictask_no;
 		private String alarm_sender;
 		private String alarm_receiver;
 		private String alarm_cont;
 		private String alarm_date;
-		private boolean alarm_read;
+		private String alarm_read;
 		
-		public int getAlarm_no() {
-			return alarm_no;
-		}
-		public void setAlarm_no(int alarm_no) {
-			this.alarm_no = alarm_no;
-		}
-		public int getSpecifictask_no() {
+		public String getSpecifictask_no() {
 			return specifictask_no;
 		}
-		public void setSpecifictask_no(int specifictask_no) {
+		public void setSpecifictask_no(String specifictask_no) {
 			this.specifictask_no = specifictask_no;
 		}
 		public String getAlarm_sender() {
@@ -48,11 +46,20 @@ public class AlarmDTO {
 		public void setAlarm_date(String alarm_date) {
 			this.alarm_date = alarm_date;
 		}
-		public boolean isAlarm_read() {
+		public String getAlarm_read() {
 			return alarm_read;
 		}
-		public void setAlarm_read(boolean alarm_read) {
+		public void setAlarm_read(String alarm_read) {
 			this.alarm_read = alarm_read;
 		}
+		@Override
+		public String toString() {
+			return "AlarmDTO [specifictask_no=" + specifictask_no + ", alarm_sender=" + alarm_sender
+					+ ", alarm_receiver=" + alarm_receiver + ", alarm_cont=" + alarm_cont + ", alarm_date=" + alarm_date
+					+ ", alarm_read=" + alarm_read + "]";
+		}
+		
+		
+	
 		
 	}

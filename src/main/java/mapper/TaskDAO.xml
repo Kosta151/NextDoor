@@ -14,6 +14,10 @@
 			<!-- SELECT * FROM TASK WHERE project_no=#{project_no} -->
 		</select>
 		
+		<!-- 달력에서 modal list 건들지마시오. -->
+		<select id="list" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+			SELECT task_no, task_cont, project_no FROM TASK WHERE project_no=#{project_no}
+		</select>		
 		<!-- 프로젝트에 들어있는 멤버 업무 배정 -->
 		<select id="memberList" resultType="kr.co.nextdoor.member.dto.MemberDTO">
 	   		SELECT MEMBER_ID,PROJECT_NO FROM PROJECTMEMBER WHERE project_no= #{project_no}

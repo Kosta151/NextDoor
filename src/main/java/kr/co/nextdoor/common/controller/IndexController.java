@@ -1,5 +1,7 @@
 package kr.co.nextdoor.common.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,5 +19,10 @@ public class IndexController {
 	public String index() {
 
 		return "index.index";
+	}
+	
+	@RequestMapping("lockscreen.htm")
+	public String lockscreen(HttpSession session) {
+		return "login.lockscreen";
 	}
 }

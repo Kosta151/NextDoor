@@ -30,9 +30,10 @@ public class WorkspaceController {
     * @author : 이재민
     * @description : 로그인 후 워크스페이스 선택화면으로 이동
     */
-	@RequestMapping(value ="workspace.htm")
-	public String workspaceList(WorkspaceDTO workspacedto,Model model, HttpSession session) {
-		session.setAttribute("workspace_no", workspacedto.getWorkspace_no());
+	
+	@RequestMapping(value = "workspace.htm")
+	public String workspaceList(Model model, HttpSession session) {
+		session.removeAttribute("workspace_no");
 		model.addAttribute("workspacelist", service.listWorkspace());
 		return "login.workspace";
 	}

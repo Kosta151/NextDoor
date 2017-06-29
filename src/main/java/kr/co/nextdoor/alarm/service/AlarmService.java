@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.nextdoor.alarm.dao.AlarmDAO;
 import kr.co.nextdoor.alarm.dto.AlarmDTO;
-import kr.co.nextdoor.task.dao.TaskDAO;
-import kr.co.nextdoor.task.dto.TaskDTO;
+
 /*
 * @Class : AlarmService
 * @Date : 2017. 06. 242

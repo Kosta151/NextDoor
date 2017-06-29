@@ -7,11 +7,12 @@ package kr.co.nextdoor.alarm.service;
 */
 
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -19,9 +20,6 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-
-import kr.co.nextdoor.alarm.dto.AlarmDTO;
 
 public class AlarmHandler extends TextWebSocketHandler{
 
@@ -66,20 +64,11 @@ public class AlarmHandler extends TextWebSocketHandler{
 		System.out.println("s");
 		Map<String, Object> map = session.getAttributes();
 		String user_id = (String) map.get("user_id");
-		String specifictask_cont = (String) map.get("specifictask_cont");
-		String specifictask_no = (String) map.get("specifictask_no");
-		String receiver = message.getPayload();
-		/*String alarm_cont = user_id+"님이"+receiver+"님에게"+specifictask_cont+"배당하셨습니다.";*/
-		/*SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");*/
-		/*AlarmDTO alarmdto = null;
-		alarmdto.setAlarm_receiver(receiver);
-		alarmdto.setAlarm_sender(user_id);
-		alarmdto.setSpecifictask_no(specifictask_no); 
-		alarmdto.setAlarm_cont(alarm_cont);
-		alarmdto.setAlarm_date(dayTime.format(new Date(System.currentTimeMillis())));
-		int result=alarmservice.InsertAlarm(alarmdto);
-		System.out.println("들어갔음?"+result);*/
-
+		String content = message.getPayload();
+		JSONParser jp = new JSONParser();
+	    JSONObject jo = (JSONObject) jp.parse(content);
+	    String receiver = (String)jo.get("receiver");
+	    String specifictask_cont = (String)jo.get("specifictask_cont");
 		Map<String, Object> data = new HashMap<String, Object>();
 		System.out.println(specifictask_cont + "/" +receiver+ "/"+user_id);	//ID와 메세지
 		data.put("user_id",user_id);

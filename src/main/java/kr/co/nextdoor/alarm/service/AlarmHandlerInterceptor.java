@@ -3,7 +3,6 @@ package kr.co.nextdoor.alarm.service;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.server.ServerHttpRequest;
@@ -35,9 +34,6 @@ public class AlarmHandlerInterceptor extends HttpSessionHandshakeInterceptor {
 		HttpServletRequest req = sshr.getServletRequest();
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		attributes.put("user_id", user.getUsername());
-	/*	attributes.put("specifictask_cont", req.getSession().getAttribute("specifictask_cont"));
-		System.out.println(req.getSession().getAttribute("specifictask_cont"));
-		attributes.put("specifictask_no", req.getSession().getAttribute("specifictask_no"));*/
 		return super.beforeHandshake(request, response, wsHandler, attributes);
 	}
 

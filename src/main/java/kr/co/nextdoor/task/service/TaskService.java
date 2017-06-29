@@ -1,5 +1,6 @@
 package kr.co.nextdoor.task.service;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
+import kr.co.nextdoor.specifictask.dao.SpecificTaskDAO;
 import kr.co.nextdoor.task.dao.TaskDAO;
 import kr.co.nextdoor.task.dto.TaskDTO;
 import kr.co.nextdoor.workspace.dao.WorkspaceDAO;
@@ -93,17 +95,54 @@ public class TaskService {
 	}
 	
 	/*
-	    * @method Name : list
-	    * @date : 2017. 06. 27
-	    * @author : 최성용
-	    * @description : 달력 모달에서 업무명 List
-	    * @param : taskdto
-	    * @return : List<TaskDTO>
-	    */
+    * @method Name : list
+    * @date : 2017. 06. 27
+    * @author : 최성용
+    * @description : 달력 모달에서 업무명 List
+    * @param : taskdto
+    * @return : List<TaskDTO>
+    */
 	public List<TaskDTO> list(String project_no){
 		
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		List<TaskDTO> list  = taskdao.list(project_no);
 		return list;	
+	}
+	
+	/*
+    * @method Name : personalTask
+    * @date : 2017. 06. 27
+    * @author : 김선화, 송지은
+    * @description : 개인 업무 목록
+    * @param : String,Principal
+    * @return : List<TaskDTO>
+    */
+	public List<TaskDTO> personalTask(String project_no, Principal principal){
+		String member_id = principal.getName();
+		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		List<TaskDTO> list  = taskdao.personaltask(project_no, member_id);
+		System.out.println(project_no);
+		System.out.println(member_id);
+		System.out.println("personalTask Service");
+		return list;
+	}
+	
+	/*
+    * @method Name : personalSpecifictask
+    * @date : 2017. 06. 27
+    * @author : 김선화, 송지은
+    * @description : 개인 업무 목록
+    * @param : String,Principal
+    * @return : List<TaskDTO>
+    */
+	public List<TaskDTO> personalSpecifictask(String task_no, Principal principal){
+		System.out.println("personalSpecifictask Service");
+		String member_id = principal.getName();
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		List<TaskDTO> list  = specifictaskdao.personalspecifictask(task_no, member_id);
+		System.out.println(task_no);
+		System.out.println(member_id);
+		
+		return list;
 	}
 }

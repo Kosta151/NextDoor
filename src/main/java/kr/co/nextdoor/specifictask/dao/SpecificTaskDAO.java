@@ -5,6 +5,7 @@ import java.util.List;
 import kr.co.nextdoor.file.dto.FileDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
+import kr.co.nextdoor.task.dto.TaskDTO;
 
 /*
 * @Class : SpecificTaskDAO
@@ -83,5 +84,6 @@ public interface SpecificTaskDAO {
 	//업무 확인
 	public int checkSpecifcitask(SpecificTaskDTO specifictaskdto);
 	
+	public List<TaskDTO> personalspecifictask(String task_no, String member_id);
 	
 }

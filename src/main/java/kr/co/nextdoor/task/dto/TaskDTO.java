@@ -12,7 +12,7 @@ public class TaskDTO {
 	private String project_no;
 	private String task_cont;
 	private String idx;
-	
+	private String specifictask_cont;
 	
 	public String getIdx() {
 		return idx;
@@ -38,5 +38,12 @@ public class TaskDTO {
 	public void setTask_cont(String task_cont) {
 		this.task_cont = task_cont;
 	}
+	public String getSpecifictask_cont() {
+		return specifictask_cont;
+	}
+	public void setSpecifictask_cont(String specifictask_cont) {
+		this.specifictask_cont = specifictask_cont;
+	}
+	
 	
 }

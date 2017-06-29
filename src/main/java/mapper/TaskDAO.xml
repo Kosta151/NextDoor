@@ -25,6 +25,14 @@
 		
 		<delete id="deleteTask" >
 			delete from task where project_no=#{project_no} and task_no=#{task_no}
-		</delete>		
+		</delete>
+		
+		<!-- 개인업무 리스트 -->
+		<select id="personaltask" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+           select p.project_no, t.task_cont, st.specifictask_cont, t.task_no
+           from project p join task t join specifictask st join specifictaskmodi stm
+           on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
+           where p.project_no = #{param1} and stm.member_id = #{param2}
+        </select>	
 				
   </mapper>

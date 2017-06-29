@@ -22,7 +22,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="<%=request.getContextPath()%>/task.htm?project_no=${project_no}">전체 업무</a></li>
-                          <li><a  href="">개인 업무</a></li>
+                          <li><a  href="<%=request.getContextPath()%>/personaltask.htm?project_no=${project_no}">개인 업무</a></li>
                       </ul>
                   </li>
                   

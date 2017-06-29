@@ -1,5 +1,6 @@
 package kr.co.nextdoor.task.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -103,6 +104,56 @@ public class TaskController {
 	public String deleteTask(TaskDTO taskdto){
 		taskservice.deleteTask(taskdto);
 		return "task.task";
+	}
+	
+	/*
+    * @method Name : personalTask
+    * @date : 2017. 06. 27
+    * @author : 김선화, 송지은
+    * @description : 개인 업무 목록 화면
+    */
+	@RequestMapping(value ="personaltask.htm", method=RequestMethod.GET)
+	public String personalTask(){
+		return "task.personaltask";
+	}
+	
+	/*
+    * @method Name : personalTask
+    * @date : 2017. 06. 27
+    * @author : 김선화, 송지은
+    * @description : 개인 업무 목록 
+    */
+	@RequestMapping(value ="personaltask.htm", method=RequestMethod.POST)
+	public ModelAndView personalTask(TaskDTO taskdto, HttpSession session, Principal principal){
+		String project_no = (String) session.getAttribute("project_no");
+		System.out.println("personalTask controller ~!!");
+	
+		List<TaskDTO> list = taskservice.personalTask(project_no, principal);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("jsonView");
+		mv.addObject("data", list);
+		
+		return mv;
+	}
+	
+	/*
+    * @method Name : personalTask
+    * @date : 2017. 06. 27
+    * @author : 김선화, 송지은
+    * @description : 개인 업무 목록 
+    */
+	@RequestMapping(value ="personalspecifictask.htm", method=RequestMethod.POST)
+	public ModelAndView personalSpecifictask(String task_no, Principal principal){
+		System.out.println("personalTask controller ~!! ");
+		System.out.println("personalspecifictask컨트롤러의 업무 번호입니다 : " + task_no);
+		List<TaskDTO> list = taskservice.personalSpecifictask(task_no,principal);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("jsonView");
+		mv.addObject("data", list);
+		
+		return mv;
 	}
 }
 

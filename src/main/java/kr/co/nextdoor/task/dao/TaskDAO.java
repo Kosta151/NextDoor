@@ -59,11 +59,20 @@ public interface TaskDAO {
     */
 	public List<MemberDTO> memberList(String project_no);
 	/*
-	    * @method Name : 업무명 list
-	    * @date : 2017. 06. 27
-	    * @author : 최성용
-	    * @description : 달력에서 업무명을 선택하는 List 
-	    * @return : List<TaskDTO>
-	    */
+    * @method Name : 업무명 list
+    * @date : 2017. 06. 27
+    * @author : 최성용
+    * @description : 달력에서 업무명을 선택하는 List 
+    * @return : List<TaskDTO>
+    */
 	public List<TaskDTO> list(String project_no);
+	
+	/*
+	* @method Name : personaltask
+    * @date : 2017. 06. 27
+    * @author : 김선화, 송지은
+    * @description : 개인 업무 목록 
+    * @return : List<TaskDTO>
+    */
+	public List<TaskDTO> personaltask(String project_no, String member_id);
 }

@@ -8,4 +8,6 @@ public interface ChartDAO {
 	
 	public List<ChartDTO> chartAll();
 
+	public List<ChartDTO> plist();
+
 }

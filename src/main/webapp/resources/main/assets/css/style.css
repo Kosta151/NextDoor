@@ -78,20 +78,24 @@ a, a:hover, a:focus {
 .taskcont {
 	
 	text-align: center;
-	background-color : #ffd777;
-	color : #408080;
+	background-color : #424a5d;
+	color : white;
 	font-size : medium;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
+	
+    padding-top: 10px;
+    border-bottom-width: 10px;
+    padding-bottom: 10px;
 	
 }
 .taskinput {
 	
 	border:none;
 	text-align: center;
-	background-color : #ffd777;
+	background-color : rgba(153, 154, 173,0);;
 	color : white;
 	font-size : medium;
-	width: 70%;
+	width: 50%;
 	
 }
 
@@ -100,7 +104,7 @@ a, a:hover, a:focus {
 	border:none;
 	text-align: center;
 	background-color : #e0e0e0;
-	color : #808080;
+	color : black;
 	font-size : medium;
 	width: 100%;
 	
@@ -115,18 +119,37 @@ a, a:hover, a:focus {
 	
 	text-align: center;
 	background-color : #ffffff;
-	color : 3F3C4A;
+	color : black;
 	font-size : medium;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 	
+	padding-top: 5px;
+    border-bottom-width: 5px;
+    padding-bottom: 5px;
+		
 }
+
+.specifictaskbutton{
+	float:right;
+}
+
 
 .specifictaskbox:HOVER {
 	
 	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
 	
 }
+
+.modibutton{
+	background-color: #424a5d; 
+	color:white;
+}
+
+/*task css end*/
+
 
 /*Theme Backgrounds*/
 
@@ -164,8 +187,8 @@ a, a:hover, a:focus {
 
 .btn-theme02 {
   color: #fff;
-  background-color: #ac92ec;
-  border-color: #967adc;
+  background-color: #424a5d;
+  border-color: #f2f2f2;
 }
 .btn-theme02:hover,
 .btn-theme02:focus,
@@ -173,7 +196,7 @@ a, a:hover, a:focus {
 .btn-theme02.active,
 .open .dropdown-toggle.btn-theme02 {
   color: #fff;
-  background-color: #967adc;
+  background-color: #ffd777;
   border-color: #967adc;
 }
 

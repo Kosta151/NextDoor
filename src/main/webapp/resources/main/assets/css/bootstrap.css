@@ -913,6 +913,15 @@ a {
   color: #428bca;
   text-decoration: none;
 }
+div.taskbutton {
+  color: white;
+  text-decoration: none;
+  height: 20px;
+  width: 15px;
+  float: right;
+  margin-right: 10px;
+
+}
 a:hover,
 a:focus {
   color: #2a6496;

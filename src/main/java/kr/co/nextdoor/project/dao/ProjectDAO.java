@@ -104,5 +104,14 @@ public interface ProjectDAO {
     * @return : MemberDTO
     */
 	public MemberDTO listMember() throws Exception;
+	
+	/*
+    * @method Name : nameProject
+    * @date : 2017. 06. 22
+    * @author : 장진환
+    * @description : 프로젝트 이름 출력
+    * @return : String
+    */
+	public String nameProject(String project_no) throws Exception;
 
 }

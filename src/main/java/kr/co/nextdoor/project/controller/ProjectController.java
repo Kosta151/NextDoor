@@ -49,6 +49,7 @@ public class ProjectController {
       model.addAttribute("workspace_no", workspace_no);
       model.addAttribute("workspaceinfo", workspaceservice.nameWorkspace(workspace_no));
       model.addAttribute("workspaceowner", workspaceservice.ownerWorkspace(workspace_no));
+      session.setAttribute("owner", workspaceservice.ownerWorkspace(workspace_no));   
       session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
       return "project.projectList";
    }

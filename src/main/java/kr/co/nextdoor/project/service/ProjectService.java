@@ -144,4 +144,17 @@ public class ProjectService {
       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
       return projectdao.updateProjectModi(projectmodidto);
    }
+   
+   /*
+    * @method Name : nameProject
+    * @date : 2017. 06.22
+    * @author : 장진환
+    * @description : 업무입장 시 프로젝트 이름 상단에 출력
+    * @param : project_no
+    * @return : String
+    */
+   public String nameProject(String project_no) throws Exception{
+	    ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+		return projectdao.nameProject(project_no);
+}
 }

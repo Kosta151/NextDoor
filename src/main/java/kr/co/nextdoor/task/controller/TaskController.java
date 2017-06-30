@@ -15,6 +15,7 @@ import org.springframework.web.servlet.View;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.project.dto.ProjectDTO;
+import kr.co.nextdoor.project.service.ProjectService;
 import kr.co.nextdoor.task.dto.TaskDTO;
 import kr.co.nextdoor.task.service.TaskService;
 
@@ -33,6 +34,8 @@ public class TaskController {
 	@Autowired
 	private TaskService taskservice;
 	
+	@Autowired
+	private ProjectService service;
 	
 
 	/*
@@ -42,7 +45,7 @@ public class TaskController {
     * @description : 업무 선택시 업무 출력 화면으로 이동
     */
 	@RequestMapping(value="task.htm", method=RequestMethod.GET)
-	public String listTask(ProjectDTO projectdto, Model model, HttpSession session){
+	public String listTask(ProjectDTO projectdto, Model model, HttpSession session) throws Exception{
 	session.setAttribute("project_no", projectdto.getProject_no());
 		
 		String specifictask = (String) session.getAttribute("specifictask_no");
@@ -51,6 +54,8 @@ public class TaskController {
 		List<MemberDTO> memberlist = taskservice.listMember(projectdto.getProject_no());
 		session.setAttribute("memberlist", memberlist);
 		
+		String projectName = service.nameProject(projectdto.getProject_no());
+		session.setAttribute("project_name", projectName);
 		model.addAttribute("project_name", projectdto.getProject_name());
 		session.setAttribute("specifictask_no", specifictask);
 		session.setAttribute("specifictask_cont", specifictaskcont);
@@ -66,18 +71,20 @@ public class TaskController {
     * @description : 업무리스트 출력의 비동기 화면 처리
     */
 	@RequestMapping(value = "tasklist.htm", method=RequestMethod.POST)
-	public ModelAndView listTask(Model model, HttpSession session, String idx) {
+	   public ModelAndView listTask(Model model, HttpSession session, String idx, Principal principal) {
 
-		String project_no = (String) session.getAttribute("project_no");
-		session.setAttribute("idx", idx);
-		List<TaskDTO> tasklist = taskservice.listTask(project_no,idx);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("jsonView");
-		mv.addObject("data", tasklist);
-
-		return mv;
-	}
+	      String project_no = (String) session.getAttribute("project_no");
+	      session.setAttribute("idx", idx);
+	      List<TaskDTO> tasklist = taskservice.listTask(project_no,idx);
+	      
+	      String owner = (String) session.getAttribute("owner");
+	      ModelAndView mv = new ModelAndView();
+	      mv.setViewName("jsonView");
+	      mv.addObject("data", tasklist);
+	      mv.addObject("owner", owner);
+	      mv.addObject("user", principal.getName());
+	      return mv;
+	   }
 	
 	/*
     * @method Name : insertTask

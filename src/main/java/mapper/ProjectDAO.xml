@@ -80,4 +80,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	   select member_id, name from member
    </select>
    
+   <select id="nameProject" resultType="String">
+		select project_name from project where project_no=#{project_no}
+   </select>
+   
 </mapper>

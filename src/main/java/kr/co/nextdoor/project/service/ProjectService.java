@@ -156,5 +156,17 @@ public class ProjectService {
    public String nameProject(String project_no) throws Exception{
 	    ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
 		return projectdao.nameProject(project_no);
-}
+   }
+   /*
+    * @method Name : searchMember
+    * @date : 2017. 06.29
+    * @author : 송지은
+    * @description : 멤버 초대 아이디 찾기 (autocomplete)
+    * @param : member_id
+    * @return : List
+    */
+   public List<ProjectDTO> searchMember(String member_id) throws Exception {
+	   ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+	   return projectdao.searchMember(member_id);
+      }
 }

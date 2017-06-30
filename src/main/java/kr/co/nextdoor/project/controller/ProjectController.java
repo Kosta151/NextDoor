@@ -1,9 +1,13 @@
 package kr.co.nextdoor.project.controller;
 
+import java.io.PrintWriter;
 import java.security.Principal;
+import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -126,6 +130,29 @@ public class ProjectController {
        return "redirect:projectList.htm";
     }
    
-    
+    /*
+     * @method Name : memberAuto
+     * @date : 2017. 06. 29
+     * @author : 송지은
+     * @description : 멤버 초대시 이메일 회원 아이디 찾기(autocomplete)
+     */
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "auto.htm", method = RequestMethod.GET)
+     public void memberAuto(String member_id, HttpServletResponse response) throws Exception{
+        
+        
+       List<ProjectDTO> memberlist = service.searchMember(member_id);
+       
+       JSONArray array = new JSONArray();
+       for(int i=0; i<memberlist.size(); i++){
+          array.add(memberlist.get(i).getMember_id());
+       }
+       
+       System.out.println("memberlist : " + memberlist);
+       PrintWriter out = response.getWriter();
+       out.print(array.toString());
+
+
+     }
 
 }

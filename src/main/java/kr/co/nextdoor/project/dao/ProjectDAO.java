@@ -1,5 +1,6 @@
 package kr.co.nextdoor.project.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
@@ -113,5 +114,14 @@ public interface ProjectDAO {
     * @return : String
     */
 	public String nameProject(String project_no) throws Exception;
+	
+	/*
+    * @method Name : searchMember
+    * @date : 2017. 06. 29
+    * @author : 송지은
+    * @description : 프로젝트에 멤버초대할때 autocomplete
+    * @return : ArrayList
+    */
+	 public ArrayList<ProjectDTO> searchMember(String member_id);
 
 }

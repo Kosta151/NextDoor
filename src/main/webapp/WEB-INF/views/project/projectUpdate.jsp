@@ -1,6 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script>
+  $( function() {
+    $( "#autocomplete" ).autocomplete({
+      source: function(request , response ){
+         $.ajax({
+            url: "auto.htm",
+            type : "get",
+            dataType: "json",
+            data: {
+                   term: request.term
+                   },
+            success : function(data){
+               console.log(data)
+               response(data);
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+
+            
+         });
+      }
+    });
+  } );
+  </script>
    <!--main content start-->
         
       <section id="main-content">
@@ -76,7 +101,7 @@
                               </select> --%>
                               
                               <p>이메일</p>
-                              <input type="text" name="member_id" placeholder="이메일을 입력해주세요." class="form-control placeholder-no-fix">
+                              <input type="text" id="autocomplete" name="member_id" placeholder="이메일을 입력해주세요." class="form-control placeholder-no-fix">
                               <p>이름</p>
                               <input type="text" name="name" placeholder="이름을 입력해주세요." class="form-control placeholder-no-fix">
                               <br>

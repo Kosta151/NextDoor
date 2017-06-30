@@ -84,4 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select project_name from project where project_no=#{project_no}
    </select>
    
+   <select id="searchMember" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
+      	select member_id from member
+   </select>
 </mapper>

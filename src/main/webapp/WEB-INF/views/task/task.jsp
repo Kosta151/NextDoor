@@ -477,8 +477,8 @@ $(function(){
                   </div>
                   <hr>
                   <div class="form-group">
-                     <label>업무배정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> <select
-                        name="member_id">
+                     <label>업무배정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+                     <select name="member_id" id="sel" value="">
                         <option value="${modidto.member_id}">${modidto.member_id}</option>
                         <c:forEach items="${memberlist}" var="mlist">
                            <option value="${mlist.member_id}">${mlist.member_id}</option>
@@ -517,7 +517,7 @@ $(function(){
 
                      <input type="hidden" id="specifictask_no" name="specifictask_no"
                         value="">
-                     <button type="submit" class="btn btn-primary"
+                     <button type="submit" class="btn btn-primary" id="btn-submit"
                         style="float: left; margin-left: 30px; width: 30%; background-color: #ffd777; color: navy;">수정</button>
                      <%-- <button type="button"><a href="deleteSpecifictask.htm?specifictask_no=${specifictaskno}">업무삭제</a></button> --%>
                </form>

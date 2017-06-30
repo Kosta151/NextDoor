@@ -68,12 +68,14 @@ public class AlarmHandler extends TextWebSocketHandler{
 		JSONParser jp = new JSONParser();
 	    JSONObject jo = (JSONObject) jp.parse(content);
 	    String receiver = (String)jo.get("receiver");
+	    System.out.println(receiver);
 	    String specifictask_cont = (String)jo.get("specifictask_cont");
+	    System.out.println(specifictask_cont);
 		Map<String, Object> data = new HashMap<String, Object>();
-		System.out.println(specifictask_cont + "/" +receiver+ "/"+user_id);	//ID와 메세지
 		data.put("user_id",user_id);
 		data.put("specifictask_cont", specifictask_cont);
 		data.put("receiver", receiver);
+		System.out.println("나와"+specifictask_cont + "/" +receiver+ "/"+user_id);	//ID와 메세지
 		ObjectMapper om = new ObjectMapper();
 		String jsonStr = om.writeValueAsString(data);
 		System.out.println(connectedUsers.size());	//c onnectedUsers 배열의 사이즈를 봄(몇명이 연결되어있는지)

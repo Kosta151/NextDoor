@@ -11,10 +11,10 @@
 			
 			console.log("opening websocket");
  			sock = new SockJS("http://" +document.domain + ":8090/nextdoor/alarm");
- 			 
+ 			
+ 			
 			sock.onopen = function(){
 				  console.log("opened websocket");
-				  sock.send("");
 			  };
 			
 			  sock.onmessage = function(event){
@@ -30,13 +30,13 @@
 					 	} 
 				 };
 		 		  $('#btn-submit').click(function(){
-		 			 var receiver = $("#select").val();
-		 			  var specifictask_cont = $('#task').val();
+		 			 var receiver = $("#sel").val();
+		 			  var specifictask_cont = $('#specont').val();
 		 			  var obj = {};
 		 			  obj.receiver = receiver;
 		 			  obj.specifictask_cont = specifictask_cont;
 		 			  var str = JSON.stringify(obj);
-		 			 if($("#select").val() != ""){  	 
+		 			 if($("#sel").val() != ""){  	 
 		 				 sock.send(str);
 		 				
 		 		
@@ -44,7 +44,13 @@
 				  });	  
 		 		 
  
+		 	sock.onclose = function(){
+		 		console.log("close");
+		 	}
 		 	
+		 	sock.onerror = function() {
+				console.log("Error")
+			};
 		});
 	
 
@@ -84,7 +90,7 @@
             <a class="logo" href="#" onClick="window.location.reload( true );"><b>Next Door</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
-
+				<ul id="alarmarea"></ul>
                 <!--  notification start -->
                 <ul class="nav top-menu" >
                     <!-- inbox dropdown start-->
@@ -96,34 +102,20 @@
                       </a>
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-ar bvrow notify-arrow-green"></div>
-                            <li>
+                             <li style="width: 400px">
                                 <p class="green">알림 내용</p>
                             </li>
-                            
-                            <c:forEach items="${alarmlist}" var="alarm">	
-                            <li>
-                              <a href="index.html#">
+                           <c:forEach items="${alarmlist}" var="alarm">	
+                            <li style="width: 400px">
+                            <%-- <a href="alarm.htm?alarm_no=${alarm.alarm_no}&alarm_receiver=${alarm.alarm_receiver}"> --%>
+                             	<span class="subject">${alarm.alarm_read}
 								<span class="from">${alarm.alarm_sender}</span>
 								<span class="time">${alarm.alarm_date}</span>	
-								<span class="message">${alarm.alarm_cont}</span>                                     
-                          	</a>
-                            </li>   
-                            	</c:forEach>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="resources/main/assets/img/ui-sherman.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dj Sherman</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Please, answer asap.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">See all messages</a>
-                            </li>
+								<span class="message">${alarm.alarm_cont}</span>  
+								</span>
+								</a>                                   
+                             </li>
+                             </c:forEach>
                         </ul>
                     </li>
                     <!-- inbox dropdown end -->

@@ -55,6 +55,7 @@ public class ProjectController {
       model.addAttribute("workspaceowner", workspaceservice.ownerWorkspace(workspace_no));
       session.setAttribute("owner", workspaceservice.ownerWorkspace(workspace_no));   
       session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
+      session.setAttribute("alarmlist",alarmservice.AlarmList(principal.getName()));
       return "project.projectList";
    }
    

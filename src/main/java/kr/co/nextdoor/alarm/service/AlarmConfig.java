@@ -21,7 +21,7 @@ import org.springframework.web.socket.handler.PerConnectionWebSocketHandler;
 @Configuration
 @EnableWebMvc
 @EnableWebSocket
-@ComponentScan(basePackages = { "kr.co.nextdoor.alarm" })
+@ComponentScan(basePackages = {"kr.co.nextdoor.alarm"})
 public class AlarmConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
 	
 	 /*

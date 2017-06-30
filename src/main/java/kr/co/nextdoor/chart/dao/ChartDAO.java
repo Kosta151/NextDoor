@@ -6,8 +6,8 @@ import kr.co.nextdoor.chart.dto.ChartDTO;
 
 public interface ChartDAO {
 	
-	public List<ChartDTO> chartAll();
-
-	public List<ChartDTO> plist();
+	//업무별 x축
+	public List<ChartDTO> chart_x(String project_no);
+	
 
 }

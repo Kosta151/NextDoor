@@ -1,5 +1,6 @@
 package kr.co.nextdoor.specifictask.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.nextdoor.file.dto.FileDTO;
@@ -85,5 +86,8 @@ public interface SpecificTaskDAO {
 	public int checkSpecifcitask(SpecificTaskDTO specifictaskdto);
 	
 	public List<TaskDTO> personalspecifictask(String task_no, String member_id);
+	
+	//마감 하루전 메일 보내기
+	public ArrayList<SpecificTaskModiDTO> selectTaskdeadline();
 	
 }

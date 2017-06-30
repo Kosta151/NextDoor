@@ -59,11 +59,16 @@
 	
 	<!-- 개인 세부 업무 리스트 -->
 	<select id="personalspecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
-	    select st.specifictask_no, st.specifictask_cont, st.specifictask_comp, t.task_no
-	    from project p join task t join specifictask st join specifictaskmodi stm
-	    on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
-	    where t.task_no = #{param1} and stm.member_id = #{param2}
+	   select st.specifictask_no, st.specifictask_cont, st.specifictask_comp, t.task_no
+       from project p join task t join specifictask st join specifictaskmodi stm
+       on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
+       where t.task_no = #{param1} and stm.member_id = #{param2}
     </select>
 
-	
+	<!-- 마감 하루 전 메일 보내기 -->
+    <select id="selectTaskdeadline" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO" >
+        select stm.member_id, stm.specifictask_end, s.specifictask_cont
+      	from specifictask s join specifictaskmodi stm
+      	on s.specifictask_no = stm.specifictask_no
+     </select>
 </mapper>

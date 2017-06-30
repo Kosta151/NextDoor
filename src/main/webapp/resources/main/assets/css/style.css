@@ -144,10 +144,16 @@ a, a:hover, a:focus {
 }
 
 .modibutton{
+	width: 40%;
+	float: left;
 	background-color: #424a5d; 
-	color:white;
+	color:white;	
 }
 
+.file{
+	background-color: #424a5d; 
+	color: white;
+}
 /*task css end*/
 
 

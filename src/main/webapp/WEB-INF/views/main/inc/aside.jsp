@@ -32,8 +32,8 @@
                           <span>일정 목록</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="<%=request.getContextPath()%>/calendar.htm">캘린더</a></li>
-                          <li><a href="<%=request.getContextPath()%>/chartlist.htm">차트차트</a></li>
+                          <li><a href="<%=request.getContextPath()%>/calendar.htm">Calendar</a></li>
+                          <li><a href="<%=request.getContextPath()%>/chartlist.htm">Chart</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">

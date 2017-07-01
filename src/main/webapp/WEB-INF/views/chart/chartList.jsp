@@ -8,47 +8,37 @@
  <!--main content start-->
   <section id="main-content">
           <section class="wrapper site-min-height">
-          
-                  
-                     <div class="row mtbox">
-                        <div class="col-md-3 col-sm-2 col-md-offset-1 box0">
+          <div class="row mtbox" style="margin-left: 125px;">
+                        <div class="col-md-3 col-sm-5 col-md-offset-1 box0">
                            <div class="box1">
                           <span class="fa fa-users"></span>
                           <h3>${countMember}</h3>
                            </div>
                           <p>프로젝트 총 멤버 수</p>
                         </div>
-                        <div class="col-md-3 col-sm-2 box0">
+                        <div class="col-md-3 col-sm-5 box0">
                            <div class="box1">
                           <span class="fa fa-tasks"></span>
                           <h3>${countSpecifictask }</h3>
                            </div>
                           <p>총 세부업무 갯수</p>
                         </div>
-                        <div class="col-md-3 col-sm-2 box0">
+                        <div class="col-md-3 col-sm-5 box0">
                            <div class="box1">
                           <span class="fa fa-check-square-o"></span>
                           <h3>${countSpecifictask_comp1 }</h3>
                            </div>
                           <p>완료한 총 세부업무 갯수</p>
                         </div>
-                       
-                     
                      </div><!-- /row mt -->   
 
           <div id="chart1"></div>
-         
-          
-          <div id="chart2" style="width: 30%; height: 400px; margin: 0 auto; background-color: none; float: left;"></div>
+          <div id="chart2" style="width: 500px; height: 400px; margin: 0 auto; background-color: #f2f2f2; float: right;"></div>
           <script type="text/javascript">
           
           
 $(function () {
 	
-  
-
-
-
 	 $.ajax({
 	      url : "chartMemberList.htm",
 	      type : "post",
@@ -60,7 +50,7 @@ $(function () {
 	    	  $.each(data.list , function(index,obj){
 	    		  chartmemberlist = "<tr>"
 	    		  				  + "<td>"+idx+"</td>"
-	    		  				  + "<td><button id='"+index+"member' style='background-color:window; border:none;'>"+obj.member_id+"</button></td>"
+	    		  				  + "<td><button id='"+index+"member' style='background-color:#f2f2f2; border:none;'>"+obj.member_id+"</button></td>"
 	    		  				  + "<td>"+obj.taskcount+"</td>"
 	    		  				  + "<td>"+obj.taskcompcount+"</td>"
 	    		  				  + "</tr>"
@@ -92,11 +82,34 @@ $(function () {
 		 console.log(taskcompcount);
 		 var task = taskcount;
 		 var complate = taskcompcount;
+		 
+		 if (!Highcharts.theme) {
+			    Highcharts.setOptions({
+			        chart: {
+			            backgroundColor: '#f2f2f2'
+			        },
+			        colors: ['#F62366', '#9DFF02', '#0CCDD6'],
+			        title: {
+			            style: {
+			                color: 'black'
+			            }
+			        },
+			        tooltip: {
+			            style: {
+			                color: 'black'
+			            }
+			        }
+			    });
+			}
+		 
 		 $("#chart2").highcharts({
-
 			    chart: {
 			        type: 'solidgauge',
-			        marginTop: 50
+			        marginTop: 25,
+			        backgroundColor: '#f2f2f2',
+                    style: {
+                       fontFamily: 'Signika, serif'
+                    }
 			    },
 
 			    title: {
@@ -203,12 +216,8 @@ $(function () {
 			    }]
 			},
 
-			/**
-			 * In the chart load callback, add icons on top of the circular shapes
-			 */
 			function callback() {
 
-			    // Move icon
 			    this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8])
 			        .attr({
 			            'stroke': '#303030',
@@ -232,8 +241,7 @@ $(function () {
 			        })
 			        .translate(250, 61)
 			        .add(this.series[2].group);
-
-			    // Stand icon
+		
 			    this.renderer.path(['M', 0, 8, 'L', 0, -8, 'M', -8, 0, 'L', 0, -8, 8, 0])
 			        .attr({
 			            'stroke': '#303030',
@@ -246,9 +254,6 @@ $(function () {
 			        .add(this.series[2].group);
 			});
 	 }
-	 
-	 
-	
 });
 </script>
 
@@ -275,15 +280,31 @@ $(function () {
             $.each(data.comp1List, function(index, obj2){
                yspecifcitasklist1.push(obj2.comp1);
              });
+            
             $("#chart1").highcharts({
                 chart: {
-                    type: 'column'
+                    type: 'column',
+                    backgroundColor: null,
+                    style: {
+                       fontFamily: 'Signika, serif'
+                    }
                 },
                 title: {
-                    text: '업무별 완료 상황 상태'
+                    text: '각 업무별 진행도1',
+                    style: {
+                        color: 'black',
+                        fontSize: '16px',
+                        fontWeight: 'bold'
+                     }
+
                 },
                 xAxis: {
-                    categories: xtasklist
+                    categories: xtasklist,
+                    labels: {
+                        style: {
+                           color: '#6e6e70'
+                        }
+                     }
                 },
                 yAxis: {
                     min: 0,
@@ -319,24 +340,24 @@ $(function () {
     
 });
 </script>
-            <div class="col-md-12" style="float: left; width: 50%; height: 400px;">
+            <div class="col-md-12" style="width: 50%; height: 400px;">
 	                  	  <div class="content-panel" style="height:400px;">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> Basic Table</h4>
+	                  	  	  <h4><i class="fa fa-angle-right"></i> PROJECT MEMBER</h4>
 	                  	  	  <hr>
 		                      <table class="table">
 		                          <thead>
 		                          <tr>
-		                              <th>#</th>
-		                              <th>Username</th>
-		                              <th>task</th>
-		                              <th>complate</th>
+		                              <th>No.</th>
+		                              <th>이름</th>
+		                              <th>업무</th>
+		                              <th>완료여부</th>
 		                          </tr>
 		                          </thead>
 		                          <tbody id='memberlist'>
 		                         
 		                          </tbody>
 		                      </table>
-	                  	  </div><! --/content-panel -->
+	                  	  </div>
 	                  </div><!-- /col-md-12 -->
            
 		

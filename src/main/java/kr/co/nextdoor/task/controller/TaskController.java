@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.project.dto.ProjectDTO;

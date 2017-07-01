@@ -8,12 +8,13 @@ public class FileDTO {
 
 	private String file_no;
 	private String project_no;
-	private String specifictask_no;
 	private String original_name;
 	private String file_name;
 	private Date file_date;
 	private long file_size;
 	private String member_id;
+	
+	public FileDTO(){}
 	
 	public String getFile_no() {
 		return file_no;
@@ -26,12 +27,6 @@ public class FileDTO {
 	}
 	public void setProject_no(String project_no) {
 		this.project_no = project_no;
-	}
-	public String getSpecifictask_no() {
-		return specifictask_no;
-	}
-	public void setSpecifictask_no(String specifictask_no) {
-		this.specifictask_no = specifictask_no;
 	}
 	public String getOriginal_name() {
 		return original_name;
@@ -62,16 +57,6 @@ public class FileDTO {
 	}
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
-	}
-
-
-	private CommonsMultipartFile file;
-
-	public CommonsMultipartFile getFile() {
-		return file;
-	}
-	public void setFile(CommonsMultipartFile file) {
-		this.file = file;
 	}
 	
 }

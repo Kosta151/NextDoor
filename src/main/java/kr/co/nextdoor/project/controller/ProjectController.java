@@ -138,22 +138,22 @@ public class ProjectController {
      * @description : 멤버 초대시 이메일 회원 아이디 찾기(autocomplete)
      */
     @SuppressWarnings("unchecked")
-    @RequestMapping(value = "auto.htm", method = RequestMethod.GET)
-     public void memberAuto(String member_id, HttpServletResponse response) throws Exception{
-        
-        
-       List<ProjectDTO> memberlist = service.searchMember(member_id);
-       
-       JSONArray array = new JSONArray();
-       for(int i=0; i<memberlist.size(); i++){
-          array.add(memberlist.get(i).getMember_id());
-       }
-       
-       System.out.println("memberlist : " + memberlist);
-       PrintWriter out = response.getWriter();
-       out.print(array.toString());
+    @RequestMapping(value = "auto.htm", method = RequestMethod.POST)
+    public void memberAuto(ProjectDTO projectdto, String member_id, HttpServletResponse response) throws Exception{
+      System.out.println("projectdto : " + projectdto.getMember_id());
+      System.out.println("member_id : " + member_id);
+      List<ProjectDTO> memberlist = service.searchMember(member_id);
+      System.out.println("memberlist:!!!!" + memberlist);
+      JSONArray array = new JSONArray();
+      for(int i=0; i<memberlist.size(); i++){
+         array.add(memberlist.get(i).getMember_id());
+      }
+      
+      System.out.println("memberlist : " + memberlist);
+      PrintWriter out = response.getWriter();
+      out.print(array.toString());
+      
 
-
-     }
+    }
 
 }

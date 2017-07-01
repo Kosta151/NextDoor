@@ -7,10 +7,11 @@
       source: function(request , response ){
          $.ajax({
             url: "auto.htm",
-            type : "get",
+            type : "post",
             dataType: "json",
             data: {
-                   term: request.term
+            	term: request.term,
+                member_id : $("#autocomplete").val()
                    },
             success : function(data){
                console.log(data)

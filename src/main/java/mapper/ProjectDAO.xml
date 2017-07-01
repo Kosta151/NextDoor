@@ -85,6 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <select id="searchMember" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-      	select member_id from member
+         select member_id from member
+        where member_id like CONCAT ('%',#{member_id},'%')
    </select>
 </mapper>

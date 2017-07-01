@@ -1,5 +1,10 @@
 package kr.co.nextdoor.chat.service;
-
+/*
+* @Class : ChatConfig
+* @Date : 2017. 06. 20 
+* @Author : 박찬섭
+* @Desc : Chat
+*/
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +23,12 @@ import org.springframework.web.socket.handler.PerConnectionWebSocketHandler;
 @ComponentScan(basePackages = { "kr.co.nextdoor.chat" })
 public class ChatConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
 	
+	/*
+	    * @method Name : registerWebSocketHandlers
+	    * @date : 2017. 06. 20
+	    * @author : 박찬섭
+	    * @description : 뷰단 엔드 포인트 매칭해 핸들러와 인터 셉터를 연결  
+	    */
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		
 		registry.addHandler(chatWebSocketHandler(), "/chat-ws").addInterceptors(new ChatHandlerInterceptor())

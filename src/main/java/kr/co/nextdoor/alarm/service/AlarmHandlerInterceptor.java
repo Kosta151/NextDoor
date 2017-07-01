@@ -25,10 +25,15 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 @EnableWebSocket
 public class AlarmHandlerInterceptor extends HttpSessionHandshakeInterceptor {
 
+	/*
+	    * @method Name : beforeHandshake
+	    * @date : 2017. 06. 20
+	    * @author : 박찬섭
+	    * @description : Alarmhandler 가지전에  user_id값 저장하여 넘기는 함수
+	    */
 	@Override
 	public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
 			Map<String, Object> attributes) throws Exception {
-		System.out.println("before handshake");
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		attributes.put("user_id", user.getUsername());
 		return super.beforeHandshake(request, response, wsHandler, attributes);

@@ -36,7 +36,7 @@
                      
                      </div><!-- /row mt -->   
 
-          <div id='chart1'></div>
+          <div id="chart1"></div>
          
           
           <div id="chart2" style="width: 30%; height: 400px; margin: 0 auto; background-color: none; float: left;"></div>
@@ -54,7 +54,6 @@ $(function () {
 	      type : "post",
 	      dataType : "json",
 	      success : function(data){
-	    	  alert("success");
 	    	  console.log(data);
 	    	  var idx=1;
 	    	  var chartmemberlist="";
@@ -253,7 +252,6 @@ $(function () {
 });
 </script>
 
-<!-- 성용 chart  -->
 <script type="text/javascript">
 $(function () {
     var xtasklist = [];  
@@ -265,70 +263,60 @@ $(function () {
          type : "post",
          dataType : "json",
          success : function(data){
-        	console.log(data);
-            alert("success");
+           console.log(data);
             
             $.each(data.clist, function(index, obj){
                xtasklist.push(obj.task_cont);
-               console.log(obj.task_cont);
             });
             
-            $.each(data.clist1, function(index, obj1){
-            	yspecifcitasklist0.push(obj1.chart_y_comp0);
-                
+            $.each(data.comp0List, function(index, obj1){
+               yspecifcitasklist0.push(obj1.comp0);
              }); 
-            $.each(data.clist2, function(index, obj2){
-            	yspecifcitasklist1.push(obj2.chart_y_comp1);
-                
+            $.each(data.comp1List, function(index, obj2){
+               yspecifcitasklist1.push(obj2.comp1);
              });
+            $("#chart1").highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '업무별 완료 상황 상태'
+                },
+                xAxis: {
+                    categories: xtasklist
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '완료/미완료'
+                    }
+                },
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                    shared: true
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'percent'
+                    }
+                },
+                series: [{
+                      name: '완료된 세부업무',
+                       data: yspecifcitasklist1
+                }, 
+                {
+                    name: '미완료된 세부업무',
+                       data: yspecifcitasklist0
+                }
+                ]
+            }); 
          },
          error : function(){
             alert("error");
          }
-         
-       });
-   
 
-    $("#chart1").highcharts({
-       chart: {
-           type: 'column'
-       },
-       title: {
-           text: '업무별 완료 상황 상태'
-       },
-       xAxis: {
-           categories: xtasklist
-       },
-       yAxis: {
-           min: 0,
-           title: {
-               text: '완료/미완료'
-           }
-       },
-       tooltip: {
-           pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-           shared: true
-       },
-       plotOptions: {
-           column: {
-               stacking: 'percent'
-           }
-       },
-       series: [{
-           name: '완료된 세부업무',
-           /* data: yspecifcitasklist1 */
-             data: [3, 4]
-       }, {
-           name: '미완료된 세부업무',
-           /* data: yspecifcitasklist0 */
-             data: [4, 2]
-       }
-      /*  , {
-           name: 'Joe',
-           data: [3, 4, 4, 2, 5, 7]
-       }  */
-       ]
-   }); 
+       });
+    
 });
 </script>
             <div class="col-md-12" style="float: left; width: 50%; height: 400px;">

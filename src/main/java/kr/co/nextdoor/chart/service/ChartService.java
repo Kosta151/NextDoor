@@ -37,21 +37,21 @@ public class ChartService {
 		
 	}
 	
-	//완료안된 갯수
-	public List<ChartDTO> chart_y_comp0(String project_no){
-	      ChartDAO chartdao = sqlsession.getMapper(ChartDAO.class);
-	      List<ChartDTO> clist1 = chartdao.chart_y_comp0(project_no);
-	      System.out.println("여기는 서비스:clist1:" + clist1);
-	      return clist1;
-	      
-	   }
-	   
-	//완료된 갯수
+   //완료안된 갯수
+   public List<ChartDTO> chart_y_comp0(String project_no){
+         ChartDAO chartdao = sqlsession.getMapper(ChartDAO.class);
+         List<ChartDTO> comp0list = chartdao.chart_y_comp0(project_no);
+         System.out.println("서비스 comp0list:" + comp0list);
+         return comp0list;
+         
+      }
+      
+   //완료된 갯수
    public List<ChartDTO> chart_y_comp1(String project_no){
       ChartDAO chartdao = sqlsession.getMapper(ChartDAO.class);
-      List<ChartDTO> clist2 = chartdao.chart_y_comp1(project_no);
-      System.out.println("여기는 서비스:clist2:" + clist2);
-      return clist2;
+      List<ChartDTO> comp1list = chartdao.chart_y_comp1(project_no);
+      System.out.println("서비스 comp_1_list" + comp1list);
+      return comp1list;
       
    }
    //전체 회원 수

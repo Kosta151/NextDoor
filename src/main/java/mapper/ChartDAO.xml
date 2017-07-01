@@ -22,20 +22,20 @@
 			where p.project_no = #{project_no}
 	  </select>
 	  
-	  <select id="chart_y_comp0" resultType="java.lang.Integer" >
-	         select count(*)
-	         from project p join task t join specifictask st
-	         on p.project_no = t.project_no and t.task_no = st.task_no
-	         where p.project_no = #{project_no} and st.specifictask_comp = 0
-	         group by t.task_no
+	   <select id="chart_y_comp0" resultType="kr.co.nextdoor.chart.dto.ChartDTO" >
+            select count(specifictask_comp) as comp0
+            from project p join task t join specifictask st
+            on p.project_no = t.project_no and t.task_no = st.task_no
+            where p.project_no = #{project_no} and st.specifictask_comp = 0
+            group by t.task_no
        </select>
-    
-      <select id="chart_y_comp1" resultType="java.lang.Integer">
-	         select count(*)
-	         from project p join task t join specifictask st
-	         on p.project_no = t.project_no and t.task_no = st.task_no
-	         where p.project_no = #{project_no} and st.specifictask_comp = 1
-	         group by t.task_no
+   
+      <select id="chart_y_comp1" resultType="kr.co.nextdoor.chart.dto.ChartDTO" >
+            select count(specifictask_comp) as comp1
+            from project p join task t join specifictask st
+            on p.project_no = t.project_no and t.task_no = st.task_no
+            where p.project_no = #{project_no} and st.specifictask_comp = 1
+            group by t.task_no
       </select>
       
       <select id="countMember" resultType="String">
@@ -49,8 +49,7 @@
       		select count(*)
 			from project p join task t join specifictask st
 			on p.project_no = t.project_no and t.task_no = st.task_no
-			where p.project_no = #{project_no}
-      
+			where p.project_no = #{project_no}     
       </select>
       
       

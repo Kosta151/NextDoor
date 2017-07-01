@@ -151,5 +151,12 @@ public class SpecificTaskService {
 		return specifictask;
 	}
 	
+	//selectspecifictask
+   public SpecificTaskDTO selectSpecificTask(String task_no){
+      SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+      SpecificTaskDTO specificyaskdto = specifictaskdao.selectSpecificTask(task_no);
+      return specificyaskdto;
+   }
+	
 }
 

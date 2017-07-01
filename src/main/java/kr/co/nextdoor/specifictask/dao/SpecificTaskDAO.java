@@ -90,4 +90,7 @@ public interface SpecificTaskDAO {
 	//마감 하루전 메일 보내기
 	public ArrayList<SpecificTaskModiDTO> selectTaskdeadline();
 	
+	//insert specifictaskno
+	public SpecificTaskDTO selectSpecificTask(String task_no);
+	
 }

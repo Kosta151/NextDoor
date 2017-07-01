@@ -44,6 +44,11 @@
 		insert into specifictask(task_no, specifictask_cont, specifictask_comp) values(#{task_no}, #{specifictask_cont}, '0')
 	</insert>
 	
+	<!-- 생성 후 생성된 세부업무 번호 -->
+	<select id="selectSpecificTask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
+      select SPECIFICTASK_NO from specifictask where TASK_NO=#{task_no} order by SPECIFICTASK_NO desc limit 0,1;
+    </select>
+	
 	<update id="checkSpecifcitask">
 		update specifictask 
 		<set>

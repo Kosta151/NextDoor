@@ -70,10 +70,14 @@ public class SpecificTaskController {
    * @description : 세부업무 추가
    */
    @RequestMapping("insertspecifictask.htm")
-   public ModelAndView insertSpecificTask(SpecificTaskDTO specifictask){
-      specifictaskservice.insertSpecificTask(specifictask);
+   public ModelAndView insertSpecificTask(SpecificTaskDTO specifictask, String task_no){
+ 
+     specifictaskservice.insertSpecificTask(specifictask);
+      SpecificTaskDTO specificyaskdto = specifictaskservice.selectSpecificTask(task_no);
+      
       ModelAndView model = new ModelAndView();
       model.addObject("data", specifictask);
+      model.addObject("specifictask_no", specificyaskdto.getSpecifictask_no());
       model.setViewName("jsonView");
       return model;
    }

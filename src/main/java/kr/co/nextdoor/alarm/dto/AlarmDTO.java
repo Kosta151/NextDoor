@@ -1,6 +1,5 @@
 package kr.co.nextdoor.alarm.dto;
 
-import java.sql.Date;
 /*
 * @Class : AlarmDTO
 * @Date : 2017. 06. 13 
@@ -15,7 +14,14 @@ public class AlarmDTO {
 		private String alarm_cont;
 		private String alarm_date;
 		private String alarm_read;
+		private String alarm_no;
 		
+		public String getAlarm_no() {
+			return alarm_no;
+		}
+		public void setAlarm_no(String alarm_no) {
+			this.alarm_no = alarm_no;
+		}
 		public String getSpecifictask_no() {
 			return specifictask_no;
 		}
@@ -56,7 +62,7 @@ public class AlarmDTO {
 		public String toString() {
 			return "AlarmDTO [specifictask_no=" + specifictask_no + ", alarm_sender=" + alarm_sender
 					+ ", alarm_receiver=" + alarm_receiver + ", alarm_cont=" + alarm_cont + ", alarm_date=" + alarm_date
-					+ ", alarm_read=" + alarm_read + "]";
+					+ ", alarm_read=" + alarm_read + ", alarm_no=" + alarm_no + "]";
 		}
 		
 		

@@ -1,5 +1,7 @@
 package kr.co.nextdoor.chat.service;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,11 +66,13 @@ public class ChatHandler extends TextWebSocketHandler {
 		System.out.println("Group 번호 : "+project_no);
 		System.out.println("메시지 : "+message.getPayload());		
 		System.out.println("------------------------------");
-	
+		SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");
+		String date = dayTime.format(new Date(System.currentTimeMillis()));
 		List<WebSocketSession> conn = (List<WebSocketSession>) projectmember.get(project_no);
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("user_id", user_id);
 		data.put("message", message.getPayload());
+		data.put("date", date);
 		ObjectMapper om = new ObjectMapper();
 		String jsonStr = om.writeValueAsString(data);
 		for(WebSocketSession webSocketSession : conn){

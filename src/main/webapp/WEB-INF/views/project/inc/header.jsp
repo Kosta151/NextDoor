@@ -26,22 +26,21 @@
 					 if(user!=user_id){
 						  console.log("아이디 : "+msg.specifictask_cont +"  // 받는이 : "+ msg.receiver );
 						$("#alarmarea").html("<li class='error'>"+user_id+"님이"+receiver+"님에게"+"<br>"+specifictask_cont+"업무를 배당 받으셨습니다</li>");
-						
 						var closebutton = $('.error');
 						closebutton.on('click',function(){
 							$(this).parent().hide();
 						});
 					 	} 
 				 };
-		 		  $('#btn-submit').click(function(){
-		 			  var receiver = $("#sel").val();
-		 			  var specifictask_cont = $('#specont').val();
+		 		  $('#modibutton').click(function(){
+		 			  var receiver = $("#member_id").val();
+		 			  var specifictask_cont = $('#specifictask_cont').val();
 		 			  var obj = {};
 		 			  obj.receiver = receiver;
 		 			  obj.specifictask_cont = specifictask_cont;
 		 			  var str = JSON.stringify(obj);
 		 			  
-		   			 if($("#sel").val() != ""){  	 
+		   			 if($("#member_id").val() != ""){  	 
 		 				 sock.send(str);
 		 				 
 		 		
@@ -144,7 +143,7 @@
                         <ul class="dropdown-menu extended inbox">
                             
                             
-                            <div class="notify-ar bvrow notify-arrow-green" style="overflow-y:scroll; width: 450px; height: 450px" scrollbars=yes, resizable>
+                            <div class="notify-ar bvrow notify-arrow-green" style="overflow-y:scroll; width: 420px; height: 420px" scrollbars=yes, resizable>
                             
                             <li style="width: 420px;" >
                                 <p class="green">알림 내용</p>

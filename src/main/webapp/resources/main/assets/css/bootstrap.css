@@ -5441,10 +5441,10 @@ a.list-group-item-danger.active:focus {
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
-  color: #000;
+  color: #fafafa;
   text-shadow: 0 1px 0 #fff;
   filter: alpha(opacity=20);
-  opacity: .2;
+ /*  opacity: .2; */
 }
 .close:hover,
 .close:focus {

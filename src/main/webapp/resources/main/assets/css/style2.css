@@ -43,7 +43,7 @@ a, a:hover, a:focus {
 
 /* Bootstrap Modifications */
 .modal-header {
-	background: #ffcc00 ;
+	background: #21252f; ;
 }
 
 .modal-title {
@@ -231,7 +231,7 @@ hr {
 }
 
 .mt {
-	margin-top: 25px;
+	margin-top: 35px;
 }
 
 .mb {

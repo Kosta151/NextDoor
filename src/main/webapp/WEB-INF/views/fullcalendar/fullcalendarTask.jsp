@@ -13,10 +13,10 @@
 <title>Insert title here</title>
 <style>
    body {
-      margin: 40px 10px;
-      padding: 0;
-      font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-      font-size: 14px;
+       margin: 40px 10px;
+        padding: 0;
+        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        font-size: 14px;
         }
 </style>
 
@@ -27,9 +27,9 @@
         <section class="wrapper site-min-height">
              <h3><i class="fa fa-angle-right"></i> 배정된 인원을 달력에서 확인해보세요</h3>
               <!-- page start-->
-              <div class="row mt">
-                   <aside class="col-lg-0 mt"></aside>
-                  <aside class="col-lg-12 mt">
+              <div class="row mt" style="margin-left: 300px;">
+                   <!-- <aside class="col-lg-0 mt"></aside> -->
+                  <aside class="col-lg-9 mt">
                       <section class="panel">
                           <div class="panel-body">
                               <div id="calendar"></div>
@@ -67,8 +67,8 @@
 	                               		 <option value="${mlist.member_id}"> ${mlist.member_id}</option>
 	                                 </c:forEach>
 									</select> 
-									<input type="text"  name="specifictask_start"  id="specifictask_start" placeholder="일정의 시작"><br> 
-                 				  <input type="text"  name="specifictask_end" id="specifictask_end" placeholder="일정의 마지막"><br>
+									<input type="text"  name="specifictask_start"  id="specifictask_start" placeholder="일정의 시작" class="form-control placeholder-no-fix"><br> 
+                 				  <input type="text"  name="specifictask_end" id="specifictask_end" placeholder="일정의 마지막" class="form-control placeholder-no-fix"><br>
                                   </div>
                                   <div class="modal-footer centered">
                                       <button class="btn btn-warning" type="submit">생성</button>

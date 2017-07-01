@@ -57,39 +57,18 @@
     		},*/
     	
     	//캘린더 한글 적용
-    	header: {
-            left: "prev,next today",
-            center: "title",
-            right: 'month,agendaWeek,agendaDay'
-            },
-            titleFormat: {
-            month: "yyyy년 MMMM",
-            week: "[yyyy] MMM d일{ [yyyy] MMM d일}",
-            day: "yyyy년 MMM d일 dddd"
-            },
-            allDayDefault: true,
-            defaultView: "month",
-            editable: false,
-            weekends : false,
-            monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-            monthNamesShort: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-            dayNames: ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
-            dayNamesShort: ["일","월","화","수","목","금","토"],
-            buttonText: {
-            today : "오늘",
-            month : "월별",
-            week : "주별",
-            day : "일별"},
+    		 header: {
+    		      left: 'prev,next today',
+    		      center: 'title',
+    		      right: 'month,agendaWeek,agendaDay'
+    		    },
             
-           /* select : function(event, jsEvent, view){
-               $('#myModal2').modal();
-            },*/
             dayClick: function() { //날짜를 클릭하면 모달창이
     		 $('#myModal2').modal();
             },
             editable: true, //크기를 줄이거나 움직이는
-            selectable:true
-            , //달력을 누르면 파란표시되는
+            selectable:true,
+            
             
         events: 
             {

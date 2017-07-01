@@ -124,6 +124,16 @@ button,
 select {
   text-transform: none;
 }
+select {
+  width: 270px;
+  font-family: inherit;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 0px;
+}
 button,
 html input[type="button"],
 input[type="reset"],

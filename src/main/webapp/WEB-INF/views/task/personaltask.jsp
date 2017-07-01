@@ -297,48 +297,24 @@ $(function(){
 
 </script>   
    <section class="wrapper site-min-height">
-   
+   <h3>
+   	<i class="fa fa-angle-right"></i> Project : ${project_name} 
+   </h3>
    <div class="col-lg-9">
       <div class="ajaxtest"></div>
       <div id="ajaxspecific"></div>
    </div> 
-    
 	<div class="col-lg-3" id="toggletest_jjh">
-
-         <div class="form-panel" style="height: 550px;">
-            <div class="tab">              
-               
-               <button class="tablinks btn btn-primary moditabs"
-                  onclick="openCity(event, 'Paris')"
-                  style="margin-left: 10px; width: 45%; background-color: #ffd777; color: black;">파일</button>
-               <hr>
-            </div>
-
-            <div id="London" class="tabcontent">
-            <br>
-               <form style="height:200px;" class="form-horizontal style-form" action="uploadfile.htm"
-	               method="post" enctype="multipart/form-data">
-	               <div>
-	                  <label>파일업로드</label> <input type="hidden" name="specifictask_no"
-	                     value="${specifictask_no}"> <input type="file"
-	                     name="file">
-	               </div>
-	               <br>
-	               <button type="submit" class="btn btn-primary file"
-	                  >파일올리기
-	               </button>
-	
-	            </form>
-
-               
-            </div>
-         </div>
-
-         <div id="Paris" class="tabcontent" >
-			
-	            
-	         
-         </div>
+    	<div class="form-panel" style="height: 300px;">
+		<script>
+        $(document).ready(function(){
+			$("#div1").load("multifileUploadForm.jsp");
+		});
+        </script>
+        
+	    <div id="div1" style="width:300px; height:300px; ">
+	    <input type="hidden" id="proejct_no" name="proejct_no" value="${proejct_no}"></div>
+      	</div>
 		
       </div>
    </section>

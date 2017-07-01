@@ -22,8 +22,16 @@ public class ChartController {
 	private ChartService service;
 	
 	@RequestMapping(value = "chartlist.htm", method= RequestMethod.GET)
-	public String chartList(){
+	public String chartList(HttpSession session, Model model){	
 		
+		String project_no = (String)session.getAttribute("project_no");
+        model.addAttribute("countMember", service.countMember(project_no));
+        model.addAttribute("countSpecifictask", service.countSpecifictask(project_no));
+        model.addAttribute("countSpecifictask_comp1", service.countSpecifictask_comp1(project_no));
+
+       System.out.println("1 : " + service.countMember(project_no));
+       System.out.println("2 : " + service.countSpecifictask(project_no));
+       System.out.println("3 : " + service.countSpecifictask_comp1(project_no));
 		return "chart.chartList";
 
 	}

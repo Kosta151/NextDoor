@@ -18,4 +18,14 @@ public interface ChartDAO {
 		   
 	//업무별 y축 (세부업무 완료되지 않은)
     public List<ChartDTO> chart_y_comp1(String project_no);
+    
+    //전체 회원 수
+    public String countMember(String project_no);
+    
+    //총 세부업무 수
+    public String countSpecifictask(String project_no);
+    
+    //완료된 총 세부업무 수
+    public String countSpecifictask_comp1(String project_no);
+    
 }

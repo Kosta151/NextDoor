@@ -37,4 +37,28 @@
 	         where p.project_no = #{project_no} and st.specifictask_comp = 1
 	         group by t.task_no
       </select>
+      
+      <select id="countMember" resultType="String">
+      		select count(*)
+      		from projectmember
+      		where project_no = #{project_no}
+      
+      </select>
+      
+      <select id="countSpecifictask" resultType="String">
+      		select count(*)
+			from project p join task t join specifictask st
+			on p.project_no = t.project_no and t.task_no = st.task_no
+			where p.project_no = #{project_no}
+      
+      </select>
+      
+      
+      <select id="countSpecifictask_comp1" resultType="String">
+      		select count(*)
+			from project p join task t join specifictask st
+			on p.project_no = t.project_no and t.task_no = st.task_no
+			where p.project_no = #{project_no} and st.specifictask_comp = 1
+      </select>
+    
 </mapper>

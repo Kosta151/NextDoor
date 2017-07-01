@@ -54,4 +54,24 @@ public class ChartService {
       return clist2;
       
    }
+   //전체 회원 수
+   public String countMember(String project_no){
+	   ChartDAO chartdao = sqlsession.getMapper(ChartDAO.class);
+	   return chartdao.countMember(project_no);
+	   
+   }
+   
+   //총 세부업무 수
+   public String countSpecifictask(String project_no){
+	   ChartDAO chartdao = sqlsession.getMapper(ChartDAO.class);
+	   return chartdao.countSpecifictask(project_no);
+	   
+   }
+   
+   //완료된 총 세부업무 수
+   public String countSpecifictask_comp1(String project_no){
+	   ChartDAO chartdao = sqlsession.getMapper(ChartDAO.class);
+	   return chartdao.countSpecifictask_comp1(project_no);
+	   
+   }
 }

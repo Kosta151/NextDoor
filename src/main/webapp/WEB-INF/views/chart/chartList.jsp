@@ -8,6 +8,34 @@
  <!--main content start-->
   <section id="main-content">
           <section class="wrapper site-min-height">
+          
+                  
+                     <div class="row mtbox">
+                        <div class="col-md-3 col-sm-2 col-md-offset-1 box0">
+                           <div class="box1">
+                          <span class="fa fa-users"></span>
+                          <h3>${countMember}</h3>
+                           </div>
+                          <p>프로젝트 총 멤버 수</p>
+                        </div>
+                        <div class="col-md-3 col-sm-2 box0">
+                           <div class="box1">
+                          <span class="fa fa-tasks"></span>
+                          <h3>${countSpecifictask }</h3>
+                           </div>
+                          <p>총 세부업무 갯수</p>
+                        </div>
+                        <div class="col-md-3 col-sm-2 box0">
+                           <div class="box1">
+                          <span class="fa fa-check-square-o"></span>
+                          <h3>${countSpecifictask_comp1 }</h3>
+                           </div>
+                          <p>완료한 총 세부업무 갯수</p>
+                        </div>
+                       
+                     
+                     </div><!-- /row mt -->   
+
           <div id='chart1'></div>
          
           

@@ -4,10 +4,37 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="kr.co.nextdoor.chart.dao.ChartDAO">
- 	 <select id="chart_x"  resultType="kr.co.nextdoor.chart.dto.ChartDTO"> 
+ 	 
+	  
+	  <!-- 차트 맴버 리스트  -->
+	  <select id="listChartMember"  resultType="kr.co.nextdoor.chart.dto.ChartMemberDTO">
+		 	select sm.member_id as member_id, count(s.specifictask_no) as taskcount, sum(if(s.SPECIFICTASK_COMP='1',1,0)) as taskcompcount  from 
+			specifictask s join specifictaskmodi sm join task t join project p
+			on s.SPECIFICTASK_NO=sm.SPECIFICTASK_NO and t.PROJECT_NO=p.PROJECT_NO and t.TASK_NO=s.TASK_NO
+			where p.PROJECT_NO=#{project_no}
+			group by sm.member_id;
+	  </select>
+	  
+	  <select id="chart_x"  resultType="kr.co.nextdoor.chart.dto.ChartDTO"> 
 			select p.project_no , t.task_cont
 			from project p join task t 
 			on p.project_no = t.project_no
 			where p.project_no = #{project_no}
 	  </select>
+	  
+	  <select id="chart_y_comp0" resultType="java.lang.Integer" >
+	         select count(*)
+	         from project p join task t join specifictask st
+	         on p.project_no = t.project_no and t.task_no = st.task_no
+	         where p.project_no = #{project_no} and st.specifictask_comp = 0
+	         group by t.task_no
+       </select>
+    
+      <select id="chart_y_comp1" resultType="java.lang.Integer">
+	         select count(*)
+	         from project p join task t join specifictask st
+	         on p.project_no = t.project_no and t.task_no = st.task_no
+	         where p.project_no = #{project_no} and st.specifictask_comp = 1
+	         group by t.task_no
+      </select>
 </mapper>

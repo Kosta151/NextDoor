@@ -65,6 +65,11 @@
     <!--script for this page-->
   	<script src="resources/main/assets/js/sparkline-chart.js"></script>    
 	<script src="resources/main/assets/js/zabuto_calendar.js"></script>	
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+	
 	
 <script type="application/javascript">
 $(document).ready(function () {								        	

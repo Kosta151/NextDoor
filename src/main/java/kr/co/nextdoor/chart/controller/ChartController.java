@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.nextdoor.chart.dto.ChartDTO;
+import kr.co.nextdoor.chart.dto.ChartMemberDTO;
 import kr.co.nextdoor.chart.service.ChartService;
 
 @Controller
@@ -20,19 +22,48 @@ public class ChartController {
 	private ChartService service;
 	
 	@RequestMapping(value = "chartlist.htm", method= RequestMethod.GET)
-	public String chartList(Model model, HttpSession session,ChartDTO chartdto){
-		String project_no = (String) session.getAttribute("project_no");
-		System.out.println("project_no:" + project_no);
-		System.out.println("안녕 차트얌 나는!");
+	public String chartList(){
 		
-		List<ChartDTO> clist = service.chart_x(project_no);
-		model.addAttribute("clist", clist);		
-		System.out.println("clist 너는 누구냐!!" + clist);
 		return "chart.chartList";
-		
-		
-	
-		
-		
+
 	}
+	
+	
+	
+	//chart member select
+	@RequestMapping(value="chartMemberList.htm", method=RequestMethod.POST)
+	public ModelAndView listChartMember(HttpSession session){
+		System.out.println("chartmember controller");
+		String project_no = (String)session.getAttribute("project_no");
+		
+		List<ChartMemberDTO> chartmemberlist = service.listChartMember(project_no);
+		ModelAndView model = new ModelAndView();
+		model.addObject("list",chartmemberlist);
+		model.setViewName("jsonView");
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "chartlist.htm", method= RequestMethod.POST)
+	   public ModelAndView chartList(HttpSession session ){
+	      String project_no = (String) session.getAttribute("project_no");
+	      System.out.println("project_no:" + project_no);
+	      
+	      List<ChartDTO> clist = service.chart_x(project_no);
+	      List<ChartDTO> clist1 = service.chart_y_comp0(project_no);
+	      List<ChartDTO> clist2 = service.chart_y_comp1(project_no);
+	      
+	      ModelAndView model = new ModelAndView();
+	      model.addObject("clist", clist);
+	      model.addObject("clist1", clist1);
+	      model.addObject("clist2", clist2);
+	      System.out.println("너는 누구니:" + clist);
+	      System.out.println("clist1:" + clist1);
+	      System.out.println("clist2" + clist2);
+	      
+	      model.setViewName("jsonView");
+	      
+	      return model;
+
+	   }
 }

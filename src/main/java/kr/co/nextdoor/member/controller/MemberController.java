@@ -79,7 +79,6 @@ public class MemberController {
 	*/
 	@RequestMapping(value="checkId.htm", method = RequestMethod.POST)
 	public @ResponseBody String checkId(String member_id) throws Exception {
-		
 		return memberservice.checkId(member_id);
 	}
 	
@@ -107,7 +106,6 @@ public class MemberController {
 	*/ 
 	@RequestMapping("fbjoin.htm")
 	public @ResponseBody void fbsignup(String email, String fbaccesstoken) throws Exception {
-
 		MemberDAO memberdao = sqlsession.getMapper(MemberDAO.class);
 		memberdao.fbjoin(email, fbaccesstoken);
 	}	

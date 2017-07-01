@@ -132,7 +132,6 @@ public class TaskController {
 	@RequestMapping(value ="personaltask.htm", method=RequestMethod.POST)
 	public ModelAndView personalTask(TaskDTO taskdto, HttpSession session, Principal principal){
 		String project_no = (String) session.getAttribute("project_no");
-		System.out.println("personalTask controller ~!!");
 	
 		List<TaskDTO> list = taskservice.personalTask(project_no, principal);
 		
@@ -151,8 +150,6 @@ public class TaskController {
     */
 	@RequestMapping(value ="personalspecifictask.htm", method=RequestMethod.POST)
 	public ModelAndView personalSpecifictask(String task_no, Principal principal){
-		System.out.println("personalTask controller ~!! ");
-		System.out.println("personalspecifictask컨트롤러의 업무 번호입니다 : " + task_no);
 		List<TaskDTO> list = taskservice.personalSpecifictask(task_no,principal);
 		
 		ModelAndView mv = new ModelAndView();

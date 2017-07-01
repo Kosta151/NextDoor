@@ -57,12 +57,9 @@ public class TaskService {
     * @return : int
     */
 	public int insertTask(TaskDTO taskdto){
-		
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		int result = taskdao.insertTask(taskdto);
-		
 		return result;
-		
 	}
 	
 	/*
@@ -103,7 +100,6 @@ public class TaskService {
     * @return : List<TaskDTO>
     */
 	public List<TaskDTO> list(String project_no){
-		
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		List<TaskDTO> list  = taskdao.list(project_no);
 		return list;	
@@ -121,9 +117,6 @@ public class TaskService {
 		String member_id = principal.getName();
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
 		List<TaskDTO> list  = taskdao.personaltask(project_no, member_id);
-		System.out.println(project_no);
-		System.out.println(member_id);
-		System.out.println("personalTask Service");
 		return list;
 	}
 	
@@ -136,13 +129,9 @@ public class TaskService {
     * @return : List<TaskDTO>
     */
 	public List<TaskDTO> personalSpecifictask(String task_no, Principal principal){
-		System.out.println("personalSpecifictask Service");
 		String member_id = principal.getName();
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		List<TaskDTO> list  = specifictaskdao.personalspecifictask(task_no, member_id);
-		System.out.println(task_no);
-		System.out.println(member_id);
-		
 		return list;
 	}
 }

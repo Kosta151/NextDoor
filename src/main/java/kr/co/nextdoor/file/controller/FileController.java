@@ -52,25 +52,40 @@ public class FileController implements ApplicationContextAware{
 	
 	@Autowired
 	FileDownloadView download ;
-
+	
+	/*
+    * @method Name : uploadFile
+    * @date : 2017. 06. 27
+    * @author : 김선화
+    * @description : 파일 업로드(비동기)
+    */
 	@RequestMapping(value = "uploadfile.htm", method = RequestMethod.POST)
 	@ResponseBody
 	public void uploadFile(HttpSession session, FileDTO filedto, MultipartHttpServletRequest request, Principal principal) 
             throws Exception{
-		System.out.println("업로드 파일 컨트롤러");
 		filedto.setProject_no((String)session.getAttribute("project_no"));
-		System.out.println("메롱 메롱" + (String)session.getAttribute("project_no"));
 		List<MultipartFile> mfList = request.getFiles("file");
 		fileservice.uploadFile(filedto, mfList, request, principal);
 	}  
 	
+	/*
+    * @method Name : listFile
+    * @date : 2017. 06. 27
+    * @author : 김선화
+    * @description : 파일 목록 보여주기
+    */
 	@RequestMapping(value = "listfile.htm")
 	public String listFile(HttpSession session, FileDTO filedto, Model model) throws Exception {
 		filedto.setProject_no((String)session.getAttribute("project_no"));
 		model.addAttribute("filelist", fileservice.listFile(filedto));
 		return "task.listfile";
 	}
-	
+	/*
+    * @method Name : donwloadFile
+    * @date : 2017. 06. 27
+    * @author : 김선화
+    * @description : 파일 다운로드
+    */
 	@RequestMapping(value = "download.htm")
 	public ModelAndView donwloadFile(@RequestParam("file_name")String file_name) throws IOException {
 		File file = new File(file_name);

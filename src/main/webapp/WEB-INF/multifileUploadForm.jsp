@@ -18,6 +18,7 @@ $(document).ready(function(){
 	//use jQuery MultiFile Plugin
     $('#multiform input[name=file]').MultiFile({
         max: 5, //업로드 최대 파일 갯수 (지정하지 않으면 무한대)
+        accept: 'jpg|png|gif', //허용할 확장자(지정하지 않으면 모든 확장자 허용)
         maxfile: 1024, //각 파일 최대 업로드 크기
         maxsize: 3024,  //전체 파일 최대 업로드 크기
         STRING: { //Multi-lingual support : 메시지 수정 가능
@@ -59,15 +60,19 @@ $(function(){
        type:'POST',
        //보내기전 validation check가 필요할경우
        beforeSubmit: function (data, frm, opt) {
+	       console.log("beforeSubmit : "+ data);
+           alert("전송전!!");
            return true;
        },
        //submit이후의 처리
        success: function(data, statusText){
-    	   alert("파일 업로드 성공");
+    	   alert("전송성공!!");
+           console.log(data); //응답받은 데이터 콘솔로 출력         
        },
        //ajax error
        error: function(e){
-           
+           alert("에러발생!!");
+           console.log(e);
        }                               
 	});
 });

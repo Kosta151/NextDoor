@@ -139,8 +139,8 @@ a, a:hover, a:focus {
 
 .btn-theme {
   color: #fff;
-  background-color: #ffcc00 ;
-  border-color: #ffcc00;
+  background-color: #424a5d;
+ /*  border-color: #ffcc00; */
 }
 .btn-theme:hover,
 .btn-theme:focus,
@@ -1884,7 +1884,7 @@ background: #fffbcc !important;
 
 /* FORMS CONFIGURATION */
 .form-panel {
-	background: #f2f2f2;
+	background: #ffffff;
 	margin: 10px;
 	padding: 10px;
 	box-shadow: 0px 3px 2px #aab2bd;

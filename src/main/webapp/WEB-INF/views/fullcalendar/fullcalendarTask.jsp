@@ -106,14 +106,14 @@ $.ajax({
 					  <!-- Modal -->
                       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal2" class="modal fade">
                           <div class="modal-dialog modal-sm">
-                              <div class="modal-content">
+                              <div class="modal-content" style="width: 352px;">
                                   <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                       <h4 class="modal-title">업무 생성</h4>
                                   </div>
                                   <form action="insertfullcalendartask.htm" method="post">
                                   <div class="modal-body">
-                                   <select name="task_no">
+                                   <select name="task_no" style="width: 322px;">
 	                                		 <option selected="selected">업무를 선택해주세요</option>
 	                                 <c:forEach items="${tasklist}" var="list">
 	                               		 <option value="${list.task_no}">${list.task_cont}</option>
@@ -122,7 +122,7 @@ $.ajax({
                                       <p>상세 업무명</p>                                  
 										<input type="text" name="specifictask_cont" placeholder="상세업무명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 										<br> 
-									 <select name="member_id" id="calendar_receiver">
+									 <select name="member_id" id="calendar_receiver" style="width: 322px;">
 	                                		 <option selected="selected">업무 배정할 인원을 선택하세요</option>
 	                                 <c:forEach items="${memberlist}" var="mlist">
 	                               		 <option value="${mlist.member_id}"> ${mlist.member_id}</option>

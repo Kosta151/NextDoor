@@ -38,7 +38,7 @@
              <div id="project">
              <div id="container">
              <div class="row mt">
-                <div class="col-lg-4" style="margin-left: 550px; background-color:#424a5d; padding-top: 15px; padding-bottom: 15px;">
+                <div class="col-lg-12">
                    <div class="form-panel">
                         <form action="projectUpdate.htm" method = "POST" class="form-horizontal style-form">        
                              <div class="form-group"> 
@@ -70,14 +70,6 @@
                                     <button class="btn btn-theme" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button>
                                 </div>
                             </div>
-<!--                             <div class="form-group">
-                                <label class="control-label col-md-3">공개여부</label>
-                                <div class="col-md-4">
-                                <input type="radio" name="choose" value="public" checked>공개
-                                <input type="radio" name="choose" value="private">비공개<br> 
-                                 <span class="help-block">* 공개는 워크스페이스 인원 / 비공개는 프로젝트 인원만 공개</span> 
-                                </div>
-                    		 </div> -->
                      <button type="submit" class="btn btn-primary">수정하기</button>
                             </form> 
                       </div>
@@ -115,7 +107,6 @@
                           </div>
                           <div class="modal-footer centered">
                               <input type="submit" class="btn btn-theme03" value="초대 메일 보내기">
-                              <button data-dismiss="modal" class="btn btn-theme04" type="button">취소</button>
                           </div>
                           
                       </div>

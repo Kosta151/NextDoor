@@ -16,6 +16,7 @@ import org.springframework.web.servlet.View;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 import kr.co.nextdoor.specifictask.service.SpecificTaskService;
+import kr.co.nextdoor.task.dto.TaskDTO;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -72,7 +73,7 @@ public class SpecificTaskController {
    @RequestMapping("insertspecifictask.htm")
    public ModelAndView insertSpecificTask(SpecificTaskDTO specifictask, String task_no){
  
-     specifictaskservice.insertSpecificTask(specifictask);
+      specifictaskservice.insertSpecificTask(specifictask);
       SpecificTaskDTO specificyaskdto = specifictaskservice.selectSpecificTask(task_no);
       
       ModelAndView model = new ModelAndView();
@@ -92,9 +93,6 @@ public class SpecificTaskController {
    public String deleteSpecifictask(String specifictask_no, HttpSession session){
       
       specifictaskservice.deleteSpecifictask(specifictask_no);
-      
-      SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictask_no);
-      session.setAttribute("modidto", modidto);
       
       return "task.task";
    }
@@ -157,8 +155,7 @@ public class SpecificTaskController {
       String specifictask_name = specifictaskdto.getSpecifictask_cont();
       String alarm_cont= user.getUsername()+"님이"+specifictaskmodidto.getMember_id()+"님에게"+specifictask_name+"배당하셨습니다";
       alarmdto.setAlarm_cont(alarm_cont);
-   
-      
+       
       alarmservice.insertAlarm(alarmdto);
       
       session.setAttribute("alarmcount", alarmservice.CountAlarmList(user.getUsername()));
@@ -168,7 +165,8 @@ public class SpecificTaskController {
       if(modidto==null){
          specifictaskservice.insertModiSpecifictask(specifictaskmodidto);
       }else{
-         specifictaskservice.updateModiSpecifictask(specifictaskmodidto);      
+         specifictaskservice.updateModiSpecifictask(specifictaskmodidto);
+         specifictaskservice.updateSpecifictask(specifictaskdto);
       }
       
       modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());

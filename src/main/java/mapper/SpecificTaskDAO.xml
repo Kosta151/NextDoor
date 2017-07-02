@@ -22,6 +22,12 @@
 		where specifictask_no=#{specifictask_no}
 	</update>
 	
+	<!-- 수정완료버튼  -->
+	 <update id="updateSpecifictask">
+		update SpecificTask set specifictask_cont=#{specifictask_cont}
+		where specifictask_no=#{specifictask_no}
+	</update>
+	
 	<!-- 수정값 불러오기 -->
 	<select id="detailModiSpecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO">
 		select member_id,specifictask_start,specifictask_end from SpecificTaskModi

@@ -71,6 +71,15 @@ public interface SpecificTaskDAO {
 	public int updateModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto);
 	
 	/*
+	    * @method Name : updateModiSpecifictask
+	    * @date : 2017. 06. 16
+	    * @author : 문창균
+	    * @description : 세부업무수정값 업데이트
+	    * @return : int
+	    */
+	public int updateSpecifictask(SpecificTaskDTO specifictaskdto);
+	
+	/*
 	    * @method Name : detailModiSpecifictask
 	    * @date : 2017. 06. 16
 	    * @author : 문창균

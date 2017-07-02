@@ -87,8 +87,8 @@ public class TaskService {
     */
 	public int deleteTask(TaskDTO taskdto){
 		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
-		int resutl = taskdao.deleteTask(taskdto);
-		return resutl;
+		int result = taskdao.deleteTask(taskdto);
+		return result;
 	}
 	
 	/*
@@ -134,4 +134,20 @@ public class TaskService {
 		List<TaskDTO> list  = specifictaskdao.personalspecifictask(task_no, member_id);
 		return list;
 	}
+	
+	/*
+	    * @method Name : chageTaskTitle
+	    * @date : 2017. 07. 01
+	    * @author : 문창균
+	    * @description : 업무명 변경
+	    * @param : TaskDTO
+	    * @return : TaskDTO
+	    */
+	   public int changeTaskTitle(TaskDTO taskdto){
+	      System.out.println("service");
+	      TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+	      int change = taskdao.changTaskTitle(taskdto); 
+	      
+	      return change;
+	   }
 }

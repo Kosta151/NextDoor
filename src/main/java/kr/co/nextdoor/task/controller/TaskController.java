@@ -19,14 +19,12 @@ import kr.co.nextdoor.project.service.ProjectService;
 import kr.co.nextdoor.task.dto.TaskDTO;
 import kr.co.nextdoor.task.service.TaskService;
 
-
 /*
 * @Class : TaskController
 * @Date : 2017. 06. 13 
 * @Author : 장진환
 * @Desc : task
 */
-
 
 @Controller
 public class TaskController {
@@ -36,10 +34,14 @@ public class TaskController {
 	
 	@Autowired
 	private ProjectService service;
+<<<<<<< HEAD
+	
+=======
 	   
 	@Autowired
 	private AlarmService alarmservice;
 
+>>>>>>> 4eaf7008cb88a80db06347ec14bb99af73768868
 	/*
     * @method Name : listTask
     * @date : 2017. 06. 13
@@ -162,6 +164,24 @@ public class TaskController {
 		
 		return mv;
 	}
+	
+	/*
+	    * @method Name : changeTaskTitle
+	    * @date : 2017. 07. 01
+	    * @author : 문창균
+	    * @description : 업무명 변경 
+	    */
+	   @RequestMapping(value="changetasktitle.htm", method=RequestMethod.POST)
+	   public ModelAndView changeTaskTitle(TaskDTO taskdto){
+	      System.out.println("controller");
+	      taskservice.changeTaskTitle(taskdto);
+	      
+	      
+	      ModelAndView model = new ModelAndView();
+	      model.addObject("title", taskdto.getTask_cont());
+	      model.setViewName("jsonView");
+	      return model;
+	   }
 }
 
 

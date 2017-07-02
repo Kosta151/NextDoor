@@ -38,11 +38,12 @@
              <div id="project">
              <div id="container">
              <div class="row mt">
-                <div class="col-lg-12">
+                <div class="col-lg-4" style="margin-left: 550px; background-color:#424a5d; padding-top: 15px; padding-bottom: 15px;">
                    <div class="form-panel">
                         <form action="projectUpdate.htm" method = "POST" class="form-horizontal style-form">        
-                            <div class="form-group">
+                             <div class="form-group"> 
                             <input type="hidden" name="project_no" value="${project_no}">
+                            
                                 <label class="control-label col-md-3">시작일</label>
                                 <div class="col-md-3 col-xs-11">
                                     <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_start}" id="project_start" name="project_start">
@@ -50,9 +51,11 @@
                                               <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                                     </span>
                                 </div>
-                            </div>
+                              
+                           </div> 
                     
-                            <div class="form-group">
+                             <div class="form-group"> 
+                              
                                 <label class="control-label col-md-3">마감일</label>
                                 <div class="col-md-3 col-xs-11">
                                     <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_end}" id="project_end" name="project_end">
@@ -60,7 +63,7 @@
                                               <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                                     </span>
                                 </div>
-                            </div>
+                             </div> 
                             <div class="form-group">
                                 <label class="control-label col-md-3">멤버초대</label>
                                 <div class="col-md-3 col-xs-11">

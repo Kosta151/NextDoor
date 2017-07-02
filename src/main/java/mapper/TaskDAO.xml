@@ -10,7 +10,7 @@
 		</insert>
 		
 		<select id="listTask" parameterType="hashMap" resultType="kr.co.nextdoor.task.dto.TaskDTO">
-			  SELECT * FROM TASK WHERE project_no=#{project_no} limit ${idx},5
+			  SELECT * FROM TASK WHERE project_no=#{project_no} limit ${idx},3
 			<!-- SELECT * FROM TASK WHERE project_no=#{project_no} -->
 		</select>
 		
@@ -34,5 +34,10 @@
            on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
            where p.project_no = #{param1} and stm.member_id = #{param2}
         </select>	
+        
+        <!-- 업무명 변경 -->
+      <update id="changTaskTitle" >
+         update task set task_cont=#{task_cont} where task_no=#{task_no}
+      </update>
 				
   </mapper>

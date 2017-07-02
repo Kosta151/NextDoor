@@ -94,6 +94,21 @@ public class SpecificTaskService {
 		
 		return result;			
 	}  
+	
+	/*
+    * @method Name : updateSpecifictask
+    * @date : 2017. 07. 01
+    * @author : 문창균
+    * @description : 세부업무명 수정
+    * @param : specifictaskmodidto
+    * @return : int
+    */
+	public int updateSpecifictask(SpecificTaskDTO specifictaskdto){
+		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
+		int result = specifictaskdao.updateSpecifictask(specifictaskdto);	
+		
+		return result;			
+	}  
 		
 	/*
     * @method Name : detailModiSpecifictask

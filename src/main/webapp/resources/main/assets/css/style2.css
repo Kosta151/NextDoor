@@ -1074,13 +1074,14 @@ PANELS CONFIGURATIONS
 	background: #dfdfe1;
 }
 .grey-panel .grey-header {
-	background: #ccd1d9;
+	background: #424e5d;
 	padding: 3px;
 	margin-bottom: 15px;
 }
 .grey-panel h5 {
 	font-weight: 200;
 	margin-top: 10px;
+	color: #fff;
 }
 .grey-panel p {
 	margin-left: 5px;
@@ -1093,8 +1094,8 @@ PANELS CONFIGURATIONS
 }
 .donut-chart h2 {
 	font-weight: 900;
-	color: #FF6B6B;
-	font-size: 38px;
+	color: #797979;
+	font-size: 25px;
 }
 
 /* Dark Blue*/
@@ -1175,6 +1176,10 @@ PANELS CONFIGURATIONS
 	color: #ffcc00 ;
 	padding-right: 4px;
 	font-size: 14px;
+}
+
+.white-body {
+	padding-top: 38px;
 }
 
 /*STOCK CARD Panel*/

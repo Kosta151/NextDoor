@@ -483,6 +483,7 @@
 }
 .fa-plus:before {
   content: "\f067";
+  color: #fff;
 }
 .fa-minus:before {
   content: "\f068";

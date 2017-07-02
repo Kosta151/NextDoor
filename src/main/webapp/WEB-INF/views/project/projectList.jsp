@@ -32,7 +32,8 @@ $(function(){
 	     
 	   }
 	   
-	   });         
+	   }); 
+	
 });
 
 
@@ -70,11 +71,11 @@ $(function(){
 									var doughnutData = [
 											{
 												value: ${list.percent},
-												color:"#FF6B6B"
+												color: "#797979" 
 											},
 											{
 												value : 100-${list.percent},
-												color : "#fdfdfd"
+												color : "#ffffff"
 											}
 										];
 										var myDoughnut = new Chart(document.getElementById("${list.project_name}").getContext("2d")).Doughnut(doughnutData);
@@ -85,6 +86,7 @@ $(function(){
 							</div>
 							<div class="col-sm-6 col-xs-6">
 								<h2>${list.percent}%</h2>
+						
 							</div>
 						</div>
 					</div>
@@ -99,9 +101,11 @@ $(function(){
 							<div class="white-header">
 								<h5>새 프로젝트 추가</h5>
 							</div>
+							<div class="white-body">
 							<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
 								<i class="fa fa-plus"></i>
 							</button>
+							</div>
 							<h2><a data-toggle="modal" href="#myModal"></a></h2>
 							<div class="row">
 								<div class="col-md-6">

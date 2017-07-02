@@ -135,12 +135,12 @@ html .fc,
 
 .fc-widget-header,    /* <th>, usually */
 .fc-widget-content {  /* <td>, usually */
-  border: 1px solid #ddd;
+  border: 1px solid #424a5d;
   color: #646464;
 }
   
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-  background: #f1bcbc;
+  background: #FFE400;
   }
   
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
@@ -617,7 +617,7 @@ table.fc-border-separate {
 /* resizable */
   
 .fc-event-vert .ui-resizable-s {
-  bottom: 0        !important; /* importants override pre jquery ui 1.7 styles */
+  bottom: 0        !important; /* importants override pre jquery ui 1t		.7 styles */
   width: 100%      !important;
   height: 8px      !important;
   overflow: hidden !important;

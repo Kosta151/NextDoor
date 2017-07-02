@@ -44,7 +44,7 @@
                              <div class="form-group"> 
                             <input type="hidden" name="project_no" value="${project_no}">
                             
-                                <label class="control-label col-md-3">시작일</label>
+                                <label class="control-label col-md-2">시작일</label>
                                 <div class="col-md-3 col-xs-11">
                                     <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_start}" id="project_start" name="project_start">
                                     <span class="input-group-btn add-on">
@@ -56,7 +56,7 @@
                     
                              <div class="form-group"> 
                               
-                                <label class="control-label col-md-3">마감일</label>
+                                <label class="control-label col-md-2">마감일</label>
                                 <div class="col-md-3 col-xs-11">
                                     <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${projectmodilist.project_end}" id="project_end" name="project_end">
                                     <span class="input-group-btn add-on">
@@ -65,7 +65,7 @@
                                 </div>
                              </div> 
                             <div class="form-group">
-                                <label class="control-label col-md-3">멤버초대</label>
+                                <label class="control-label col-md-2">멤버초대</label>
                                 <div class="col-md-3 col-xs-11">
                                     <button class="btn btn-theme" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button>
                                 </div>

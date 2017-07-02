@@ -1883,10 +1883,10 @@ PANELS CONFIGURATIONS
 background: #fffbcc !important;
 }
 
-
+/* 성용 */
 /* FORMS CONFIGURATION */
 .form-panel {
-	background: #ffffff;
+	background: #fcf8e3;
 	margin: 10px;
 	padding: 10px;
 	box-shadow: 0px 3px 2px #aab2bd;

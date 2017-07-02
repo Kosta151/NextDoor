@@ -163,6 +163,7 @@ public class SpecificTaskController {
       SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
       if(modidto==null){
          specifictaskservice.insertModiSpecifictask(specifictaskmodidto);
+         specifictaskservice.updateSpecifictask(specifictaskdto);
       }else{
          specifictaskservice.updateModiSpecifictask(specifictaskmodidto);
          specifictaskservice.updateSpecifictask(specifictaskdto);

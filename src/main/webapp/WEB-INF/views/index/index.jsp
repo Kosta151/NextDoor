@@ -105,9 +105,7 @@
                                                             <ul class="nav navbar-nav navbar-right">
                                                                   <li class="active"><a href="#intro">Home</a></li>
                                                                   <li><a href="#about">About Us</a></li>
-																  <li><a href="#service">Services</a></li>
-                                                                  <li><a href="#works">Works</a></li>				                                                                  
-                                                                  <li><a href="#contact">Contact</a></li>  
+																  <li><a href="#service">We Study</a></li>
                                                             </ul>
                                                       </div>
                                                       <!-- /.Navbar-collapse -->
@@ -318,9 +316,9 @@
 						<span class="pe-7s-monitor pe-5x"></span> 
 					</div>
 					<div class="service-desc">						
-						<h5>Spring</h5>
+						<h5>Java</h5>
 						<p>
-						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
+						자바는 이식성이 높은 언어이다  자바는 객체 지향 언어이다 자바는 함수적 코딩 스타일을 지원한다,자바는 메모리를 자동으로 관리한다
 						</p>
 						<a href="#" class="btn btn-skin">Learn more</a>
 					</div>
@@ -334,9 +332,9 @@
 						<span class="pe-7s-camera pe-5x"></span> 
 					</div>
 					<div class="service-desc">
-						<h5>Java</h5>
+						<h5>DataBase</h5>
 						<p>
-						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
+						실시간 접근성 (real-time-processing) , 계속적인 변화 (continuous evolution) , 동시 공유 (concurrent sharing) , 내용에 따른 참조 (contents reference)
 						</p>
 						<a href="#" class="btn btn-skin">Learn more</a>
 					</div>
@@ -350,9 +348,8 @@
 						<span class="pe-7s-note pe-5x"></span> 
 					</div>
 					<div class="service-desc">
-						<h5>HTML/CSS</h5>
-						<p>
-						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
+						<h5>Model2/MVC</h5>
+						<p>[Model / View / Controller] Model : 프로그램의 내부 상태 Controller : 데이터와 비즈니스 로직 간의 상호작용 View : 사용자의 인터페이스    
 						</p>
 						<a href="#" class="btn btn-skin">Learn more</a>
 					</div>
@@ -366,9 +363,9 @@
 						<span class="pe-7s-phone pe-5x"></span> 
 					</div>
 					<div class="service-desc">
-						<h5>DataBase</h5>
+						<h5>Spring Framework</h5>
 						<p>
-						Ad denique euripidis signiferumque vim, iusto admodum quo cu. No tritani neglegentur mediocritatem duo.
+						경량 컨테이너로 자바 객체를 직접 관리, POJO(Plain Old Java Object)방식의 프레임워크, 의존성 주입 지원, 영속성과 관련된 다양한 서비스 지원
 						</p>
 						<a href="#" class="btn btn-skin">Learn more</a>
 					</div>
@@ -381,201 +378,14 @@
 	</section>
 	<!-- /Section: services -->
 	
-	<!-- Section: parallax 2 -->	
-	<section id="parallax2" class="home-section parallax text-light" data-stellar-background-ratio="0.5">	
-           <div class="container">
-				<div class="row appear stats">
-					<div class="col-md-3">
-						<div class="align-center color-white txt-shadow">
-							<div class="icon">
-								<i class="pe-7s-stopwatch pe-5x"></i>
-							</div>
-						<strong id="counter-coffee" class="number">1142</strong><br />
-						<span class="text">Minutes</span>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="align-center color-white txt-shadow">
-							<div class="icon">
-								<i class="pe-7s-music pe-5x"></i>
-							</div>
-						<strong id="counter-music" class="number">229</strong><br />
-						<span class="text">Tracks</span>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="align-center color-white txt-shadow">
-							<div class="icon">
-								<i class="pe-7s-coffee pe-5x"></i>
-							</div>
-						<strong id="counter-clock" class="number">451</strong><br />
-						<span class="text">Cokes</span>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="align-center color-white txt-shadow">
-							<div class="icon">
-								<i class="pe-7s-cup pe-5x"></i>
-							</div>
-						<strong id="counter-heart" class="number">112</strong><br />
-						<span class="text">Awwards</span>
-						</div>
-					</div>
-				</div>
-            </div>
-	</section>	
-	
-
-	<!-- Section: works -->
-    <section id="works" class="home-section color-dark text-center bg-white">
-		<div class="container marginbot-50">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
-					<div class="section-heading text-center">
-					<h2 class="h-bold">Portfolio</h2>
-					<div class="divider-header"></div>
-					<p>Lorem ipsum dolor sit amet, agam perfecto sensibus usu at duo ut iriure.</p>
-					</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="container">
-			<div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12" >
-					<div class="wow bounceInUp" data-wow-delay="0.4s">
-                    <div id="owl-works" class="owl-carousel">
-                        <div class="item"><a href="resources/index/img/works/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"><img src="resources/index/img/works/1.jpg" class="img-responsive" alt="img"></a></div>
-                        <div class="item"><a href="resources/index/img/works/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/2@2x.jpg"><img src="resources/index/img/works/2.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/index/img/works/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/3@2x.jpg"><img src="resources/index/img/works/3.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/index/img/works/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/4@2x.jpg"><img src="resources/index/img/works/4.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/index/img/works/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/5@2x.jpg"><img src="resources/index/img/works/5.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/index/img/works/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/6@2x.jpg"><img src="resources/index/img/works/6.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/index/img/works/7.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/7@2x.jpg"><img src="resources/index/img/works/7.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="resources/index/img/works/8.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/8@2x.jpg"><img src="resources/index/img/works/8.jpg" class="img-responsive " alt="img"></a></div>
-                    </div>
-					</div>
-                </div>
-            </div>
-		</div>
-
-	</section>
-	<!-- /Section: works -->
-
-	<!-- Section: parallax 3 -->	
-	<section id="parallax3" class="home-section parallax text-light text-center" data-stellar-background-ratio="0.5">	
-           <div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="testimonialslide clearfix flexslider">
-							<ul class="slides">
-								<li><blockquote>
-								Our scientific power has outrun our spiritual power. We have guided missiles and misguided men. 
-									</blockquote>
-									<h4> Martin Luther King Jr.</h4> 
-								</li>
-								<li><blockquote>
-								Be sure that it is not you that is mortal, but only your body. For that man whom your outward form reveals is not yourself; the spirit is the true self, not that physical figure which and be pointed out by your finger. 
-									</blockquote>
-									<h4>Cicero </h4>
-								</li>	
-							</ul>
-						</div>					
-					</div>	
-				</div>
-            </div>
-	</section>	
-	
-
-	<!-- Section: contact -->
-    <section id="contact" class="home-section nopadd-bot color-dark bg-white text-center">
-		<div class="container marginbot-50">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
-					<div class="section-heading text-center">
-					<h2 class="h-bold">Contact us</h2>
-					<div class="divider-header"></div>
-					<p>Lorem ipsum dolor sit amet, agam perfecto sensibus usu at duo ut iriure.</p>
-					</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		
-		<div class="container">
-
-			<div class="row marginbot-80">
-				<div class="col-md-8 col-md-offset-2">
-				    <div id="sendmessage">Your message has been sent. Thank you!</div>
-                    <div id="errormessage"></div>
-                    <form action="" method="post" role="form" class="contactForm">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                            <div class="validation"></div>
-                        </div>
-                        
-                        <div class="text-center"><button type="submit" class="btn btn-skin btn-lg btn-block">Send Message</button></div>
-                    </form>
-				</div>
-			</div>	
-
-
-		</div>
-	</section>
-	<!-- /Section: contact -->
-
-	<!-- google map -->
-	<div id="map-btn1-div">
-		<a id="map-btn1" class="gmap-btn close-map-button btn-show" href="#map">
-		Click here to open the map
-		</a>
-	</div>
-	<a id="map-btn2" class="btn btn-skin btn-lg btn-noradius gmap-btn close-map-button btn-hide" href="#map" title="Close google map" data-toggle="tooltip" data-placement="top">
-	795 Folsom Ave, Suite 600 San Francisco, CA 94107
-	</a>
-	
-	<!-- google map -->
-	<section id="map" class="close-map">
-		<div id="google-map"></div>
-	</section>
-	<!-- /google map -->		
-	
-
 	<footer>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					
 					<div class="text-center">
 						<a href="#intro" class="totop"><i class="pe-7s-angle-up pe-3x"></i></a>
-						
-						<p>&copy;Valera Theme. All Rights Reserved</p>
-                        <div class="credits">
-                            <!-- 
-                                All the links in the footer should remain intact. 
-                                You can delete the links only if you purchased the pro version.
-                                Licensing information: https://bootstrapmade.com/license/
-                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Valera
-                            -->
-                            <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                        </div>
+						<p>&copy;Team4 Nextdoor  깃재민 갓창균 갓재민 갓지은 갓성용 갓선화</p>
+
 					</div>
 				</div>
 			</div>	

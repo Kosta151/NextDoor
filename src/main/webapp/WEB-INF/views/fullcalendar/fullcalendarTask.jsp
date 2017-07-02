@@ -122,7 +122,7 @@ $.ajax({
                                       <p>상세 업무명</p>                                  
 										<input type="text" name="specifictask_cont" placeholder="상세업무명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 										<br> 
-									 <select name="member_id">
+									 <select name="member_id" id="calendar_receiver">
 	                                		 <option selected="selected">업무 배정할 인원을 선택하세요</option>
 	                                 <c:forEach items="${memberlist}" var="mlist">
 	                               		 <option value="${mlist.member_id}"> ${mlist.member_id}</option>
@@ -132,7 +132,7 @@ $.ajax({
                  				  <input type="text"  name="specifictask_end" id="specifictask_end" placeholder="일정의 마지막" class="form-control placeholder-no-fix"><br>
                                   </div>
                                   <div class="modal-footer centered">
-                                      <button class="btn btn-warning" type="submit">생성</button>
+                                      <button class="btn btn-warning" type="submit" id="calendaralarm">생성</button>
                                       <button data-dismiss="modal" class="btn btn-default" type="button">취소</button>
                                   </div>
                                   </form>

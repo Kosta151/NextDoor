@@ -49,6 +49,19 @@
 		 		
 		 		  }
 				  });	  
+		 		  $('#calendaralarm').click(function(){
+		 			 var receiver = $("#calendar_receiver").val();
+		 			  var specifictask_cont = $('.specifictask_cont').val();
+		 			  var obj = {};
+		 			  obj.receiver = receiver;
+		 			  obj.specifictask_cont = specifictask_cont;
+		 			  var str = JSON.stringify(obj);
+		 			 if($("#member_id").val() != ""){  	 
+		 				 sock.send(str);
+		 				 
+		 		
+		 		  }
+		 		  });
 		 		 
  
 		 	sock.onclose = function(){

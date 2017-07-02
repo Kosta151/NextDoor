@@ -136,7 +136,6 @@ public class SpecificTaskController {
    @RequestMapping(value ="updateSpecifictask.htm")
    public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto, SpecificTaskDTO specifictaskdto ,HttpSession session){
       //알림 관련 추가(박찬섭) start
-	   System.out.println("controller");
       SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");
       AlarmDTO alarmdto = new AlarmDTO();
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

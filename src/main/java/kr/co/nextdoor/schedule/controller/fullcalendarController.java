@@ -16,6 +16,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.nextdoor.alarm.dto.AlarmDTO;
+import kr.co.nextdoor.alarm.service.AlarmService;
 import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.schedule.dao.FullcalendarDAO;
 import kr.co.nextdoor.schedule.dto.FullcalendarDTO;
@@ -51,6 +55,9 @@ public class fullcalendarController {
 	@Autowired
 	private SqlSession sqlsession;
 	
+	@Autowired
+	private AlarmService alarmservice;
+	
 	//Modal List 
 	@RequestMapping(value="calendar.htm", method=RequestMethod.GET)
 	public String listTask(Model model, HttpSession session) {
@@ -67,12 +74,38 @@ public class fullcalendarController {
 	
 	//fullcalendar insert
 	@RequestMapping(value="insertfullcalendartask.htm", method=RequestMethod.POST)
-	public String fullcalendarTaskInsert(String specifictask_no, String task_no, HttpSession session, SpecificTaskDTO specificetaskdto , SpecificTaskModiDTO specifictaskmodidto ) throws Exception{
-		 session.setAttribute("task_no", task_no);
+	public String fullcalendarTaskInsert(String specifictask_no, String task_no, HttpSession session, SpecificTaskDTO specifictaskdto , SpecificTaskModiDTO specifictaskmodidto ) throws Exception{
+		  //알림 관련 추가(박찬섭) start
+	      SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");
+	      AlarmDTO alarmdto = new AlarmDTO();
+	      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	      
+	      alarmdto.setAlarm_receiver(specifictaskmodidto.getMember_id()); //
+	      System.out.println(specifictaskmodidto.getMember_id());
+	      
+	      alarmdto.setSpecifictask_no(specifictaskmodidto.getSpecifictask_no());
+	      
+	      
+	      alarmdto.setAlarm_date(dayTime.format(new Date(System.currentTimeMillis()))) ;
+	      
+	      String alarm_sender=user.getUsername();
+	      alarmdto.setAlarm_sender(alarm_sender);
+	      
+	      String specifictask_name = specifictaskdto.getSpecifictask_cont();
+	      String alarm_cont= user.getUsername()+"님이"+specifictaskmodidto.getMember_id()+"님에게"+specifictask_name+"배당하셨습니다";
+	      alarmdto.setAlarm_cont(alarm_cont);
+	       
+	      alarmservice.insertAlarm(alarmdto);
+	      
+	      session.setAttribute("alarmcount", alarmservice.CountAlarmList(user.getUsername()));
+	      
+	      //알림 관련 추가(박찬섭) end 
+		
+		session.setAttribute("task_no", task_no);
 		 System.out.println("나는 task 번호!!" + task_no);
 		 System.out.println("업무 생성");
-		fullcalendarservice.SpecificTaskInsert(specificetaskdto, session);
-		fullcalendarservice.SpecificModiTaskInsert(specifictaskmodidto, task_no, specificetaskdto.getSpecifictask_cont());
+		fullcalendarservice.SpecificTaskInsert(specifictaskdto, session);
+		fullcalendarservice.SpecificModiTaskInsert(specifictaskmodidto, task_no, specifictaskdto.getSpecifictask_cont());
 		return "fullcalendar.fullcalendarTask";
 	}
 	

@@ -21,10 +21,10 @@ public class FullcalendarService {
 	private SqlSession sqlsession;
 
 	//�꽭遺��뾽臾� 異붽�
-	public void SpecificTaskInsert(SpecificTaskDTO specificetaskdto, HttpSession session) throws Exception{
+	public void SpecificTaskInsert(SpecificTaskDTO specifictaskdto, HttpSession session) throws Exception{
 	FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
-	fullcalendardao.insertFullcalendarSpecificTask(specificetaskdto);
-	session.setAttribute("specifictask_no", specificetaskdto.getSpecifictask_no());
+	fullcalendardao.insertFullcalendarSpecificTask(specifictaskdto);
+	session.setAttribute("specifictask_no", specifictaskdto.getSpecifictask_no());
 	return;
 	}
    //�꽭遺��뾽臾� �닔�젙異붽�

@@ -2,8 +2,6 @@
 <link href="resources/main/assets/css/style2.css" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-           
-
 
  <!--main content start-->
   <section id="main-content">
@@ -288,11 +286,11 @@ $(function () {
                     type: 'column',
                     backgroundColor: null,
                     style: {
-                       fontFamily: 'Signika, serif'
+                       fontFamily: 'Ruda, sans-serif'
                     }
                 },
                 title: {
-                    text: '각 업무별 진행도1',
+                    text: '업무별 진행도',
                     style: {
                         color: 'black',
                         fontSize: '16px',
@@ -351,8 +349,8 @@ $(function () {
 		                          <tr>
 		                              <th>No.</th>
 		                              <th>이름</th>
-		                              <th>업무</th>
-		                              <th>완료여부</th>
+		                              <th>총업무수</th>
+		                              <th>완료수</th>
 		                          </tr>
 		                          </thead>
 		                          <tbody id='memberlist'>

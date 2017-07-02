@@ -126,8 +126,8 @@ public class fullcalendarController {
 		 JSONArray array = new JSONArray();
 		 for(int i = 0; i<calendarlist.size(); i++){
 	     JSONObject obj = new JSONObject();
-	     obj.put("title", calendarlist.get(i).getMember_id());
-	     obj.put("content", calendarlist.get(i).getSpecifictask_cont());
+	     obj.put("content", calendarlist.get(i).getMember_id());
+	     obj.put("title", calendarlist.get(i).getSpecifictask_cont());
 	     
 	     String start = calendarlist.get(i).getSpecifictask_start();
 	     obj.put("start", start);

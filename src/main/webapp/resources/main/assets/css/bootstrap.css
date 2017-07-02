@@ -2975,10 +2975,11 @@ fieldset[disabled] .btn-info.active {
   color: #424e5d;
   background-color: #fff;
 }
+/* 성용 */
 .btn-warning {
   color: #fff;
-  background-color: #428bca;
-  border-color: #eea236;
+  background-color: #424e5d;
+  border-color: #fafafa;
 }
 .btn-warning:hover,
 .btn-warning:focus,

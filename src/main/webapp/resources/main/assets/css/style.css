@@ -296,7 +296,7 @@ hr {
 }
 
 .bg-theme {
-	background-color: #ffcc00 ;
+	background-color: #424a5d ;
 }
 
 ul.top-menu > li > .logout {
@@ -307,7 +307,7 @@ ul.top-menu > li > .logout {
 	border: 1px solid #666666 !important;
 	padding: 5px 15px;
 	margin-right: 15px;
-	background: #ffd777 ;
+	background: #ffcb06 ;
 	margin-top: 15px;
 }
 
@@ -499,7 +499,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #ffd777;
+    background: #ffcb06;
     border-bottom: 1px solid #c9aa5f;
 }
 

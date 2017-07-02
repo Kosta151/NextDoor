@@ -22,10 +22,7 @@ $.ajax({
 		console.log("유저유저:" + data.user);
 		cal(data.owner , data.user);
 		
-		
 	}
-
-
 });
 
 function cal(owner,user){
@@ -54,8 +51,6 @@ function cal(owner,user){
             url : 'clist.htm'
         },
 		});
-	
-	
 }
 
 $('#specifictask_start').datepicker({
@@ -76,20 +71,15 @@ $('#specifictask_end').datepicker({
         font-size: 18px;
         }
 </style>
-<!-- <script type="text/javascript">
-$.ajax({
-	
-})
-</script> -->
+
 </head>
 <body>
      <!--main content start-->
       <section id="main-content">
         <section class="wrapper site-min-height">
-             <h3><i class="fa fa-angle-right"></i> 배정된 인원을 달력에서 확인해보세요</h3>
+             <h3><i class="fa fa-angle-right"></i> 세부업무명 과 날짜를 확인하세요</h3>
               <!-- page start-->
               <div class="row mt" style="margin-left: 300px;">
-                   <!-- <aside class="col-lg-0 mt"></aside> -->
                   <aside class="col-lg-9 mt">
                       <section class="panel">
                           <div class="panel-body">

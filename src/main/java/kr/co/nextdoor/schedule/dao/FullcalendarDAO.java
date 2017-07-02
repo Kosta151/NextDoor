@@ -3,6 +3,7 @@ package kr.co.nextdoor.schedule.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.co.nextdoor.schedule.dto.FullcalendarDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 
@@ -31,6 +32,6 @@ public interface FullcalendarDAO {
          * @description : 캘린더 업무 리스트
          * @return : ArrayList
          */
-        public ArrayList<SpecificTaskModiDTO> calendarList();
+        public ArrayList<FullcalendarDTO> calendarList(String project_no);
       
 }

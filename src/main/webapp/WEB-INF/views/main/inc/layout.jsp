@@ -60,7 +60,6 @@
    	<script src="resources/main/assets/js/common-scripts.js"></script>
    	<script type="text/javascript" src="resources/main/assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="resources/main/assets/js/gritter-conf.js"></script> 
-    <script src="resources/main/assets/js/calendar-conf-events.js"></script>
    	
     <!--script for this page-->
   	<script src="resources/main/assets/js/sparkline-chart.js"></script>    

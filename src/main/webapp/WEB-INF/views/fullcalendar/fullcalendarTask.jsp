@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+   uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +10,63 @@
 <!-- DatePicker(UI) -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
 <link href="resources/main/assets/css/style2.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+	url:"owner.htm",
+	type:"get",
+	dataType : "json",
+	success : function(data){
+		console.log("죽는다:" + data.owner);
+		console.log("유저유저:" + data.user);
+		cal(data.owner , data.user);
+		
+		
+	}
+
+
+});
+
+function cal(owner,user){
+/* 	console.log("안녕:" +title);
+	console.log("너도 안녕:" + content); */
+	console.log("안녕:" +owner);
+	console.log("gg" + user)
+   	 $('#calendar').fullCalendar({
+     	
+		 header: {
+		      left: 'prev,next today',
+		      center: 'title',
+		      right: 'month,agendaWeek,agendaDay'
+		    },
+      
+        /* editable: true, */
+        selectable:true,
+        select: function() {
+        	if(owner == user){
+        		 $('#myModal2').modal();
+        	}
+           },
+        
+    events: 
+        {
+            url : 'clist.htm'
+        },
+		});
+	
+	
+}
+
+$('#specifictask_start').datepicker({
+   dateFormat: "yy-mm-dd"
+});
+$('#specifictask_end').datepicker({
+   dateFormat: "yy-mm-dd"
+   
+});
+
+</script>
 <title>Insert title here</title>
 <style>
    body {
@@ -19,7 +76,11 @@
         font-size: 18px;
         }
 </style>
-
+<!-- <script type="text/javascript">
+$.ajax({
+	
+})
+</script> -->
 </head>
 <body>
      <!--main content start-->

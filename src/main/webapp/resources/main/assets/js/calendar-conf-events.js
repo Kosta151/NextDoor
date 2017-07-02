@@ -1,90 +1,54 @@
-
-
-    /* initialize the external events
-     -----------------------------------------------------------------*/
-
-  /*  $('#external-events div.external-event').each(function() {
-
-        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-        // it doesn't need to have a start or end
-        var eventObject = {
-            title: $.trim($(this).text()) // use the element's text as the event title
-        };
-
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject);
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-            zIndex: 999,
-            revert: true,      // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-        });
-
-    });*/
-
-
-    /* initialize the calendar
-     -----------------------------------------------------------------*/
-
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
-    	 $('#calendar').fullCalendar({
+ $.ajax({
+    	url:"clist.htm",
+    	type:"get",
+    	dataType : "json",
+    	success : function(data){
+    		title = [];
+    		content = [];
+    		start = [];
+    		end = [];
     		
-    		/*events: function(start, end, callback) {
-    			$.ajax({
-    			    url: 'calendar.htm',
-    			    type:  "post",
-    			    dataType: 'json',
-    			    success: function(data) {
-    			    	specifictask_cont =[];
-    			    	specifictask_start = [];
-    			    	specifictask_end = [];
-    			    	$.each(data, function(index,obj){
-    			    		specifictask_cont = obj.specifictask_cont
-    			    		specifictask_start = obj.specifictask_start
-    			    		specifictask_end = obj.specifictask_end
-    			    	});
-    			    	console.log(specifictask_cont);
-    			    	console.log(specifictask_start);
-    			    	console.log(specifictask_end);
-    			    	
-    			    }
-    			});
-    		},*/
+    		$.each(data, function(index, obj){
+    			title = obj.title;
+    			content = obj.content;
+    			start = obj.start;
+    			end = obj.end;
+    			
+    		});
+    		console.log(title);
+    		console.log(content);
+    		cal();
+    	}
+    
+    
+    });
+    
+    function cal(){
+    	console.log("안녕:" +title);
+		console.log("너도 안녕:" + content);
     	
-    	//캘린더 한글 적용
+	   	 $('#calendar').fullCalendar({
+	     	
     		 header: {
     		      left: 'prev,next today',
     		      center: 'title',
     		      right: 'month,agendaWeek,agendaDay'
     		    },
-            
-            dayClick: function() { //날짜를 클릭하면 모달창이
-    		 $('#myModal2').modal();
-            },
+          
             editable: true, //크기를 줄이거나 움직이는
             selectable:true,
-            
+            select: function() { 
+       		 $('#myModal2').modal();
+               },
             
         events: 
             {
                 url : 'clist.htm'
-            }  
-        
-        
-       /* eventClick: function(calEvent, jsEvent, view) {
-            
-            alert('Event: ' + calEvent.title);
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert('View: ' + view.name);
-
-            $(this).css('color', 'red');
-        }*/
+            },
  		});
+    	
+    	
+    }
    
     $('#specifictask_start').datepicker({
        dateFormat: "yy-mm-dd"
@@ -93,26 +57,4 @@
        dateFormat: "yy-mm-dd"
        
     });
-    
-/*  $.ajax({
-    		url :  "clist.htm",
-    		type:  "POST",
-    		dataType: "json",
-    		success: function(data) {
-    			console.log(data);
-    			alert("success");
-    			var  title = ""; 
-    			var start = ""; 
-    			var end = ""; 
-    			$.each(data, function(index, obj) {
-                    title = obj.member_id;
-                    start = obj.specifictask_start;
-                    end = obj.specifictask_edn;
-                   
-                  });
-    			 console.log(title);
-                 console.log(start);
-                 console.log(end);
-		    	
-		    }
-    });*/
+  

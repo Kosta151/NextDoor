@@ -15,8 +15,12 @@
 			VALUES( (SELECT specifictask_no from specifictask where task_no = #{task_no} and specifictask_cont = #{specifictask_cont}) , #{member_id}, #{specifictask_start}, #{specifictask_end})
 	   	</insert>
 	   	
-	   	<select id="calendarList"  resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO"> 
-	   		select member_id , specifictask_start , specifictask_end
-	   		from specifictaskmodi 
+	   	<select id="calendarList"  resultType="kr.co.nextdoor.schedule.dto.FullcalendarDTO"> 
+<!-- 	   		select member_id , specifictask_start , specifictask_end
+	   		from specifictaskmodi  -->
+				select p.project_no, st.specifictask_cont, stm.member_id, stm.specifictask_start, stm.specifictask_end
+				from project p join task t join specifictask st join specifictaskmodi stm
+				on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
+				where p.project_no = #{project_no}
 	    </select>    
   </mapper>

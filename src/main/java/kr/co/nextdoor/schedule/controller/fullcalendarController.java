@@ -1,5 +1,6 @@
 package kr.co.nextdoor.schedule.controller;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,9 +21,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.schedule.dao.FullcalendarDAO;
+import kr.co.nextdoor.schedule.dto.FullcalendarDTO;
 import kr.co.nextdoor.schedule.service.FullcalendarService;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskDTO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
@@ -74,12 +77,16 @@ public class fullcalendarController {
 	}
 	
 	@RequestMapping(value="clist.htm", method=RequestMethod.GET)
-	public void listFullcalendar(HttpServletRequest request, HttpServletResponse response ) throws ParseException{
-		System.out.println("1");		
-		
+	public void listFullcalendar(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session ) throws ParseException{
+		System.out.println("1");
+		String project_no = (String) session.getAttribute("project_no");
+		String owner = (String) session.getAttribute("owner");
+		System.out.println("오너:" + owner);
+		System.out.println("달력에서 프로젝트_no:" + project_no);
+		model.addAttribute("owner", owner);
 		FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
 		
-		ArrayList<SpecificTaskModiDTO> calendarlist = fullcalendardao.calendarList();
+		ArrayList<FullcalendarDTO> calendarlist = fullcalendardao.calendarList(project_no);
 		
 		System.out.println("calendarlist:" + calendarlist);
 		
@@ -87,39 +94,64 @@ public class fullcalendarController {
 		 for(int i = 0; i<calendarlist.size(); i++){
 	     JSONObject obj = new JSONObject();
 	     obj.put("title", calendarlist.get(i).getMember_id());
+	     obj.put("content", calendarlist.get(i).getSpecifictask_cont());
+	     
+	     String start = calendarlist.get(i).getSpecifictask_start();
+	     obj.put("start", start);
+	     
+	     String end = calendarlist.get(i).getSpecifictask_end();
+	     SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd"); 
 			 
-			 String start = calendarlist.get(i).getSpecifictask_start();
-			 obj.put("start", start);
+	     Calendar cal = Calendar.getInstance();
+	     Date date=sdformat.parse(end);
+	     System.out.println("date: " + date);
 			 
-			 String end = calendarlist.get(i).getSpecifictask_end();
-			 SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd"); 
-			 
-			 Calendar cal = Calendar.getInstance();
-			 Date date=sdformat.parse(end);
-			 System.out.println("date: " + date);
-			 
-			 cal.setTime(date);
-			  cal.add(Calendar.DATE, +0);
-			  System.out.println("before"+end);
-	          end = sdformat.format(cal.getTime());  
+		cal.setTime(date);
+		cal.add(Calendar.DATE, +0);
+		System.out.println("before"+end);
+	    end = sdformat.format(cal.getTime());  
 	          
-	          System.out.println("afeter"+end);
-	         obj.put("end", end);
+	    System.out.println("afeter"+end);
+	    obj.put("end", end);
 	         
-	         array.add(obj);
-	         System.out.println("22222222222222222");
-	         System.out.println("array" + array);
-	         
-	         
+	    array.add(obj);
+	    System.out.println("22222222222222222");
+	    System.out.println("array" + array);
 		 }
-		 	try {
-		 		  response.getWriter().print(array);
+		 try {
+		 		response.getWriter().print(array);
 
 			} catch (Exception e) {
-				  e.printStackTrace();
+				 e.printStackTrace();
 
 			}
 		 	System.out.println("3");
+
+	}
+	
+	@RequestMapping(value="owner.htm", method=RequestMethod.GET)
+	public ModelAndView listFullcalendar(HttpServletRequest request, HttpServletResponse response,HttpSession session,Principal principal ) throws ParseException{
+		System.out.println("1");
+		
+		String project_no = (String) session.getAttribute("project_no");
+		String owner = (String) session.getAttribute("owner");
+		
+		System.out.println("오너:" + owner);
+		System.out.println("달력에서 프로젝트_no:" + project_no);
+		
+		ModelAndView mav = new ModelAndView();
+		FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
+		ArrayList<FullcalendarDTO> calendarlist = fullcalendardao.calendarList(project_no);
+		
+		System.out.println("calendarlist:" + calendarlist);
+		
+		/*mav.addObject("on", attributeValue)*/
+		mav.addObject("owner", owner);
+		mav.addObject("user", principal.getName());
+		mav.setViewName("jsonView");
+		return mav;
+		
+		 
 
 	}
 }

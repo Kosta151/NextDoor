@@ -35,14 +35,11 @@ $(function() {
 	
 		
 		if (msg.user_id != user_id) {
-			/* $("#chatarea").append("<li style='text-align: left'>" + msg.user_id+ "님"+"<br>" + msg.message + "</li>"); */
 			$("#chatarea").append("<div class='group-rom'>" +"<div class='first-part'>"+ msg.user_id+"</div>"+"<div class='second-part'>" + msg.message +"</div>"+"<div class='third-part'>" + msg.date +"</div>"+"</div>");
-				
 		} else {
-			/* $("#chatarea").append("<li style='text-align: right'>" + msg.message+ "</li>"); */
 			$("#chatarea").append("<div class='group-rom'>" +"<div class='first-part odd'>"+ msg.user_id+"</div>"+"<div class='second-part'>" + msg.message +"</div>"+"<div class='third-part'>" + msg.date +"</div>"+"</div>");
 		}
-		$("#chatpanel").scrollTop($('#chatarea').height());	
+		$("#chatpanel").scrollTop($('#chatpanel').height());	
 		
 	};
 	
@@ -84,31 +81,21 @@ $(function() {
 
      <section id="main-content">
           <section class="wrapper site-min-height">
-          <!--     page start
-              <div class="chat-room mt">
-                  <aside class="right-side">
-                      <div class="invite-row" >
-                          <h4 class="pull-left">채팅 참여자</h4>
-                      </div>
-                      <ul class="chat-available-user">
-                      </ul>
-                  </aside>
-				</div> -->
             <div id="userList" >
             	<aside class="mid-side">
-              		<div class="chat-room-head" style="width: 80%; margin-left: 125px; margin-top: 10px">
+              		<div class="chat-room-head" style="width: 80%; margin-left: 125px; margin-top: 10px; background-color: #424a5d; ">
                			<h3>Project Chat Room</h3>
                     </div>
-                <div id = "chatpanel" class="panel-body chat-panel-body" style="background-color: white;width: 80%;height: 600px; margin-left: 125px; overflow: scroll;" >
+                <div id = "chatpanel" class="panel-body chat-panel-body" style="background-color: white;width: 80%;height: 400px; margin-left: 125px; overflow: scroll;" >
 					<ul class="chat" id="chatarea"></ul>
 				</div>
             <div class="chat-txt" style="width: 80%;">
 				<input type="text" class="form-control" id="btn-input" name="chatInput" style="width: 90%; margin-left: 130px">
-				<span>
 			</div>
-					<button class="btn btn-theme" id="btn-chat">Send</button>
+				<span>
+					<button class="btn btn-theme" id="btn-chat" style="background-color: #797979; border-color: #797979;">Send</button>
                 </span>
-                	<button class="btn btn-theme" id="btn-end">종료</button>
+                	<button class="btn btn-theme" id="btn-end" style="background-color: #797979; border-color: #797979;">종료</button>
                       
                  </aside>               
                   <input type="hidden" id="nickname" value="${loginUser}">   

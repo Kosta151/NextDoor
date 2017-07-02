@@ -5,7 +5,7 @@
 <link href="resources/main/assets/css/style.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/main/assets/css/sweetalert.css">
 <section id="main-content" style="width:auto; overflow: scroll;">
-<script type="text/javascript">
+	<script type="text/javascript">
 $(function(){
 
    /* 무한 스크롤링 이벤트 */
@@ -148,6 +148,8 @@ $(function(){
                               });
                               $('#toggletest_jjh').hide(1000); 
                               
+                             
+                              
                          } else {
                                  $('#main-content').css({
                                      'margin-right': '0px'
@@ -159,9 +161,9 @@ $(function(){
                                   
                                  
                               }  
-                          var specifictaskno=spobj.specifictask_no;
+                          /* var specifictaskno=spobj.specifictask_no; */
                           /* var specifictaskcont=spobj.specifictask_cont; */
-                          detailSpecifictask(specifictaskno);
+                          /* detailSpecifictask(specifictaskno); */
                           /* var specifictaskstart = $('#specifictask_start').val();
                           var specifictaskend = $('#specifictask_end').val(); */
                           
@@ -297,25 +299,30 @@ $(function(){
 
 </script>   
    <section class="wrapper site-min-height">
-   <h3>
-   	<i class="fa fa-angle-right"></i> Project : ${project_name} 
-   </h3>
-   <div class="col-lg-9">
-      <div class="ajaxtest"></div>
-      <div id="ajaxspecific"></div>
-   </div> 
-	<div class="col-lg-3" id="toggletest_jjh">
-    	<div class="form-panel" style="height: 300px;">
-		<script>
-        $(document).ready(function(){
-			$("#div1").load("multifileUploadForm.jsp");
-		});
-        </script>
-        
-	    <div id="div1" style="width:300px; height:300px; ">
-	    <input type="hidden" id="proejct_no" name="proejct_no" value="${proejct_no}"></div>
-      	</div>
-		
-      </div>
+    <div class="row mt">
+     <h3>
+        <i class="fa fa-angle-right"></i> Project : ${project_name} 
+     </h3>
+   		<div class="col-lg-9">
+	      <div class="ajaxtest"></div>
+	      <div id="ajaxspecific"></div>
+  		</div> 
+		<div class="col-lg-3" id="toggletest_jjh">
+		    	<div class="taskcont" id="122tasktitle">
+		    	<input type="text" class="taskinput " value="파일 업로드">
+					<div class="specifictaskbox" style="background-color:none; align:center">
+				<script>
+		        $(document).ready(function(){
+					$("#div1").load("accessible_view/multifileUploadForm.jsp");
+					
+				});
+		        </script>
+			    <div id="div1" style="width:300px; height:300px; ">
+			    <input type="hidden" id="proejct_no" name="proejct_no" value="${proejct_no}"></div>
+			    </div>
+	      	</div>
+	     </div>
+	</div>
+	
    </section>
 </section>

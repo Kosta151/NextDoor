@@ -11,6 +11,9 @@
 <script src="<%=request.getContextPath() %>/resources/task/jquery.form.min.js"></script>
 <!-- jQuery MultiFile Plugin import -->
 <script src="<%=request.getContextPath() %>/resources/task/jQuery.MultiFile.min.js"></script>
+<script src="resources/main/assets/js/sweetalert.min.js"></script>
+
+
 
 <script>
 $(document).ready(function(){
@@ -18,7 +21,6 @@ $(document).ready(function(){
 	//use jQuery MultiFile Plugin
     $('#multiform input[name=file]').MultiFile({
         max: 5, //업로드 최대 파일 갯수 (지정하지 않으면 무한대)
-        accept: 'jpg|png|gif', //허용할 확장자(지정하지 않으면 모든 확장자 허용)
         maxfile: 1024, //각 파일 최대 업로드 크기
         maxsize: 3024,  //전체 파일 최대 업로드 크기
         STRING: { //Multi-lingual support : 메시지 수정 가능
@@ -38,15 +40,18 @@ $(document).ready(function(){
 </head>
 <body>
 
-<h3>jQuery ajax fileupload (ajax 파일업로드)</h3>
+<div class="multiform_body" style="text-align: center;">
 <form name="multiform" id="multiform" action="uploadfile.htm"
                                       method="POST" enctype="multipart/form-data">
 	<!-- 다중 파일업로드  -->
-	<input type="file" name="file" />
- 	<div id="afile3-list" style="border:2px solid #c9c9c9;min-height:50px"></div>
-	<input type="submit" id="btnSubmit" value="전송"/><br/>
+	
+	<br>
+ 	<div id="afile3-list" style="border:1px solid #c9c9c9; min-weight:50px; min-height:100px;margin-left: 80px;"></div>
+ 	
+ 	<input type="file" name="file" style="margin-left: 80px;" />
+	<input type="submit" id="btnSubmit" style="margin-left: 80px; margin-top:20px; width:150px;" value="전송" class="btn btn-warning"/><br/>
 </form>
-
+</div>
 <script>
 /*jQuery form 플러그인을 사용하여 폼데이터를 ajax로 전송*/
 var downGroupCnt =0; //다운로드그룹 개수카운트
@@ -60,19 +65,24 @@ $(function(){
        type:'POST',
        //보내기전 validation check가 필요할경우
        beforeSubmit: function (data, frm, opt) {
-	       console.log("beforeSubmit : "+ data);
-           alert("전송전!!");
            return true;
        },
        //submit이후의 처리
-       success: function(data, statusText){
-    	   alert("전송성공!!");
-           console.log(data); //응답받은 데이터 콘솔로 출력         
+       success: 
+    	function(data, statusText){
+    	   swal({
+               title: "파일 업로드 완료!",
+               type: "success",
+               showCancelButton: false,
+               confirmButtonColor: "#194f89",
+               confirmButtonText: "확인",
+               closeOnConfirm: false
+               
+             })
        },
        //ajax error
        error: function(e){
-           alert("에러발생!!");
-           console.log(e);
+           
        }                               
 	});
 });

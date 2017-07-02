@@ -7,10 +7,10 @@
 	<section class="wrapper site-min-height">
 		<div class="row mt">
 			<div class="col-md-12">
-		    	<div class="content-panel">
+		    	
+			    	<h4><i class="fa fa-angle-right"></i> File List </h4>
+			    	
 		        	<table class="table table-striped table-advance table-hover">
-			        	<h4><i class="fa fa-angle-right"></i> File List </h4>
-			            	<hr>
 		                    <thead>
 		                    	<tr>
 		                        	<th><i class="fa fa-bullhorn"></i> 이름 </th>
@@ -32,7 +32,7 @@
 		                    </c:forEach>
 							</tbody>
 		            </table>
-				</div><!-- /content-panel -->
+				
 			</div><!-- /col-md-12 -->
 		</div><!-- /row -->
 	</section>

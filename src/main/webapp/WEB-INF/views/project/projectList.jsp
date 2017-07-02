@@ -71,7 +71,7 @@ $(function(){
 									var doughnutData = [
 											{
 												value: ${list.percent},
-												color: "#797979" 
+												color: "#424a5d" 
 											},
 											{
 												value : 100-${list.percent},
@@ -82,7 +82,7 @@ $(function(){
 								</script>
 						<div class="row">
 							<div class="col-sm-6 col-xs-6 goleft">
-								<p>업무<br />진행률:</p>
+								<p>업무<br />진행률</p>
 							</div>
 							<div class="col-sm-6 col-xs-6">
 								<h2>${list.percent}%</h2>
@@ -131,14 +131,6 @@ $(function(){
 	                                      <p>프로젝트명</p>
 	                              <input type="text" name="project_name"  id="project_name" placeholder="project명을 입력해주세요." autocomplete="off" class="form-control placeholder-no-fix">
 	                              <br>
-<!-- 	                              <div class="btn-group" data-toggle="buttons">
-	                                 <label class="btn btn-default">
-	                                    <input type="radio" name="options" value="public" autocomplete="off" checked> 공개
-	                                 </label>
-	                                 <label class="btn btn-default">
-	                                    <input type="radio" name="options" value="private" autocomplete="off"> 비공개
-	                                 </label>
-	                              </div> -->
 	                                  </div>
 	                                  <div class="modal-footer centered">
 	                                       <button type="button" class="btn btn-warning" id="btn">생성 </button>

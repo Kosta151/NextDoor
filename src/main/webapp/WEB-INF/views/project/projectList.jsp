@@ -103,7 +103,7 @@ $(function(){
 							</div>
 							<div class="white-body">
 							<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
-								<i class="fa fa-plus"></i>
+								<i style="margin-left: 5px;" class="fa fa-plus"></i>
 							</button>
 							</div>
 							<h2><a data-toggle="modal" href="#myModal"></a></h2>

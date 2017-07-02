@@ -8,16 +8,10 @@
 <link href="resources/main/assets/css/style.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
    href="resources/main/assets/css/sweetalert.css">
-<section id="main-content" style="width: auto; overflow: scroll;">
+<section id="main-content" style="width: auto; overflow: hidden;">
    <script type="text/javascript">
 $(function(){
-	
-	 /* $("#deletespecific").click(function () {
-    	var specifictaskno = $("#deletespecific").val()
-    	   console.log(specifictaskno);
-    	   deletespecific(specifictaskno);
-    	}); */ 
-	
+   
    $("#taskbtn").click(function(){
       if($("#task_cont").val()==""){
          swal("업무명을 입력해주세요");
@@ -44,43 +38,7 @@ $(function(){
         
       }
       
-      }); 
-   
-   $("#modibutton").click(function(){
-	      if($("#member_id").val()==""){
-	         swal("업무배정인원을 선택해주세요"); 
-	         $("#member_id").focus();
-	         return false;
-	      }else if($("#specifictask_start").val()==""){
-    	  	 swal("업무시작일을 입력해주세요");
-	         $("#specifictask_start").focus();
-	         return false;
-	    	  
-	      }else if($("#specifictask_end").val()==""){
-	    	  swal("업무마감일을 입력해주세요");
-	          $("#specifictask_end").focus();
-	          return false;
-	      }else{
-	          swal({
-	                    title: "업무 수정 완료!",
-	                    type: "success",
-	                    showCancelButton: false,
-	                    confirmButtonColor: "#194f89",
-	                    confirmButtonText: "확인",
-	                    closeOnConfirm: false
-	                    
-	                  },
-	                  function(isConfirm){
-	                      if (isConfirm) {
-	                         location.href="updateSpecifictask.htm";
-	                          $('#modiform').submit();
-	                      }
-	                }
-	          );
-	        
-	      }
-	      
-	      }); 
+      });    
    
     // 무한 스크롤링 실행 이벤트
     var bool_sw = true;
@@ -103,9 +61,10 @@ $(function(){
                       
            }
         });
+   
    infinite();      
    function infinite(){        
-      $.ajax({
+       $.ajax({
       url : "tasklist.htm",
       type : "post",
       data : {idx:start_idx},
@@ -116,7 +75,7 @@ $(function(){
          var owner = data.owner;
          var user = data.user;
          
-         start_idx = start_idx+5;
+         start_idx = start_idx+3;
          
          console.log("end_idx" + end_idx);
          console.log("cidx" + cidx);
@@ -124,7 +83,7 @@ $(function(){
          if(end_idx!=cidx){
             bool_sw=false;
          }
-         cidx = cidx+5;
+         cidx = cidx+3;
          console.log(bool_sw);
          
          $(".ajaxtest").append("<div id='"+start_idx+"containtask' style='float:left; width : 100%; height : 500px;' margin:'20px;'>");
@@ -134,7 +93,7 @@ $(function(){
             
             if(data.owner==data.user){
                taskcont = "<div class='taskcont' id='"+obj.task_no+"tasktitle'>"
-                     + "<input type='text' id='"+obj.task_no+"change' class='taskinput ' value='"+obj.task_cont+"'>"                
+                     + "<input type='text' class='taskinput ' value='"+obj.task_cont+"'>"                
                      + "<div class='taskbutton' style='margin-top: 3px'; id='"+obj.task_no+"plus'>"
                      + "<i class='fa fa-plus' ></i>"
                      + "</div>"
@@ -166,16 +125,13 @@ $(function(){
              $("#"+obj.task_no+"task").append(taskcont);
              $("#"+start_idx+"containtask").append("</div>");
              $("#"+obj.task_no+"task").append(taskcomp);
-                                     
+             
+             
+            
              cont = $("#"+obj.task_cont+"cont").val();
              
-           //task 내용 변경
-             $("#"+obj.task_no+"change").change(function(e){
-                alert("task 변경된 내용  : " + $("#"+obj.task_no+"change").val());
-                changetasktitle(obj.task_no, $("#"+obj.task_no+"change").val());
-                
-             });
-                                       
+             
+             
             //insert event 
             $("#"+obj.task_no+"plus").click(function(){
                
@@ -187,28 +143,29 @@ $(function(){
                
             });
             
-             $("#"+obj.task_no+"submit").click(function(){
+              $("#"+obj.task_no+"submit").click(function(){
 
                 taskno = obj.task_no;
                 cont = $("#"+obj.task_cont+"cont").val();
-                               
+                 
                 console.log("cont : " + cont);
                 console.log("taskno : " + taskno);
                 
                  insertspecific(cont,taskno);
-                 $("#"+obj.task_no+"plusdrop").hide();
-             }); 
+                 $("#"+index+"plusdrop").hide();
+             });  
             
             //delete event
               $("#"+obj.task_no+"delete").click(function(){
               
                projectno = obj.project_no;
-               taskno = obj.task_no;
+                taskno = obj.task_no;
                console.log("projectno : " + projectno);
                console.log("taskno : " + taskno);
-               deletetask(projectno, taskno);
+               deletespecific(projectno, taskno);
             }); 
-                                                            
+               
+
              //세부 리스트 뿌리는 부분
              $.ajax({
                 url : "specifictask.htm",
@@ -217,20 +174,22 @@ $(function(){
                 dataType : "json",
                 success : function(data){
                   console.log(data.data);
-                                                  
-                   var comp="";
-                                                                                                
-                   $.each(data.data, function(spindex, spobj){
+                  
                    
+                   
+                   var comp="";
+                                                                             
+                   $.each(data.data, function(spindex, spobj){
+                     
                       if(obj.task_no=spobj.task_no){
                          
-                        if(owner==user){
+                         if(owner==user){
+                            
+                             var specificno = spobj.specifictask_no
                         console.log(owner);
                         console.log(user);
-                        var specificno = spobj.specifictask_no;
-                        
                          speicficcont="<div class='specifictaskbox'  id='"+spobj.specifictask_no+"specific'>"
-                                 + spobj.specifictask_cont                                                                 
+                                  + spobj.specifictask_cont                                                                 
                                  + "<button class='specifictaskbutton' id='"+specificno+"specificbutton' style='background-color: window; border: none;' value='"+spobj.specifictask_no+"'>" 
                                  + "<i class='fa fa-pencil'>"                                   
                                  + "</i></button>"  
@@ -242,52 +201,59 @@ $(function(){
                               + "<input type='checkbox' class='sp-checkbox' id='"+spobj.specifictask_no+"sp-checkbox' value='"+spobj.specifictask_no+"'>"
                                + "</div>";
                          }
-                                                                                                                           
-                        comp = spobj.specifictask_comp;                                
+    
+                             comp = spobj.specifictask_comp;                                
                         if(comp==0){
                             $("#"+obj.task_no+"tasktitle").append(speicficcont);
-                        }else if(comp==1){                          
-                           $("#"+obj.task_no+"comp").append(speicficcont);
-                        }                      
-                        var spcont =speicficcont;     
-                                                                                                                                                                                              
+                         }else if(comp==1){
+                            $("#"+obj.task_no+"comp").append(speicficcont);
+                         }                      
+                         var spcont =speicficcont;      
+                         
+
+                         
+                         
                          //작업 확인 버튼
                          $("#"+spobj.specifictask_no+"sp-checkbox").click(function(){
-                                                    
-                           var comp = spobj.specifictask_comp;
+                           
                            var specifictaskno=spobj.specifictask_no;
                            var taskno = obj.task_no;
-                           checkspecifictask(specifictaskno,taskno,spcont,comp);
+                           checkspecifictask(specifictaskno,taskno,spcont);
                          }); 
                       } 
-                                           
-                      $("#"+spobj.specifictask_no+"specificbutton").click(function () {
-                          
-                          if ($('#moditoggle').is(":visible") == true) {
-                             $('#main-content').css({
-                                 'margin-left': '210px'
-                             });
-                             $('#moditoggle').css({
-                                 'margin-right': '-210px'
-                             });
-                             $('#moditoggle').hide(50); 
-                             
-                        } else {
-                                $('#main-content').css({
-                                    'margin-right': '0px'
-                                });
-                                 $('#moditoggle').slideToggle();   
-                                $('#moditoggle').css({
-                                    'margin-right': '0'
-                                });                                                             
-                        }  
-                         var specifictaskno=spobj.specifictask_no;
-                         var specifictaskcont=spobj.specifictask_cont;
-                         detailSpecifictask(specifictaskno,specifictaskcont);
-                     });
-                                                                                                                                                                               
+                      
+                      
+                       $("#"+specificno+"specificbutton").click(function () {
+                         
+                           if ($('#toggletest_jjh').is(":visible") == true) {
+                              $('#main-content').css({
+                                  'margin-left': '210px'
+                              });
+                              $('#toggletest_jjh').css({
+                                  'margin-right': '-210px'
+                              });
+                              $('#toggletest_jjh').hide(50); 
+                              
+                         } else {
+                                 $('#main-content').css({
+                                     'margin-right': '0px'
+                                 });
+                                  $('#toggletest_jjh').slideToggle();   
+                                 $('#toggletest_jjh').css({
+                                     'margin-right': '0'
+                                 }); 
+                                  
+                                 
+                              }  
+                          var specifictaskno=spobj.specifictask_no;
+                          detailSpecifictask(specifictaskno);
+                      }); 
+                   
+                         
+                   
                    });
-                                                                                                        
+                   
+                  
                 },
                    error : function(){
                      alert("error");
@@ -299,30 +265,27 @@ $(function(){
          error : function(){
             alert("error");
          }
-      });     
+      });
+      
      }
+   
    });
- 
-   //작업완료 버튼 클릭시  실행
-   function checkspecifictask(specifictaskno,taskno,spcont,comp){
-        
+   
+   //작업완료 버튼 클리시  실행
+   function checkspecifictask(specifictaskno,taskno,spcont){
+      
         $.ajax({
           url : "checkspecifictask.htm",
           type : "post",
           data : {specifictask_no :  $("#"+specifictaskno+"sp-checkbox").val()},
           success : function(data){
             console.log(data);
-                         
-             if(comp==0){  
-            	 
-            	 $("#"+specifictaskno + "specific").hide();
-                 $("#" +taskno+"task").append(spcont); 
-             }else{  
-            	 
-                 $("#"+specifictaskno + "specific").remove();
-                 $("#" +taskno+"tasktitle").append(spcont); 
-             }
-                
+             
+            
+            $("#"+specifictaskno + "specific").hide();
+            $("#" +taskno+"task").append(spcont);
+            
+         
           },
           error : function(){
             alert("error");
@@ -330,69 +293,67 @@ $(function(){
        }); 
    }
    
+   
    //insert
-   function insertspecific(cont,taskno){
-     
+    function insertspecific(cont,taskno){
+      
       console.log("taskno : "+taskno);
       console.log("cont: "+cont);
-      var specificno = taskno; 
+     
          $.ajax({
              url : "insertspecifictask.htm",
              type : "post",
              data : {specifictask_cont : cont, task_no : taskno},
              dataType : "json",
              success : function(data){
-            var speno = data.specifictask_no;
-            	             	                                                                                        
-             var insertspecific = "<div class='specifictaskbox' style='background-color : none;' id='"+taskno.cont+"specific'>"
+            var specificno = taskno;   
+            alert("specifictask_no : " + data.specifictask_no);
+            
+            var insertspecific = "<div class='specifictaskbox' style='background-color : none;' id='"+taskno.cont+"specific'>"
                            + cont 
-                           + "<button class='specifictaskbutton' id='"+speno+"specificbutton' style='background-color: window; border: none;' value='"+specificno+"' >"                   
+                           + "<button class='specifictaskbutton' id='"+specificno+"specificbutton' style='background-color: window; border: none;' >"                   
                            + "<i class='fa fa-pencil'>"                                   
                            + "</i></button>"  
                            + "<input type='checkbox' class='sp-checkbox' id='"+taskno+1+"sp-checkbox' value='"+taskno+1+"'>"
-                           + "</div>";
-                      
-                                                                                                                                    
+                           + "</div>"; 
+                                                                                                                                                              
                 $("#"+taskno+"tasktitle").append(insertspecific);
-                      
-                $("#"+speno+"specificbutton").click(function () {
+                
+                $("#"+specificno+"specificbutton").click(function () {
                     
-                    if ($('#moditoggle').is(":visible") == true) {
+                    if ($('#toggletest_jjh').is(":visible") == true) {
                        $('#main-content').css({
                            'margin-left': '210px'
                        });
-                       $('#moditoggle').css({
+                       $('#toggletest_jjh').css({
                            'margin-right': '-210px'
                        });
-                       $('#moditoggle').hide(50); 
+                       $('#toggletest_jjh').hide(50); 
                        
                   } else {
                           $('#main-content').css({
                               'margin-right': '0px'
                           });
-                           $('#moditoggle').slideToggle();   
-                          $('#moditoggle').css({
+                           $('#toggletest_jjh').slideToggle();   
+                          $('#toggletest_jjh').css({
                               'margin-right': '0'
-                          });                                                      
+                          }); 
+                           
+                          
                        }  
-                    
                    var specifictaskno=data.specifictask_no;
-                   var specifictaskcont=cont; 
-                   detailSpecifictask(specifictaskno,specifictaskcont);
-               }); 
-                
-                
+                   detailSpecifictask(specifictaskno);
+               });
              },
              error : function(){
                 alert("error");
-                }                                              
-             });                        
-   }
+                }
+             });
+   }  
             
 
    function detailSpecifictask(specifictaskno,specifictaskcont){
    console.log(specifictaskno);  
-   
       $.ajax({
           url : "detailSpecifictaskajax.htm",
           type : "post",
@@ -400,28 +361,21 @@ $(function(){
           dataType : "json",
           success : function(data){
                 
-             console.log(data.data);
+                console.log(data.data);
                          
              if(data.data!=null){
-            	$("#specifictask_cont").val(specifictaskcont); 
                 $("#specifictask_start").val(data.data.specifictask_start);
                 $("#specifictask_end").val(data.data.specifictask_end);
                 $("#taskmember_id").val(data.data.member_id); 
                 $("#specifictask_no").val(specifictaskno);
                 $(".specifictask_no").val(specifictaskno);
-                $("#member_id").val(data.data.member_id); 
-                $("#deletespecific").val(specifictaskno);
-                                                    
-             }else{   
-            	
-            	$("#specifictask_cont").val(specifictaskcont); 
+                
+             }else{          
                 $("#specifictask_start").val("");
                 $("#specifictask_end").val("");
                 $("#taskmember_id").val(""); 
                 $("#specifictask_no").val(specifictaskno);
                 $(".specifictask_no").val(specifictaskno);
-                $("#member_id").val(""); 
-                $("#deletespecific").val(specifictaskno);
              }                   
 
           },
@@ -432,8 +386,8 @@ $(function(){
 
     } 
 
-    //delete task
-    function deletetask(projectno, taskno){
+    //delete
+    function deletespecific(projectno, taskno){
       
       console.log("taskno : "+taskno);
       console.log("projectno: "+projectno);
@@ -451,45 +405,7 @@ $(function(){
                alert("error");
              }
           }); 
-    }
-                   
-  //delete specific
-    function deletespecific(specifictaskno){
-      
-      console.log("specifictaskno : "+specifictaskno);
-         
-          $.ajax({
-             url : "deleteSpecifictask.htm",
-             type : "post",
-             data : {specifictask_no : $("#deletespecific").val()},
-             success : function(data){
-               
-               $("#"+specifictaskno+"specific").remove();
-               
-             },
-             error : function(){
-               alert("error");
-             }
-          });  
-    }
-  
-  //업무 명 변경
-    function changetasktitle(task_no, changecont){
-       
-        $.ajax({
-              url : "changetasktitle.htm",
-              type : "post",
-              data : {task_no : task_no, task_cont : changecont},
-              success : function(data){
-                
-               
-              },
-              error : function(){
-                alert("error");
-              }
-           });  
-       
-    }
+    } 
 
 
 </script>
@@ -497,8 +413,8 @@ $(function(){
    <section class="wrapper site-min-height">
       <div>
          <div>
-            <h3>
-               <i class="fa fa-angle-right"></i> Project : ${project_name} 
+            <h3 style="padding-top: 17px;">
+               <i class="fa fa-angle-right"></i> ${project_name}
             </h3>
             <sec:authentication property="principal.username" var="user" />
             <c:if test="${owner==user}">
@@ -549,75 +465,123 @@ $(function(){
          </div>
       </div>
 
-      <div class="col-lg-3" id="moditoggle" style="background-color:#424a5d; padding-top: 15px; padding-bottom: 15px;">
+      <div class="col-lg-3" id="toggletest_jjh">
 
          <div class="form-panel" style="height: 550px;">
-            
+            <div class="tab">
+               <hr>
+               <button class="tablinks btn btn-primary"
+                  onclick="openCity(event, 'London')" id="defaultOpen"
+                  style="margin-left: 20px; width: 40%; background-color: #fafafa; color: black;">속성</button>
+               <button class="tablinks btn btn-danger"
+                  onclick="openCity(event, 'Paris')"
+                  style="width: 40%; background-color: #fafafa; color: black;">파일</button>
+               <hr>
+            </div>
+
             <div id="London" class="tabcontent">
-              <form action="updateSpecifictask.htm" method="post" id="modiform"> 
+               <form action="updateSpecifictask.htm" method="post">
+
                   <div class="form-group">
                      <p>
-                        세부업무명 : <input class="form-control" id="specifictask_cont" type="text" name="specifictask_cont"
-                           value="">
+                        세부업무명 : <input id="specont" type="text" name="specifictask_cont"
+                           value="${specifictask_cont}" readonly="readonly">
                      </p>
                   </div>
                   <hr>
                   <div class="form-group">
-                     <p>업무배정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-                     <select class="form-control" name="member_id" id="member_id">
-
-                       <option value=""></option>
+                     <label>업무배정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+                     <select name="member_id" id="sel" value="">
+                        <option value="${modidto.member_id}">${modidto.member_id}</option>
                         <c:forEach items="${memberlist}" var="mlist">
                            <option value="${mlist.member_id}">${mlist.member_id}</option>
                         </c:forEach>
                      </select>
                      <p>
-                        배정된 인원 : <input class="form-control" type="text" readonly="readonly"
-                           id="taskmember_id" name="taskmember_id" value="${modidto.member_id}">
+                        배정된 인원 : <input type="text" readonly="readonly"
+                           id="taskmember_id" name="memberid" value="${modidto.member_id}">
                      </p>
                   </div>
                   <hr>
 
-                  
-                     <label> <i></i>기간설정</label>                     				  
+                  <div class="form-group">
+                     <label> <i></i>기간설정
+                     </label>
+
                      <div class="form-group">
                         <p>
-                           업무시작일:<input
+                           시작일:<input
                               class="form-control form-control-inline input-medium default-date-picker"
                               width="50%" type="text" value="${modidto.specifictask_start}"
                               id="specifictask_start" name="specifictask_start">
+
                         </p>
                         <%-- <input type="text" id="specifictask_start" name="specifictask_start" value="${modidto.specifictask_start}"></p> --%>
                      </div>
-          
                      <div class="form-group">
                         <p>
-                           업무마감일:<input
+                           마감일:<input
                               class="form-control form-control-inline input-medium default-date-picker"
                               size="8" type="text" value="${modidto.specifictask_end}"
                               id="specifictask_end" name="specifictask_end">
                         </p>
                         <%-- <input type="text" id="specifictask_start" name="specifictask_start" value="${modidto.specifictask_start}"></p> --%>
                      </div>
-				
 
                      <input type="hidden" id="specifictask_no" name="specifictask_no"
                         value="">
+                     <button type="submit" class="btn btn-primary" id="btn-submit"
+                        style="float: left; margin-left: 30px; width: 30%; background-color: #ffd777; color: navy;">수정</button>
+                     <%-- <button type="button"><a href="deleteSpecifictask.htm?specifictask_no=${specifictaskno}">업무삭제</a></button> --%>
+               </form>
 
-                       <button type="submit" id="modibutton" class="btn btn-primary modibutton"
-                        style="margin-left: 15px;">수정</button>                     
-               </form> 
-
-                  <form action="deleteSpecifictask.htm"> 
+               <form action="deleteSpecifictask.htm">
                   <input type="hidden" class="specifictask_no"
                      name="specifictask_no" value="">
-                  <button class="btn btn-danger modibutton" id="deletespecific" value=""
-                     style="margin-left: 10px;">삭제</button>
-                 </form>    
+                  <button type="submit" class="btn btn-danger"
+                     style="float: left; margin-left: 10px; width: 30%; background-color: #ffd777; color: navy;">삭제</button>
+               </form>
             </div>
-         </div>            
-      </div>                 
+         </div>
+
+         <div id="Paris" class="tabcontent">
+
+            <form class="form-horizontal style-form" action="uploadfile.htm"
+               method="post" enctype="multipart/form-data">
+               <div>
+                  <label>파일업로드</label> <input type="hidden" name="specifictask_no"
+                     value="${specifictask_no}"> <input type="file"
+                     name="file">
+               </div>
+               <br>
+               <button type="submit" class="btn btn-primary"
+                  style="background-color: #ffd777; color: navy;">파일올리기</button>
+
+            </form>
+         </div>
+
+      </div>
+                  
    </section>
 </section>
 
+<!-- tab 자바스크립트 -->
+<script>
+   function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+         tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+         tablinks[i].className = tablinks[i].className
+               .replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+   }
+
+   // Get the element with id="defaultOpen" and click on it
+   document.getElementById("defaultOpen").click();
+</script>

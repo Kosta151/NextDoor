@@ -43,7 +43,7 @@ a, a:hover, a:focus {
 
 /* Bootstrap Modifications */
 .modal-header {
-	background: #ffcc00 ;
+	background: #21252f; 
 }
 
 .modal-title {
@@ -208,8 +208,8 @@ a, a:hover, a:focus {
 
 .btn-theme03 {
   color: #fff;
-  background-color: #48cfad;
-  border-color: #37bc9b;
+  background-color: #428bca;
+/*   border-color: #37bc9b; */
 }
 .btn-theme03:hover,
 .btn-theme03:focus,
@@ -222,9 +222,9 @@ a, a:hover, a:focus {
 }
 
 .btn-theme04 {
-  color: #fff;
-  background-color: #ed5565;
-  border-color: #da4453;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
 }
 .btn-theme04:hover,
 .btn-theme04:focus,

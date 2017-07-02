@@ -34,14 +34,11 @@ public class TaskController {
 	
 	@Autowired
 	private ProjectService service;
-<<<<<<< HEAD
-	
-=======
-	   
+   
 	@Autowired
 	private AlarmService alarmservice;
 
->>>>>>> 4eaf7008cb88a80db06347ec14bb99af73768868
+
 	/*
     * @method Name : listTask
     * @date : 2017. 06. 13

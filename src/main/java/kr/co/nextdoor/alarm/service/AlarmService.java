@@ -45,7 +45,6 @@ public class AlarmService {
 	    * @return : int
 	    */
 	public int insertAlarm(AlarmDTO alarmdto){
-		System.out.println("alarmservice : " + alarmdto.toString()); 
 		AlarmDAO alarmdao = sqlsession.getMapper(AlarmDAO.class);
 		int result = alarmdao.insertAlarm(alarmdto);
 		return result;

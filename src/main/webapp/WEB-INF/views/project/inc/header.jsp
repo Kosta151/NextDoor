@@ -21,14 +21,17 @@
 					 var msg = JSON.parse(event.data);
 					 var receiver = msg.receiver;
 					 var user_id = msg.user_id;
+					 var alarmcount = msg.alarmcount;
 					 var specifictask_cont = msg.specifictask_cont;
 					 var user = '${loginUser}'
 					 if(user!=user_id){
-						  console.log("아이디 : "+msg.specifictask_cont +"  // 받는이 : "+ msg.receiver );
-						$("#alarmarea").html("<li class='error'>"+user_id+"님이"+receiver+"님에게"+"<br>"+specifictask_cont+"업무를 배당 받으셨습니다</li>");
+						  console.log("아이디 : "+msg.specifictask_cont +"  // 받는이 : "+ msg.receiver);
+						$("#alarmarea").html("<li class='error'>"+user_id+"님이"+"<br>"+receiver+"님에게"+"<br>"+specifictask_cont+"업무를 배당 받으셨습니다</li>");
+						$('#count').empty();
+			           	$("#count").append(alarmcount);
 						var closebutton = $('.error');
 						closebutton.on('click',function(){
-							$(this).parent().hide();
+							$(this).parent().remove();
 						});
 					 	} 
 				 };
@@ -77,26 +80,7 @@
 		          }
 		       }); 
 		   }
-			
-			
-		function countalarm(member_id,specifictask_no, specifictask_cont){
-			
-	        $.ajax({
-	          url : "updateSpecifictask.htm",
-	          type : "POST",
-	          data : {alarm_no : alarm_no ,alarm_receiver : alarm_receiver},
-	          success : function(data){
-	            console.log(data);
-	            var alarm_count = data.alarm_count;
-	           $("#count").append(alarm_count);
-	           
-	         
-	          },
-	          error : function(){
-	            alert("error");
-	          }
-	       }); 
-	   }
+
 </script>
 <style>
 .error {
@@ -104,20 +88,21 @@
     height: 100px;
     position: fixed;
     right: 0;
-    top:0;
-    margin-top: 60px;
+    top: 0;
+    margin-top:70px;
     margin-left:-125px;
     bottom: 100px;
     z-index: 9999;
-    background-color: #ffffff;
+    background-color:#ffffff;
     color: #291647;
     font-family: Calibri;
-    font-size: 17px;
-    font-weight :bold;
+    font-size: 12px;
     padding: 10px;
-    text-align:center;
+    text-align: center;
     border-radius: 2px;
-    
+    border-style: double;
+   	border-width: medium;
+   	border-color: #291647;
 }
 
 </style>
@@ -136,7 +121,7 @@
 
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                       <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> 
+                       <a data-toggle="dropdown" class="dropdown-toggle" > 
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme" id="count">${alarmcount}</span>
                       </a>
@@ -158,7 +143,8 @@
                              	<span class="photo"><img alt="avatar" src='resources/main/assets/img/zz.png'></span>
                              	<span class="subject">
 								<span class="from">${alarm.alarm_sender}</span>&nbsp;&nbsp;&nbsp;
-								<span class="from">${alarm.alarm_date}</span>
+								<span class="from">${alarm.alarm_date}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="from">${alarm.alarm_read}</span>
 								</span>	
 								<span class="message">
 								${alarm.alarm_cont}

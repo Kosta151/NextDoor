@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.nextdoor.alarm.service.AlarmService;
 import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.project.dto.ProjectDTO;
 import kr.co.nextdoor.project.service.ProjectService;
@@ -35,7 +36,9 @@ public class TaskController {
 	
 	@Autowired
 	private ProjectService service;
-	
+	   
+	@Autowired
+	private AlarmService alarmservice;
 
 	/*
     * @method Name : listTask
@@ -44,7 +47,7 @@ public class TaskController {
     * @description : 업무 선택시 업무 출력 화면으로 이동
     */
 	@RequestMapping(value="task.htm", method=RequestMethod.GET)
-	public String listTask(ProjectDTO projectdto, Model model, HttpSession session) throws Exception{
+	public String listTask(ProjectDTO projectdto, Model model, HttpSession session,Principal principal) throws Exception{
 	session.setAttribute("project_no", projectdto.getProject_no());
 		
 		String specifictask = (String) session.getAttribute("specifictask_no");
@@ -58,7 +61,8 @@ public class TaskController {
 		model.addAttribute("project_name", projectdto.getProject_name());
 		session.setAttribute("specifictask_no", specifictask);
 		session.setAttribute("specifictask_cont", specifictaskcont);
-		
+		session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
+	    session.setAttribute("alarmlist",alarmservice.AlarmList(principal.getName()));
 		System.out.println("task view 이동");
 		return "task.task";
 	}

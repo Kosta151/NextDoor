@@ -19,7 +19,7 @@ import kr.co.nextdoor.alarm.service.AlarmService;
 * @Class : AlarmController
 * @Date : 2017. 06. 21 
 * @Author : 박찬섭
-* @Desc : AlarmController
+* @Desc : AlarmController  
 */
 
 @Controller
@@ -40,8 +40,14 @@ public class AlarmController {
 		alarmservice.updateAlarm(alarm_no);
 		model.setViewName("jsonView");
 		model.addObject("alarm_count",alarmservice.CountAlarmList(alarm_receiver));
-		session.setAttribute("alarm_list", alarmservice.AlarmList(alarm_receiver));
 		return model; 
 	}
-	
+/*	@RequestMapping(value = "alarmlist.htm", method=RequestMethod.POST)
+	public ModelAndView alarmlist(String alarm_receiver){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("jsonView");
+		model.addObject("alarm_list", alarmservice.AlarmList(alarm_receiver));
+		
+		return model; 
+	}*/
 }

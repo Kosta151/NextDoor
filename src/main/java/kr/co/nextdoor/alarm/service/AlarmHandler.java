@@ -59,6 +59,7 @@ public class AlarmHandler extends TextWebSocketHandler{
 	    */
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		System.out.println("핸들러");
 		Map<String, Object> map = session.getAttributes();
 		String user_id = (String) map.get("user_id");
 		String content = message.getPayload();
@@ -66,13 +67,15 @@ public class AlarmHandler extends TextWebSocketHandler{
 	    JSONObject jo = (JSONObject) jp.parse(content);
 	    String receiver = (String)jo.get("receiver");
 	    String specifictask_cont = (String)jo.get("specifictask_cont");
+	    int alarmcount = alarmservice.CountAlarmList(receiver)+1;
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("user_id",user_id);
 		data.put("specifictask_cont", specifictask_cont);
 		data.put("receiver", receiver);
+		data.put("alarmcount", alarmcount);
 		ObjectMapper om = new ObjectMapper();
 		String jsonStr = om.writeValueAsString(data);
-
+		
 		for (WebSocketSession webSocketSession : connectedUsers) {
 			if (!session.getId().equals(webSocketSession)) {
 				webSocketSession.sendMessage(new TextMessage(jsonStr));

@@ -138,6 +138,7 @@ public class SpecificTaskController {
    @RequestMapping(value ="updateSpecifictask.htm")
    public String updateSpecifictask(SpecificTaskModiDTO specifictaskmodidto, SpecificTaskDTO specifictaskdto ,HttpSession session){
       //알림 관련 추가(박찬섭) start
+	   System.out.println("controller");
       SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");
       AlarmDTO alarmdto = new AlarmDTO();
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -161,8 +162,9 @@ public class SpecificTaskController {
       alarmservice.insertAlarm(alarmdto);
       
       session.setAttribute("alarmcount", alarmservice.CountAlarmList(user.getUsername()));
-      SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
+      
       //알림 관련 추가(박찬섭) end
+      SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskmodidto.getSpecifictask_no());
       if(modidto==null){
          specifictaskservice.insertModiSpecifictask(specifictaskmodidto);
       }else{
@@ -176,6 +178,7 @@ public class SpecificTaskController {
                
    }
    
+
    /*
       * @method Name : checkSpecificTask
       * @date : 2017. 06. 23

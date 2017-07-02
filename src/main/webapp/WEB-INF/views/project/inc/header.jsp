@@ -117,7 +117,10 @@
    	border-width: medium;
    	border-color: #291647;
 }
-
+::-webkit-scrollbar {
+    width: 10px;
+    height: 13px;
+}
 </style>
 <!--header start-->
       <header class="header black-bg">
@@ -141,22 +144,22 @@
                         <ul class="dropdown-menu extended inbox">
                             
                             
-                            <div class="notify-ar bvrow notify-arrow-green" style="overflow-y:scroll; width: 420px; height: 420px" scrollbars=yes, resizable>
+                            <div id="none" class="notify-ar bvrow notify-arrow-green" style="overflow-y:scroll; overflow-x:hidden; width: 450px; height: 420px" scrollbars=yes, resizable>
                             
-                            <li style="width: 420px;" >
-                                <p class="green">알림 내용</p>
+                            <li style="width: 450px;">
+                                <p class="green">&nbsp;&nbsp;알림 내용</p>
                             </li>
                             
                             <c:forEach items="${alarmlist}" var="alarm">
                            
-                            <li style="width: 420px; background-color: white;"  id="colorchange">
+                            <li style="width: 450px; background-color: white;"  id="colorchange">
                             <a id="alarm_update" href="javascript:updatealarm('${alarm.alarm_no}','${alarm.alarm_receiver}')" >
                             <input type="hidden" id="alarm_no" value="${alarm.alarm_no}">
                             <input type="hidden" id="alarm_receiver" value="${alarm.alarm_receiver}">
                              	<span class="photo"><img alt="avatar" src='resources/main/assets/img/zz.png'></span>
                              	<span class="subject">
 								<span class="from">${alarm.alarm_sender}</span>&nbsp;&nbsp;&nbsp;
-								<span class="from">${alarm.alarm_date}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="from">${alarm.alarm_date}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<span class="from">${alarm.alarm_read}</span>
 								</span>	
 								<span class="message">

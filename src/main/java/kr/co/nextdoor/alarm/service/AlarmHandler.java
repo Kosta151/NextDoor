@@ -59,7 +59,6 @@ public class AlarmHandler extends TextWebSocketHandler{
 	    */
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		System.out.println("핸들러");
 		Map<String, Object> map = session.getAttributes();
 		String user_id = (String) map.get("user_id");
 		String content = message.getPayload();

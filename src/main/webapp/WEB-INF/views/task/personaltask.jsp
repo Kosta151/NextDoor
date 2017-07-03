@@ -113,7 +113,7 @@ $(function(){
                          speicficcont="<div class='specifictaskbox' style='background-color : none;' id='"+spobj.specifictask_no+"specific'>"
                               + spobj.specifictask_cont                                                               
                                  + "<a class='dropdown-toggle'  style='float;right; margin-right:10px;'>"       
-                                 + "<button style='background-color: window;' id='"+spobj.specifictask_no+"toggle' value='"+spobj.specifictask_no+"'>" 
+                                 + "<button class='specifictaskbutton' style='background-color: window; border:none;' id='"+spobj.specifictask_no+"toggle' value='"+spobj.specifictask_no+"'>" 
                                  + "<i class='fa fa-pencil'>"                                   
                                  + "</i></button></a>"  
                                  + "<input type='checkbox' class='sp-checkbox' id='"+spobj.specifictask_no+"sp-checkbox' value='"+spobj.specifictask_no+"'>"
@@ -139,14 +139,14 @@ $(function(){
                       
                       $("#"+spobj.specifictask_no+"toggle").click(function () {
                          
-                           if ($('#toggletest_jjh').is(":visible") == true) {
+                           if ($('#filetoggle').is(":visible") == true) {
                               $('#main-content').css({
                                   'margin-left': '210px'
                               });
-                              $('#toggletest_jjh').css({
+                              $('#filetoggle').css({
                                   'margin-right': '-210px'
                               });
-                              $('#toggletest_jjh').hide(1000); 
+                              $('#filetoggle').hide(1000); 
                               
                              
                               
@@ -154,8 +154,8 @@ $(function(){
                                  $('#main-content').css({
                                      'margin-right': '0px'
                                  });
-                                  $('#toggletest_jjh').slideToggle();   
-                                 $('#toggletest_jjh').css({
+                                  $('#filetoggle').slideToggle();   
+                                 $('#filetoggle').css({
                                      'margin-right': '0'
                                  }); 
                                   
@@ -307,7 +307,7 @@ $(function(){
 	      <div class="ajaxtest"></div>
 	      <div id="ajaxspecific"></div>
   		</div> 
-		<div class="col-lg-3" id="toggletest_jjh">
+		<div class="col-lg-3" id="filetoggle">
 		    	<div class="taskcont" id="122tasktitle">
 		    	<input type="text" class="taskinput " value="파일 업로드">
 					<div class="specifictaskbox" style="background-color:none; align:center">
@@ -317,7 +317,7 @@ $(function(){
 					
 				});
 		        </script>
-			    <div id="div1" style="width:300px; height:300px; ">
+			    <div id="div1">
 			    <input type="hidden" id="proejct_no" name="proejct_no" value="${proejct_no}"></div>
 			    </div>
 	      	</div>

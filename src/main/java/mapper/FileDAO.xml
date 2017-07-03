@@ -12,7 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 파일목록보기 -->
 	<select id="listFile" resultType="kr.co.nextdoor.file.dto.FileDTO">
-		select * from file where project_no = #{project_no}
+		select file_no, project_no, original_name, file_name, 
+		date_format(file_date, '%Y-%m-%d %H:%i:%s') as file_date, file_size, member_id
+		from file where project_no = #{project_no}
 	</select>
 	
 </mapper>

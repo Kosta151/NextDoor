@@ -32,8 +32,6 @@ public class ChartController {
 
 	}
 	
-	
-	//chart member select
 	@RequestMapping(value="chartMemberList.htm", method=RequestMethod.POST)
 	public ModelAndView listChartMember(HttpSession session){
 		String project_no = (String)session.getAttribute("project_no");

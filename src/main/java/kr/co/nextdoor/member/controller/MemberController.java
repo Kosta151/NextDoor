@@ -81,34 +81,5 @@ public class MemberController {
 	public @ResponseBody String checkId(String member_id) throws Exception {
 		return memberservice.checkId(member_id);
 	}
-	
-	/*
-	* @method Name : fblogin
-	* @date : 2017. 06. 21
-	* @author : 김선화
-	* @description : 페이스북 로그인
-	* @param : String
-	* @return : String
-	*/
-	@RequestMapping("fblogin.htm")
-	public @ResponseBody String fblogin(String email, HttpSession session) throws Exception {
-		session.setAttribute("member_id", email);
-		return sqlsession.getMapper(MemberDAO.class).getfbpassword(email);
-	}	
-		
-	/*
-	* @method Name : fbsignup
-	* @date : 2017. 06. 21
-	* @author : 김선화
-	* @description : 페이스북 회원가입
-	* @param : String
-	* @return : void
-	*/ 
-	@RequestMapping("fbjoin.htm")
-	public @ResponseBody void fbsignup(String email, String fbaccesstoken) throws Exception {
-		MemberDAO memberdao = sqlsession.getMapper(MemberDAO.class);
-		memberdao.fbjoin(email, fbaccesstoken);
-	}	
-	
-	
+
 }

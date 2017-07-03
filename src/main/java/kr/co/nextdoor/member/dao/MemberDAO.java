@@ -28,9 +28,13 @@ public interface MemberDAO {
 	*/
 	public void insertRole(String member_id);
 	
+	/*
+	* @method Name : checkId
+	* @date : 2017. 06. 16
+	* @author : 김선화
+	* @description : 아이디 중복체크
+	* @return : int
+	*/
 	public int checkId(String member_id);
-	
-	public String getfbpassword(String email);
-	
-	public void fbjoin(String email, String fbaccesstoken);
+
 }

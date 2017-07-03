@@ -48,6 +48,7 @@ $(document).ready(function(){
  	<div id="afile3-list" style="border:1px solid #c9c9c9; min-weight:50px; min-height:100px;margin:10px;"></div>
  	
  	<input type="file" name="file" style="align:center;" />
+ 	<br>
 	<input type="submit" id="btnSubmit" style="width:50%; align:center;" value="전송" class="btn btn-warning"/><br/>
 </form>
 </div>

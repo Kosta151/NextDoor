@@ -876,7 +876,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 } 
 
 /*--task toggle---*/
-
 .sidebar-toggle-box {
     float: left;
     padding-right: 15px;
@@ -898,6 +897,31 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .sidebar-closed #moditoggle {
+    margin-left: -180px;
+}
+
+/*-- file toggle --*/
+.sidebar-toggle-box {
+    float: left;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+
+.sidebar-toggle-box .fa-bars {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+}
+
+ #filetoggle {
+    display: none;
+} 
+
+.sidebar-closed #main-content {
+    margin-left: 0px;
+}
+
+.sidebar-closed #filetoggle {
     margin-left: -180px;
 }
 

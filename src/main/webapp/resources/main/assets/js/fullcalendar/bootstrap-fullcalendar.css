@@ -53,16 +53,16 @@ html .fc,
   width: 25%;
   text-align: right;    
   }
-  
+ 
+ /* 성용쓰 */ 
 .fc-header-title {
   display: inline-block;
-  vertical-align: top;
-  color: black;
+   color: #777;
   }
   
 .fc-header-title h2 {
-  margin-top: 0;
-  font-size: 16px;
+  margin-top: 7px;
+  font-size: 20px;
   white-space: nowrap;
   }
   
@@ -129,20 +129,26 @@ html .fc,
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#efefef));
     background-image: -webkit-linear-gradient(top, #fafafa, #efefef);
     background-image: -o-linear-gradient(top, #fafafa, #efefef);
-    background-image: linear-gradient(to bottom, #fafafa, #efefef);
+    background-image: linear-gradient(to bottom, #ccc, #efefef);
   color: #646464;
 }
 
 .fc-widget-header,    /* <th>, usually */
 .fc-widget-content {  /* <td>, usually */
-  border: 1px solid #424a5d;
+  border: 1px solid #ddd;
   color: #646464;
 }
   
-.fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-  background: #FFE400;
-  }
-  
+/* .fc-state-highlight { <td> today cell TODO: add .fc-today to <th>
+  background: #fff;
+  } */
+/* 성용쓰 */
+.fc-state-highlight > div > div.fc-day-number {
+    background-color: #ff3b30;
+    color: #FFFFFF;
+    border-radius: 70%;
+    margin: 4px;
+}
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
   background: #9cf;
   opacity: .2;
@@ -293,11 +299,12 @@ a.fc-event {
 .fc-rtl .fc-event {
   text-align: right;
   }
-  
+  /* 성용쓰 */
 .fc-event-skin {
-  border-color: #81c4e6;     /* default BORDER color */
-  background-color: #8cccec; /* default BACKGROUND color */
-  color: #fff;               /* default TEXT color */
+    border-color: #81c4e6;
+    background-color: #81c4e6;
+    color: #333;
+    box-shadow: 0 0 3px 0px #81c4e6;
   }
   
 .fc-event-inner {
@@ -427,7 +434,7 @@ table.fc-border-separate {
   
 .fc-border-separate th,
 .fc-border-separate td {
-  border-width: 1px 0 0 1px;
+  /* border-width: 1px 0 0 1px; */
   }
   
 .fc-border-separate th.fc-last,
@@ -456,7 +463,7 @@ table.fc-border-separate {
   
 .fc-grid .fc-day-number {
   float: right;
-  padding: 0 2px;
+  padding: 0 10px;
   }
   
 .fc-grid .fc-other-month .fc-day-number {
@@ -617,7 +624,7 @@ table.fc-border-separate {
 /* resizable */
   
 .fc-event-vert .ui-resizable-s {
-  bottom: 0        !important; /* importants override pre jquery ui 1t		.7 styles */
+  bottom: 0        !important; /* importants override pre jquery ui 1.7 styles */
   width: 100%      !important;
   height: 8px      !important;
   overflow: hidden !important;

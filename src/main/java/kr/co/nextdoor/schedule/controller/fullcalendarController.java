@@ -111,6 +111,7 @@ public class fullcalendarController {
 	
 	@RequestMapping(value="clist.htm", method=RequestMethod.GET)
 	public void listFullcalendar(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session ) throws ParseException{
+		response.setContentType("text/html; charset=utf-8");
 		System.out.println("1");
 		String project_no = (String) session.getAttribute("project_no");
 		String owner = (String) session.getAttribute("owner");

@@ -133,7 +133,7 @@ $(function(){
             end_idx++;
             
             if(data.owner==data.user){
-               taskcont = "<div class='taskcont' id='"+obj.task_no+"tasktitle' style='width:390px'>"
+               taskcont = "<div class='taskcont' id='"+obj.task_no+"tasktitle'>"
                      + "<input type='text' id='"+obj.task_no+"change' class='taskinput ' value='"+obj.task_cont+"'>"                
                      + "<div class='taskbutton' style='margin-top: 3px'; id='"+obj.task_no+"plus'>"
                      + "<i class='fa fa-plus' ></i>"
@@ -162,7 +162,7 @@ $(function(){
                     + "<div class='taskcomp'>완료된 업무</div>"
                    + "</div>"
                                          
-             $("#"+start_idx+"containtask").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%;' class='taskbox'>");
+             $("#"+start_idx+"containtask").append("<div id='"+obj.task_no+"task' style='margin:10px; height:100%; width:30%;' class='taskbox'>");
              $("#"+obj.task_no+"task").append(taskcont);
              $("#"+start_idx+"containtask").append("</div>");
              $("#"+obj.task_no+"task").append(taskcomp);

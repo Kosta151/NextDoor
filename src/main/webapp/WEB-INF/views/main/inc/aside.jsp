@@ -6,7 +6,7 @@
           <div id="sidebar"  class="nav-collapse " style="overflow: visible;">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-              	  <p class="centered"><a href="profile.html"><img src="resources/main/assets/img/user.png" class="img-circle" width="90"></a></p>
+              	  <p class="centered"><img src="resources/main/assets/img/user.png" class="img-circle" width="90"></p>
               	  <h5 class="centered"><sec:authentication property="principal.username"/></h5>
               	  
                   <li class="mt">

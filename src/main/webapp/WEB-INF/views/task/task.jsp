@@ -11,13 +11,7 @@
 <section id="main-content" style="width: auto; overflow: hidden;">
    <script type="text/javascript">
 $(function(){
-   
-    /* $("#deletespecific").click(function () {
-       var specifictaskno = $("#deletespecific").val()
-          console.log(specifictaskno);
-          deletespecific(specifictaskno);
-       }); */ 
-   
+    
    $("#taskbtn").click(function(){
       if($("#task_cont").val()==""){
          swal("업무명을 입력해주세요");
@@ -34,12 +28,12 @@ $(function(){
                     closeOnConfirm: false
                     
                   },
-                  function(isConfirm){
+                   function(isConfirm){
                       if (isConfirm) {
-                         location.href="insertTask.htm";
+                          location.href="insertTask.htm";
                           $('#taskform').submit();
                       }
-                }
+                } 
           );
         
       }
@@ -503,9 +497,9 @@ $(function(){
    <section class="wrapper site-min-height">
       <div>
          <div>
-            <h3 style="padding-top: 17px;">
+            <h2 style="padding-top: 22px;">
                <i class="fa fa-angle-right"></i> Project : ${project_name} 
-            </h3>
+            </h2>
             <sec:authentication property="principal.username" var="user" />
             <c:if test="${owner==user}">
                <button type="button" class="btn btn-theme02" data-toggle="modal"

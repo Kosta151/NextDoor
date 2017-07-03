@@ -384,7 +384,7 @@
 				<div class="col-md-6 col-md-offset-3">
 					<div class="text-center">
 						<a href="#intro" class="totop"><i class="pe-7s-angle-up pe-3x"></i></a>
-						<p>&copy;Team4 Nextdoor  깃재민 갓창균 갓재민 갓지은 갓성용 갓선화</p>
+						<p>&copy;Team4 Nextdoor  깃재민 갓창균 갓진환 갓지은 갓성용 갓찬섭 갓선화</p>
 
 					</div>
 				</div>

@@ -16,11 +16,9 @@
                   <input id="name" type="text" class="form-control" name="name" placeholder="User Name">
                   <br>               
                   <button id="submit" class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> JOIN</button>
-                  <hr>
+                 
                   <div class="login-social-link centered">
-                  <p>or you can sign in via your social network</p>
-                      <button class="btn btn-facebook" type="button" onclick="login()"><i class="fa fa-facebook"></i> Facebook</button>
-                      <button class="btn btn-twitter" type="button"><i class="fa fa-twitter"></i> Twitter</button>
+                  
                   </div>
               </div>
             </form>    

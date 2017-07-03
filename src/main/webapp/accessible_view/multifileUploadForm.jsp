@@ -39,16 +39,16 @@ $(document).ready(function(){
 </head>
 <body>
 
-<div class="multiform_body" style="text-align: center;">
+<div class="multiform_body" style="text-align: center; align:center;">
 <form name="multiform" id="multiform" action="uploadfile.htm"
                                       method="POST" enctype="multipart/form-data">
 	<!-- 다중 파일업로드  -->
 	
 	<br>
- 	<div id="afile3-list" style="border:1px solid #c9c9c9; min-weight:50px; min-height:100px;margin-left: 80px;"></div>
+ 	<div id="afile3-list" style="border:1px solid #c9c9c9; min-weight:50px; min-height:100px;margin:10px;"></div>
  	
- 	<input type="file" name="file" style="margin-left: 80px;" />
-	<input type="submit" id="btnSubmit" style="margin-left: 80px; margin-top:20px; width:150px;" value="전송" class="btn btn-warning"/><br/>
+ 	<input type="file" name="file" style="align:center;" />
+	<input type="submit" id="btnSubmit" style="width:50%; align:center;" value="전송" class="btn btn-warning"/><br/>
 </form>
 </div>
 <script>

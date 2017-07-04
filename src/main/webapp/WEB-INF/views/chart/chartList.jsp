@@ -31,7 +31,7 @@
                      </div><!-- /row mt -->   
 
           <div id="chart1"></div>
-          <div id="chart2" style="width: 500px; height: 400px; background-color: #f2f2f2; float: right; margin-right: 70px;"></div>
+          <div id="chart2" style="width: 450px; height: 400px; background-color: #f2f2f2; float: right; margin-right: 60px;"></div>
           <script type="text/javascript">
           
           

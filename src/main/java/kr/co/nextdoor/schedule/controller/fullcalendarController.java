@@ -60,7 +60,7 @@ public class fullcalendarController {
 	
 	//Modal List 
 	@RequestMapping(value="calendar.htm", method=RequestMethod.GET)
-	public String listTask(Model model, HttpSession session) {
+	public String listTask(Model model, HttpSession session, Principal principal) {
 		String project_no = (String) session.getAttribute("project_no");
 		String idx = (String) session.getAttribute("idx");
 		System.out.println("contoller 프로젝트 " + project_no);
@@ -68,6 +68,7 @@ public class fullcalendarController {
 		List<MemberDTO> memberlist = taskservice.listMember(project_no);
 		session.setAttribute("tasklist", tasklist);
 		session.setAttribute("memberlist", memberlist);
+		session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
 		System.out.println("calendar view 이동");
 		return "fullcalendar.fullcalendarTask2";
 	}

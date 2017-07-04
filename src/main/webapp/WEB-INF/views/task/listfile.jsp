@@ -8,7 +8,7 @@
 		<div class="row mt">
 			<div class="col-md-12">
 		    	
-			    	<h4><i class="fa fa-angle-right"></i> File List </h4>
+			    	<h2><i class="fa fa-angle-right"></i> File List </h2>
 			    	
 		        	<table class="table table-striped table-advance table-hover">
 		                    <thead>

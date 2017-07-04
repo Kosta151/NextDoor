@@ -114,7 +114,7 @@ $('#specifictask_end').datepicker({
 
        <section id="main-content">
           <section class="wrapper">
-          	 <h3><i class="fa fa-angle-right"></i> 세부업무명 과 날짜를 확인하세요</h3>
+          	 <h2><i class="fa fa-angle-right"></i> 세부업무명 과 날짜를 확인하세요</h2>
               <!-- page start-->
               <div class="row mt">
                   <aside class="col-lg-2 mt">

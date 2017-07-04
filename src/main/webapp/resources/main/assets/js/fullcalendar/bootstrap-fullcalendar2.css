@@ -57,13 +57,13 @@ html .fc,
 .fc-header-title {
   display: inline-block;
   vertical-align: top;
-  color: black;
   }
   
 .fc-header-title h2 {
-  margin-top: 0;
+  margin-top: 4px;
   font-size: 16px;
   white-space: nowrap;
+  color : #555;
   }
   
 .fc .fc-header-space {
@@ -135,13 +135,19 @@ html .fc,
 
 .fc-widget-header,    /* <th>, usually */
 .fc-widget-content {  /* <td>, usually */
-  border: 1px solid #424a5d;
+  border: 1px solid #ddd;
   color: #646464;
 }
   
-.fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-  background: #FFE400;
-  }
+/* .fc-state-highlight { <td> today cell TODO: add .fc-today to <th>
+  background: #fff;
+  } */
+.fc-state-highlight > div > div.fc-day-number {
+    background-color: #ff3b30;
+    color: #FFFFFF;
+    border-radius: 70%;
+    margin: 4px;
+}
   
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
   background: #9cf;
@@ -456,7 +462,7 @@ table.fc-border-separate {
   
 .fc-grid .fc-day-number {
   float: right;
-  padding: 0 2px;
+  padding: 0 6px;
   }
   
 .fc-grid .fc-other-month .fc-day-number {
@@ -617,7 +623,7 @@ table.fc-border-separate {
 /* resizable */
   
 .fc-event-vert .ui-resizable-s {
-  bottom: 0        !important; /* importants override pre jquery ui 1t		.7 styles */
+  bottom: 0        !important; /* importants override pre jquery ui 1.7 styles */
   width: 100%      !important;
   height: 8px      !important;
   overflow: hidden !important;

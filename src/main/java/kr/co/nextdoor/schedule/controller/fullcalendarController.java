@@ -69,7 +69,7 @@ public class fullcalendarController {
 		session.setAttribute("tasklist", tasklist);
 		session.setAttribute("memberlist", memberlist);
 		System.out.println("calendar view 이동");
-		return "fullcalendar.fullcalendarTask";
+		return "fullcalendar.fullcalendarTask2";
 	}
 	
 	//fullcalendar insert
@@ -106,7 +106,7 @@ public class fullcalendarController {
 		 System.out.println("업무 생성");
 		fullcalendarservice.SpecificTaskInsert(specifictaskdto, session);
 		fullcalendarservice.SpecificModiTaskInsert(specifictaskmodidto, task_no, specifictaskdto.getSpecifictask_cont());
-		return "fullcalendar.fullcalendarTask";
+		return "fullcalendar.fullcalendarTask2";
 	}
 	
 	@RequestMapping(value="clist.htm", method=RequestMethod.GET)

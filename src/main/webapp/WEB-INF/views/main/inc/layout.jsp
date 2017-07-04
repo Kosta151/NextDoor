@@ -17,7 +17,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="resources/main/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="resources/main/assets/js/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+    <!-- <link href="resources/main/assets/js/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" /> -->
+    <link href="resources/main/assets/js/fullcalendar/bootstrap-fullcalendar2.css" rel="stylesheet" />
     <link href="resources/main/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="resources/main/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />

@@ -34,7 +34,7 @@
           <!-- <div class="sidebar-toggle-box">
                   <div class="fa fa-heart tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
           </div> -->
-             <h3><i class="fa fa-angle-right"></i> 프로젝트 명 : ${projectlist.project_name}</h3>
+             <h3><i class="fa fa-angle-right"></i> Project : ${projectlist.project_name}</h3>
              <div id="project">
              <div id="container">
              <div class="row mt">

@@ -39,7 +39,7 @@ $(function(){
 </script>
       <section id="main-content">
           <section class="wrapper site-min-height">
-              <h2><i class="fa fa-angle-right"></i> ${workspaceinfo}</h2>
+              <h2><i class="fa fa-angle-right"></i> Workspace : ${workspaceinfo}</h2>
               <div class="row mt">
                   <div class="col-lg-12">
 				    <div class="row">

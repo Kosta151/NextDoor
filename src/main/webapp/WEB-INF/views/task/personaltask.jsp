@@ -299,10 +299,11 @@ $(function(){
 
 </script>   
    <section class="wrapper site-min-height">
-    <div class="row mt">
-     <h3>
+    
+    <div>
+     <h2 style="padding-top: 22px;">
         <i class="fa fa-angle-right"></i> Project : ${project_name} 
-     </h3>
+     </h2>
    		<div class="col-lg-9">
 	      <div class="ajaxtest"></div>
 	      <div id="ajaxspecific"></div>
@@ -323,6 +324,6 @@ $(function(){
 	      	</div>
 	     </div>
 	</div>
-	
+	</div>
    </section>
 </section>

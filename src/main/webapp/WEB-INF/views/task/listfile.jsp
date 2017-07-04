@@ -15,7 +15,7 @@
 		                    	<tr>
 		                        	<th><i class="fa fa-bullhorn"></i> 이름 </th>
 		                            <th class="hidden-phone"><i class="fa fa-question-circle"></i> 크기 </th>
-		                            <th><i class="fa fa-bookmark"></i> 공유한 날짜 </th>
+		                            <!-- <th><i class="fa fa-bookmark"></i> 공유한 날짜 </th> -->
 		                            <th><i class=" fa fa-edit"></i> 공유한 사람 </th>
 		                            <th>다운로드</th>
 		                        </tr>
@@ -25,7 +25,7 @@
 		                    	<tr>
 		                        	<td>${list.original_name}</td>
 		                            <td>${list.file_size} byte</td>
-		                            <td>${list.file_date}</td>
+		                            <%-- <td>${list.file_date}</td> --%>
 		                            <td>${list.member_id}</td>
 		                            <td><a href="download.htm?file_name=${list.file_name}"><button class="btn btn-default btn-xs"><i class="fa fa-arrow-circle-o-down">download</i></button></a></td>
 		                        </tr>

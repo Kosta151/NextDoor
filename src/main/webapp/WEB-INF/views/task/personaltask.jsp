@@ -129,7 +129,7 @@ $(function(){
                          
                          //세부업무 확인 버튼
                          $("#"+spobj.specifictask_no+"sp-checkbox").click(function(){
-                           alert("세부 업무 번호" + spobj.specifictask_no); 
+                         
                            var specifictaskno=spobj.specifictask_no;
                            var taskno = obj.task_no;
                            checkspecifictask(specifictaskno,taskno,spcont);
@@ -200,7 +200,7 @@ $(function(){
              data : {specifictask_no :  $("#"+specifictaskno+"sp-checkbox").val()},
              success : function(data){
                console.log(data);
-               alert("success");
+              
                
                $("#"+specifictaskno + "specific").hide();
                $("#" +taskno+"task").append(spcont);
@@ -225,7 +225,7 @@ $(function(){
              data : {specifictask_cont : cont, task_no : taskno},
              dataType : "json",
              success : function(data){
-               alert("success");
+               
             var insertspecific = "<div class='specifictaskbox' style='background-color : none;' id='"+taskno.cont+"specific'>"
                + cont                                                               
                + "<a class='dropdown-toggle'  style='float;right; margin-right:10px;'>"                   
@@ -287,7 +287,7 @@ $(function(){
           type : "post",
           data : {project_no : projectno, task_no : taskno},
           success : function(data){
-            alert("success");
+            
             $("#"+taskno+"task").remove();
             
           },

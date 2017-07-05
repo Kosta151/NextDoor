@@ -1,3 +1,11 @@
+<%--
+   @Project : NextDoor
+   @File name : projectUpdate.jsp
+   @Author : 송지은
+   @Data : 2017. 06. 13
+   @Desc : 프로젝트 수정/멤버 초대
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

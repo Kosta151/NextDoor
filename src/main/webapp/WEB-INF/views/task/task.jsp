@@ -1,3 +1,11 @@
+<%--
+	@Project : NextDoor
+	@File name : task.jsp
+	@Author : 문창균
+	@Data : 2017. 06. 13
+	@Desc : 업무 및 상세업무 추가/삭제/수정/리스트
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,15 +18,13 @@
    href="resources/main/assets/css/sweetalert.css">
 <section id="main-content" style="width: auto; overflow: hidden;">
    <script type="text/javascript">
-$(function(){
-    
+$(function(){   
    $("#taskbtn").click(function(){
       if($("#task_cont").val()==""){
          swal("업무명을 입력해주세요");
          $("#task_cont").focus();
          return false;
-      }else{
-         /* swal('프로젝트 생성!', 'You clicked the button!', 'success') */
+     }else{       
           swal({
                     title: "업무 생성 완료!",
                     type: "success",
@@ -71,12 +77,9 @@ $(function(){
                          }
                    }
              );
-           
-         }
-         
-         }); 
+           }
+       }); 
    
-    // 무한 스크롤링 실행 이벤트
     var bool_sw = true;
     var start_idx = 0;
     var cont = "";
@@ -85,19 +88,22 @@ $(function(){
     var projectno="";
     var cidx=0;
     var end_idx=0;
+    
+    <%----------------------------------------------------
+    무한 스크롤 
+    ----------------------------------------------------%>
    $(window).scroll(function() {
-
-      if ($(window).scrollTop() == $(document).height() - $(window).height()){
-                
-             if(bool_sw){
-            
+      if ($(window).scrollTop() == $(document).height() - $(window).height()){               
+             if(bool_sw){           
                 infinite();
-                }
-             
-                      
+                }                                 
            }
         });
-   infinite();      
+   infinite();    
+   
+   <%----------------------------------------------------
+   업무 및 상세 업무 리스트  
+   ----------------------------------------------------%>
    function infinite(){        
       $.ajax({
       url : "tasklist.htm",
@@ -108,24 +114,15 @@ $(function(){
          var taskcont = "";
          var taskcomp = "";
          var owner = data.owner;
-         var user = data.user;
-         
+         var user = data.user;       
          start_idx = start_idx+3;
-        
-         console.log("end_idx" + end_idx);
-         console.log("cidx" + cidx);
-         
          if(end_idx!=cidx){
             bool_sw=false;
          }
-         cidx = cidx+3;
-         console.log(bool_sw);
-         
-         $(".ajaxtest").append("<div id='"+start_idx+"containtask' style='float:left; width : 100%; height : auto;' margin:'20px;'>");
-         $.each(data.data , function(index,obj){   
-            
-            end_idx++;
-            
+         cidx = cidx+3;               
+         $(".ajaxtask").append("<div id='"+start_idx+"containtask' style='float:left; width : 100%; height : auto;' margin:'20px;'>");
+         $.each(data.data , function(index,obj){           
+            end_idx++;          
             if(data.owner==data.user){
                taskcont = "<div class='taskcont' id='"+obj.task_no+"tasktitle'>"
                      + "<input type='text' id='"+obj.task_no+"change' class='taskinput ' value='"+obj.task_cont+"'>"                
@@ -163,65 +160,63 @@ $(function(){
                                      
              cont = $("#"+obj.task_cont+"cont").val();
              
-           //task 내용 변경
+             <%----------------------------------------------------
+             업무내용 변경시 마다 DB에 적용 change이벤트
+             업무 이름 변경 기능
+             ----------------------------------------------------%>
              $("#"+obj.task_no+"change").change(function(e){
-                changetasktitle(obj.task_no, $("#"+obj.task_no+"change").val());
-                
+                changetasktitle(obj.task_no, $("#"+obj.task_no+"change").val());               
              });
                                        
-            //insert event 
-            $("#"+obj.task_no+"plus").click(function(){
-               
+             <%----------------------------------------------------
+             플러스 버튼 클릭시 toggle실행
+             ----------------------------------------------------%> 
+            $("#"+obj.task_no+"plus").click(function(){          
                 if ($("#"+obj.task_no+"plusdrop").is(":visible") == true){
                    $("#"+obj.task_no+"plusdrop").hide();
                 }else{
                    $("#"+obj.task_no+"plusdrop").show();
-                }
-               
+                }               
             });
             
+            <%----------------------------------------------------
+            생성버튼 클릭시 insertspecific()로 이동
+            업무 생성 기능
+            ----------------------------------------------------%>
              $("#"+obj.task_no+"submit").click(function(){
 
                 taskno = obj.task_no;
                 cont = $("#"+obj.task_cont+"cont").val();
-                               
-                console.log("cont : " + cont);
-                console.log("taskno : " + taskno);
-                
+                                            
                  insertspecific(cont,taskno);
                  $("#"+obj.task_no+"plusdrop").hide();
              }); 
             
-            //delete event
-              $("#"+obj.task_no+"delete").click(function(){
-              
+             <%----------------------------------------------------
+             삭제버튼 클릭시 deletetask()로 이동
+             업무 삭제 기능
+             ----------------------------------------------------%> 
+              $("#"+obj.task_no+"delete").click(function(){             
                projectno = obj.project_no;
                taskno = obj.task_no;
-               console.log("projectno : " + projectno);
-               console.log("taskno : " + taskno);
+               
                deletetask(projectno, taskno);
             }); 
                                                             
-             //세부 리스트 뿌리는 부분
+              <%----------------------------------------------------
+              세부업무 리스트 
+              ----------------------------------------------------%>
              $.ajax({
                 url : "specifictask.htm",
                 type : "post",
                 data : {task_no : obj.task_no},
                 dataType : "json",
-                success : function(data){
-                  console.log(data.data);
-                                                  
-                   var comp="";
-                                                                                                
-                   $.each(data.data, function(spindex, spobj){
-                   
-                      if(obj.task_no=spobj.task_no){
-                         
-                        if(owner==user){
-                        console.log(owner);
-                        console.log(user);
-                        var specificno = spobj.specifictask_no;
-                        
+                success : function(data){                                                                   
+                   var comp="";                                                                                               
+                   $.each(data.data, function(spindex, spobj){                
+                      if(obj.task_no=spobj.task_no){                        
+                        if(owner==user){                      
+                        var specificno = spobj.specifictask_no;                        
                          speicficcont="<div class='specifictaskbox'  id='"+specificno+"specific'>"
                                  + spobj.specifictask_cont                                                                 
                                  + "<button class='specifictaskbutton' id='"+specificno+"specificbutton' style='background-color: window; border: none;' value='"+spobj.specifictask_no+"'>" 
@@ -244,18 +239,22 @@ $(function(){
                         }                      
                         var spcont =speicficcont;     
                                                                                                                                                                                               
-                         //작업 확인 버튼
-                         $("#"+specificno+"sp-checkbox").click(function(){
-                                                    
+                        <%----------------------------------------------------
+                        채크박스 버튼 클릭시  checkspecifictask()로 이동 
+                        업무 확인 기능
+                        ----------------------------------------------------%>
+                         $("#"+specificno+"sp-checkbox").click(function(){                                                  
                            var comp = spobj.specifictask_comp;
                            var specifictaskno=spobj.specifictask_no;
                            var taskno = obj.task_no;
                            checkspecifictask(specifictaskno,taskno,spcont,comp);
                          }); 
                       } 
-                                           
-                      $("#"+specificno+"specificbutton").click(function () {
-                          
+                      
+                      <%----------------------------------------------------
+                      수정버튼 클릭시 상세업무 수정을 위한 토글 
+                      ----------------------------------------------------%>
+                      $("#"+specificno+"specificbutton").click(function () {                         
                           if ($('#moditoggle').is(":visible") == true) {
                              $('#main-content').css({
                                  'margin-left': '210px'
@@ -263,8 +262,7 @@ $(function(){
                              $('#moditoggle').css({
                                  'margin-right': '-210px'
                              });
-                             $('#moditoggle').hide(50); 
-                             
+                             $('#moditoggle').hide(50);                             
                         } else {
                                 $('#main-content').css({
                                     'margin-right': '0px'
@@ -287,7 +285,7 @@ $(function(){
                    }
                 });               
             });
-             $(".ajaxtest").append("</div>");
+             $(".ajaxtask").append("</div>");
          },
          error : function(){
             alert("error");
@@ -296,16 +294,16 @@ $(function(){
      }
    });
  
-   //작업완료 버튼 클릭시  실행
-   function checkspecifictask(specifictaskno,taskno,spcont,comp){
-        
+<%----------------------------------------------------
+체크박스 버튼 클릭시 실행되는 함수
+작업 확인 기능
+----------------------------------------------------%>
+   function checkspecifictask(specifictaskno,taskno,spcont,comp){       
         $.ajax({
           url : "checkspecifictask.htm",
           type : "post",
           data : {specifictask_no :  specifictaskno},
           success : function(data){
-            console.log(data);
-                         
              if(comp==0){                
                 $("#"+specifictaskno + "specific").hide();
                  $("#" +taskno+"task").append(spcont); 
@@ -313,8 +311,7 @@ $(function(){
                 
                  $("#"+specifictaskno + "specific").remove();
                  $("#" +taskno+"tasktitle").append(spcont); 
-             }
-                
+             }                
           },
           error : function(){
             alert("error");
@@ -322,11 +319,11 @@ $(function(){
        }); 
    }
    
-   //insert
-   function insertspecific(cont,taskno){
-     
-      console.log("taskno : "+taskno);
-      console.log("cont: "+cont);
+   <%----------------------------------------------------
+   생성 버튼 클릭시 실행되는 함수
+   작업 생성 기능
+   ----------------------------------------------------%>
+   function insertspecific(cont,taskno){   
       var specificno = taskno; 
          $.ajax({
              url : "insertspecifictask.htm",
@@ -342,13 +339,12 @@ $(function(){
                            + "<i class='fa fa-pencil'>"                                   
                            + "</i></button>"  
                            + "<input type='checkbox' class='sp-checkbox' id='"+specifictaskno+"sp-checkbox' value='"+specifictaskno+"'>"
-                           + "</div>";
-                      
-                                                                                                                                    
+                           + "</div>";                                                                                                                                                          
                 $("#"+taskno+"tasktitle").append(insertspecific);
-                      
-                $("#"+specifictaskno+"specificbutton").click(function () {
-                    
+                <%----------------------------------------------------
+                수정버튼 클릭시 상세업무 수정을 위한 토글 
+                ----------------------------------------------------%>      
+                $("#"+specifictaskno+"specificbutton").click(function () {                    
                     if ($('#moditoggle').is(":visible") == true) {
                        $('#main-content').css({
                            'margin-left': '210px'
@@ -356,8 +352,7 @@ $(function(){
                        $('#moditoggle').css({
                            'margin-right': '-210px'
                        });
-                       $('#moditoggle').hide(50); 
-                       
+                       $('#moditoggle').hide(50);                       
                   } else {
                           $('#main-content').css({
                               'margin-right': '0px'
@@ -366,42 +361,41 @@ $(function(){
                           $('#moditoggle').css({
                               'margin-right': '0'
                           });                                                      
-                       }  
+                  }  
                     
                    var specifictaskno=data.specifictask_no;
                    var specifictaskcont=cont; 
                    detailSpecifictask(specifictaskno,specifictaskcont);
                }); 
                
-                $("#"+specifictaskno+"sp-checkbox").click(function(){
-                    
-                    
+                <%----------------------------------------------------
+                체크박스 버튼 클릭시 checkspecifictask()로 이동 
+                업무 확인 기능
+                ----------------------------------------------------%>
+                $("#"+specifictaskno+"sp-checkbox").click(function(){                                     
                     var spcont = insertspecific;
                     var comp=0;
                     checkspecifictask(specifictaskno,taskno,spcont,comp);
-                  });
-               
-                
+                  });                              
              },
              error : function(){
                 alert("error");
                 }                                              
              });                        
    }
-            
-
-   function detailSpecifictask(specifictaskno,specifictaskcont){
-   console.log(specifictaskno);  
-   
+     
+   <%----------------------------------------------------
+   수정 버튼 클릭시 실행되는 함수 
+   상세업무 확인 기능
+   ----------------------------------------------------%>
+   function detailSpecifictask(specifictaskno,specifictaskcont){   
       $.ajax({
           url : "detailSpecifictaskajax.htm",
           type : "post",
           data : {specifictask_no : specifictaskno},          
           dataType : "json",
           success : function(data){
-                
-             console.log(data.data);
-                         
+
              if(data.data!=null){
                $("#specifictask_cont").val(specifictaskcont); 
                 $("#specifictask_start").val(data.data.specifictask_start);
@@ -410,10 +404,8 @@ $(function(){
                 $("#specifictask_no").val(specifictaskno);
                 $(".specifictask_no").val(specifictaskno);
                 $("#member_id").val(data.data.member_id); 
-                $("#deletespecific").val(specifictaskno);
-                                                    
-             }else{   
-               
+                $("#deletespecific").val(specifictaskno);                                                   
+             }else{                  
                $("#specifictask_cont").val(specifictaskcont); 
                 $("#specifictask_start").val("");
                 $("#specifictask_end").val("");
@@ -423,21 +415,18 @@ $(function(){
                 $("#member_id").val(""); 
                 $("#deletespecific").val(specifictaskno);
              }                   
-
           },
           error : function(){
             alert("error");
           }
        }); 
-
     } 
 
-    //delete task
+   <%----------------------------------------------------
+   삭제 버튼 클릭시 실행되는 함수 
+   업무 삭제 기능
+   ----------------------------------------------------%>
     function deletetask(projectno, taskno){
-      
-      console.log("taskno : "+taskno);
-      console.log("projectno: "+projectno);
-      
          $.ajax({
              url : "deletetask.htm",
              type : "post",
@@ -453,11 +442,11 @@ $(function(){
           }); 
     }
                    
-  //delete specific
+    <%----------------------------------------------------
+    상세업무 삭제 버튼 클릭시 실행되는 함수 
+    상세업무 삭제 기능
+    ----------------------------------------------------%>
     function deletespecific(specifictaskno){
-      
-      console.log("specifictaskno : "+specifictaskno);
-         
           $.ajax({
              url : "deleteSpecifictask.htm",
              type : "post",
@@ -473,16 +462,17 @@ $(function(){
           });  
     }
   
-  //업무 명 변경
+    <%----------------------------------------------------
+    업무 이름 변경시 실행되는 함수 
+    업무이름 변경  기능
+    ----------------------------------------------------%>
     function changetasktitle(task_no, changecont){
        
         $.ajax({
               url : "changetasktitle.htm",
               type : "post",
               data : {task_no : task_no, task_cont : changecont},
-              success : function(data){
-                
-               
+              success : function(data){                              
               },
               error : function(){
                 alert("error");
@@ -490,8 +480,6 @@ $(function(){
            });  
        
     }
-
-
 </script>
 
    <section class="wrapper site-min-height">
@@ -508,7 +496,10 @@ $(function(){
                </button>
             </c:if>
 
-            <!-- 업무리스트 추가 Modal -->
+            
+		    <!------------------------------
+		    업무리스트 추가 Modal
+		    -------------------------------->
             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
                tabindex="-1" id="myModal" class="modal fade">
                <div class="modal-dialog">
@@ -538,21 +529,22 @@ $(function(){
                </div>
             </div>
          </div>
-
-
-         <!-- 업무리스트 추가 modal end -->
-
-         <!-- userid와 프로젝트 name을 가지고 업무리스트 뿌리기 -->
+         
+        
+       <!------------------------------
+	   업무, 세부업무 작성부분
+	   -------------------------------->
          <div class="col-lg-9">
-            <div class="ajaxtest"></div>
+            <div class="ajaxtask"></div>
             <div id="ajaxspecific"></div>
          </div>
       </div>
-
+      
+      <!------------------------------
+	   세부업무 수정Form부분
+	   -------------------------------->
       <div class="col-lg-3" id="moditoggle" style="background-color:#424a5d; padding-top: 15px; padding-bottom: 15px;">
-
-         <div class="form-panel" style="height: 550px;">
-            
+         <div class="form-panel" style="height: 550px;">          
             <div id="London" class="tabcontent">
               <form action="updateSpecifictask.htm" method="post" id="modiform"> 
                   <div class="form-group">
@@ -564,22 +556,18 @@ $(function(){
                   <hr>
                   <div class="form-group">
                      <p>업무배정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-                     <select class="form-control" name="member_id" id="member_id">
-
-                       <option value="">업무 배정할 인원을 선택해주세요</option>
-                        <c:forEach items="${memberlist}" var="mlist">
-                           <option value="${mlist.member_id}">${mlist.member_id}</option>
-                        </c:forEach>
-                     </select>
+	                     <select class="form-control" name="member_id" id="member_id">
+	                       <option value="">업무 배정할 인원을 선택해주세요</option>
+	                        <c:forEach items="${memberlist}" var="mlist">
+	                           <option value="${mlist.member_id}">${mlist.member_id}</option>
+	                        </c:forEach>
+	                     </select>
                      <p>
                         배정된 인원 : <input class="form-control" type="text" readonly="readonly"
-                           id="taskmember_id" name="taskmember_id" value="${modidto.member_id}">
+                        id="taskmember_id" name="taskmember_id" value="${modidto.member_id}">
                      </p>
                   </div>
-                  <hr>
-
-                  
+                  <hr>                
                      <label> <i></i>기간설정</label>                                   
                      <div class="form-group">
                         <p>
@@ -587,8 +575,7 @@ $(function(){
                               class="form-control form-control-inline input-medium default-date-picker"
                               width="50%" type="text" value="${modidto.specifictask_start}"
                               id="specifictask_start" name="specifictask_start">
-                        </p>
-                        <%-- <input type="text" id="specifictask_start" name="specifictask_start" value="${modidto.specifictask_start}"></p> --%>
+                        </p>                      
                      </div>
           
                      <div class="form-group">
@@ -597,23 +584,21 @@ $(function(){
                               class="form-control form-control-inline input-medium default-date-picker"
                               size="8" type="text" value="${modidto.specifictask_end}"
                               id="specifictask_end" name="specifictask_end">
-                        </p>
-                        <%-- <input type="text" id="specifictask_start" name="specifictask_start" value="${modidto.specifictask_start}"></p> --%>
-                     </div>
-            
+                        </p>                       
+                     </div>         
                      <input type="hidden" id="specifictask_no" name="specifictask_no"
-                        value="">
+                     value="">
 
                        <button type="submit" id="modibutton" class="btn btn-primary modibutton"
-                        style="margin-left: 15px;">수정</button>                     
+                       style="margin-left: 15px;">수정</button>                     
                </form> 
 
-                  <form action="deleteSpecifictask.htm"> 
-                  <input type="hidden" class="specifictask_no"
-                     name="specifictask_no" value="">
-                  <button class="btn btn-danger modibutton" id="deletespecific" value=""
-                     style="margin-left: 10px;">삭제</button>
-                 </form>    
+               <form action="deleteSpecifictask.htm"> 
+               <input type="hidden" class="specifictask_no"
+                  name="specifictask_no" value="">
+               <button class="btn btn-danger modibutton" id="deletespecific" value=""
+                  style="margin-left: 10px;">삭제</button>
+              </form>    
             </div>
          </div>            
       </div>                 

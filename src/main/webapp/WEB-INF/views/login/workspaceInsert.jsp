@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 
+   @Project : NextDoor
+   @File name : workspaceInsert.jsp
+   @Author : 이재민
+   @Data : 2017. 06. 21
+   @Desc : 워크스페이스 만들기
+ -->
 	  <div id="login-page">
 	  	<div class="container">
 		      <form class="form-login" method="post">

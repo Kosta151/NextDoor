@@ -6,7 +6,13 @@
     <script src="resources/main/assets/js/jquery-1.8.3.min.js"></script>
 <script src="resources/sockjs-0.3.js"></script>
 <link href="resources/main/assets/css/style2.css" rel="stylesheet">
-
+<!-- 
+   @Project : NextDoor
+   @File name : chat.jsp
+   @Author : 이재민
+   @Data : 2017. 06. 21
+   @Desc : 채팅화면
+ -->
 <script>
 //소켓 변수
 var sock;

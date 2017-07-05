@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- 
+   @Project : NextDoor
+   @File name : login.jsp
+   @Author : 이재민
+   @Data : 2017. 06. 21
+   @Desc : 로그인화면
+ -->
 	<script src="${pageContext.request.contextPath}/resources/login/facebook.js" ></script>
 	<div id="login-page">
 	  	<div class="container">

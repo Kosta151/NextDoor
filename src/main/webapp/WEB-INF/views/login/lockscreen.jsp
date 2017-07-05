@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	  	<div class="container">
-	  	
+<!-- 
+   @Project : NextDoor
+   @File name : lockscreen.jsp
+   @Author : 이재민
+   @Data : 2017. 06. 21
+   @Desc : 락스크린 화면
+ -->	  	
 	  		<div id="showtime"></div>
 	  			<div class="col-lg-4 col-lg-offset-4">
 	  				<div class="lock-screen">

@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<!-- 
+   @Project : NextDoor
+   @File name : workspace.jsp
+   @Author : 이재민
+   @Data : 2017. 06. 21
+   @Desc : 워크스페이스 화면
+ -->
 	  <div id="login-page">
 	  	<div class="container">
 		      <div class="form-login">

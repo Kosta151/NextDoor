@@ -29,6 +29,4 @@
       <put-attribute name="aside" value="/WEB-INF/views/main/inc/aside.jsp"/>
       <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
    	</definition>
-
-
 </tiles-definitions>

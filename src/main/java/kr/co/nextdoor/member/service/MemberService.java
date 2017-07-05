@@ -52,10 +52,10 @@ public class MemberService {
 		String result;
 		MemberDAO memberdao = sqlSession.getMapper(MemberDAO.class);
 		if (memberdao.checkId(member_id) > 0) {
-			result = "false"; // 아이디사용불가
+			result = "false";
 			System.out.println(result);
 		} else {
-			result = "true"; // 아이디사용가능
+			result = "true";
 			System.out.println(result);
 		}
 		return result;

@@ -1,3 +1,11 @@
+<%--
+   @Project : NextDoor
+   @File name : chartList.jsp
+   @Author : 최성용
+   @Data : 2017. 06.27
+   @Desc : 총 멤버수,총 세부업무 갯수, 완료한 총 업무수, x축(업무별),y축(완료,미완료 수),프로젝트 멤버별 진행상황
+--%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <link href="resources/main/assets/css/style2.css" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -34,7 +42,9 @@
           <div id="chart2" style="width: 450px; height: 400px; background-color: #f2f2f2; float: right; margin-right: 60px;"></div>
           <script type="text/javascript">
           
-          
+ <%----------------------------------------------------
+프로젝트 멤버 리스트
+ ----------------------------------------------------%>          
 $(function () {
 	
 	 $.ajax({
@@ -255,6 +265,9 @@ $(function () {
 });
 </script>
 
+ <%----------------------------------------------------
+x축-업무별 , y축- 완료갯수,미완료 갯수
+ ----------------------------------------------------%>
 <script type="text/javascript">
 $(function () {
     var xtasklist = [];  
@@ -340,27 +353,29 @@ $(function () {
     
 });
 </script>
-            <div class="col-md-12" style="width: 50%; height: 400px;">
-	                  	  <div class="content-panel" style="height:400px;">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> PROJECT MEMBER</h4>
-	                  	  	  <hr>
-		                      <table class="table">
-		                          <thead>
-		                          <tr>
-		                              <th>No.</th>
-		                              <th>이름</th>
-		                              <th>총업무수</th>
-		                              <th>완료수</th>
-		                          </tr>
-		                          </thead>
-		                          <tbody id='memberlist'>
-		                         
-		                          </tbody>
-		                      </table>
-	                  	  </div>
-	                  </div><!-- /col-md-12 -->
-           
-		
-              
-          </section>
-      </section><!-- /MAIN CONTENT -->
+
+		<div class="col-md-12" style="width: 50%; height: 400px;">
+			<div class="content-panel" style="height: 400px;">
+				<h4>
+					<i class="fa fa-angle-right"></i> PROJECT MEMBER
+				</h4>
+				<hr>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>이름</th>
+							<th>총업무수</th>
+							<th>완료수</th>
+						</tr>
+					</thead>
+					<tbody id='memberlist'>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /col-md-12 -->
+
+	</section>
+</section><!-- /MAIN CONTENT -->

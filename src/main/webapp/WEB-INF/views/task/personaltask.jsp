@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%--
+   @Project : NextDoor
+   @File name : personaltask.jsp
+   @Author : 김선화,송지은
+   @Data : 2017. 06. 21
+   @Desc : 개인업무
+--%>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="resources/main/assets/js/sweetalert.min.js"></script>
 <link href="resources/main/assets/css/style.css" rel="stylesheet">
@@ -299,7 +306,6 @@ $(function(){
 
 </script>   
    <section class="wrapper site-min-height">
-    
     <div>
      <h2 style="padding-top: 22px;">
         <i class="fa fa-angle-right"></i> Project : ${project_name} 
@@ -308,14 +314,15 @@ $(function(){
 	      <div class="ajaxtest"></div>
 	      <div id="ajaxspecific"></div>
   		</div> 
+  		<!-- file toggle -->
 		<div class="col-lg-3" id="filetoggle">
-		    	<div class="taskcont" id="122tasktitle">
+			<div class="taskcont" id="122tasktitle">
 		    	<input type="text" class="taskinput " value="파일 업로드">
-					<div class="specifictaskbox" style="background-color:none; align:center">
+				<div class="specifictaskbox" style="background-color:none; align:center">
 				<script>
+				//js 충돌로 인해 div 불러오기
 		        $(document).ready(function(){
-					$("#div1").load("accessible_view/multifileUploadForm.jsp");
-					
+					$("#div1").load("accessible_view/multifileUploadForm.jsp");	
 				});
 		        </script>
 			    <div id="div1">
@@ -323,7 +330,6 @@ $(function(){
 			    </div>
 	      	</div>
 	     </div>
-	</div>
 	</div>
    </section>
 </section>

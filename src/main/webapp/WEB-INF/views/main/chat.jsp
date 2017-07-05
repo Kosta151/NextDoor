@@ -8,20 +8,15 @@
 <link href="resources/main/assets/css/style2.css" rel="stylesheet">
 
 <script>
-
-
-
 //소켓 변수
 var sock;
 
 $(function() {
 	//소켓 url을 chat-sock으로 설정 후 소켓 생성
-	console.log("opening websocket");
 	sock = new SockJS("http://" +document.domain + ":8090/nextdoor/chat-ws");
 	
 	//접속 이벤트 발생 시 메시지 전송
 	sock.onopen = function() {
-		console.log("opened websocket");
 		sock.send("${loginUser}님이 접속하셨습니다.");
 		
 	};
@@ -30,10 +25,6 @@ $(function() {
 		var msg = JSON.parse(event.data);
 		var user_id = "${loginUser}";
 		var message = msg.message;
-		console.log(user_id);
-		console.log("아이디 : "+msg.user_id +"  // 받은메세지 : "+ msg.message +"시간"+msg.date);
-	
-		
 		if (msg.user_id != user_id) {
 			$("#chatarea").append("<div class='group-rom'>" +"<div class='first-part'>"+ msg.user_id+"</div>"+"<div class='second-part'>" + msg.message +"</div>"+"<div class='third-part'>" + msg.date +"</div>"+"</div>");
 		} else {
@@ -45,12 +36,9 @@ $(function() {
 	
 	//접속 종료 이벤트 발생 시 메시지 전송
 	sock.onclose = function() {
-		console.log("close websocket")
 		sock.send("${loginUser}님이 로그아웃하셨습니다.");
 	};
-	sock.onerror = function() {
-		console.log("Error during transfer")
-	};
+	sock.onerror = function() {};
 	//메시지 전송 버튼 클릭 했을 시 소켓 메시지전송
 	$("#btn-chat").click(function() {
 		if ($("#btn-input").val() != "") {

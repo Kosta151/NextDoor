@@ -20,6 +20,7 @@
 	select count(alarm_receiver) from alarm where alarm_receiver=#{alarm_receiver} and ALARM_READ='1';
 	</select>
   	
+  	<!-- 알람 읽기  -->
   	<update id="updateAlarm">
   	update alarm set alarm_read='0' where alarm_no=#{alarm_no};
   	</update>

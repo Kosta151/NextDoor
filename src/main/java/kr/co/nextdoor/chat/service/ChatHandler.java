@@ -1,4 +1,5 @@
 package kr.co.nextdoor.chat.service;
+
 /*
 * @Class : ChatHandler
 * @Date : 2017. 06. 20 
@@ -28,6 +29,7 @@ public class ChatHandler extends TextWebSocketHandler {
     static{
     	projectmember = new HashMap<String, Object>();
     }
+  
     /*
 	    * @method Name : ChatHandler
 	    * @date : 2017. 06. 20

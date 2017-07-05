@@ -1,4 +1,5 @@
 package kr.co.nextdoor.chat.service;
+
 /*
 * @Class : ChatConfig
 * @Date : 2017. 06. 20 

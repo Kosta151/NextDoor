@@ -1,5 +1,12 @@
 package kr.co.nextdoor.alarm.service;
 
+/*
+* @Class : AlarmHandlerInterceptor
+* @Date : 2017. 06. 20 
+* @Author : 박찬섭
+* @Desc : Alarm
+*/
+
 import java.util.Map;
 
 
@@ -13,12 +20,7 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
-/*
-* @Class : AlarmHandlerInterceptor
-* @Date : 2017. 06. 20 
-* @Author : 박찬섭
-* @Desc : Alarm
-*/
+
 
 
 @Configuration

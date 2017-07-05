@@ -1,5 +1,6 @@
 
 package kr.co.nextdoor.alarm.service;
+
 /*
 * @Class : AlarmConfig
 * @Date : 2017. 06. 20 

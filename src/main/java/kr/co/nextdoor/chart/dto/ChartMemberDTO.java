@@ -1,5 +1,11 @@
 package kr.co.nextdoor.chart.dto;
 
+/*
+* @Class : ChartMemberDTO
+* @Date : 2017. 07 . 01
+* @Author : 문창균
+* @Desc : ChartMemberDTO
+*/
 public class ChartMemberDTO {
 	private String task_no;
 	private String member_id;

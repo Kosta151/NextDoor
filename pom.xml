@@ -197,14 +197,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.0.1.RELEASE</version>
-		</dependency>
-		
-		<!-- Facebook -->
-		<dependency>
-		    <groupId>org.springframework.social</groupId>
-		    <artifactId>spring-social-facebook</artifactId>
-		    <version>2.0.3.RELEASE</version>
-		</dependency>
+		</dependency>		
 		
 		<!-- Fileupload -->
 		<dependency>
@@ -238,13 +231,6 @@
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.8.5</version>
-		</dependency>
-		
-		<!-- Facebook -->
-		<dependency>
-		    <groupId>org.springframework.social</groupId>
-		    <artifactId>spring-social-facebook</artifactId>
-		    <version>2.0.3.RELEASE</version>
 		</dependency>
 		
 		<!-- Mail -->

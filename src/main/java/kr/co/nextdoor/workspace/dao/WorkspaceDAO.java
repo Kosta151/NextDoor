@@ -38,7 +38,21 @@ public interface WorkspaceDAO {
     */
 	public int deleteWorkspace(int workspace_no);
 	
+	/*
+	* @method Name : nameWorkspace
+	* @date : 2017. 06. 20
+	* @author : 이재민
+	* @description : 워크스페이스 이름불러오기
+	* @return : String
+	*/
 	public String nameWorkspace(String workspace_no);
 	
+	/*
+	* @method Name : ownerWorkspace
+	* @date : 2017. 06. 20
+	* @author : 이재민
+	* @description : 워크스페이스 삭제
+	* @return : String
+	*/
 	public String ownerWorkspace(String workspace_no);
 }

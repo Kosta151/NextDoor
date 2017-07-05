@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 * @Desc : 처음 인덱스 화면으로 이동
 */
 @Controller
-
 public class IndexController {
 
 	@RequestMapping("index.htm")
 	public String index() {
-
 		return "index.index";
 	}
 	

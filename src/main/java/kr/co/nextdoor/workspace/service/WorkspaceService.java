@@ -12,7 +12,7 @@ import kr.co.nextdoor.workspace.dao.WorkspaceDAO;
 import kr.co.nextdoor.workspace.dto.WorkspaceDTO;
 /*
 * @Class : WorkspaceService
-* @Date : 2017. 06. 
+* @Date : 2017. 06. 20
 * @Author : 이재민
 * @Desc : workspace controller에 대한 service
 */
@@ -24,7 +24,7 @@ public class WorkspaceService {
 
    /*
     * @method Name : listWorkspace
-    * @date : 2017. 06. 
+    * @date : 2017. 06. 20
     * @author : 이재민
     * @description : workspace 목록
     * @return : List
@@ -37,7 +37,7 @@ public class WorkspaceService {
 
 	/*
     * @method Name : insertWorkspace
-    * @date : 2017. 06. 
+    * @date : 2017. 06. 20
     * @author : 이재민
     * @description : workspace 생성
     * @param : workspacedto
@@ -52,7 +52,7 @@ public class WorkspaceService {
 	
 	/*
     * @method Name : deleteWorkspace
-    * @date : 2017. 06. 
+    * @date : 2017. 06. 20
     * @author : 이재민
     * @description : workspace 삭제
     * @param : workspace_no
@@ -64,17 +64,26 @@ public class WorkspaceService {
 	}
 	
 	/*
-	    * @method Name : 
-	    * @date : 2017. 06. 
-	    * @author : 이재민
-	    * @description : 
-	    * @param : workspace_no
-	    * @return : String
-	    */
+	* @method Name : nameWorkspace
+	* @date : 2017. 06. 20
+	* @author : 이재민
+	* @description : 
+	* @param : workspace_no
+	* @return : String
+	*/
 	public String nameWorkspace(String workspace_no) throws Exception{
 			WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
 			return workspacedao.nameWorkspace(workspace_no);
 	}
+	
+	/*
+	* @method Name : ownerWorkspace
+	* @date : 2017. 06. 20
+	* @author : 이재민
+	* @description : 
+	* @param : workspace_no
+	* @return : String
+	*/
 	public String ownerWorkspace(String workspace_no) throws Exception{
 		WorkspaceDAO workspacedao = sqlsession.getMapper(WorkspaceDAO.class);
 		return workspacedao.ownerWorkspace(workspace_no);

@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+  <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,11 +7,14 @@
 <script src="resources/sockjs-0.3.js"></script>
 	<script>
 		var sock;
+		
+		//소켓과 연결
 		$(function() {
  			sock = new SockJS("http://" +document.domain + ":8090/nextdoor/alarm");
  			
 			sock.onopen = function(){};
 			
+			//메세지를 받아오는 부분
 			  sock.onmessage = function(event){
 					 var msg = JSON.parse(event.data);
 					 var receiver = msg.receiver;
@@ -29,6 +32,7 @@
 						});
 					 	} 
 				 };
+				 	//specifictask alarm send event 
 		 		  $('#modibutton').click(function(){
 		 			  var receiver = $("#member_id").val();
 		 			  var specifictask_cont = $('#specifictask_cont').val();
@@ -39,7 +43,8 @@
 		   			 if($("#member_id").val() != ""){  	 
 		 				 sock.send(str);
 		 		  	}
-				  });	  
+				  });
+				 	//schedule alarm send event
 		 		  $('#calendaralarm').click(function(){
 		 			 var receiver = $("#calendar_receiver").val();
 		 			  var specifictask_cont = $('.specifictask_cont').val();
@@ -78,6 +83,7 @@
 
 </script>
 <style>
+
 .error {
     width: 250px;
     height: 100px;
@@ -99,6 +105,7 @@
    	border-width: medium;
    	border-color: #291647;
 }
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 13px;

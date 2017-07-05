@@ -77,11 +77,11 @@ public interface TaskDAO {
 	public List<TaskDTO> personaltask(String project_no, String member_id);
 	
 	/*
-	   * @method Name : changTaskTitle
-	    * @date : 2017. 07. 01
-	    * @author : 문창균
-	    * @description : 업무명 변경 
-	    * @return : int
-	    */
-	   public int changTaskTitle(TaskDTO taskdto);
+	* @method Name : changeTaskTitle
+	* @date : 2017. 07. 01
+	* @author : 문창균
+	* @description : 업무명 변경 
+	* @return : int
+	*/
+	public int changeTaskTitle(TaskDTO taskdto);
 }

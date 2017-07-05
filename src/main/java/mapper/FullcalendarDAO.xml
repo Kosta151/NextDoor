@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="kr.co.nextdoor.schedule.dao.FullcalendarDAO">
-        <insert id="insertFullcalendarSpecificTask">
-            INSERT
-            INTO SPECIFICTASK(task_no,specifictask_cont,specifictask_comp) 
-            VALUES(#{task_no}, #{specifictask_cont},'0')
-        </insert>
+PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+* @xml : FullcalendarDAO
+* @Date : 2017. 06. 25 
+* @Desc : fullcalendar 리스트 및 생성
+-->
+<mapper namespace="kr.co.nextdoor.schedule.dao.FullcalendarDAO">
+	<!-- 
+	* @xml : insertFullcalendarSpecificTask
+	* @Date : 2017. 06. 27
+	* @author : 최성용
+	* @Desc : fullcalendar에서 업추 추가
+	-->
+	<insert id="insertFullcalendarSpecificTask">
+	    INSERT
+	    INTO SPECIFICTASK(task_no,specifictask_cont,specifictask_comp) 
+	    VALUES(#{task_no}, #{specifictask_cont},'0')
+	</insert>
+	<!-- 
+	* @xml : insertFullcalendarSpecificModiTask
+	* @Date : 2017. 06. 27
+	* @author : 최성용
+	* @Desc : fullcalendar에서 세부업추 추가
+	-->
+	<insert id="insertFullcalendarSpecificModiTask" parameterType="hashMap">
+		INSERT INTO SPECIFICTASKMODI(specifictask_no, member_id, specifictask_start, specifictask_end)
+		VALUES( (SELECT specifictask_no from specifictask where task_no = #{task_no} and specifictask_cont = #{specifictask_cont}) , #{member_id}, #{specifictask_start}, #{specifictask_end})
+	</insert>
+	<!-- 
+	* @xml : calendarList
+	* @Date : 2017. 06. 25
+	* @author : 최성용
+	* @Desc : fullcalendar 리스트
+	--> 	
+	<select id="calendarList"  resultType="kr.co.nextdoor.schedule.dto.FullcalendarDTO"> 
+		select p.project_no, st.specifictask_cont, stm.member_id, stm.specifictask_start, stm.specifictask_end
+		from project p join task t join specifictask st join specifictaskmodi stm
+		on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
+		where p.project_no = #{project_no}
+	</select>    
+</mapper>
 
-       <insert id="insertFullcalendarSpecificModiTask" parameterType="hashMap">
-			INSERT INTO SPECIFICTASKMODI(specifictask_no, member_id, specifictask_start, specifictask_end)
-			VALUES( (SELECT specifictask_no from specifictask where task_no = #{task_no} and specifictask_cont = #{specifictask_cont}) , #{member_id}, #{specifictask_start}, #{specifictask_end})
-	   	</insert>
-	   	
-	   	<select id="calendarList"  resultType="kr.co.nextdoor.schedule.dto.FullcalendarDTO"> 
-<!-- 	   		select member_id , specifictask_start , specifictask_end
-	   		from specifictaskmodi  -->
-				select p.project_no, st.specifictask_cont, stm.member_id, stm.specifictask_start, stm.specifictask_end
-				from project p join task t join specifictask st join specifictaskmodi stm
-				on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
-				where p.project_no = #{project_no}
-	    </select>    
-  </mapper>

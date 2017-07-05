@@ -1,43 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="kr.co.nextdoor.task.dao.TaskDAO">
-		<insert id="insertTask">
-			INSERT INTO TASK(project_no, task_cont) 
-			VALUES(#{project_no}, #{task_cont}) 
-		</insert>
-		
-		<select id="listTask" parameterType="hashMap" resultType="kr.co.nextdoor.task.dto.TaskDTO">
-			  SELECT * FROM TASK WHERE project_no=#{project_no} limit ${idx},3
-			<!-- SELECT * FROM TASK WHERE project_no=#{project_no} -->
-		</select>
-		
-		<!-- 달력에서 modal list 건들지마시오. -->
-		<select id="list" resultType="kr.co.nextdoor.task.dto.TaskDTO">
-			SELECT task_no, task_cont, project_no FROM TASK WHERE project_no=#{project_no}
-		</select>		
-		<!-- 프로젝트에 들어있는 멤버 업무 배정 -->
-		<select id="memberList" resultType="kr.co.nextdoor.member.dto.MemberDTO">
-	   		SELECT MEMBER_ID,PROJECT_NO FROM PROJECTMEMBER WHERE project_no= #{project_no}
-	 	</select>
-		
-		<delete id="deleteTask" >
-			delete from task where project_no=#{project_no} and task_no=#{task_no}
-		</delete>
-		
-		<!-- 개인업무 리스트 -->
-		<select id="personaltask" resultType="kr.co.nextdoor.task.dto.TaskDTO">
-           select p.project_no, t.task_cont, st.specifictask_cont, t.task_no
-           from project p join task t join specifictask st join specifictaskmodi stm
-           on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
-           where p.project_no = #{param1} and stm.member_id = #{param2}
-        </select>	
-        
-        <!-- 업무명 변경 -->
-      <update id="changTaskTitle" >
-         update task set task_cont=#{task_cont} where task_no=#{task_no}
-      </update>
-				
-  </mapper>
+PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+* @xml : TaskDAO
+* @Date : 2017. 06. 13 
+* @Desc : task에대한 CRUD작업
+ --> 
+<mapper namespace="kr.co.nextdoor.task.dao.TaskDAO">
+<!-- 
+* @xml : insertTask
+* @Date : 2017. 06. 16
+* @author : 장진환 
+* @Desc : task 생성
+ --> 
+<insert id="insertTask">
+INSERT INTO TASK(project_no, task_cont) VALUES(#{project_no}, #{task_cont}) 
+</insert>
+<!-- 
+* @xml : listTask
+* @Date : 2017. 06. 16 
+* @author : 장진환
+* @Desc : task 리스트
+ --> 
+<select id="listTask" parameterType="hashMap" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+SELECT * FROM TASK WHERE project_no=#{project_no} limit ${idx},3
+</select>
+<!-- 
+* @xml : list
+* @Date : 2017. 06. 27 
+* @author : 최성용
+* @Desc : fullcalendar 리스트 
+ --> 
+<select id="list" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+SELECT task_no, task_cont, project_no FROM TASK WHERE project_no=#{project_no}
+</select>	
+<!-- 
+* @xml : memberList
+* @Date : 2017. 06. 16 
+* @author : 장진환
+* @Desc : 업무 배정을 위한 맴버 리스트
+ --> 	
+<select id="memberList" resultType="kr.co.nextdoor.member.dto.MemberDTO">
+SELECT MEMBER_ID,PROJECT_NO FROM PROJECTMEMBER WHERE project_no= #{project_no}
+</select>
+<!-- 
+* @xml : deleteTask
+* @Date : 2017. 06. 16 
+* @author : 장진환
+* @Desc : task 삭제
+ --> 
+<delete id="deleteTask" >
+delete from task where project_no=#{project_no} and task_no=#{task_no}
+</delete>
+<!-- 
+* @xml : personaltask
+* @Date : 2017. 06. 27 
+* @author : 김선화, 송지은
+* @Desc : 개인업무 리스트 
+ --> 
+<select id="personaltask" resultType="kr.co.nextdoor.task.dto.TaskDTO">
+select p.project_no, t.task_cont, st.specifictask_cont, t.task_no
+from project p join task t join specifictask st join specifictaskmodi stm
+on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
+where p.project_no = #{param1} and stm.member_id = #{param2}
+</select>	
+<!-- 
+* @xml : changTaskTitle
+* @Date : 2017. 07. 01 
+* @author : 문창균
+* @Desc : task명 변경
+ --> 
+<update id="changeTaskTitle" >
+update task set task_cont=#{task_cont} where task_no=#{task_no}
+</update>
+</mapper>

@@ -2,18 +2,37 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+  <!-- 
+* @xml : SpecificTaskDAO
+* @Date : 2017. 06. 16 
+* @Desc : specifictask에대한 CRUD작업
+ --> 
 <mapper namespace="kr.co.nextdoor.specifictask.dao.SpecificTaskDAO">
+	<!-- 
+	* @xml : listSpecifictask
+	* @Date : 2017. 06. 16
+	* @author : 문창균 
+	* @Desc :  specifictask 리스트
+	 --> 
 	<select id="listSpecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
 		select DISTINCT * from specifictask where task_no=#{task_no}
 	</select>
-	
-		<!-- 파일업로드 -->
+	<!-- 
+	* @xml : uploadFile
+	* @Date : 2017. 06. 27
+	* @author : 김선화
+	* @Desc : 파일 업로드
+	 --> 
 	<insert id="uploadFile">
 		insert into file(specifictask_no, original_name, file_name, file_date, file_size)
 		values(#{specifictask_no},#{original_name},#{file_name},now(),#{file_size})
 	</insert>
-	
+	<!-- 
+	* @xml : updateModiSpecifictask
+	* @Date : 2017. 06. 16
+	* @author : 문창균
+	* @Desc : specifictask 세부내용 수정
+	 --> 
 	<!-- 수정완료버튼  -->
 	 <update id="updateModiSpecifictask">
 		update SpecificTaskModi set member_id=#{member_id}, 
@@ -21,65 +40,107 @@
 		specifictask_end=#{specifictask_end}
 		where specifictask_no=#{specifictask_no}
 	</update>
-	
-	<!-- 수정완료버튼  -->
-	 <update id="updateSpecifictask">
+	<!-- 
+	* @xml : updateSpecifictask
+	* @Date : 2017. 07. 01
+	* @author : 문창균
+	* @Desc : specifictask명 수정
+	 --> 
+	<update id="updateSpecifictask">
 		update SpecificTask set specifictask_cont=#{specifictask_cont}
 		where specifictask_no=#{specifictask_no}
 	</update>
-	
-	<!-- 수정값 불러오기 -->
+	<!-- 
+	* @xml : detailModiSpecifictask
+	* @Date : 2017. 06. 16
+	* @author : 문창균 
+	* @Desc : specifictask 상세정보 
+	 --> 
 	<select id="detailModiSpecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO">
 		select member_id,specifictask_start,specifictask_end from SpecificTaskModi
 		where specifictask_no=#{specifictask_no}
 	</select>
-	
-	<!-- 수정값 입력하기 -->
+	<!-- 
+	* @xml : insertModiSpecifictask
+	* @Date : 2017. 06. 16
+	* @author : 문창균 
+	* @Desc : specifictask세부정보 추가
+	 --> 
 	<insert id="insertModiSpecifictask">
 		insert into SpecificTaskModi(specifictask_no,member_id,specifictask_start,specifictask_end)
 		values(#{specifictask_no},#{member_id},#{specifictask_start},#{specifictask_end})
 	</insert>
-	
-	<!-- 세부업무삭제 -->
+	<!-- 
+	* @xml : deleteSpecifictask
+	* @Date : 2017. 06. 16
+	* @author : 문창균 
+	* @Desc : specifictask 삭제
+	 --> 
 	<delete id="deleteSpecifictask">
 		delete from specifictask where specifictask_no=#{specifictask_no}
 	</delete>
-	
-	<!-- 상세업무 생성 -->
+	<!-- 
+	* @xml : insertSpecifictask
+	* @Date : 2017. 06. 16
+	* @author : 문창균 
+	* @Desc : specifictask 생성
+	 --> 
 	<insert id="insertSpecifictask" parameterType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
 		insert into specifictask(task_no, specifictask_cont, specifictask_comp) values(#{task_no}, #{specifictask_cont}, '0')
 	</insert>
-	
-	<!-- 생성 후 생성된 세부업무 번호 -->
+	<!-- 
+	* @xml : selectSpecificTask
+	* @Date : 2017. 06. 29
+	* @author : 문창균
+	* @Desc : specifictask 생성후 specifictask_no 추출
+	 --> 
 	<select id="selectSpecificTask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
-      select SPECIFICTASK_NO from specifictask where TASK_NO=#{task_no} order by SPECIFICTASK_NO desc limit 0,1;
-    </select>
-	
+		select SPECIFICTASK_NO from specifictask where TASK_NO=#{task_no} order by SPECIFICTASK_NO desc limit 0,1;
+	</select>
+	<!-- 
+	* @xml : checkSpecifcitask
+	* @Date : 2017. 06. 23
+	* @author : 문창균 
+	* @Desc : specifictask 작업완료  수정
+	 --> 
 	<update id="checkSpecifcitask">
 		update specifictask 
 		<set>
 			<if test="specifictask_comp == 0">specifictask_comp='1'</if>
 			<if test="specifictask_comp == 1">specifictask_comp='0'</if>
 		</set>
-		 where specifictask_no = #{specifictask_no}
+		where specifictask_no = #{specifictask_no}
 	</update>
-	
+	<!-- 
+	* @xml : seleteSpecificTaskComp
+	* @Date : 2017. 06. 23
+	* @author : 문창균 
+	* @Desc : specifictask 작업 완료 여부 확인
+	 --> 
 	<select id="seleteSpecificTaskComp" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
 		select specifictask_comp from specifictask where specifictask_no=#{specifictask_no}
 	</select>
-	
-	<!-- 개인 세부 업무 리스트 -->
+	<!-- 
+	* @xml : personalspecifictask
+	* @Date : 2017. 06. 27
+	* @author : 김선화, 송지은 
+	* @Desc : 개인specifictask 리스트
+	 --> 
 	<select id="personalspecifictask" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskDTO">
-	   select st.specifictask_no, st.specifictask_cont, st.specifictask_comp, t.task_no
-       from project p join task t join specifictask st join specifictaskmodi stm
-       on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
-       where t.task_no = #{param1} and stm.member_id = #{param2}
-    </select>
-
-	<!-- 마감 하루 전 메일 보내기 -->
-    <select id="selectTaskdeadline" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO" >
-        select stm.member_id, stm.specifictask_end, s.specifictask_cont
-      	from specifictask s join specifictaskmodi stm
-      	on s.specifictask_no = stm.specifictask_no
-     </select>
+		select st.specifictask_no, st.specifictask_cont, st.specifictask_comp, t.task_no
+		from project p join task t join specifictask st join specifictaskmodi stm
+		on p.project_no = t.project_no and t.task_no = st.task_no and st.specifictask_no = stm.specifictask_no
+		where t.task_no = #{param1} and stm.member_id = #{param2}
+	</select>
+	<!-- 
+	* @xml : selectTaskdeadline
+	* @Date : 2017. 06. 26
+	* @author : 문창균, 송지은
+	* @Desc : task 마감 1일전 메일 발송
+	 --> 
+	<select id="selectTaskdeadline" resultType="kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO" >
+		select stm.member_id, stm.specifictask_end, s.specifictask_cont
+		from specifictask s join specifictaskmodi stm
+		on s.specifictask_no = stm.specifictask_no
+	</select>
 </mapper>

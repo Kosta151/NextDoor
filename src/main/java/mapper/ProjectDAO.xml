@@ -2,90 +2,155 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+* @xml : ProjectDAO
+* @Date : 2017. 06. 13 
+* @Desc : Project에대한 CRUD작업
+ -->
 <mapper namespace="kr.co.nextdoor.project.dao.ProjectDAO">
-
-   <!-- 프로젝트 목록 보기 -->
-   <select id="listProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-   	select a.project_no, a.project_name, IFNULL(ROUND(ROUND(EXP(LOG(b.percent)),6)*100),0) as percent, a.member_id as owner
+	<!-- 
+	* @xml : listProject
+	* @Date : 2017. 06. 13
+	* @author : 송지은
+	* @Desc :  project 목록
+	-->
+	<select id="listProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
+		select a.project_no, a.project_name, IFNULL(ROUND(ROUND(EXP(LOG(b.percent)),6)*100),0) as percent, a.member_id as owner
 		from
-			(select pm.MEMBER_ID, p.PROJECT_NO, p.PROJECT_NAME, p.WORKSPACE_NO
+		(select pm.MEMBER_ID, p.PROJECT_NO, p.PROJECT_NAME, p.WORKSPACE_NO
 		from 
-			projectmember pm
-			join project p on p.PROJECT_NO=pm.PROJECT_NO
+		projectmember pm
+		join project p on p.PROJECT_NO=pm.PROJECT_NO
 		where 
-			pm.member_id=#{member_id} and p.workspace_no=#{workspace_no}) a 
-	        left join
-			 (select t.PROJECT_NO, count(if(st.SPECIFICTASK_COMP='1',st.SPECIFICTASK_COMP,null))/count(st.SPECIFICTASK_NO) as 'percent'
-			from
-			task t
-			left join specifictask st on t.TASK_NO=st.TASK_NO
+		pm.member_id=#{member_id} and p.workspace_no=#{workspace_no}) a 
+		left join
+		(select t.PROJECT_NO, count(if(st.SPECIFICTASK_COMP='1',st.SPECIFICTASK_COMP,null))/count(st.SPECIFICTASK_NO) as 'percent'
+		from
+		task t
+		left join specifictask st on t.TASK_NO=st.TASK_NO
 		group by t.PROJECT_NO) b
-        on a.project_no=b.project_no
-   </select>
-
-	<!-- 워크스페이스 주인 검색 -->
+		on a.project_no=b.project_no
+	</select>
+	<!-- 
+	* @xml : workspaceOwner
+	* @Date : 2017. 06. 20
+	* @author : 이재민
+	* @Desc :  workspace 관리자 추출
+	-->
 	<select id="workspaceOwner" parameterType="String" resultType="String">
 		select member_id from workspace where workspace_no=#{workspace_no}
 	</select>
-   <!-- 프로젝트 추가 -->
-   <insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
-      insert into project(project_name, workspace_no, member_id) 
-      values(#{project_name}, #{workspace_no}, #{member_id})
-   </insert>
-   
-   <!-- 프로젝트에 멤버추가(프로젝트 만들면서) -->
-   <insert id="insertProjectMember">
-      insert into projectmember(member_id, project_no) values(#{member_id}, (select project_no from project where workspace_no=#{workspace_no} and project_name=#{project_name}))
-   </insert>
-   
-   <!-- 프로젝트 이름 select -->
-   <select id="getProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-      select project_name
-      from project
-      where project_no = #{project_no}
-   </select>
-   
-   <!--프로젝트에 시작일, 마감일 추가  -->
-   <insert id="insertProjectModi" parameterType="kr.co.nextdoor.project.dto.ProjectModiDTO">
-      insert
-      into projectmodi(project_no, project_start, project_end)
-      values(#{project_no}, #{project_start}, #{project_end})
-   </insert>
-   
-   <update id="updateProject">
-      update project
-      set project_name = #{project_name}
-      where project_no = #{project_no}
-   </update>
-   
-   <update id="updateProjectModi">
-      update projectmodi
-      set project_start = #{project_start},
-          project_end = #{project_end}
-      where project_no = #{project_no}
-    </update>
-   
-   <select id="listProjectModi" resultType="kr.co.nextdoor.project.dto.ProjectModiDTO">
-        select pm.project_start, pm.project_end
-        from projectmodi pm join project p
-        on pm.project_no = p.project_no
-        where p.project_no = #{project_no}
-   </select>
-   
-   <delete id="deleteProject">
-      delete from project where project_no = #{project_no}
-   </delete>
-   
-   <select id="listMember">
-   	   select member_id, name from member
-   </select>
-   
-   <select id="nameProject" resultType="String">
+	<!-- 
+	* @xml : insertProject
+	* @Date : 2017. 06. 13
+	* @author : 송지은
+	* @Desc :  project 생성
+	-->
+	<insert id="insertProject" parameterType="kr.co.nextdoor.project.dto.ProjectDTO">
+		insert into project(project_name, workspace_no, member_id) 
+		values(#{project_name}, #{workspace_no}, #{member_id})
+	</insert>
+	<!-- 
+	* @xml : insertProjectMember
+	* @Date : 2017. 06. 13
+	* @author : 송지은
+	* @Desc :  project 목록
+	-->
+	<insert id="insertProjectMember">
+		insert into projectmember(member_id, project_no) values(#{member_id}, (select project_no from project where workspace_no=#{workspace_no} and project_name=#{project_name}))
+	</insert>
+	<!-- 
+	* @xml : getProject
+	* @Date : 2017. 06. 19
+	* @author : 송지은
+	* @Desc :  project 수정을 위한 project_name 추출
+	-->
+	<select id="getProject" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
+		select project_name
+		from project
+		where project_no = #{project_no}
+	</select>
+	<!-- 
+	* @xml : insertProjectModi
+	* @Date : 2017. 06. 19
+	* @author : 송지은
+	* @Desc :  project 수정
+	-->
+	<insert id="insertProjectModi" parameterType="kr.co.nextdoor.project.dto.ProjectModiDTO">
+		insert
+		into projectmodi(project_no, project_start, project_end)
+		values(#{project_no}, #{project_start}, #{project_end})
+	</insert>
+	<!-- 
+	* @xml : updateProject
+	* @Date : 2017. 06. 22
+	* @author : 송지은
+	* @Desc :  project_name 변경
+	-->
+	<update id="updateProject">
+		update project
+		set project_name = #{project_name}
+		where project_no = #{project_no}
+	</update> 
+	<!-- 
+	* @xml : updateProjectModi
+	* @Date : 2017. 06. 13
+	* @author : 송지은
+	* @Desc :  project 시작일, 마감일 수정
+	-->
+	<update id="updateProjectModi">
+		update projectmodi
+		set project_start = #{project_start},
+		project_end = #{project_end}
+		where project_no = #{project_no}
+	</update>
+	<!-- 
+	* @xml : listProjectModi
+	* @Date : 2017. 06. 19
+	* @author : 송지은
+	* @Desc :  project 시작일, 마감일 추출
+	-->
+	<select id="listProjectModi" resultType="kr.co.nextdoor.project.dto.ProjectModiDTO">
+		select pm.project_start, pm.project_end
+		from projectmodi pm join project p
+		on pm.project_no = p.project_no
+		where p.project_no = #{project_no}
+	</select>
+	<!-- 
+	* @xml : deleteProject
+	* @Date : 2017. 06. 16
+	* @author : 송지은
+	* @Desc :  project 삭제
+	 -->
+	<delete id="deleteProject">
+		delete from project where project_no = #{project_no}
+	</delete>
+	<!-- 
+	* @xml : listMember
+	* @Date : 2017. 06. 19
+	* @author : 송지은
+	* @Desc :  project 맴버  추출
+	-->
+	<select id="listMember">
+		select member_id, name from member
+	</select>
+	<!-- 
+	* @xml : nameProject
+	* @Date : 2017. 06. 22
+	* @author : 장진환
+	* @Desc :  project 입장 후  porject_name 추출
+	-->
+	<select id="nameProject" resultType="String">
 		select project_name from project where project_no=#{project_no}
-   </select>
-   
-   <select id="searchMember" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
-         select member_id from member
-        where member_id like CONCAT ('%',#{member_id},'%')
-   </select>
+	</select>
+	<!-- 
+	* @xml : searchMember
+	* @Date : 2017. 06. 29
+	* @author : 송지은
+	* @Desc :   autocomplate 이용한 맴버 찾기
+	--> 
+	<select id="searchMember" resultType="kr.co.nextdoor.project.dto.ProjectDTO">
+		select member_id from member
+		where member_id like CONCAT ('%',#{member_id},'%')
+	</select>
 </mapper>

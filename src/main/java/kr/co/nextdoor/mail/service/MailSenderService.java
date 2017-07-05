@@ -34,61 +34,37 @@ import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 @Service
 public class MailSenderService {
    private static final String String = null;
- 
    @Autowired
    private JavaMailSender mailSender;
-   
    @Autowired
    private VelocityEngine velocityEngin;
- 
    @Autowired
    private SqlSession sqlsession;
-   
    @Autowired
    private BCryptPasswordEncoder bCryptPasswordEncoder;
-   
- 
-   
    /*
     * @method Name : sendMail
-    * @date : 2017. 06. 
+    * @date : 2017. 06. 22
     * @author : 문창균
     * @description : 
     * @param : maildto
     * @return : void
     */
    public void sendMail(MailDto maildto) throws Exception{
-      
-      
-      System.out.println(maildto.getMember_id());
-      System.out.println(maildto.getSubject());
-      System.out.println(maildto.getTemplate());
-      
       MimeMessage msg = mailSender.createMimeMessage();
       MimeMessageHelper message = new MimeMessageHelper(msg, true, "utf-8");
-      System.out.println("sendMail");
       message.setFrom("anscr@naver.com");
       message.setTo(new InternetAddress(maildto.getMember_id()));
       message.setSubject(maildto.getSubject());
-      
- 
-      Template template = velocityEngin.getTemplate("/mailvelocity/" +maildto.getTemplate());
-      
+      Template template = velocityEngin.getTemplate("/mailvelocity/" +maildto.getTemplate());   
       VelocityContext velocityContext = new VelocityContext();
       velocityContext.put("member_id", maildto.getMember_id());
       velocityContext.put("content", maildto.getContent());
-      
-      
-      
       StringWriter stringwriter = new StringWriter();
       template.merge(velocityContext, stringwriter);
-      
-      
-      message.setText(stringwriter.toString(),true);
-      
+      message.setText(stringwriter.toString(),true); 
       mailSender.send(msg);
    }
-   
    /*
     * @method Name : inviteSendMail
     * @date : 2017. 06. 22
@@ -98,31 +74,19 @@ public class MailSenderService {
     * @return : void
     */
    public void inviteSendMail(MailDto maildto) throws Exception{
-      
-      System.out.println(maildto.getMember_id());
-      System.out.println(maildto.getName());
- 
       MimeMessage msg = mailSender.createMimeMessage();
       MimeMessageHelper message = new MimeMessageHelper(msg, true, "utf-8");
       message.setFrom("anscr@naver.com");
       message.setTo(new InternetAddress(maildto.getMember_id()));
       message.setSubject("멤버초대 on NextDoor");
-      
- 
       Template template = velocityEngin.getTemplate("/mailvelocity/" + "inviteMember.vm");
-      
       VelocityContext velocityContext = new VelocityContext();
       velocityContext.put("member_id", maildto.getMember_id());
       velocityContext.put("name", maildto.getName());
-      velocityContext.put("content", "멤버 초대가 도착하였습니다.");
-      
-      
+      velocityContext.put("content", "멤버 초대가 도착하였습니다."); 
       StringWriter stringwriter = new StringWriter();
       template.merge(velocityContext, stringwriter);
-      
-      
       message.setText(stringwriter.toString(),true);
-      
       mailSender.send(msg);
    }
    /*
@@ -149,56 +113,32 @@ public class MailSenderService {
       SimpleDateFormat simpledateformat = new SimpleDateFormat ("yyyy-MM-dd"); 
       Calendar calendar = new GregorianCalendar();
       calendar.add(Calendar.DATE, +1);
-      System.out.println(calendar.DATE);
       String currentTime = simpledateformat.format(calendar.getTime());
-         
       SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
       ArrayList<SpecificTaskModiDTO> maildtolist = specifictaskdao.selectTaskdeadline();
-      
       for(int i =0; i<maildtolist.size() ; i++){
          if(maildtolist.get(i).getSpecifictask_end().equals(currentTime)){
-            //마감일이 오늘의 날짜랑 같지 않으면..1? 
-            System.out.println("DB들어 있는 값  : " + maildtolist.get(i).getSpecifictask_end());
             MimeMessage msg = mailSender.createMimeMessage();
             MimeMessageHelper message;
-            try {
+            try{
                message = new MimeMessageHelper(msg, true, "utf-8");
-               System.out.println("sendMail");
                message.setFrom("anscr@naver.com");
                message.setTo(new InternetAddress(maildtolist.get(i).getMember_id()));
-               message.setSubject("schedule");
-               
-               Template template = velocityEngin.getTemplate("/mailvelocity/deadline.vm");
-               
+               message.setSubject("schedule");    
+               Template template = velocityEngin.getTemplate("/mailvelocity/deadline.vm");              
                VelocityContext velocityContext = new VelocityContext();
                velocityContext.put("content", maildtolist.get(i).getSpecifictask_cont());
-               velocityContext.put("user", maildtolist.get(i).getMember_id());
-               
+               velocityContext.put("user", maildtolist.get(i).getMember_id());               
                StringWriter stringwriter = new StringWriter();
-               template.merge(velocityContext, stringwriter);
-               
-               
-               message.setText(stringwriter.toString(),true);
-               
-               mailSender.send(msg);
-            
-            
-            
-            } catch (Exception e) {
-               
+               template.merge(velocityContext, stringwriter);                            
+               message.setText(stringwriter.toString(),true);            
+               mailSender.send(msg);     
+            }catch (Exception e){ 
                System.out.println(e.getMessage());
             }
-            
-            
          }
-         
-         
       }
-   
    }
-   
-   
-   
    /*
     * @method Name : updatePassword
     * @date : 2017. 06. 25
@@ -209,25 +149,19 @@ public class MailSenderService {
     */
    public boolean updatePassword(MailDto maildto){
       boolean result = false;
-      
       MailDao maildao = sqlsession.getMapper(MailDao.class);
       MailDto dtoresult = maildao.searchMember(maildto.getMember_id());
-      
       if(dtoresult !=null){
          maildto.setContent(maildto.getContent());         
          maildto.setPassword(this.bCryptPasswordEncoder.encode(maildto.getContent()));
- 
          HashMap<String, String> map = new HashMap<String, String>();
          map.put("password", maildto.getPassword());
-         map.put("member_id", maildto.getMember_id());
-         
+         map.put("member_id", maildto.getMember_id());    
          int update = maildao.updatePassword(map);
          if(update>0){
             result = true;
-         }
-               
-      }
-      
+         }            
+      }  
       return result;
    }
 }

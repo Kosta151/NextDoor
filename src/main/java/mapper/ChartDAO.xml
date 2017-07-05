@@ -1,63 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
- <mapper namespace="kr.co.nextdoor.chart.dao.ChartDAO">
- 	 
-	  
-	  <!-- 차트 맴버 리스트  -->
-	  <select id="listChartMember"  resultType="kr.co.nextdoor.chart.dto.ChartMemberDTO">
-		 	select sm.member_id as member_id, count(s.specifictask_no) as taskcount, sum(if(s.SPECIFICTASK_COMP='1',1,0)) as taskcompcount  from 
-			specifictask s join specifictaskmodi sm join task t join project p
-			on s.SPECIFICTASK_NO=sm.SPECIFICTASK_NO and t.PROJECT_NO=p.PROJECT_NO and t.TASK_NO=s.TASK_NO
-			where p.PROJECT_NO=#{project_no}
-			group by sm.member_id;
-	  </select>
-	  
-	  <select id="chart_x"  resultType="kr.co.nextdoor.chart.dto.ChartDTO"> 
-			select p.project_no , t.task_cont
-			from project p join task t 
-			on p.project_no = t.project_no
-			where p.project_no = #{project_no}
-	  </select>
-	  
-	   <select id="chart_y_comp0" resultType="kr.co.nextdoor.chart.dto.ChartDTO" >
-            select count(specifictask_comp) as comp0
-            from project p join task t join specifictask st
-            on p.project_no = t.project_no and t.task_no = st.task_no
-            where p.project_no = #{project_no} and st.specifictask_comp = 0
-            group by t.task_no
-       </select>
-   
-      <select id="chart_y_comp1" resultType="kr.co.nextdoor.chart.dto.ChartDTO" >
-            select count(specifictask_comp) as comp1
-            from project p join task t join specifictask st
-            on p.project_no = t.project_no and t.task_no = st.task_no
-            where p.project_no = #{project_no} and st.specifictask_comp = 1
-            group by t.task_no
-      </select>
-      
-      <select id="countMember" resultType="String">
-      		select count(*)
-      		from projectmember
-      		where project_no = #{project_no}
-      
-      </select>
-      
-      <select id="countSpecifictask" resultType="String">
-      		select count(*)
-			from project p join task t join specifictask st
-			on p.project_no = t.project_no and t.task_no = st.task_no
-			where p.project_no = #{project_no}     
-      </select>
-      
-      
-      <select id="countSpecifictask_comp1" resultType="String">
-      		select count(*)
-			from project p join task t join specifictask st
-			on p.project_no = t.project_no and t.task_no = st.task_no
-			where p.project_no = #{project_no} and st.specifictask_comp = 1
-      </select>
-    
+PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+* @xml : ChartDAO
+* @Date : 2017. 06. 27 
+* @Desc : Chart 생성
+-->
+<mapper namespace="kr.co.nextdoor.chart.dao.ChartDAO">	  
+	<!-- 
+	* @xml : listChartMember
+	* @Date : 2017. 07. 01
+	* @author : 최성용, 문창균
+	* @Desc : 초대 받은 멤버들의 리스트를 뿌려주고 각 멤버들의 진행상황을 표시
+	-->
+	<select id="listChartMember"  resultType="kr.co.nextdoor.chart.dto.ChartMemberDTO">
+		select sm.member_id as member_id, count(s.specifictask_no) as taskcount, sum(if(s.SPECIFICTASK_COMP='1',1,0)) as taskcompcount  from 
+		specifictask s join specifictaskmodi sm join task t join project p
+		on s.SPECIFICTASK_NO=sm.SPECIFICTASK_NO and t.PROJECT_NO=p.PROJECT_NO and t.TASK_NO=s.TASK_NO
+		where p.PROJECT_NO=#{project_no}
+		group by sm.member_id;
+	</select>
+	<!-- 
+	* @xml : chart_x
+	* @Date : 2017. 07. 01
+	* @author : 최성용
+	* @Desc : Chart(업무별) x축에 사용될 task_cont 추출
+	-->
+	<select id="chart_x"  resultType="kr.co.nextdoor.chart.dto.ChartDTO"> 
+		select p.project_no , t.task_cont
+		from project p join task t 
+		on p.project_no = t.project_no
+		where p.project_no = #{project_no}
+	</select>
+	<!-- 
+	* @xml : chart_y_comp0
+	* @Date : 2017. 07. 01
+	* @author : 최성용
+	* @Desc : Chart(업무별) Y축에 사용될 완료되지 않은 specifictask 추출
+	-->
+	<select id="chart_y_comp0" resultType="kr.co.nextdoor.chart.dto.ChartDTO" >
+		select count(specifictask_comp) as comp0
+		from project p join task t join specifictask st
+		on p.project_no = t.project_no and t.task_no = st.task_no
+		where p.project_no = #{project_no} and st.specifictask_comp = 0
+		group by t.task_no
+	</select>
+	<!-- 
+	* @xml : chart_y_comp1
+	* @Date : 2017. 07. 01
+	* @author : 최성용
+	* @Desc : Chart(업무별) Y축에 사용될 완료된 specifictask 추출
+	-->
+	<select id="chart_y_comp1" resultType="kr.co.nextdoor.chart.dto.ChartDTO" >
+		select count(specifictask_comp) as comp1
+		from project p join task t join specifictask st
+		on p.project_no = t.project_no and t.task_no = st.task_no
+		where p.project_no = #{project_no} and st.specifictask_comp = 1
+		group by t.task_no
+	</select>
+	<!-- 
+	* @xml : countMember
+	* @Date : 2017. 06. 27
+	* @author : 송지은
+	* @Desc : project 내 맴버수 추출
+	-->
+	<select id="countMember" resultType="String">
+		select count(*)
+		from projectmember
+		where project_no = #{project_no}
+	</select>
+	<!-- 
+	* @xml : countSpecifictask
+	* @Date : 2017. 06. 27
+	* @author : 송지은
+	* @Desc : project 내 specifictask수 추출
+	-->
+	<select id="countSpecifictask" resultType="String">
+		select count(*)
+		from project p join task t join specifictask st
+		on p.project_no = t.project_no and t.task_no = st.task_no
+		where p.project_no = #{project_no}     
+	</select>
+	<!-- 
+	* @xml : countSpecifictask_comp1
+	* @Date : 2017. 06. 27
+	* @author : 송지은
+	* @Desc : project 내 완료된 specifictask수 추출
+	-->
+	<select id="countSpecifictask_comp1" resultType="String">
+		select count(*)
+		from project p join task t join specifictask st
+		on p.project_no = t.project_no and t.task_no = st.task_no
+		where p.project_no = #{project_no} and st.specifictask_comp = 1
+	</select>
 </mapper>

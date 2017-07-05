@@ -4,7 +4,6 @@ package kr.co.nextdoor.mail.dao;
 import java.util.HashMap;
 
 import kr.co.nextdoor.mail.dto.MailDto;
-
 /*
 * @Class : MailDao
 * @Date : 2017. 06. 
@@ -12,8 +11,6 @@ import kr.co.nextdoor.mail.dto.MailDto;
 * @Desc : mail에 대한 DAO
 */
 public interface MailDao {
-
-   
    /*
     * @method Name : searchMember
     * @date : 2017. 06. 25
@@ -21,8 +18,7 @@ public interface MailDao {
     * @description : 멤버 찾기
     * @return : MailDto
     */
-   public MailDto searchMember(String member_id);
-   
+   public MailDto searchMember(String member_id);   
    /*
     * @method Name : updatePassword
     * @date : 2017. 06. 25
@@ -30,8 +26,7 @@ public interface MailDao {
     * @description : 비밀번호 수정
     * @return : int
     */
-   public int updatePassword(HashMap<String, String> map);
-   
+   public int updatePassword(HashMap<String, String> map);  
    /*
     * @method Name : insertProjectMember
     * @date : 2017. 06. 23

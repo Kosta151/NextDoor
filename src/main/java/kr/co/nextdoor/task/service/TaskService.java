@@ -136,18 +136,16 @@ public class TaskService {
 	}
 	
 	/*
-	    * @method Name : chageTaskTitle
-	    * @date : 2017. 07. 01
-	    * @author : 문창균
-	    * @description : 업무명 변경
-	    * @param : TaskDTO
-	    * @return : TaskDTO
-	    */
-	   public int changeTaskTitle(TaskDTO taskdto){
-	      System.out.println("service");
-	      TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
-	      int change = taskdao.changTaskTitle(taskdto); 
-	      
-	      return change;
-	   }
+    * @method Name : chageTaskTitle
+    * @date : 2017. 07. 01
+    * @author : 문창균
+    * @description : 업무명 변경
+    * @param : TaskDTO
+    * @return : TaskDTO
+    */
+	public int changeTaskTitle(TaskDTO taskdto){
+		TaskDAO taskdao = sqlsession.getMapper(TaskDAO.class);
+		int change = taskdao.changeTaskTitle(taskdto); 
+		return change;
+	}
 }

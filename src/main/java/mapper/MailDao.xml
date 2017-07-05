@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="kr.co.nextdoor.mail.dao.MailDao">
-     
-        
-     <select id="searchMember" parameterType="java.lang.String" resultType="kr.co.nextdoor.mail.dto.MailDto">
-        select * from member where member_id= #{member_id}
-     </select>   
-     
-     <update id="updatePassword" parameterType="hashMap" >
-        update member set password=#{password} where member_id=#{member_id}
-     </update>
-     
-     <insert id="insertProjectMember">
-        insert into projectmember(member_id, project_no)
-        values(#{member_id}, #{project_no})
-     </insert>
-  </mapper>
+PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+* @xml : MailDAO
+* @Date : 2017. 06. 22 
+* @Desc : Mail발송
+-->
+<mapper namespace="kr.co.nextdoor.mail.dao.MailDao">
+	<!-- 
+	* @xml : searchMember
+	* @Date : 2017. 06. 25
+	* @author : 문창균, 송지은
+	* @Desc : mail 수신자 추출
+	-->
+	<select id="searchMember" parameterType="java.lang.String" resultType="kr.co.nextdoor.mail.dto.MailDto">
+	   select * from member where member_id= #{member_id}
+	</select>
+	<!-- 
+	* @xml : updatePassword
+	* @Date : 2017. 06. 25
+	* @author : 문창균, 송지은
+	* @Desc : 새로운 비밀번호 수정
+	-->   
+	<update id="updatePassword" parameterType="hashMap" >
+	   update member set password=#{password} where member_id=#{member_id}
+	</update>
+	<!-- 
+	* @xml : insertProjectMember
+	* @Date : 2017. 06. 22
+	* @author : 송지은
+	* @Desc : 초대메일 발송후 수신자 가입
+	-->
+	<insert id="insertProjectMember">
+	   insert into projectmember(member_id, project_no)
+	   values(#{member_id}, #{project_no})
+	</insert>
+</mapper>

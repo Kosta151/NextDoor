@@ -2,19 +2,31 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+* @xml : FileDAO
+* @Date : 2017. 06. 16 
+* @Desc : file upload&download
+-->
 <mapper namespace="kr.co.nextdoor.file.dao.FileDAO">
-	
-	<!-- 파일업로드 -->
+	<!-- 
+	* @xml : uploadFile
+	* @Date : 2017. 06. 16
+	* @author : 김선화
+	* @Desc : 파일 업로드
+	-->
 	<insert id="uploadFile">
 		insert into file(project_no, original_name, file_name, file_date, file_size, member_id)
 		values(#{project_no},#{original_name},#{file_name},now(),#{file_size}, #{member_id})
 	</insert>
-	
-	<!-- 파일목록보기 -->
+	<!-- 
+	* @xml : listFile
+	* @Date : 2017. 06. 16
+	* @author : 김선화
+	* @Desc : 파일 리스트
+	-->
 	<select id="listFile" resultType="kr.co.nextdoor.file.dto.FileDTO">
 		select file_no, project_no, original_name, file_name, 
 		date_format(file_date, '%Y-%m-%d %H:%i:%s') as file_date, file_size, member_id
 		from file where project_no = #{project_no}
 	</select>
-	
 </mapper>

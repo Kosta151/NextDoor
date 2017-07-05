@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="kr.co.nextdoor.alarm.dao.AlarmDAO">
-  
-  <!-- 알림 추가  -->
-  	<insert id="insertAlarm">
-  		insert into alarm(specifictask_no, alarm_sender, alarm_receiver, alarm_cont, alarm_date, alarm_read) values(#{specifictask_no},#{alarm_sender},#{alarm_receiver}, #{alarm_cont}, #{alarm_date}, '1')
-  	</insert>
-  	
-  	<!-- 유저에 해당되는 알림 리스트  -->
+PUBLIC "-//mybtis.orh//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+* @xml : AlarmDAO
+* @Date : 2017. 06. 13 
+* @Desc : AlarmDAO
+-->
+<mapper namespace="kr.co.nextdoor.alarm.dao.AlarmDAO">
+	<!-- 
+	* @xml : insertAlarm
+	* @Date : 2017. 06. 13
+	* @author : 박찬섭
+	* @Desc : Alarm 추가
+	-->
+	<insert id="insertAlarm">
+		insert into alarm(specifictask_no, alarm_sender, alarm_receiver, alarm_cont, alarm_date, alarm_read) values(#{specifictask_no},#{alarm_sender},#{alarm_receiver}, #{alarm_cont}, #{alarm_date}, '1')
+	</insert>
+	<!-- 
+	* @xml : AlarmList
+	* @Date : 2017. 06. 13
+	* @author : 박찬섭
+	* @Desc : Alarm 리스트 
+	-->
 	<select id="AlarmList" resultType="kr.co.nextdoor.alarm.dto.AlarmDTO" parameterType="String">
 		select * from alarm where alarm_receiver=#{alarm_receiver} order by alarm_read desc, ALARM_NO desc;
 	</select>
-	
-	<!-- 읽지 않음 알림 갯수 표시 -->
+	<!-- 
+	* @xml : CountAlarmList
+	* @Date : 2017. 06. 13
+	* @author : 박찬섭
+	* @Desc : Alarm 개수 추출
+	-->
 	<select id="CountAlarmList" resultType="int">
-	select count(alarm_receiver) from alarm where alarm_receiver=#{alarm_receiver} and ALARM_READ='1';
-	</select>
-  	
-  	<update id="updateAlarm">
-  	update alarm set alarm_read='0' where alarm_no=#{alarm_no};
-  	</update>
-  </mapper>
+		select count(alarm_receiver) from alarm where alarm_receiver=#{alarm_receiver} and ALARM_READ='1';
+	</select> 
+	<!-- 
+	* @xml : updateAlarm
+	* @Date : 2017. 06. 13
+	* @author : 박찬섭
+	* @Desc : Alarm 읽음 표시
+	-->	
+	<update id="updateAlarm">
+		update alarm set alarm_read='0' where alarm_no=#{alarm_no};
+	</update>
+</mapper>

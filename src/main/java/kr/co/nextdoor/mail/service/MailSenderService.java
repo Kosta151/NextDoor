@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
  
 import kr.co.nextdoor.mail.dao.MailDao;
 import kr.co.nextdoor.mail.dto.MailDto;
-import kr.co.nextdoor.member.dto.MemberDTO;
 import kr.co.nextdoor.specifictask.dao.SpecificTaskDAO;
 import kr.co.nextdoor.specifictask.dto.SpecificTaskModiDTO;
 /*
@@ -59,33 +58,21 @@ public class MailSenderService {
     */
    public void sendMail(MailDto maildto) throws Exception{
       
-      
-      System.out.println(maildto.getMember_id());
-      System.out.println(maildto.getSubject());
-      System.out.println(maildto.getTemplate());
-      
       MimeMessage msg = mailSender.createMimeMessage();
       MimeMessageHelper message = new MimeMessageHelper(msg, true, "utf-8");
-      System.out.println("sendMail");
       message.setFrom("anscr@naver.com");
       message.setTo(new InternetAddress(maildto.getMember_id()));
       message.setSubject(maildto.getSubject());
       
- 
       Template template = velocityEngin.getTemplate("/mailvelocity/" +maildto.getTemplate());
       
       VelocityContext velocityContext = new VelocityContext();
       velocityContext.put("member_id", maildto.getMember_id());
       velocityContext.put("content", maildto.getContent());
       
-      
-      
       StringWriter stringwriter = new StringWriter();
       template.merge(velocityContext, stringwriter);
-      
-      
       message.setText(stringwriter.toString(),true);
-      
       mailSender.send(msg);
    }
    
@@ -98,17 +85,12 @@ public class MailSenderService {
     * @return : void
     */
    public void inviteSendMail(MailDto maildto) throws Exception{
-      
-      System.out.println(maildto.getMember_id());
-      System.out.println(maildto.getName());
- 
       MimeMessage msg = mailSender.createMimeMessage();
       MimeMessageHelper message = new MimeMessageHelper(msg, true, "utf-8");
       message.setFrom("anscr@naver.com");
       message.setTo(new InternetAddress(maildto.getMember_id()));
       message.setSubject("멤버초대 on NextDoor");
       
- 
       Template template = velocityEngin.getTemplate("/mailvelocity/" + "inviteMember.vm");
       
       VelocityContext velocityContext = new VelocityContext();
@@ -116,13 +98,9 @@ public class MailSenderService {
       velocityContext.put("name", maildto.getName());
       velocityContext.put("content", "멤버 초대가 도착하였습니다.");
       
-      
       StringWriter stringwriter = new StringWriter();
       template.merge(velocityContext, stringwriter);
-      
-      
       message.setText(stringwriter.toString(),true);
-      
       mailSender.send(msg);
    }
    /*
@@ -136,7 +114,6 @@ public class MailSenderService {
    public void insertProjectMember(MailDto maildto) throws Exception{
          MailDao maildao = sqlsession.getMapper(MailDao.class);
          maildao.insertProjectMember(maildto);
-         return;
    }
    /*
     * @method Name : senddeadline
@@ -149,7 +126,6 @@ public class MailSenderService {
       SimpleDateFormat simpledateformat = new SimpleDateFormat ("yyyy-MM-dd"); 
       Calendar calendar = new GregorianCalendar();
       calendar.add(Calendar.DATE, +1);
-      System.out.println(calendar.DATE);
       String currentTime = simpledateformat.format(calendar.getTime());
          
       SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
@@ -157,13 +133,10 @@ public class MailSenderService {
       
       for(int i =0; i<maildtolist.size() ; i++){
          if(maildtolist.get(i).getSpecifictask_end().equals(currentTime)){
-            //마감일이 오늘의 날짜랑 같지 않으면..1? 
-            System.out.println("DB들어 있는 값  : " + maildtolist.get(i).getSpecifictask_end());
             MimeMessage msg = mailSender.createMimeMessage();
             MimeMessageHelper message;
             try {
                message = new MimeMessageHelper(msg, true, "utf-8");
-               System.out.println("sendMail");
                message.setFrom("anscr@naver.com");
                message.setTo(new InternetAddress(maildtolist.get(i).getMember_id()));
                message.setSubject("schedule");
@@ -175,29 +148,18 @@ public class MailSenderService {
                velocityContext.put("user", maildtolist.get(i).getMember_id());
                
                StringWriter stringwriter = new StringWriter();
-               template.merge(velocityContext, stringwriter);
-               
-               
+               template.merge(velocityContext, stringwriter);  
                message.setText(stringwriter.toString(),true);
-               
                mailSender.send(msg);
             
+ 
+            }catch (Exception e) {
             
-            
-            } catch (Exception e) {
-               
-               System.out.println(e.getMessage());
             }
-            
-            
          }
-         
-         
       }
-   
    }
-   
-   
+
    
    /*
     * @method Name : updatePassword
@@ -224,10 +186,8 @@ public class MailSenderService {
          int update = maildao.updatePassword(map);
          if(update>0){
             result = true;
-         }
-               
-      }
-      
+         }        
+      }      
       return result;
    }
 }

@@ -46,7 +46,7 @@ public interface ProjectDAO {
     * @method Name : getProject
     * @date : 2017. 06. 19
     * @author : 송지은
-    * @description : 프로젝트수정 리스트
+    * @description : 프로젝트 수정 리스트
     * @return : ProjectDTO
     */
 	public ProjectDTO getProject(String project_no) throws Exception;
@@ -65,7 +65,7 @@ public interface ProjectDAO {
     * @date : 2017. 06. 22
     * @author : 송지은
     * @description : 프로젝트 수정하기(시작일, 마감일 수정)
-    * @return : String
+    * @return : int
     */
 	public int updateProjectModi(ProjectModiDTO projectmodidto) throws Exception;
 	
@@ -74,7 +74,7 @@ public interface ProjectDAO {
     * @date : 2017. 06. 20
     * @author : 송지은
     * @description : 프로젝트 수정페이지 리스트
-    * @return : String
+    * @return : ProjectModiDTO
     */
 	public ProjectModiDTO listProjectModi(String project_no) throws Exception;
 		
@@ -85,8 +85,8 @@ public interface ProjectDAO {
     * @description : 프로젝트명 수정하기
     * @return : int
     */
-
 	public int updateProject(ProjectDTO projectDTO) throws Exception;
+	
 	/*
     * @method Name : deleteProject
     * @date : 2017. 06. 16
@@ -95,7 +95,6 @@ public interface ProjectDAO {
     * @return : int
     */
 	public int deleteProject(int project_no) throws Exception;
-	
 	
 	/*
     * @method Name : listMember
@@ -122,6 +121,6 @@ public interface ProjectDAO {
     * @description : 프로젝트에 멤버초대할때 autocomplete
     * @return : ArrayList
     */
-	 public ArrayList<ProjectDTO> searchMember(String member_id);
+	public ArrayList<ProjectDTO> searchMember(String member_id);
 
 }

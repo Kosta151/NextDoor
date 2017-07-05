@@ -14,14 +14,9 @@
                 member_id : $("#autocomplete").val()
                    },
             success : function(data){
-               console.log(data)
                response(data);
-            },
-            error:function(request,status,error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-               }
+            }
 
-            
          });
       }
     });
@@ -31,9 +26,6 @@
         
       <section id="main-content">
           <section class="wrapper">
-          <!-- <div class="sidebar-toggle-box">
-                  <div class="fa fa-heart tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-          </div> -->
              <h3><i class="fa fa-angle-right"></i> Project : ${projectlist.project_name}</h3>
              <div id="project">
              <div id="container">
@@ -88,14 +80,7 @@
                               <h4 class="modal-title">멤버초대</h4>
                           </div>
                           <div class="modal-body">
-                              <!-- <p class="centered"><img class="img-circle" width="80" src="resources/main/assets/img/ui-sam.jpg"></p> -->
-                              <%-- <select name="member_id" class="form-control placeholder-no-fix">
-                              		<option selected="selected">프로젝트에 초대할 멤버를 선택하세요</option>
-                              	<c:forEach items="${memberlist}" var="mlist">
-                              		<option value="${mlist.member_id}">${mlist.member.id}</option>
-                              	</c:forEach>
-                              </select> --%>
-                              
+  
                               <p>이메일</p>
                               <input type="text" id="autocomplete" name="member_id" placeholder="이메일을 입력해주세요." class="form-control placeholder-no-fix">
                               <p>이름</p>

@@ -56,6 +56,7 @@ public class ProjectController {
       session.setAttribute("owner", workspaceservice.ownerWorkspace(workspace_no));   
       session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
       session.setAttribute("alarmlist",alarmservice.AlarmList(principal.getName()));
+      
       return "project.projectList";
    }
    
@@ -73,6 +74,7 @@ public class ProjectController {
       service.insertProject(projectdto);
       service.insertProjectMember(projectdto);
       model.addAttribute("projectlist", service.listProject(projectdto));
+      
       return "redirect:projectList.htm";
    }
    
@@ -82,11 +84,12 @@ public class ProjectController {
     * @author : 송지은
     * @description : 프로젝트 삭제 후 프로젝트 리스트 화면으로 이동
     */
-   @RequestMapping("projectDelete.htm")
-   public String deleteProject(int project_no) throws Exception{
+    @RequestMapping("projectDelete.htm")
+    public String deleteProject(int project_no) throws Exception{
       service.deleteProject(project_no);
+      
       return "redirect:projectList.htm";
-   }
+    }
    
    /*
     * @method Name : projectUpdate
@@ -96,14 +99,10 @@ public class ProjectController {
     */
     @RequestMapping(value = "projectUpdate.htm", method = RequestMethod.GET)
     public String projectUpdate(String project_no, Model model) throws Exception{
-       /*service.insertProjectModi(project_no);*/
-       System.out.println("ㅌㅌ너는 누구:" + project_no);
        model.addAttribute("project_no", project_no);
        model.addAttribute("projectlist", service.listProject(project_no));
-       System.out.println("service.listProject(project_no)"+ service.listProject(project_no));
        model.addAttribute("projectmodilist", service.listProjectModi(project_no));
-       System.out.println("service.listProjectModi(projectmodi_no) mm :" + service.listProjectModi(project_no));
-       /* model.addAttribute("workspace_no", projectdto.getWorkspace_no()); */
+       
        return "project.projectUpdate";
     }
     
@@ -117,14 +116,11 @@ public class ProjectController {
     public String projectUpdate(ProjectModiDTO projectmodidto, HttpSession session) throws Exception{
        String project_no = (String) session.getAttribute("project_no");
        projectmodidto.setProject_no(project_no);
-       System.out.println("projectUpdateController");
        ProjectModiDTO modidto = service.listProjectModi(project_no);
-       
+
        if(modidto == null){
-    	   System.out.println("insert탈거야?");
     	   service.insertProjectModi(projectmodidto);
        }else{
-    	   System.out.println("update탈거야?");
     	   service.updateProjectModi(projectmodidto);
        }
        
@@ -140,20 +136,14 @@ public class ProjectController {
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "auto.htm", method = RequestMethod.POST)
     public void memberAuto(ProjectDTO projectdto, String member_id, HttpServletResponse response) throws Exception{
-      System.out.println("projectdto : " + projectdto.getMember_id());
-      System.out.println("member_id : " + member_id);
       List<ProjectDTO> memberlist = service.searchMember(member_id);
-      System.out.println("memberlist:!!!!" + memberlist);
       JSONArray array = new JSONArray();
       for(int i=0; i<memberlist.size(); i++){
          array.add(memberlist.get(i).getMember_id());
       }
-      
-      System.out.println("memberlist : " + memberlist);
+       
       PrintWriter out = response.getWriter();
       out.print(array.toString());
       
-
     }
-
 }

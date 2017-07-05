@@ -11,7 +11,6 @@ $(function(){
 	      $("#project_name").focus();
 	      return false;
 	   }else{
-	      /* swal('프로젝트 생성!', 'You clicked the button!', 'success') */
 	       swal({
                  title: "프로젝트 생성 완료!",
                  type: "success",

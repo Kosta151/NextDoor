@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
   $( function() {
+	//멤버 초대할 때 자동검색
     $( "#autocomplete" ).autocomplete({
       source: function(request , response ){
          $.ajax({

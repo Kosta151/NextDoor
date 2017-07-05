@@ -2,8 +2,6 @@ package kr.co.nextdoor.file.dto;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
 public class FileDTO {
 
 	private String file_no;

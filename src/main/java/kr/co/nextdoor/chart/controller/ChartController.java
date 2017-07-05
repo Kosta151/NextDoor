@@ -17,13 +17,27 @@ import kr.co.nextdoor.chart.dto.ChartDTO;
 import kr.co.nextdoor.chart.dto.ChartMemberDTO;
 import kr.co.nextdoor.chart.service.ChartService;
 
+/*
+* @Class : ChartController
+* @Date : 2017. 07. 01 
+* @Author : 최성용
+* @Desc : 차트Controller  
+*/
+
 @Controller
 public class ChartController {
+	
 	@Autowired
 	private ChartService service;
 	@Autowired
-	   private AlarmService alarmservice;
+	private AlarmService alarmservice;
 	
+	/*
+	* @method Name :  chartList
+	* @Date : 2017. 07 . 05
+	* @Author : 최성용,송지은
+	* @Desc : 차트 인원,세부완료 갯수, 총 업무 갯수
+	*/
 	@RequestMapping(value = "chartlist.htm", method= RequestMethod.GET)
 	public String chartList(HttpSession session, Model model, Principal principal){	
 		
@@ -36,6 +50,12 @@ public class ChartController {
 
 	}
 	
+	/*
+	 * @method Name : listChartMember
+	 * @date : 2017. 07. 01
+	 * @author : 최성용,문창균
+	 * @description : 초대 받은 멤버들의 리스트를 뿌려주고 각 멤버들의 진행상황을 표시
+	 */
 	@RequestMapping(value="chartMemberList.htm", method=RequestMethod.POST)
 	public ModelAndView listChartMember(HttpSession session){
 		String project_no = (String)session.getAttribute("project_no");
@@ -47,8 +67,15 @@ public class ChartController {
 		return model;
 	}
 	
+	/*
+	 * @method Name : listChartMember
+	 * @date : 2017. 06. 29
+	 * @author : 최성용
+	 * @description : 각업무별 , 완료된 갯수 , 미완료된 갯수
+	 */	
 	@RequestMapping(value = "chartlist.htm", method= RequestMethod.POST)
     public ModelAndView chartList(HttpSession session ){
+		
         String project_no = (String) session.getAttribute("project_no");
         List<ChartDTO> clist = service.chart_x(project_no);
         List<ChartDTO> comp0List = service.chart_y_comp0(project_no);

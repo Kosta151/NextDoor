@@ -1,11 +1,5 @@
 package kr.co.nextdoor.schedule.dto;
 
-/*
-* @Class : FullcalendarDTO
-* @Date : 2017. 06. 30
-* @Author : 최성용
-* @Desc : FullcalendarDTO
-*/
 public class FullcalendarDTO {
 	private String project_no;
 	private String specifictask_cont;

@@ -13,8 +13,8 @@ public class MailDto {
    private String subject;
    private String template;
    private String content;
-   private String specifictask_end; 
-   private String specifictast_cont; 
+   private String specifictask_end; //마감일
+   private String specifictast_cont; //업무내용
    private String password;
    
    public String getMember_id() {

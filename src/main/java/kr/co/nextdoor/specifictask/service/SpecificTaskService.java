@@ -29,10 +29,8 @@ import kr.co.nextdoor.file.dto.FileDTO;
 */
 @Service
 public class SpecificTaskService {
-	
 	@Autowired
 	SqlSession sqlsession;
-	
 	/*
     * @method Name : listSpecificTask
     * @date : 2017. 06. 16
@@ -46,9 +44,6 @@ public class SpecificTaskService {
 		List<SpecificTaskDTO> specifictasklist = specifictaskdao.listSpecifictask(task_no);	
 		return specifictasklist;
 	}
-
-	
-	
 	/*
     * @method Name : insertSpecificTask
     * @date : 2017. 06. 16
@@ -58,13 +53,10 @@ public class SpecificTaskService {
     * @return : int
     */
 	public int insertSpecificTask(SpecificTaskDTO specifictaskdto){
-		
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		int result = specifictaskdao.insertSpecifictask(specifictaskdto);
-		
 		return result;
 	}
-	
 	/*
     * @method Name : insertModiSpecifictask
     * @date : 2017. 06. 16
@@ -76,10 +68,8 @@ public class SpecificTaskService {
 	public int insertModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto){
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		int result = specifictaskdao.insertModiSpecifictask(specifictaskmodidto);	
-		
 		return result;			
 	}
-		
 	/*
     * @method Name : updateModiSpecifictask
     * @date : 2017. 06. 16
@@ -91,10 +81,8 @@ public class SpecificTaskService {
 	public int updateModiSpecifictask(SpecificTaskModiDTO specifictaskmodidto){
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		int result = specifictaskdao.updateModiSpecifictask(specifictaskmodidto);	
-		
 		return result;			
 	}  
-	
 	/*
     * @method Name : updateSpecifictask
     * @date : 2017. 07. 01
@@ -106,10 +94,8 @@ public class SpecificTaskService {
 	public int updateSpecifictask(SpecificTaskDTO specifictaskdto){
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		int result = specifictaskdao.updateSpecifictask(specifictaskdto);	
-		
 		return result;			
 	}  
-		
 	/*
     * @method Name : detailModiSpecifictask
     * @date : 2017. 06. 16
@@ -119,13 +105,10 @@ public class SpecificTaskService {
     * @return : SpecificTaskModiDTO
     */
 	public SpecificTaskModiDTO detailModiSpecifictask(String specifictask_no){
-		
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		SpecificTaskModiDTO specifictaskdto = specifictaskdao.detailModiSpecifictask(specifictask_no);		
-		
 		return specifictaskdto;		
 	}
-			
 	/*
     * @method Name : deleteSpecifictask
     * @date : 2017. 06. 16
@@ -137,11 +120,8 @@ public class SpecificTaskService {
 	public int deleteSpecifictask(String specifictask_no){	
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		int result = specifictaskdao.deleteSpecifictask(specifictask_no);
-		
 		return result;
 	}
-
-	
 	/*
 	 * @method Name : checkSpecifcitask
 	 * @date : 2017. 06. 23
@@ -151,27 +131,35 @@ public class SpecificTaskService {
 	 * @return : int
 	 */
 	public int checkSpecifcitask(SpecificTaskDTO specifictaskdto){
-		
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		int result = specifictaskdao.checkSpecifcitask(specifictaskdto);
 		return result;
-		
 	}
-	
+	/*
+	 * @method Name : checkSpecificTask
+	 * @date : 2017. 06. 23
+	 * @author : 문창균
+	 * @description : 세부업무 작업 확인
+	 * @param : specifictask_no 
+	 * @return : SpecificTaskDTO
+	 */
 	public SpecificTaskDTO seleteSpecificTaskComp(String specifictask_no){
-		
 		SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
 		SpecificTaskDTO specifictask = specifictaskdao.seleteSpecificTaskComp(specifictask_no);
-		
 		return specifictask;
 	}
-	
-	//selectspecifictask
+	/*
+	 * @method Name : selectSpecificTask
+	 * @date : 2017. 06. 29
+	 * @author : 문창균
+	 * @description : specifictask 생성후 specifictask_no 추출
+	 * @param : task_no 
+	 * @return : SpecificTaskDTO
+	 */
    public SpecificTaskDTO selectSpecificTask(String task_no){
       SpecificTaskDAO specifictaskdao = sqlsession.getMapper(SpecificTaskDAO.class);
       SpecificTaskDTO specificyaskdto = specifictaskdao.selectSpecificTask(task_no);
       return specificyaskdto;
-   }
-	
+   }	
 }
 

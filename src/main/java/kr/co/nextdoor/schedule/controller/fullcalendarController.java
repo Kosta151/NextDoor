@@ -58,34 +58,25 @@ public class fullcalendarController {
 	@Autowired
 	private AlarmService alarmservice;
 	
-	/*
-	* @method Name :  listTask
-	* @Date : 2017. 06 . 25
-	* @Author : 최성용
-	* @Desc : 달력 insert 시 modal list
-	*/
+	//Modal List 
 	@RequestMapping(value="calendar.htm", method=RequestMethod.GET)
 	public String listTask(Model model, HttpSession session, Principal principal) {
-		
 		String project_no = (String) session.getAttribute("project_no");
 		String idx = (String) session.getAttribute("idx");
+		System.out.println("contoller 프로젝트 " + project_no);
 		List<TaskDTO> tasklist = taskservice.list(project_no);
 		List<MemberDTO> memberlist = taskservice.listMember(project_no);
 		session.setAttribute("tasklist", tasklist);
 		session.setAttribute("memberlist", memberlist);
 		session.setAttribute("alarmcount", alarmservice.CountAlarmList(principal.getName()));
+		System.out.println("calendar view 이동");
 		return "fullcalendar.fullcalendarTask2";
 	}
 	
-	/*
-	* @method Name :  fullcalendarTaskInsert
-	* @Date : 2017. 06 . 25
-	* @Author : 최성용,박찬섭
-	* @Desc : 달력에서 업무 추가, 알림 추가
-	*/
+	//fullcalendar insert
 	@RequestMapping(value="insertfullcalendartask.htm", method=RequestMethod.POST)
 	public String fullcalendarTaskInsert(String specifictask_no, String task_no, HttpSession session, SpecificTaskDTO specifictaskdto , SpecificTaskModiDTO specifictaskmodidto ) throws Exception{
-		  //알림(박찬섭)start
+		  //알림 관련 추가(박찬섭) start
 	      SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");
 	      AlarmDTO alarmdto = new AlarmDTO();
 	      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -93,7 +84,9 @@ public class fullcalendarController {
 	      alarmdto.setAlarm_receiver(specifictaskmodidto.getMember_id()); //
 	      System.out.println(specifictaskmodidto.getMember_id());
 	      
-	      alarmdto.setSpecifictask_no(specifictaskmodidto.getSpecifictask_no());	      	      
+	      alarmdto.setSpecifictask_no(specifictaskmodidto.getSpecifictask_no());
+	      
+	      
 	      alarmdto.setAlarm_date(dayTime.format(new Date(System.currentTimeMillis()))) ;
 	      
 	      String alarm_sender=user.getUsername();
@@ -106,31 +99,31 @@ public class fullcalendarController {
 	      alarmservice.insertAlarm(alarmdto);
 	      
 	      session.setAttribute("alarmcount", alarmservice.CountAlarmList(user.getUsername()));
-	       //알림(박찬섭)end 
+	      
+	      //알림 관련 추가(박찬섭) end 
 		
-	      session.setAttribute("task_no", task_no);
-		 
-	      fullcalendarservice.SpecificTaskInsert(specifictaskdto, session);
-	      fullcalendarservice.SpecificModiTaskInsert(specifictaskmodidto, task_no, specifictaskdto.getSpecifictask_cont());
-	      return "fullcalendar.fullcalendarTask2";
+		session.setAttribute("task_no", task_no);
+		 System.out.println("나는 task 번호!!" + task_no);
+		 System.out.println("업무 생성");
+		fullcalendarservice.SpecificTaskInsert(specifictaskdto, session);
+		fullcalendarservice.SpecificModiTaskInsert(specifictaskmodidto, task_no, specifictaskdto.getSpecifictask_cont());
+		return "fullcalendar.fullcalendarTask2";
 	}
 	
-	/*
-	* @method Name :  listFullcalendar
-	* @Date : 2017. 06 . 25
-	* @Author : 최성용
-	* @Desc : 달력 추가시 달력에 뿌려줌
-	*/	
 	@RequestMapping(value="clist.htm", method=RequestMethod.GET)
 	public void listFullcalendar(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session ) throws ParseException{
-		
-		response.setContentType("text/html; charset=utf-8");		
+		response.setContentType("text/html; charset=utf-8");
+		System.out.println("1");
 		String project_no = (String) session.getAttribute("project_no");
 		String owner = (String) session.getAttribute("owner");
+		System.out.println("오너:" + owner);
+		System.out.println("달력에서 프로젝트_no:" + project_no);
 		model.addAttribute("owner", owner);
 		FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
 		
 		ArrayList<FullcalendarDTO> calendarlist = fullcalendardao.calendarList(project_no);
+		
+		System.out.println("calendarlist:" + calendarlist);
 		
 		 JSONArray array = new JSONArray();
 		 for(int i = 0; i<calendarlist.size(); i++){
@@ -157,6 +150,8 @@ public class fullcalendarController {
 	    obj.put("end", end);
 	         
 	    array.add(obj);
+	    System.out.println("22222222222222222");
+	    System.out.println("array" + array);
 		 }
 		 try {
 		 		response.getWriter().print(array);
@@ -164,27 +159,34 @@ public class fullcalendarController {
 			} catch (Exception e) {
 				 e.printStackTrace();
 
-			}		
+			}
+		 	System.out.println("3");
+
 	}
-	/*
-	* @method Name :  listFullcalendar
-	* @Date : 2017. 07.02
-	* @Author : 최성용
-	* @Desc : owner 와 member 비교를 해서 ajax 에서 비교, 관리자만 달력 insert
-	*/	
+	
 	@RequestMapping(value="owner.htm", method=RequestMethod.GET)
 	public ModelAndView listFullcalendar(HttpServletRequest request, HttpServletResponse response,HttpSession session,Principal principal ) throws ParseException{
-				
+		System.out.println("1");
+		
 		String project_no = (String) session.getAttribute("project_no");
-		String owner = (String) session.getAttribute("owner");				
+		String owner = (String) session.getAttribute("owner");
+		
+		System.out.println("오너:" + owner);
+		System.out.println("달력에서 프로젝트_no:" + project_no);
 		
 		ModelAndView mav = new ModelAndView();
 		FullcalendarDAO fullcalendardao = sqlsession.getMapper(FullcalendarDAO.class);
 		ArrayList<FullcalendarDTO> calendarlist = fullcalendardao.calendarList(project_no);
-						
+		
+		System.out.println("calendarlist:" + calendarlist);
+		
+		/*mav.addObject("on", attributeValue)*/
 		mav.addObject("owner", owner);
 		mav.addObject("user", principal.getName());
 		mav.setViewName("jsonView");
-		return mav;				 
+		return mav;
+		
+		 
+
 	}
 }

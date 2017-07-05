@@ -59,11 +59,8 @@ public class SpecificTaskController {
       ModelAndView mv = new ModelAndView();
       mv.setViewName("jsonView");
       mv.addObject("data", specifictasklist);
-      
       return mv;
-
    }
-   
    /*
    * @method Name : insertSpecificTask
    * @date : 2017. 06. 16
@@ -72,17 +69,14 @@ public class SpecificTaskController {
    */
    @RequestMapping("insertspecifictask.htm")
    public ModelAndView insertSpecificTask(SpecificTaskDTO specifictask, String task_no){
- 
       specifictaskservice.insertSpecificTask(specifictask);
       SpecificTaskDTO specificyaskdto = specifictaskservice.selectSpecificTask(task_no);
-      
       ModelAndView model = new ModelAndView();
       model.addObject("data", specifictask);
       model.addObject("specifictask_no", specificyaskdto.getSpecifictask_no());
       model.setViewName("jsonView");
       return model;
    }
-
    /*
    * @method Name : deleteSpecifictask
    * @date : 2017. 06. 16
@@ -91,12 +85,9 @@ public class SpecificTaskController {
    */
    @RequestMapping(value ="deleteSpecifictask.htm")
    public String deleteSpecifictask(String specifictask_no, HttpSession session){
-      
-      specifictaskservice.deleteSpecifictask(specifictask_no);
-      
+      specifictaskservice.deleteSpecifictask(specifictask_no);     
       return "task.task";
    }
-   
    /*
    * @method Name : detailModiSpecifictask
    * @date : 2017. 06. 16
@@ -105,13 +96,10 @@ public class SpecificTaskController {
    */
    @RequestMapping(value = "detailSpecifictask.htm", method=RequestMethod.GET)
    public String detailModiSpecifictask(SpecificTaskDTO specifictaskdto ,Model model, HttpSession session){
-         
       SpecificTaskModiDTO modidto = specifictaskservice.detailModiSpecifictask(specifictaskdto.getSpecifictask_no());
-      
       session.setAttribute("modidto", modidto);
       session.setAttribute("specifictask_no", specifictaskdto.getSpecifictask_no());
-      session.setAttribute("specifictask_cont", specifictaskdto.getSpecifictask_cont());
-               
+      session.setAttribute("specifictask_cont", specifictaskdto.getSpecifictask_cont());        
       return "task.task";
    }
    
@@ -122,11 +110,8 @@ public class SpecificTaskController {
       ModelAndView mv = new ModelAndView();   
       mv.addObject("data", modidto);
       mv.setViewName("jsonView");
-      
       return mv;
    }
-   
-      
    /*
    * @method Name : updateSpecifictask
    * @date : 2017. 06. 16
@@ -139,24 +124,17 @@ public class SpecificTaskController {
       SimpleDateFormat dayTime = new SimpleDateFormat("yy-MM-dd hh:mm:ss");
       AlarmDTO alarmdto = new AlarmDTO();
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      
       alarmdto.setAlarm_receiver(specifictaskmodidto.getMember_id()); //
       System.out.println(specifictaskmodidto.getMember_id());
-      
       alarmdto.setSpecifictask_no(specifictaskmodidto.getSpecifictask_no());
-      
-      
       alarmdto.setAlarm_date(dayTime.format(new Date(System.currentTimeMillis()))) ;
-      
       String alarm_sender=user.getUsername();
       alarmdto.setAlarm_sender(alarm_sender);
-      
       String specifictask_name = specifictaskdto.getSpecifictask_cont();
       String alarm_cont= user.getUsername()+"님이"+specifictaskmodidto.getMember_id()+"님에게"+specifictask_name+"배당하셨습니다";
       alarmdto.setAlarm_cont(alarm_cont);
-       
       alarmservice.insertAlarm(alarmdto);
-      
+
       session.setAttribute("alarmcount", alarmservice.CountAlarmList(user.getUsername()));
       
       //알림 관련 추가(박찬섭) end
@@ -178,20 +156,16 @@ public class SpecificTaskController {
    
 
    /*
-      * @method Name : checkSpecificTask
-      * @date : 2017. 06. 23
-      * @author : 문창균
-      * @description : 세부업무 작업 확인
-      */
+  * @method Name : checkSpecificTask
+  * @date : 2017. 06. 23
+  * @author : 문창균
+  * @description : 세부업무 작업 확인
+  */
    @RequestMapping("checkspecifictask.htm")
    public String checkSpecificTask(String specifictask_no){
-      
       SpecificTaskDTO specifictaskdto = specifictaskservice.seleteSpecificTaskComp(specifictask_no);
       specifictaskdto.setSpecifictask_no(specifictask_no);
       specifictaskservice.checkSpecifcitask(specifictaskdto);
-      
       return "task.task";
    }
-   
-   
 }

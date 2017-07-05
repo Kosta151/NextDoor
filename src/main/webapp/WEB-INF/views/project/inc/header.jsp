@@ -1,4 +1,4 @@
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,14 +7,16 @@
 <script src="resources/sockjs-0.3.js"></script>
 	<script>
 		var sock;
-		
-		//소켓과 연결
 		$(function() {
+			
+			console.log("opening websocket");
  			sock = new SockJS("http://" +document.domain + ":8090/nextdoor/alarm");
  			
-			sock.onopen = function(){};
+ 			
+			sock.onopen = function(){
+				  console.log("opened websocket");
+			  };
 			
-			//메세지를 받아오는 부분
 			  sock.onmessage = function(event){
 					 var msg = JSON.parse(event.data);
 					 var receiver = msg.receiver;
@@ -23,6 +25,7 @@
 					 var specifictask_cont = msg.specifictask_cont;
 					 var user = '${loginUser}'
 					 if(user!=user_id){
+						  console.log("아이디 : "+msg.specifictask_cont +"  // 받는이 : "+ msg.receiver);
 						$("#alarmarea").html("<li class='error'>"+user_id+"님이"+"<br>"+receiver+"님에게"+"<br>"+specifictask_cont+"업무를 배당 받으셨습니다</li>");
 						$('#count').empty();
 			           	$("#count").append(alarmcount);
@@ -32,7 +35,6 @@
 						});
 					 	} 
 				 };
-				 	//specifictask alarm send event 
 		 		  $('#modibutton').click(function(){
 		 			  var receiver = $("#member_id").val();
 		 			  var specifictask_cont = $('#specifictask_cont').val();
@@ -40,11 +42,13 @@
 		 			  obj.receiver = receiver;
 		 			  obj.specifictask_cont = specifictask_cont;
 		 			  var str = JSON.stringify(obj);
+		 			  
 		   			 if($("#member_id").val() != ""){  	 
 		 				 sock.send(str);
-		 		  	}
-				  });
-				 	//schedule alarm send event
+		 				 
+		 		
+		 		  }
+				  });	  
 		 		  $('#calendaralarm').click(function(){
 		 			 var receiver = $("#calendar_receiver").val();
 		 			  var specifictask_cont = $('.specifictask_cont').val();
@@ -54,13 +58,20 @@
 		 			  var str = JSON.stringify(obj);
 		 			 if($("#member_id").val() != ""){  	 
 		 				 sock.send(str);
-		 		  	}
+		 				 
+		 		
+		 		  }
 		 		  });
-		 		sock.onclose = function(){};
-
-			 	sock.onerror = function(){};
-			});
-		
+		 		 
+ 
+		 	sock.onclose = function(){
+		 		console.log("close");
+		 	}
+		 	
+		 	sock.onerror = function() {
+				console.log("Error")
+			};
+		});
 			//알림리스트에서 한개 누르면 알림 갯수 감소
 		 function updatealarm(alarm_no, alarm_receiver){
 		      
@@ -74,6 +85,8 @@
 					console.log(data.alarm_count);
 					 $('#count').empty();
 		           	 $("#count").append(data.alarm_count);
+		           	 
+		         
 		          },
 		          error : function(){
 		            alert("error");
@@ -83,7 +96,6 @@
 
 </script>
 <style>
-
 .error {
     width: 250px;
     height: 100px;
@@ -105,7 +117,6 @@
    	border-width: medium;
    	border-color: #291647;
 }
-
 ::-webkit-scrollbar {
     width: 10px;
     height: 13px;

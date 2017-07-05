@@ -1,5 +1,4 @@
 package kr.co.nextdoor.project.dto;
-
 /*
 * @Class : ProjectDTO
 * @Date : 2017. 06. 13

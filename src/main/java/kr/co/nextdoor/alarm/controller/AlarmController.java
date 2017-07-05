@@ -39,8 +39,15 @@ public class AlarmController {
 		ModelAndView model = new ModelAndView();
 		alarmservice.updateAlarm(alarm_no);
 		model.setViewName("jsonView");
-		model.addObject("alarm_count", alarmservice.CountAlarmList(alarm_receiver));
+		model.addObject("alarm_count",alarmservice.CountAlarmList(alarm_receiver));
 		return model; 
 	}
-
+/*	@RequestMapping(value = "alarmlist.htm", method=RequestMethod.POST)
+	public ModelAndView alarmlist(String alarm_receiver){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("jsonView");
+		model.addObject("alarm_list", alarmservice.AlarmList(alarm_receiver));
+		
+		return model; 
+	}*/
 }

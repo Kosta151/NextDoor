@@ -23,7 +23,6 @@ public class ProjectService {
 
    @Autowired
    private SqlSession sqlsession;
-   
    /*
     * @method Name : listProject
     * @date : 2017. 06. 13
@@ -36,7 +35,6 @@ public class ProjectService {
 	  User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	  projectdto.setMember_id(user.getUsername());
       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-      
       return projectdao.listProject(projectdto);
    }
    
@@ -50,7 +48,6 @@ public class ProjectService {
     */
    public int insertProject(ProjectDTO projectdto) throws Exception {
       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-      
       return projectdao.insertProject(projectdto);
    }
    
@@ -65,6 +62,7 @@ public class ProjectService {
    public void insertProjectMember(ProjectDTO projectdto) throws Exception{
       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
       projectdao.insertProjectMember(projectdto);
+      return;
    }
    
    /*
@@ -76,9 +74,9 @@ public class ProjectService {
     * @return : ProjectDTO
     */
    public ProjectDTO listProject(String project_no) throws Exception{
-       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+      ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+      return projectdao.getProject(project_no);
       
-       return projectdao.getProject(project_no);
    }
    
    /*
@@ -91,7 +89,6 @@ public class ProjectService {
     */
    public int insertProjectModi(ProjectModiDTO projectmodidto) throws Exception{
       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-      
       return projectdao.insertProjectModi(projectmodidto);
    }
    
@@ -105,8 +102,8 @@ public class ProjectService {
     */
    public ProjectModiDTO listProjectModi(String project_no) throws Exception{
       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+      return projectdao.listProjectModi(project_no);
       
-      return projectdao.listProjectModi(project_no);      
    }
    /*
     * @method Name : deleteProject
@@ -118,7 +115,6 @@ public class ProjectService {
     */
    public int deleteProject(int project_no) throws Exception{
          ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-        
          return projectdao.deleteProject(project_no);
    }
    
@@ -131,9 +127,8 @@ public class ProjectService {
     * @return : int
     */
    public MemberDTO listMember() throws Exception{
-	 ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-      
-	 return projectdao.listMember();
+      ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
+      return projectdao.listMember();
       
    }
    
@@ -147,7 +142,6 @@ public class ProjectService {
     */
    public int updateProjectModi(ProjectModiDTO projectmodidto) throws Exception{
       ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-      
       return projectdao.updateProjectModi(projectmodidto);
    }
    
@@ -161,8 +155,7 @@ public class ProjectService {
     */
    public String nameProject(String project_no) throws Exception{
 	    ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-		
-	    return projectdao.nameProject(project_no);
+		return projectdao.nameProject(project_no);
    }
    /*
     * @method Name : searchMember
@@ -174,7 +167,6 @@ public class ProjectService {
     */
    public List<ProjectDTO> searchMember(String member_id) throws Exception {
 	   ProjectDAO projectdao = sqlsession.getMapper(ProjectDAO.class);
-	   
 	   return projectdao.searchMember(member_id);
-   }
+      }
 }

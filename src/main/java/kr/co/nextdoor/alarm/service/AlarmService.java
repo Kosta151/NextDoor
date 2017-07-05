@@ -1,12 +1,5 @@
 package kr.co.nextdoor.alarm.service;
 
-/*
-* @Class : AlarmService
-* @Date : 2017. 06. 24
-* @Author : 박찬섭
-* @Desc : alarm service
-*/
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,7 +9,12 @@ import org.springframework.stereotype.Service;
 import kr.co.nextdoor.alarm.dao.AlarmDAO;
 import kr.co.nextdoor.alarm.dto.AlarmDTO;
 
-
+/*
+* @Class : AlarmService
+* @Date : 2017. 06. 242
+* @Author : 박찬섭
+* @Desc : alarm service
+*/
 @Service
 public class AlarmService {
 	
